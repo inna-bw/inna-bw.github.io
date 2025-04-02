@@ -2418,9 +2418,11 @@ img {
   top: 50%;
   opacity: 0
 }
+.main-header .header-navigation ul li a.active .text,
 .main-header .header-navigation ul li a:hover .text {
   opacity: 0
 }
+.main-header .header-navigation ul li a.active:before,
 .main-header .header-navigation ul li a:hover:before {
   opacity: 1
 }
