@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Olimp :: Cases Detail Page</title>
+
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+	<link rel="shortcut icon" href="/favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+	<meta name="apple-mobile-web-app-title" content="Olimp">
+	<link rel="manifest" href="/favicon/site.webmanifest">
+
+	<meta name="msapplication-TileColor" content="#252324">
+	<meta name="theme-color" content="#252324">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="description">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body id="innerBody">
+	<!-- header -->
+	<!-- class dark for inner pages without dark banner -->
+<header class="main-header dark fixed" id="mainHeader" data-scroll-check=".section-dark">
+	<div class="container">
+		<div class="header-container" id="headerContainer">
+			<div class="left-side">
+				<div class="logo-cover">
+					<a href="index.html" class="logo light-theme" aria-label="main page"><img src="img/bw_logo.png" alt="logo" draggable="false" aria-label="main page"></a>
+					<a href="index.html" class="logo dark-theme" aria-label="main page"><img src="img/bw_logo.png" alt="logo" draggable="false" aria-label="main page"></a>
+				</div>
+				<div class="search-cover">
+					<div class="language">
+						<div class="dropdown-select">
+							<div class="title item">Укр</div>
+							<div class="inner">
+								<a href="#" class="item" aria-label="eng">Eng</a>
+								<a href="#" class="item" aria-label="ru">Рус</a>
+							</div>
+						</div>
+					</div>
+					<!-- mobile button for consultation -->
+					<button class="button mobile-toggle button-transparent button-round" data-popup-call="#consultPopup">
+						<i class="icon icon-phone icon-round"></i>
+					</button>
+					<!-- / mobile button for consultation -->
+					<div class="search">
+						<button class="button search-toggle button-transparent button-round" data-toggle-element="#mainHeader" data-toggle-class="form-search-active" id="searchToggle">
+							<i class="icon icon-search icon-round"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="right-side">
+				<nav class="header-navigation" id="mainNavigation">
+					<ul class="clear" data-hover-show="#menuResult" data-escape-container="#mainHeader">
+						<!-- class .active for active link -->
+							<li><a href="index.html" aria-label="main page" class="active"><span class="text">Main</span></a></li>
+							<li><a href="about.html" aria-label="detail link"><span class="text">About Company</span></a></li>
+							<!-- menuResult -> data-tab-index="1" -->
+							<li data-tab-hover="1"><a href="engines.html" aria-label="detail link"><span class="text">Engines</span></a></li>
+							<!-- menuResult -> data-tab-index="2" -->
+							<li data-tab-hover="2"><a href="media.html" aria-label="detail link"><span class="text">Media</span></a></li>
+							<li><a href="news.html" aria-label="detail link"><span class="text">News</span></a></li>
+							<li><a href="games.html" aria-label="detail link"><span class="text">Games</span></a></li>
+							<li><a href="faq.html" aria-label="detail link"><span class="text">Support</span></a></li>
+							<li><a href="career.html" aria-label="detail link"><span class="text">Careers</span></a></li>
+							<li><a href="contacts.html" aria-label="detail link"><span class="text">Contact Us</span></a></li>
+					</ul>
+					<!-- BOTTOM -->
+					<!-- VISIBLE ONLY <= 768 -->
+					<div class="mobile-bottom">
+						<!-- consultation button -->
+						<div class="centered-inner">
+							<button type="button" class="button contact-button" data-popup-call="#consultPopup" data-header-close>
+								<span class="text">Консультацiя</span>
+							</button>
+						</div>
+						<!-- / consultation button -->
+						<!-- language and social for mobile -->
+						<div class="bordered-top">
+							<div class="language-mobile">
+								<div class="dropdown" data-dropdown>
+									<div class="dropdown-header"><div class="item">Українська</div></div>
+									<div class="dropdown-inner origin-top">
+										<a href="#" class="item" aria-label="eng">English</a>
+										<a href="#" class="item" aria-label="ru">Русский</a>
+									</div>
+								</div>
+							</div>
+							<div class="social-mobile">
+								<ul class="social-list clear">
+									<li>
+										<a aria-label="social link" target="_blank" href="tel:" class="button button-transparent button-round">
+											<span class="button-icon"><i class="icon icon-phone"></i></span>
+										</a>
+									</li>
+									<li>
+										<a aria-label="social link" target="_blank" href="mailto:" class="button button-transparent button-round">
+											<span class="button-icon"><i class="icon icon-mail"></i></span>
+										</a>
+									</li>
+									<li>
+										<a aria-label="social link" target="_blank" href="tg://resolve?domain=@" class="button button-transparent button-round">
+											<span class="button-icon"><i class="icon icon-telegram"></i></span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- / language and social for mobile -->
+					</div>
+				</nav>
+				<!-- desktop button for consultation -->
+				<div class="button-cover">
+					<button type="button" class="button button-header button-bordered" data-popup-call="#consultPopup">
+						<span class="text">Консультацiя</span>
+					</button>
+				</div>
+				<!-- / desktop button for consultation -->
+				<!-- mobile menu toggle button -->
+				<button type="button" class="button menu-button" data-toggle-element="#mainNavigation">
+					<div class="lines">
+						<span></span>
+					</div>
+				</button>
+				<!-- /mobile menu toggle button -->
+			</div>
+			<!-- search form -->
+			<form action="javascript:void(0)" id="searchForm" class="header-search-form">
+				<div class="form-group">
+					<button class="button search-toggle-close" data-toggle-element="#mainHeader" data-toggle-class="form-search-active" type="button">
+						<i class="icon icon-search icon-round"></i>
+					</button>
+					<input type="text" class="input search-input" placeholder="Пошук..." id="inputSearch">
+				</div>
+				<button class="button search-toggle-clear" type="reset">
+					<i class="icon icon-close"></i>
+				</button>
+			</form>
+			<!-- / search form -->
+		</div>
+	</div>
+	<!-- SUBMENU -->
+	<!-- (if main menu has categories like servises/cases) -->
+	<div class="action-result menu-result" id="menuResult">
+		<div class="container">
+			<div class="result">
+				<!-- only for mobile back button -->
+				<button class="back-button button button-header">
+					<span class="button-icon">
+						<i class="icon icon-left"></i>
+					</span>
+					<span class="text">Назад</span>
+				</button>
+				<!-- / only for mobile back button -->
+				<div class="info-section">
+					<!-- SUBMENU -->
+					<!-- for services data-tab-hover="1" -->
+					<div class="menu-tab" data-tab-index="1">
+						<div class="row">
+							<div class="col-xs-12 col-lg-2">
+								<div class="point-subtitle subtitle">послуги</div>
+							</div>
+							<div class="col-xs-12 col-lg-10">
+								<div class="header-link">
+									<a href="services.html" class="subtitle subtitle-link" aria-label="Read all">
+										<span class="text">дивитися всі</span>
+										<i class="icon icon-right"></i>
+									</a>
+								</div>
+								<!-- 1 -->
+								<div class="submenu-cover">
+									<ul class="clear menu-links">
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Послуги з сімейного права</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Захист цивільно-правових відносин</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Військове право</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Земельне право</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Пенсійне забезпечення</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Кримінальне право</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Адміністративне правопорушення та ДТП</a>
+										</li>
+									</ul>
+								</div>
+								<!-- 2 -->
+								<div class="submenu-cover">
+									<ul class="clear menu-links">
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Житлові спори</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Спадкове право</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Кредитні спори</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Зняття та скасування арешту</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Трудові спори</a>
+										</li>
+										<li>
+											<a href="services-detail.html" aria-label="Read more about service">Захист прав споживачів</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- / for services -->
+					<!-- for cases data-tab-hover="2" -->
+					<div class="menu-tab" data-tab-index="2">
+						<div class="row">
+							<div class="col-xs-12 col-lg-2">
+								<div class="point-subtitle subtitle">кейси</div>
+							</div>
+							<div class="col-xs-12 col-lg-10">
+								<div class="header-link">
+									<a href="cases.html" class="subtitle subtitle-link" aria-label="Read all">
+										<span class="text">дивитися всі</span>
+										<i class="icon icon-right"></i>
+									</a>
+								</div>
+								<!-- 1 -->
+								<div class="submenu-cover">
+									<ul class="clear menu-links">
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Кейси з сімейного права</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Захист цивільно-правових відносин</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Військове право</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Земельне право</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Пенсійне забезпечення</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Кримінальне право</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Адміністративне правопорушення та ДТП</a>
+										</li>
+									</ul>
+								</div>
+								<!-- 2 -->
+								<div class="submenu-cover">
+									<ul class="clear menu-links">
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Житлові спори</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Спадкове право</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Кредитні спори</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Зняття та скасування арешту</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Трудові спори</a>
+										</li>
+										<li>
+											<a href="cases-category.html" aria-label="Read more about case">Захист прав споживачів</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- / for cases -->
+					<!-- / SUBMENU -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- / SUBMENU (if main menu has categories) -->
+
+	<!-- SEARCH -->
+	<!-- search block -->
+	<div class="action-result search-result" id="searchResult">
+		<div class="container">
+			<!-- some recommended or popular information -->
+			<div class="recommended">
+				<div class="info-section">
+					<div class="row middle-xs">
+						<div class="col-xs-12 col-lg-2">
+							<div class="point-subtitle subtitle">Популярні послуги</div>
+						</div>
+						<div class="col-xs-12 col-lg-10">
+							<ul class="inline-list clear">
+								<li><a href="#" class="tag" aria-label="serice page">Сімейне право</a></li>
+								<li><a href="#" class="tag" aria-label="serice page">Пенсійне забезпечення</a></li>
+								<li><a href="#" class="tag" aria-label="serice page">Військове право</a></li>
+								<li><a href="#" class="tag" aria-label="serice page">ДТП</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="info-section">
+					<div class="row">
+						<div class="col-xs-12 col-lg-2">
+							<div class="point-subtitle subtitle">Популярні кейси</div>
+						</div>
+						<div class="col-xs-12 col-lg-10">
+							<div class="row">
+								<!-- 1 -->
+								<div class="col-xs-12 col-ms-6 col-sm-4">
+									<!-- article preview -->
+									<a href="services-detail.html" aria-label="Read more about service" class="article-preview">
+										<figure class="article-image">
+											<img src="img/temp/el1.jpg" draggable="false" alt="image">
+										</figure>
+										<div class="caption">
+											<div class="subtitle">Військове право</div>
+											<h2 class="article-title">Захист прав у військовій справі: скасування штрафу за порушення обов'язку.</h2>
+										</div>
+									</a>
+									<!-- / article preview -->
+								</div>
+								<!-- 2 -->
+								<div class="col-xs-12 col-ms-6 col-sm-4">
+									<!-- article preview -->
+									<a href="services-detail.html" aria-label="Read more about service" class="article-preview">
+										<figure class="article-image">
+											<img src="img/temp/el2.jpg" draggable="false" alt="image">
+										</figure>
+										<div class="caption">
+											<div class="subtitle">Військове право</div>
+											<h2 class="article-title">Відновлення паспорта для особи без документів.</h2>
+										</div>
+									</a>
+									<!-- / article preview -->
+								</div>
+								<!-- 3 -->
+								<div class="col-xs-12 col-ms-6 col-sm-4">
+									<!-- article preview -->
+									<a href="services-detail.html" aria-label="Read more about service" class="article-preview">
+										<figure class="article-image">
+											<img src="img/temp/el3.jpg" draggable="false" alt="image">
+										</figure>
+										<div class="caption">
+											<div class="subtitle">Сімейне право</div>
+											<h2 class="article-title">Визнання батьківства та повернення дітей через суд.</h2>
+										</div>
+									</a>
+									<!-- / article preview -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- / some recommended or popular information -->
+			<!-- USER SEARCH RESULT -->
+			<!-- after user click enter results showed -->
+			<div class="result">
+				<!-- search result -->
+				<div class="info-section">
+					<div class="row">
+						<div class="col-xs-12 col-lg-2">
+							<div class="point-subtitle subtitle">результати пошуку</div>
+						</div>
+						<div class="col-xs-12 col-lg-10">
+							<div class="point-subtitle subtitle">Військове</div>
+							<ul class="clear menu-links">
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Захист прав у військовій справі: скасування штрафу за порушення обов'язку.</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Захист прав у військовій справі: як скасувати штраф за порушення обов’язку?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Юридичний захист військовослужбовців: скасування штрафу за порушення обов’язку</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Оскарження штрафу у військовій справі: як захистити свої права?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Штраф за порушення обов’язку: як його скасувати законно?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Захист прав у військовій справі: скасування штрафу за порушення обов'язку.</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Юридична допомога у військовій справі: як уникнути штрафу?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Правова підтримка у військовій сфері: як оскаржити штраф?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Скасування штрафу у військовій справі: які є підстави?</a>
+								</li>
+								<li>
+									<a href="services-detail.html" aria-label="Read more about service">Як військовослужбовцю захистити себе від неправомірного штрафу?</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- / search result -->
+				<!-- if no result -->
+	<!-- 			<div class="info-section">
+					<div class="row">
+						<div class="col-xs-12 col-lg-2">
+							<div class="point-subtitle subtitle">результати пошуку</div>
+						</div>
+						<div class="col-xs-12 col-lg-10">
+							<div class="text">Нічого не знайдено. Спробуйте змінити пошуковий запит</div>
+						</div>
+					</div>
+				</div> -->
+				<!-- / if no result -->
+			</div>
+		</div>
+	</div>
+	<!-- / search block -->
+	<!-- / SEARCH -->
+</header>
+
+<script>
+	window.searchFormSubmit = function(){
+		console.log('callback show form result')
+		document.getElementById('searchResult').classList.add('success');
+	};
+</script>
+	<!-- / header -->
+
+	<!-- class inner-page -->
+	<main class="page-main inner-page" id="pageMain">
+		<!-- breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<ul class="breadcrumbs-list clear">
+					<li><a href="index.html" class="text" aria-label="main page">Головна</a></li>
+					<li><a href="cases.html" class="text" aria-label="cases page">Кейси</a></li>
+					<li><a href="cases-category.html" class="text" aria-label="cases category page">Військове право</a></li>
+					<li><span class="text">Скасування штрафу за порушення обліку</span></li>
+				</ul>
+			</div>
+		</div>
+		<!-- / breadcrumbs -->
+
+
+		<!-- top section -->
+		<section class="section inner-section">
+			<div class="container">
+				<h1 class="section-title-large cropped-width collapsed-bottom">Скасування штрафу за порушення обліку</h1>
+				<!-- title with link -->
+				<div class="bordered-link-title single-link">
+					<div class="title-cover">
+						<div class="article-subtitle title">До нас звернувся клієнт, який отримав штраф у розмірі 17 000 грн за нібито порушення правил військового обліку. Постанова була винесена територіальним центром комплектування (ТЦК), оскільки клієнт не став на облік після досягнення 27 років.</div>
+					</div>
+					<div class="link-cover">
+						<button type="button" class="button button-primary button-arrow full-sm" data-popup-call="#consultPopup">
+							<span class="text">Отримати консультацію</span>
+							<span class="button-icon">
+								<i class="icon icon-right"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+				<!-- / title with link -->
+				<div class="divider centered"></div>
+			</div>
+		</section>
+		<!-- / top section -->
+		<!-- main description -->
+		<section class="section spaced-small-xs">
+			<div class="container">
+				<div class="bordered-inner">
+					<div class="sticky-container relative">
+						<div class="sticky-inner spaced-bottom">
+							<h3 class="section-title-small" data-sticky=".sticky-container">
+								Дії нашої юридичної компанії
+							</h3>
+						</div>
+						<div class="row">
+							<div class="col-xs-12 col-lg-offset-6 col-lg-6">
+								<article>
+									<ol>
+										<li>
+											<h5>Аналіз документації та законодавства</h5>
+											<p>
+												Ми детально проаналізували постанову про штраф, перевірили її правові підстави та актуальні зміни в законодавстві. Було встановлено, що відповідний закон набув чинності лише 19.05.2024, а клієнта притягнули до відповідальності за події, що відбулися до цієї дати.
+											</p>
+										</li>
+										<li>
+											<h5>Формування стратегії захисту</h5>
+											<p>
+												Ми розробили чітку правову позицію, яка базувалася на таких аргументах:
+											</p>
+											<ul>
+												<li>Відсутність законних підстав для накладення штрафу на момент подій.</li>
+												<li>Порушення процедури повідомлення клієнта про його обов’язки.</li>
+												<li>Пропущені терміни вручення постанови, що унеможливило своєчасне оскарження.</li>
+											</ul>
+										</li>
+										<li>
+											<h5>Подання позову та представництво в суді</h5>
+											<p>Ми підготували позовну заяву до суду, детально розписавши всі правові аспекти та порушення, допущені ТЦК. Наші адвокати представляли інтереси клієнта в суді, надавали додаткові докази та пояснення.</p>
+										</li>
+										<li>
+											<h5>Результат: штраф скасовано!</h5>
+											<p>Суд визнав штраф неправомірним та скасував постанову про його накладення. Провадження у справі було закрито.</p>
+										</li>
+									</ol>
+								</article>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- / main description -->
+
+		<section class="section inner-section">
+			<div class="container">
+				<!-- title with link -->
+				<div class="bordered-link-title single-link">
+					<div class="title-cover">
+						<h2 class="article-subtitle title">Завдяки чіткій правовій позиції, грамотному аналізу та професійному супроводу нам вдалося повністю захистити інтереси клієнта. Ця справа ще раз підтверджує важливість правової допомоги у складних юридичних питаннях.</h2>
+					</div>
+					<div class="link-cover">
+						<button type="button" class="button button-primary button-arrow full-sm" data-popup-call="#consultPopup">
+							<span class="text hidden-sm">Записатися на консультацію</span>
+							<span class="text visible-sm">Хочу на консультацію</span>
+							<span class="button-icon">
+								<i class="icon icon-right"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+				<!-- / title with link -->
+			</div>
+		</section>
+
+
+		<!-- team slider-->
+		<section class="section-spaced-middle section">
+			<div class="container">
+				<h2 class="section-title-large">Команда</h2>
+				<!-- slider -->
+				<div class="slider">
+					<!-- slider elements -->
+					<!-- unique id important -->
+					<div class="slider-cover glider" id="teamsGlider">
+						<!-- slide 1 -->
+						<div class="slider-item">
+							<!-- member preview -->
+							<div class="member-preview">
+								<figure class="photo-image">
+									<img src="img/temp/team1.jpg" draggable="false" alt="image">
+								</figure>
+								<div class="caption">
+									<h2 class="name">Ірина Лященко</h2>
+									<div class="position">Адвокат</div>
+								</div>
+							</div>
+							<!-- / member preview -->
+						</div>
+						<!-- slide 2 -->
+						<div class="slider-item">
+							<!-- member preview -->
+							<div class="member-preview">
+								<figure class="photo-image">
+									<img src="img/temp/team2.jpg" draggable="false" alt="image">
+								</figure>
+								<div class="caption">
+									<h2 class="name">Ірина Лященко</h2>
+									<div class="position">Адвокат</div>
+								</div>
+							</div>
+							<!-- / member preview -->
+						</div>
+						<!-- slide 3 -->
+						<div class="slider-item">
+							<!-- member preview -->
+							<div class="member-preview">
+								<figure class="photo-image">
+									<img src="img/temp/team3.jpg" draggable="false" alt="image">
+								</figure>
+								<div class="caption">
+									<h2 class="name">Ірина Лященко</h2>
+									<div class="position">Адвокат</div>
+								</div>
+							</div>
+							<!-- / member preview -->
+						</div>
+					</div>
+					<!-- / slider elements -->
+					<!-- slider navigation-->
+					<div class="slider-navigation">
+						<div class="fade"></div>
+						<button class="glider-prev button button-primary-coffee button-round navigation-left" type="button">
+							<span class="button-icon"><i class="icon icon-left"></i></span>
+						</button>
+						<button class="glider-next button button-primary-coffee button-round navigation-right" type="button">
+							<span class="button-icon"><i class="icon icon-right"></i></span>
+						</button>
+						<!-- slide counter -->
+						<div class="slider-counter">
+							<span class="current">0</span>/<span class="total">0</span>
+						</div>
+					</div>
+					<!-- /slider navigation-->
+				</div>
+				<!-- / slider -->
+			</div>
+		</section>
+		<!-- / team slider-->
+
+
+		<!-- company cases slider-->
+		<section class="section-spaced-middle section">
+			<div class="container">
+				<h2 class="section-title-large">Інші кейси з цієї категорії</h2>
+				<!-- slider -->
+				<div class="slider">
+					<!-- slider elements -->
+					<!-- unique id important -->
+					<div class="slider-cover glider" id="casesGlider">
+						<!-- slide 1 -->
+						<div class="slider-item">
+							<!-- article preview -->
+							<a href="cases-detail.html" class="article-preview" aria-label="Read more about case">
+								<figure class="article-image">
+									<img src="img/temp/el1.jpg" draggable="false" alt="image">
+								</figure>
+								<div class="caption">
+									<div class="subtitle">Військове право</div>
+									<h2 class="article-title large-title">Захист прав у військовій справі: скасування штрафу за порушення обов'язку.</h2>
+									<div class="description">
+										Успішне оскарження постанови ТЦК, що призвело до скасування штрафу на суму 17 тис. грн
+									</div>
+								</div>
+							</a>
+							<!-- / article preview -->
+						</div>
+						<!-- slide 2 -->
+						<div class="slider-item">
+							<!-- article preview -->
+							<a href="cases-detail.html" class="article-preview" aria-label="Read more about case">
+								<figure class="article-image">
+									<img src="img/temp/el2.jpg" draggable="false" alt="image">
+								</figure>
+								<div class="caption">
+									<div class="subtitle">Військове право</div>
+									<h2 class="article-title large-title">Відновлення паспорта для особи без документів.</h2>
+									<div class="description">
+										Доведення факту проживання клієнтки в Україні, що дозволило відновити її паспорт громадянина України.
+									</div>
+								</div>
+							</a>
+							<!-- / article preview -->
+						</div>
+					</div>
+					<!-- / slider elements -->
+					<!-- slider navigation-->
+					<div class="slider-navigation">
+						<div class="fade"></div>
+						<button class="glider-prev button button-primary-coffee button-round navigation-left" type="button">
+							<span class="button-icon"><i class="icon icon-left"></i></span>
+						</button>
+						<button class="glider-next button button-primary-coffee button-round navigation-right" type="button">
+							<span class="button-icon"><i class="icon icon-right"></i></span>
+						</button>
+						<!-- slide counter -->
+						<div class="slider-counter">
+							<span class="current">0</span>/<span class="total">0</span>
+						</div>
+					</div>
+					<!-- /slider navigation-->
+				</div>
+				<!-- / slider -->
+			</div>
+		</section>
+		<!-- / company cases slider-->
+
+		<!-- review tabs + slider -->
+		<!-- company cases slider-->
+<section class="section-spaced-middle section" id="companyCases">
+	<div class="container">
+		<!-- title with link -->
+		<div class="title-with-link">
+			<h2 class="section-title-large">Відгуки</h2>
+			<div class="link-cover">
+				<div class="tabs" data-tabs-container="#reviewTabs">
+					<div class="tab-button active"><i class="icon icon-google"></i>Google</div>
+					<div class="tab-button"><i class="icon icon-youtube"></i>Youtube</div>
+					<div class="tab-fader"></div>
+				</div>
+			</div>
+		</div>
+		<!-- / title with link -->
+
+		<!-- tabs-container -->
+		<div class="tabs-container" id="reviewTabs">
+			<!-- tab1  -->
+			<div class="tab-content active">
+				<!-- slider google review -->
+				<div class="slider">
+					<!-- slider elements -->
+					<!-- unique id important -->
+					<div class="slider-cover glider" id="googleGlider">
+						<!-- slide 1 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Дякую команді, що допомогли зробити перерахунок грошового забезпечення, і справедливість нарешті перемогла. А то поки ми по коліна в багнюці в окопах, деякі офіцери намагаються на нас наживатися, применшуючи наш статус та роботу. Не потрібно боятися відстоювати свої права. Як не ми то хто.
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user1.jpg" alt="user"></figure>
+									<div class="name">Олексій Бабічев</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+						<!-- slide 2 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Чоловік недоотримав кошти за бойові виходи. Звернулись за допомогою в адвокатське об'єднання “Ганна Іщенко та партнери”. Нам допомогли, тепер чоловік сам консультує побратимів в своїй частині. Дуже дякую!
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user2.jpg" alt="user"></figure>
+									<div class="name">Олена Бабічева</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+						<!-- slide 3 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Щиро дякую за надану юридичну консультацію у моїй непростій справі. Коротко про себе та справу: «Отримав поранення у зоні бойових дій. Тепер потрібна тривала та дороговартісна реабілітація. Проте державна машина зі своїм щоденним «дайте довідку» забирає усі сили. Ще раз дякую за підтримку. Ваші послуги значно спрощують життя.
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user3.jpg" alt="user"></figure>
+									<div class="name">Катерина Перекопська</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+						<!-- slide 4 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Звернувся до юристів стосовно отримання статусу УБД. Проконсультували спочатку по телефону, а потім офлайн. Поки ще в процесі отримання статусу, але консультації допомогли мені визначити напрямок куди рухатись у цій павутині державної бюрократії.
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user4.jpg" alt="user"></figure>
+									<div class="name">Олександр Пархоменко</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+						<!-- slide 5 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Чоловік недоотримав кошти за бойові виходи. Звернулись за допомогою в адвокатське об'єднання “Ганна Іщенко та партнери”. Нам допомогли, тепер чоловік сам консультує побратимів в своїй частині. Дуже дякую!
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user2.jpg" alt="user"></figure>
+									<div class="name">Олена Бабічева</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+						<!-- slide 6 -->
+						<div class="slider-item">
+							<!-- review preview -->
+							<div class="review-preview">
+								<blockquote class="blockquote">
+									Щиро дякую за надану юридичну консультацію у моїй непростій справі. Коротко про себе та справу: «Отримав поранення у зоні бойових дій. Тепер потрібна тривала та дороговартісна реабілітація. Проте державна машина зі своїм щоденним «дайте довідку» забирає усі сили. Ще раз дякую за підтримку. Ваші послуги значно спрощують життя.
+								</blockquote>
+								<!-- user data -->
+								<div class="user">
+									<figure class="photo"><img src="img/temp/user3.jpg" alt="user"></figure>
+									<div class="name">Катерина Перекопська</div>
+								</div>
+							</div>
+							<!-- / review preview -->
+						</div>
+					</div>
+					<!-- / slider elements -->
+					<!-- slider navigation-->
+					<div class="slider-navigation">
+						<div class="fade"></div>
+						<button class="glider-prev button button-primary-coffee button-round navigation-left" type="button">
+							<span class="button-icon"><i class="icon icon-left"></i></span>
+						</button>
+						<button class="glider-next button button-primary-coffee button-round navigation-right" type="button">
+							<span class="button-icon"><i class="icon icon-right"></i></span>
+						</button>
+						<!-- slide counter -->
+						<div class="slider-counter">
+							<span class="current">04</span>/<span class="total">16</span>
+						</div>
+					</div>
+					<!-- /slider navigation-->
+				</div>
+				<!-- / slider google review -->
+			</div>
+			<!-- tab2  -->
+			<div class="tab-content">
+				<!-- slider youtube review -->
+				<div class="slider">
+					<!-- slider elements -->
+					<!-- unique id important -->
+					<div class="slider-cover glider" id="youtubeGlider">
+						<!-- slide 1 -->
+						<div class="slider-item">
+							<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/pA2VKhk43a4?si=euZ2d3tA9P4-tM8B">
+									<img src="img/temp/company1.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+						<!-- slide 2 -->
+						<div class="slider-item">
+							<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/h4xBI30DidE?si=8QfoQrXtDTDTNy0i">
+									<img src="img/temp/company2.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+						<!-- slide 3 -->
+						<div class="slider-item">
+							<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/JrF0JrVWEfo?si=tlakT7PfJgiyQIo1">
+									<img src="img/temp/el2.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+						<!-- slide 4 -->
+						<div class="slider-item">
+							<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/1YmClsk16_U?si=3HK7-s1uG-lbMtt6">
+									<img src="img/temp/el3.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+						<!-- slide 5 -->
+						<div class="slider-item">
+							<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/9M4jZuqdw04?si=E9GRxMxTmMbUCHzu">
+									<img src="img/temp/team1.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+						<!-- slide 6 -->
+						<div class="slider-item">
+								<!-- video preview -->
+							<div class="review-preview">
+								<!-- embed src not watch -->
+								<div class="video-cover" data-video-src="https://www.youtube.com/embed/1YmClsk16_U?si=3HK7-s1uG-lbMtt6">
+									<img src="img/temp/user3.jpg" alt="slide">
+									<img src="img/icons/youtube-icon.svg" alt="icon" class="play-icon">
+								</div>
+							</div>
+							<!-- / video preview -->
+						</div>
+					</div>
+					<!-- / slider elements -->
+					<!-- slider navigation-->
+					<div class="slider-navigation">
+						<div class="fade"></div>
+						<button class="glider-prev button button-primary-coffee button-round navigation-left" type="button">
+							<span class="button-icon"><i class="icon icon-left"></i></span>
+						</button>
+						<button class="glider-next button button-primary-coffee button-round navigation-right" type="button">
+							<span class="button-icon"><i class="icon icon-right"></i></span>
+						</button>
+						<!-- slide counter -->
+						<div class="slider-counter">
+							<span class="current">04</span>/<span class="total">16</span>
+						</div>
+					</div>
+					<!-- /slider navigation-->
+				</div>
+				<!-- / slider youtube review -->
+			</div>
+		</div>
+	</div>
+
+	<!-- modal for video review -->
+	<!-- videoPopup id important -->
+	<div id="videoPopup" class="popup popup-video">
+		<div class="inner">
+			<button type="button" class="close-popup button">&times;</button>
+			<div class="iframe-cover">
+				<iframe src="" frameborder="0" allowfullscreen></iframe>
+			</div>
+		</div>
+	</div>
+	<!-- /modal for video review -->
+</section>
+<!-- / company cases slider-->
+		<!-- / review tabs + slider -->
+
+
+		<!-- faq -->
+		<section class="section section-spaced-middle collapsed-bottom collapsed-top-xs">
+			<div class="container">
+				<h2 class="section-title-large spaced-bottom">Faq</h2>
+				<ul class="accordeon-list simple-accordeon clear">
+	<!-- 1 -->
+	<li class="tag1">
+		<div class="accordeon" data-accordeon>
+			<div class="accordeon-title">
+				<div class="search-tooltip">Результатів: <span class="count">0</span></div>
+				<h2 class="title" data-title>Що таке військове право і які аспекти воно регулює?</h2>
+			</div>
+			<div class="accordeon-inner">
+				<div class="theme-text" data-description>
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+				</div>
+			</div>
+		</div>
+	</li>
+	<!-- 2 -->
+	<li class="tag2">
+		<div class="accordeon" data-accordeon>
+			<div class="accordeon-title">
+				<div class="search-tooltip">Результатів: <span class="count">0</span></div>
+				<h2 class="title" data-title>Які основні права та обов’язки військовослужбовців?</h2>
+			</div>
+			<div class="accordeon-inner">
+				<div class="theme-text" data-description>
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+				</div>
+		</div>
+	</li>
+	<!-- 3 -->
+	<li class="tag3">
+		<div class="accordeon" data-accordeon>
+			<div class="accordeon-title">
+				<div class="search-tooltip">Результатів: <span class="count">0</span></div>
+				<h2 class="title" data-title>Хто підлягає мобілізації, а хто має право на відстрочку?</h2>
+			</div>
+			<div class="accordeon-inner">
+				<div class="theme-text" data-description>
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+				</div>
+			</div>
+		</div>
+	</li>
+	<!-- 4 -->
+	<li class="tag4">
+		<div class="accordeon" data-accordeon>
+			<div class="accordeon-title">
+				<div class="search-tooltip">Результатів: <span class="count">0</span></div>
+				<h2 class="title" data-title>Що таке військове право і які аспекти воно регулює?</h2>
+			</div>
+			<div class="accordeon-inner">
+				<div class="theme-text" data-description>
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+				</div>
+			</div>
+		</div>
+	</li>
+	<!-- 5 -->
+	<li class="tag5">
+		<div class="accordeon" data-accordeon>
+			<div class="accordeon-title">
+				<div class="search-tooltip">Результатів: <span class="count">0</span></div>
+				<h2 class="title" data-title>Чи мають військові право на безкоштовне медичне обслуговування?</h2>
+			</div>
+			<div class="accordeon-inner">
+				<div class="theme-text" data-description>
+					Військове право – це галузь права, яка визначає правовий статус військовослужбовців, регулює їхні права та обов’язки, а також встановлює правила проходження військової служби. Воно охоплює питання мобілізації, призову, контрактної служби, соціальних гарантій, пільг та компенсацій<br><br>
+					Також військове право передбачає механізми правового захисту військовослужбовців у випадках порушення їхніх прав, зокрема щодо оскарження рішень військово-лікарських комісій, звільнення, отримання статусу учасника бойових дій або встановлення інвалідності. Крім того, воно визначає юридичну відповідальність за порушення військової дисципліни та ухилення від служби. Ця сфера права забезпечує баланс між інтересами держави та правами військовослужбовців, гарантує правові механізми захисту і вирішення спірних питань, що виникають у процесі служби.
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>
+			</div>
+		</section>
+		<!-- / faq -->
+
+		<!-- contact form -->
+		<section class="contact-section section spaced-large" id="contactForm">
+	<div class="container">
+		<div class="section section-dark mask-dark spaced-inner">
+			<div class="title-side">
+				<h4 class="point-subtitle subtitle">контактувати</h4>
+			</div>
+			<div class="contact-inner">
+				<div class="form-contact">
+					<div class="side">
+						<h2 class="section-title-large">Подати заявку</h2>
+						<div class="paragraph">Залиште заявку — і ми допоможемо вирішити вашу <br>проблему швидко та ефективно!</div>
+					</div>
+					<div class="side">
+						<!-- class .validate-form for validation -->
+						<form action="javascript:void(0)" class="form contact-form validate-form">
+							<div class="form-group">
+								<div class="alert">Не коректний телефон</div>
+								<input type="tel" class="input phone" placeholder="+380 (___) ___ __ __">
+							</div>
+							<button type="submit" class="button button-light button-arrow button-block full-sm">
+								<span class="text">Передзвоніть мені</span>
+								<span class="button-icon">
+									<i class="icon icon-right"></i>
+								</span>
+							</button>
+						</form>
+					</div>
+				</div>
+				<ul class="clear checked-list bordered-top">
+					<li>Широкий спектр послуг</li>
+					<li>Безкоштовна консультація</li>
+					<li>Надійність</li>
+					<li>Ефективність</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+		<!-- / contact form -->
+
+
+		<!-- map -->
+		<div class="map-container">
+		<!-- data attributes changable in html -->
+		<div id="map" class="map"
+			data-position="50.450001, 30.523333"
+			data-zoom="16"
+			data-title="Kyiv, Ukraine"
+		></div>
+		<!-- / map -->
+	</main>
+
+	<!-- popups -->
+	<!-- 1 -->
+	<div id="consultPopup" class="popup popup-form">
+	<div class="inner section-dark">
+		<button type="button" class="close-popup button">&times;</button>
+		<div class="header">
+			<div class="title">Отримати консультацію</div>
+			<div class="paragraph">Залиште свої контактні дані, і наші фахівці <br>зв'яжуться з вами якнайшвидше.</div>
+		</div>
+		<div class="main">
+			<!-- class .validate-form for validation -->
+			<form action="javascript:void(0)" class="form contact-form">
+				<div class="form-group labeled-group">
+					<div class="alert">Мінімум 2 символа</div>
+					<input type="text" class="input" id="name" name="name" data-minlength="2">
+					<label for="name"><span class="text">Ваше ім’я:</span></label>
+				</div>
+				<!-- no label no class .labeled-group -->
+				<div class="form-group">
+					<div class="alert">Не коректний телефон</div>
+					<input type="tel" class="input phone" id="phone" name="phone" placeholder="+380 (___) ___ __ __">
+					<!-- no label here -->
+				</div>
+				<div class="form-group labeled-group">
+					<div class="alert">Не коректний емейл</div>
+					<input type="mail" class="input email" id="email" name="email">
+					<label for="email"><span class="text">Електронна пошта:</span></label>
+				</div>
+				<button type="submit" class="button button-light button-arrow button-block full-sm">
+					<span class="text">Отримати консультацію</span>
+					<span class="button-icon">
+						<i class="icon icon-right"></i>
+					</span>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+	<!-- 2 -->
+	<div id="questionPopup" class="popup popup-form">
+	<div class="inner section-dark">
+		<button type="button" class="close-popup button">&times;</button>
+		<div class="header">
+			<div class="title">Поставте запитання нашим фахівцям</div>
+			<div class="paragraph">Заповніть форму нижче, щоб отримати професійну консультацію</div>
+		</div>
+		<div class="main">
+			<!-- class .validate-form for validation -->
+			<form action="javascript:void(0)" class="form contact-form">
+				<div class="form-group labeled-group">
+					<div class="alert">Мінімум 2 символа</div>
+					<input type="text" class="input" id="name" name="name" data-minlength="2">
+					<label for="name"><span class="text">Ваше ім’я:</span></label>
+				</div>
+				<div class="form-group labeled-group">
+					<div class="alert">Не коректний емейл</div>
+					<input type="mail" class="input email" id="email" name="email">
+					<label for="email"><span class="text">Електронна пошта:</span></label>
+				</div>
+				<!-- no label no class .labeled-group -->
+				<div class="form-group">
+					<div class="alert">Не коректний телефон</div>
+					<input type="tel" class="input phone" id="phone" name="phone" placeholder="+380 (___) ___ __ __">
+					<!-- no label here -->
+				</div>
+				<div class="form-group labeled-group textarea-group">
+					<div class="alert">Мінімум 10 символів</div>
+					<textarea name="message" id="message" class="textarea" data-minlength="10"></textarea>
+					<label for="message"><span class="text">Опис вашого запиту</span></label>
+				</div>
+				<button type="submit" class="button button-light button-arrow button-block full-sm">
+					<span class="text">Обговорити задачу</span>
+					<span class="button-icon">
+						<i class="icon icon-right"></i>
+					</span>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+	<!-- / popups -->
+
+	<!-- footer -->
+	<footer class="main-footer section-dark">
+	<div class="container">
+		<!-- sroll to top -->
+		<a class="button button-default button-round" href="#pageMain" data-scrollto="#pageMain">
+			<span class="button-icon"><i class="icon icon-top"></i></span>
+		</a>
+		<!-- sroll to top -->
+		<div class="top">
+			<div class="row bottom-sm">
+				<div class="col-xs-12 col-md-7">
+					<h2 class="section-title-large">Залишилися запитання?</h2>
+					<div class="paragraph">Залиште заявку — і ми допоможемо вирішити вашу проблему швидко та ефективно!</div>
+				</div>
+				<div class="col-xs-12 col-md-5 align-right">
+					<button type="button" class="button button-light button-arrow full-sm" aria-label="button" data-popup-call="#questionPopup">
+						<span class="text">Передзвоніть мені</span>
+						<span class="button-icon">
+							<i class="icon icon-right"></i>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<ul class="clear bordered-list">
+			<li>
+				<div class="stage">
+					<div class="logo-cover">
+						<a href="index.html" class="logo" aria-label="main page"><img src="img/logo_light.png" alt="logo" draggable="false"></a>
+					</div>
+					<ul class="social-list horizontal clear">
+						<li>
+							<a href="#" class="button button-transparent button-round" aria-label="socail link">
+								<span class="button-icon"><i class="icon icon-instagram"></i></span>
+							</a>
+						</li>
+						<li>
+								<a href="#" class="button button-transparent button-round" aria-label="socail link">
+								<span class="button-icon"><i class="icon icon-facebook"></i></span>
+							</a>
+						</li>
+						<li>
+							<a href="tg://resolve?domain=@" class="button button-transparent button-round">
+								<span class="button-icon"><i class="icon icon-telegram"></i></span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="button button-transparent button-round" aria-label="socail link">
+								<span class="button-icon"><i class="icon icon-youtube"></i></span>
+							</a>
+						</li>
+						<li>
+							<a href="#" class="button button-transparent button-round" aria-label="socail link">
+								<span class="button-icon"><i class="icon icon-linkedin"></i></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="mobile-accordeon" data-accordeon>
+					<h4 class="footer-title accordeon-title">Послуги</h4>
+					<div class="accordeon-inner">
+						<div class="group">
+							<div class="cell">
+								<ul class="clear footer-links">
+									<li><a href="services-detail.html" aria-label="service detail page">Сімейне право</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Військове право</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Земельне право</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Пенсійне забезпечення</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Кримінальне право</a></li>
+								</ul>
+							</div>
+							<div class="cell">
+								<ul class="clear footer-links">
+									<li><a href="services-detail.html" aria-label="service detail page">Спадкове право</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Житлові спори</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Кредитні спори</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Зняття та скасування арешту</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">Трудові спори</a></li>
+									<li><a href="services-detail.html" aria-label="service detail page">ДТП</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="mobile-accordeon" data-accordeon>
+					<h4 class="footer-title accordeon-title">Меню</h4>
+					<div class="accordeon-inner">
+						<ul class="clear footer-links">
+							<li><a href="cases.html" aria-label="page link">Кейси</a></li>
+							<li><a href="news.html" aria-label="page link">Новини </a></li>
+							<li><a href="about.html" aria-label="page link">Про компанію</a></li>
+							<li><a href="faq.html" aria-label="page link">FaQ</a></li>
+							<li><a href="career.html" aria-label="page link">Кар’єра</a></li>
+							<li><a href="contacts.html" aria-label="page link">Контакти</a></li>
+						</ul>
+					</div>
+				</div>
+			</li>
+			<li>
+				<h4 class="footer-title">Контактна інформація</h4>
+				<ul class="clear footer-links">
+					<li>Адреса: вулиця Казимира Малевича, 83 <br>Київ, Украина, 02000</li>
+					<li>E-mail:<a href="mailto:olimp@olimp.com">olimp@olimp.com</a></li>
+					<li>
+						<a href="tel:+380500000000" aria-label="tel">+38 050 000 00 00</a><br>
+						<a href="tel:+380500000000" aria-label="tel">+38 050 000 00 00</a>
+					</li>
+					<li>Пн: - Пт: 09:00 - 19:00</li>
+				</ul>
+			</li>
+		</ul>
+		<div class="bottom">
+			ТОВ "Юридична компанія "Олімп", код ЄДРПОУ - 444446666OLIMP@ 2025 | <a href="#" aria-label="policy">Політика конфіденційності</a> | <a href="#" aria-label="map">Карта сайту</a>
+		</div>
+	</div>
+</footer>
+	<!-- /	footer -->
+
+
+	<!-- map -->
+	<!-- heeds api key and map id -->
+<!-- 	<script>
+		var script = document.createElement('script');
+		script.src = "https://maps.googleapis.com/maps/api/js?key="+apiKey+"&callback=initMap&v=weekly";
+		document.getElementsByTagName('script')[0].parentNode.appendChild(script);
+	</script> -->
+	<!-- map -->
+
+	<script src="js/plugins/glider.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

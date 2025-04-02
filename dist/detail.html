@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<title>Best Way :: News Detail</title>
+
+	<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg">
+	<link rel="shortcut icon" href="/favicon/favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+	<meta name="apple-mobile-web-app-title" content="Best Way">
+	<link rel="manifest" href="/favicon/site.webmanifest">
+
+	<meta name="msapplication-TileColor" content="#0F0A0A">
+	<meta name="theme-color" content="#0F0A0A">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no">
+	<meta name="description" content="description">
+
+	<link rel="stylesheet" href="css/bundle.min.css">
+
+</head>
+<body id="innerBody">
+	<!-- header -->
+	<header class="main-header fixed" id="mainHeader" data-scroll-check=".section-dark">
+	<div class="container">
+		<div class="header-container">
+			<div class="left-side">
+				<button class="button button-primary-transparent" data-popup-call="#signupPopup">
+					<span class="text">Sign Up</span>
+					<i class="icon icon-mail"></i>
+				</button>
+				<div class="language">
+					<a href="index.html" class="active" lang="en-GB">
+						<span class="image-icon"><img src="img/lang-en.png" alt="en"></span>
+						<span class="text">Eng</span>
+					</a>
+					<a href="#" lang="uk">
+						<span class="image-icon"><img src="img/lang-ukr.png" alt="ua"></span>
+						<span class="text">UA</span>
+					</a>
+				</div>
+			</div>
+			<div class="menu-side">
+				<a href="index.html" class="logo">
+					<img src="img/bw_logo.png" alt="logo">
+				</a>
+				<nav class="header-navigation" id="mainNavigation">
+					<ul class="clear" data-hover-show="#menuResult" data-escape-container="#mainHeader">
+						<li><a href="index.html" aria-label="main page" class="active" data-text="Main"><span class="text">Main</span></a></li>
+						<li><a href="about.html" aria-label="detail link" data-text="About us"><span class="text">About us</span></a></li>
+						<li><a href="news.html" aria-label="detail link" data-text="News"><span class="text">News</span></a></li>
+						<li><a href="games.html" aria-label="detail link" data-text="Games"><span class="text">Games</span></a></li>
+						<li><a href="engines.html" aria-label="detail link" data-text="Engines"><span class="text">Engines</span></a></li>
+						<li><a href="support.html" aria-label="detail link" data-text="Support"><span class="text">Support</span></a></li>
+						<li><a href="career.html" aria-label="detail link" data-text="Careers"><span class="text">Careers</span></a></li>
+						<li data-tab-hover="1"><a href="media.html" aria-label="detail link" data-text="Media"><span class="text">Media</span></a></li>
+						<li><a href="contacts.html" aria-label="detail link" data-text="Contact us"><span class="text">Contact us</span></a></li>
+					</ul>
+				</nav>
+			</div>
+			<div class="right-side">
+				<ul class="social-list clear">
+					<li>
+						<a href="#"><i class="icon icon-youtube"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="icon icon-x"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="icon icon-facebook"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="icon icon-reddit"></i></a>
+					</li>
+					<li>
+						<a href="#"><i class="icon icon-tiktok"></i></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</header>
+	<!-- / header -->
+	<!-- class inner-page -->
+	<main class="page-main inner-page" id="pageMain">
+		<!-- breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<ul class="breadcrumbs-list clear">
+					<li><a href="index.html" class="text" aria-label="main page">Main</a></li>
+					<li><span class="text">News Detail</span></li>
+				</ul>
+			</div>
+		</div>
+		<!-- / breadcrumbs -->
+
+		<section class="inner-section section" id="companyAbout">
+			<div class="container">
+				<h1 class="section-title-large">News Detail</h1>
+			</div>
+		</section>
+
+	</main>
+
+	<!-- footer -->
+	<!-- popups -->
+<div id="signupPopup" class="popup popup-form">
+	<div class="inner">
+		<button type="button" class="close-popup button">&times;</button>
+		<div class="header">
+			<div class="title">Sign Up</div>
+			<div class="paragraph">Stay up to date with the latest news</div>
+		</div>
+		<div class="main">
+			<!-- class .validate-form for validation -->
+			<form action="javascript:void(0)" class="form contact-form">
+				<div class="form-group labeled-group">
+					<div class="alert">Not valid email</div>
+					<input type="mail" class="input email" id="email" name="email">
+					<label for="email"><span class="text">Email</span></label>
+				</div>
+				<button type="submit" class="button button-primary-transparent">
+					<span class="text">Sign Up</span>
+					<i class="icon icon-mail"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- / popups -->
+
+<footer class="main-footer section-dark">
+	<div class="container">
+		<!-- sroll to top -->
+		<a class="button button-default button-round" href="#pageMain" data-scrollto="#pageMain">
+			<span class="button-icon"><i class="icon icon-top"></i></span>
+		</a>
+		<!-- sroll to top -->
+
+	</div>
+</footer>
+	<!-- / footer -->
+
+	<script src="js/main.js"></script>
+</body>
+</html>
