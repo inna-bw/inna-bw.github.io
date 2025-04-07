@@ -32,29 +32,15 @@
 	<div class="container">
 		<div class="header-container">
 			<div class="left-side">
-				<button class="button button-primary-transparent" data-popup-call="#signupPopup">
-					<span class="text">Sign Up</span>
-					<i class="icon icon-mail"></i>
-				</button>
-				<div class="language">
-					<a href="index.html" class="active" lang="en-GB">
-						<span class="image-icon"><img src="img/lang-en.png" alt="en"></span>
-						<span class="text">Eng</span>
-					</a>
-					<a href="#" lang="uk">
-						<span class="image-icon"><img src="img/lang-ukr.png" alt="ua"></span>
-						<span class="text">UA</span>
-					</a>
-				</div>
-			</div>
-			<div class="menu-side">
-				<a href="index.html" class="logo">
+				<a href="index.html" class="logo" role="banner">
 					<img src="img/bw_logo.png" alt="logo">
 				</a>
+			</div>
+			<div class="menu-side">
 				<nav class="header-navigation running-line" id="mainNavigation">
 					<div class="line"></div>
 					<ul class="clear" data-hover-show="#menuResult" data-escape-container="#mainHeader">
-						<li><a href="index.html" aria-label="main page" class="active" data-text="Main"><span class="text">Main</span></a></li>
+						<li><a href="index.html" aria-label="main page" class="active" data-text="Home"><span class="text">Home</span></a></li>
 						<li><a href="about.html" aria-label="detail link" data-text="About us"><span class="text">About us</span></a></li>
 						<li><a href="news.html" aria-label="detail link" data-text="News"><span class="text">News</span></a></li>
 						<li><a href="games.html" aria-label="detail link" data-text="Games"><span class="text">Games</span></a></li>
@@ -67,74 +53,72 @@
 				</nav>
 			</div>
 			<div class="right-side">
-				<ul class="social-list clear">
-					<li>
-						<a href="#"><i class="icon icon-youtube"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-x"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-facebook"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-reddit"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-tiktok"></i></a>
-					</li>
-				</ul>
+				<div class="language">
+					<div class="dropdown" data-dropdown>
+						<div class="dropdown-header">
+							<i class="icon icon-language"></i>
+							<div class="item" lang="en-GB">
+								<span class="text">English</span>
+							</div>
+						</div>
+						<div class="dropdown-inner">
+							<a href="#" lang="uk" class="item" role="link">
+								<span class="text">Ukraine</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </header>
 	<!-- / header -->
-	<main class="page-main" id="pageMain">
+	<main class="page-main" id="pageMain" role="main">
 		<!-- main slider -->
 		<section class="section main-banner-section">
-			<div class="container">
-				<div class="slider-cover">
-					<div class="splide" aria-label="main banner slider">
-						<div class="splide__track">
-							<ul class="splide__list">
-								<li class="splide__slide">
-									<!-- item -->
-									<div class="main-banner">
-										<div class="inner">
-											<h1 class="title">strategy gaming</h1>
-											<div class="caption">
-												<h2 class="section-title">Men of War II</h2>
-												<div class="paragraph">
-													As a direct sequel to Men of War, the game features new mechanics and modes and is set on the Eastern and Western Fronts of World War II. Men of War II.
+			<div class="slider-cover">
+				<div class="splide" aria-label="main banner slider">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide">
+								<!-- item -->
+								<div class="main-banner">
+									<div class="inner">
+										<div class="caption">
+											<div class="container">
+												<div class="caption-side">
+													<img src="img/temp/banner-logo1.png" alt="mow2" class="caption-image">
+													<div class="paragraph">
+														As a direct sequel to Men of War, the game features new mechanics and modes and is set on the Eastern and Western Fronts of World War II. Men of War II.
+													</div>
+													<a href="#" class="button button-primary">
+														<span class="text">Wishlist Now</span>
+													</a>
 												</div>
-												<a href="#" class="button button-primary">
-													<span class="text">Wishlist Now</span>
-													<i class="icon icon-steam"></i>
-												</a>
 											</div>
-											<div class="banner-image">
-												<img src="img/temp/banner-image1-main.png" alt="mow" class="main-image">
-												<img src="img/temp/banner-image1.png" alt="mow" class="small-image">
+											<div class="decoration-image">
+												<canvas id="waves" class="canvas-flame"></canvas>
+												<canvas id="canvasSparks" class="canvas-sparks"></canvas>
 											</div>
 										</div>
+										<div class="banner-image image-cover">
+											<img src="img/temp/banner1.png" alt="mow" class="main-image">
+										</div>
 									</div>
-									<!-- / item -->
-								</li>
-							</ul>
-							<ul class="splide__pagination splide__pagination--ltr" role="tablist" aria-label="Select a slide to show">
-								<li role="presentation">
-									<button class="splide__pagination__page is-active" type="button" role="tab" arial-controls="default-slide01" aria-label="Go to slide 1" tabindex="-1">
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="splide__pagination__page" type="button" role="tab" arial-controls="default-slide02" aria-label="Go to slide 2" tabindex="-1">
-									</button>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="grid-animation">
-						<canvas id="canvasGrid"></canvas>
+								</div>
+								<!-- / item -->
+							</li>
+						</ul>
+						<ul class="splide__pagination splide__pagination--ltr" role="tablist" aria-label="Select a slide to show">
+							<li role="presentation">
+								<button class="splide__pagination__page is-active" type="button" role="tab" arial-controls="default-slide01" aria-label="Go to slide 1" tabindex="-1">
+								</button>
+							</li>
+							<li role="presentation">
+								<button class="splide__pagination__page" type="button" role="tab" arial-controls="default-slide02" aria-label="Go to slide 2" tabindex="-1">
+								</button>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

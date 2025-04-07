@@ -28,29 +28,15 @@
 	<div class="container">
 		<div class="header-container">
 			<div class="left-side">
-				<button class="button button-primary-transparent" data-popup-call="#signupPopup">
-					<span class="text">Sign Up</span>
-					<i class="icon icon-mail"></i>
-				</button>
-				<div class="language">
-					<a href="index.html" class="active" lang="en-GB">
-						<span class="image-icon"><img src="img/lang-en.png" alt="en"></span>
-						<span class="text">Eng</span>
-					</a>
-					<a href="#" lang="uk">
-						<span class="image-icon"><img src="img/lang-ukr.png" alt="ua"></span>
-						<span class="text">UA</span>
-					</a>
-				</div>
-			</div>
-			<div class="menu-side">
-				<a href="index.html" class="logo">
+				<a href="index.html" class="logo" role="banner">
 					<img src="img/bw_logo.png" alt="logo">
 				</a>
+			</div>
+			<div class="menu-side">
 				<nav class="header-navigation running-line" id="mainNavigation">
 					<div class="line"></div>
 					<ul class="clear" data-hover-show="#menuResult" data-escape-container="#mainHeader">
-						<li><a href="index.html" aria-label="main page" class="active" data-text="Main"><span class="text">Main</span></a></li>
+						<li><a href="index.html" aria-label="main page" class="active" data-text="Home"><span class="text">Home</span></a></li>
 						<li><a href="about.html" aria-label="detail link" data-text="About us"><span class="text">About us</span></a></li>
 						<li><a href="news.html" aria-label="detail link" data-text="News"><span class="text">News</span></a></li>
 						<li><a href="games.html" aria-label="detail link" data-text="Games"><span class="text">Games</span></a></li>
@@ -63,23 +49,21 @@
 				</nav>
 			</div>
 			<div class="right-side">
-				<ul class="social-list clear">
-					<li>
-						<a href="#"><i class="icon icon-youtube"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-x"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-facebook"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-reddit"></i></a>
-					</li>
-					<li>
-						<a href="#"><i class="icon icon-tiktok"></i></a>
-					</li>
-				</ul>
+				<div class="language">
+					<div class="dropdown" data-dropdown>
+						<div class="dropdown-header">
+							<i class="icon icon-language"></i>
+							<div class="item" lang="en-GB">
+								<span class="text">English</span>
+							</div>
+						</div>
+						<div class="dropdown-inner">
+							<a href="#" lang="uk" class="item" role="link">
+								<span class="text">Ukraine</span>
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
