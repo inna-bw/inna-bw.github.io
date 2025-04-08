@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', function(){
 			this.img = new Image();
 
 			setTimeout(()=> {
-				this.updateRects();
 				this.init();
+				this.updateRects();
 			}, 100);
 		}
 
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function(){
 							ly2 = y2 + o5.current(x * 0.3) * 2,
 							ly3 = y3 + o6.current(x * 0.4) * 1.5;
 
-					ctx.drawImage(img, x, y0, 1, sh0, x, 0        , 1, ly1);
+					ctx.drawImage(img, x, y0, 1, sh0, x, 0, 1, ly1);
 					ctx.drawImage(img, x, y1, 1, sh1, x, ly1 - 0.5, 1, ly2 - ly1 + 0.5);
 					ctx.drawImage(img, x, y2, 1, sh2, x, ly2 - 0.5, 1, ly3 - ly2 + 0.5);
 					ctx.drawImage(img, x, y3, 1, sh3, x, ly3 - 0.5, 1,  y4 - ly3 + 0.5);
@@ -514,6 +514,10 @@ document.addEventListener('DOMContentLoaded', function(){
  document.addEventListener( 'DOMContentLoaded', function() {
 	let elms = document.getElementsByClassName('splide');
 	for (let i = 0; i < elms.length; i++) {
-		new Splide(elms[i]).mount();
+		new Splide(elms[i], {
+			// direction: 'ttb',
+			// height   : '10rem',
+			// wheel    : true,
+		}).mount();
 	}
 });
