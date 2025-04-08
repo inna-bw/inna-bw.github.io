@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
+	// vertor for directions
 	class Vector {
 		x = 0;
 		y = 0;
@@ -16,22 +17,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		add(vector){
 			return new Vector(this.x + vector.x, this.y + vector.y);
-		}
-
-		subtract(vector){
-			return new Vector(this.x - vector.x, this.y - vector.y);
-		}
-
-		multiply(multiplier){
-			if (typeof multiplier !== "number"){
-				return new Vector(this.x * multiplier.x, this.y * multiplier.y);
-			} else {
-				return new Vector(this.x * multiplier, this.y * multiplier);
-			}
-		}
-
-		divide(divider){
-			return new Vector(this.x / divider, this.y / divider);
 		}
 
 		getAngle() {
@@ -199,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 
 	Array.prototype.forEach.call(document.querySelectorAll(".canvas-sparks"), function(canvasEl){
+		
 		const spaksAnimation = new SparksAnimation(canvasEl);
 		spaksAnimation.init();
 	});
