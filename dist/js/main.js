@@ -511,13 +511,25 @@ document.addEventListener('DOMContentLoaded', function(){
 		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
 	}, 10)
 });
- document.addEventListener( 'DOMContentLoaded', function() {
-	let elms = document.getElementsByClassName('splide');
-	for (let i = 0; i < elms.length; i++) {
-		new Splide(elms[i], {
-			// direction: 'ttb',
-			// height   : '10rem',
-			// wheel    : true,
-		}).mount();
+document.addEventListener( 'DOMContentLoaded', function() {
+
+	class Slider {
+		sliderElment = null;
+
+		constructor(sliderElment) {
+			this.sliderElment = sliderElment;
+		}
+
+		init(options){
+			if (options) {
+				console.log(options)
+			}
+		}
 	}
+
+	Array.prototype.forEach.call(document.querySelectorAll(".slider"), function(sliderEl){
+		const slider = new Slider(sliderEl);
+		let options = {};
+		slider.init(options);
+	});
 });
