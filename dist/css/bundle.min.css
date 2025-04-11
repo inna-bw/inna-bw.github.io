@@ -322,6 +322,10 @@ ul > li {
   overflow: hidden;
   border-radius: 24px;
   padding: 1px 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -404,8 +408,12 @@ ul > li {
   -webkit-transform: translateX(-50%);
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
-  z-index: 1;
-  text-align: center
+  z-index: 2;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
 }
 .about-section .chronology-list .paragraph {
   margin-bottom: 54px;
@@ -3229,6 +3237,19 @@ ul > li {
 }
 .slider-cover .slider:not(.vertical) .slider-list li > div {
   font-size: var(--font-size)
+}
+.slider-cover .slider-list {
+  cursor: pointer
+}
+.slider-cover .slider-list .slide {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+.slider-cover .slider-list.drag-active {
+  cursor: -webkit-grab;
+  cursor: grab
 }
 .slider-cover .slider-dots .dot.disabled {
   opacity: .5;

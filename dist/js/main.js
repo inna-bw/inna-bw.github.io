@@ -523,14 +523,22 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		prevButton = null;
 		nextButton = null;
 
-		totalWidth = 0;
-		totalHeight = 0;
+		scrolledWidth = 0;
+		scrolledHeight = 0;
 		totalSlides = 0;
 
 		activeSlideEl = null;
 		activeIndex = 0;
 
 		currentTransition = 0;
+
+		isTouchDown = false;
+
+		touchStartX = 0;
+		touchStartY = 0;
+
+		touchTransition = 0;
+		touchDirection = '';
 
 		options = {
 			transitionDuration: "1s",
@@ -545,8 +553,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows');
 
 			this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
-			this.totalWidth = this.setAllSlidersWidth();
-			this.totalHeight = this.setAllSlidersHeight();
+			this.scrolledWidth = this.setScrolledSlidersWidth();
+			this.scrolledHeight = this.setScrolledSlidersHeight();
 		}
 
 		init(options){
@@ -568,22 +576,142 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			if (this.options.onInit) {
 				this.options.onInit(this);
 			};
+
+			this.track = this.sliderElment.querySelector('.slider-list');
+
+			this.sliderElment.querySelector('.slider-track').addEventListener('mousedown', this.start.bind(this));
+			this.sliderElment.querySelector('.slider-track').addEventListener('touchstart', this.start.bind(this));
+
+			this.sliderElment.querySelector('.slider-track').addEventListener('mousemove', this.move.bind(this));
+			this.sliderElment.querySelector('.slider-track').addEventListener('touchmove', this.move.bind(this));
+
+			this.sliderElment.querySelector('.slider-track').addEventListener('mouseleave', this.end.bind(this));
+			this.sliderElment.querySelector('.slider-track').addEventListener('mouseup', this.end.bind(this));
+			this.sliderElment.querySelector('.slider-track').addEventListener('touchend', this.end.bind(this));
 		};
 
-		setAllSlidersWidth(){
-			let totalWidth = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				totalWidth += slide.getBoundingClientRect().width;
+		end() {
+			this.isTouchDown = false;
+			if (!this.touchDirection) return;
+
+			let middleXPosition = this.activeSlideEl.getBoundingClientRect().width/6;
+			let middleYPosition = this.activeSlideEl.getBoundingClientRect().height/6;
+			let index = 0;
+
+			if (!Math.abs(this.currentTransition) && !Math.abs(this.touchTransition)) return;
+
+			switch (this.touchDirection) {
+				case "left":
+					if (Math.abs(this.touchTransition) > middleXPosition && Math.abs(this.currentTransition) < this.scrolledWidth) {
+						index = this.activeIndex+1;
+					} else {
+						index = this.activeIndex;
+					};
+					break;
+				case "right":
+					if (this.scrolledWidth + this.touchTransition > middleXPosition){
+						index = this.activeIndex-1;
+					} else {
+						index = this.activeIndex;
+					};
+					break;
+				case "top":
+					if (Math.abs(this.touchTransition) > middleYPosition && Math.abs(this.currentTransition) < this.scrolledHeight) {
+						index = this.activeIndex+1;
+					} else {
+						index = this.activeIndex;
+					};
+					break;
+				case "bottom":
+					if (this.scrolledHeight + this.touchTransition > middleYPosition){
+						index = this.activeIndex-1;
+					} else {
+						index = this.activeIndex;
+					};
+					break;
 			};
-			return totalWidth;
+
+			this.activeIndex = index;
+
+			this.setActiveSlide(index);
+			this.goToSlide(index);
+			this.setActiveDot(index);
+
+			this.setButtonsState(index);
+
+			this.touchDirection = '';
+			this.touchTransition = 0;
 		};
 
-		setAllSlidersHeight(){
-			let totalHeight = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				totalHeight += slide.getBoundingClientRect().height;
+		start(e){
+			this.isTouchDown = true;
+			this.track.style.transition = `none`;
+
+			switch (this.options.direction) {
+				case "vertical":
+					this.touchStartY = e.pageY || e.touches[0].pageY;
+					break;
+				case "horizontal":
+					this.touchStartX = e.pageX || e.touches[0].pageX;
+					break;
 			};
-			return totalHeight;
+		};
+
+		move(e){
+			if(!this.isTouchDown) return;
+			e.preventDefault();
+
+			function between(x, min, max) {
+				return x >= min && x <= max;
+			}
+
+			let dragTranslation = 0;
+
+			switch (this.options.direction) {
+				case "vertical":
+					if (this.isTouchDown == true && e.pageY <= this.touchStartY) {
+						this.touchDirection = "top";
+						dragTranslation = (this.touchStartY - e.pageY)*-1;
+					} else if (this.isTouchDown == true && e.pageY > this.touchStartY) {
+						this.touchDirection = "bottom";
+						dragTranslation = e.pageY - this.touchStartY;
+					};
+					break;
+				case "horizontal":
+					if (this.isTouchDown == true && e.pageX <= this.touchStartX) {
+						this.touchDirection = "left";
+						dragTranslation = (this.touchStartX - e.pageX)*-1;
+					} else if (this.isTouchDown == true && e.pageX > this.touchStartX) {
+						this.touchDirection = "right";
+						dragTranslation = e.pageX - this.touchStartX;
+					};
+					break;
+			};
+
+			let touchTransition = this.currentTransition + dragTranslation;
+
+			if (!between(touchTransition, this.scrolledWidth*-1, 0) || !this.isTouchDown || !dragTranslation) return;
+
+			this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${touchTransition}px)` : `translateX(${touchTransition}px)`;
+			this.touchTransition = touchTransition;
+		}
+
+		setScrolledSlidersWidth(){
+			let scrolledWidth = 0;
+			for (const [index, slide] of this.allSlides.entries()) {
+				scrolledWidth += slide.getBoundingClientRect().width;
+			};
+			scrolledWidth = scrolledWidth - this.sliderElment.getBoundingClientRect().width;
+			return scrolledWidth;
+		};
+
+		setScrolledSlidersHeight(){
+			let scrolledHeight = 0;
+			for (const [index, slide] of this.allSlides.entries()) {
+				scrolledHeight += slide.getBoundingClientRect().height;
+			};
+			scrolledHeight = scrolledHeight - this.sliderElment.getBoundingClientRect().height;
+			return scrolledHeight;
 		};
 
 		setActiveSlide(activeIndex){
@@ -660,59 +788,57 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		};
 
 		translateSlider(index){
-			let track = this.sliderElment.querySelector('.slider-list');
-
 			switch (this.options.direction) {
 				case "vertical":
-					this.currentTransition = this.calculateVericalTransition();
-					requestAnimationFrame(()=>{
-						track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
-						track.style.transform = `translateY(${this.currentTransition}px)`
-					});
+					this.currentTransition = this.calculateVericalTransition(index);
 					break;
 				case "horizontal":
-					this.currentTransition = this.calculateHorizontalTransition();
-					requestAnimationFrame(()=>{
-						track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
-						track.style.transform = `translateX(${this.currentTransition}px)`
-					});
+					this.currentTransition = this.calculateHorizontalTransition(index);
 					break;
 			};
+			this.animateTranslation(this.currentTransition, this.options.direction);
 		};
 
-		calculateVericalTransition(){
+		animateTranslation(translation, direction){
+			requestAnimationFrame(()=>{
+				this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
+				this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${translation}px)` : `translateX(${translation}px)`;
+			});
+			this.isTouchDown = false;
+		};
+
+		calculateVericalTransition(index){
 			let currentTransition = 0;
 			let activeSlideHeight = this.activeSlideEl.getBoundingClientRect().height;
 
 			let slidesArray = Array.prototype.slice.call(this.allSlides);
 			let slidesHeight = 0;
 
-			if (this.activeIndex == 0) {
+			if (index == 0) {
 				currentTransition = slidesHeight = 0;
 			} else {
-				for (let slide of  this.allSlides.slice(0, this.activeIndex)) {
+				for (let slide of  this.allSlides.slice(0, index)) {
 					slidesHeight += slide.getBoundingClientRect().height;
 				}
 
 				currentTransition = slidesHeight*-1;
 			};
 			return currentTransition;
-		}
+		};
 
-		calculateHorizontalTransition(){
+		calculateHorizontalTransition(index){
 			let currentTransition = 0;
 			let activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
 
 			let slidesArray = Array.prototype.slice.call(this.allSlides);
 			let slidesWidth = 0;
 
-			if (this.activeIndex == 0) {
+			if (index == 0) {
 				currentTransition = slidesWidth = 0;
 			} else {
-				for (let slide of  this.allSlides.slice(0, this.activeIndex)) {
+				for (let slide of  this.allSlides.slice(0, index)) {
 					slidesWidth += slide.getBoundingClientRect().width;
-				}
-
+				};
 				currentTransition = slidesWidth*-1;
 			};
 
@@ -727,20 +853,23 @@ document.addEventListener( 'DOMContentLoaded', function() {
 					this.setActiveSlide(index);
 					this.goToSlide(index);
 					this.setActiveDot(index);
-
-					if (index !== 0 && index !== this.totalSlides-1){
-						this.removeDisabledButton(this.prevButton);
-						this.removeDisabledButton(this.nextButton);
-					} else if (index == this.totalSlides-1) {
-						this.setDisabledButton(index, this.nextButton);
-						this.removeDisabledButton(this.prevButton);
-					} else if (index == 0) {
-						this.setDisabledButton(0, this.prevButton);
-						this.removeDisabledButton(this.nextButton);
-					};
+					this.setButtonsState(index);
 				}.bind(this), false);
 			};
 		};
+
+		setButtonsState(index){
+			if (index !== 0 && index !== this.totalSlides-1){
+				this.removeDisabledButton(this.prevButton);
+				this.removeDisabledButton(this.nextButton);
+			} else if (index == this.totalSlides-1) {
+				this.setDisabledButton(index, this.nextButton);
+				this.removeDisabledButton(this.prevButton);
+			} else if (index == 0) {
+				this.setDisabledButton(0, this.prevButton);
+				this.removeDisabledButton(this.nextButton);
+			};
+		}
 
 		goToSlide(index){
 			if (index > this.totalSlides) return;
@@ -748,7 +877,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 			if (this.options.onTranslated) {
 				this.options.onTranslated(this)
-			}
+			};
 		}
 	};
 
@@ -795,3 +924,5 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		slider.init(options);
 	});
 });
+
+
