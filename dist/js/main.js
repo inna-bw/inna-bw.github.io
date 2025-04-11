@@ -641,6 +641,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 			this.touchDirection = '';
 			this.touchTransition = 0;
+			this.track.classList.remove('drag-active');
 		};
 
 		start(e){
@@ -655,6 +656,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 					this.touchStartX = e.pageX || e.touches[0].pageX;
 					break;
 			};
+			this.track.classList.add('drag-active');
 		};
 
 		move(e){
