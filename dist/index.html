@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,14 +23,14 @@
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Sofia+Sans:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/bundle.min.css">
 </head>
 <body id="innerBody">
 
 	<!-- header -->
-	<header class="main-header fixed" id="mainHeader" data-scroll-check=".section-dark">
+	<header class="main-header fixed" id="mainHeader" data-scroll-check="main-banner">
 	<div class="container">
 		<div class="header-container">
 			<div class="left-side">
@@ -76,86 +78,30 @@
 	<main class="page-main" id="pageMain" role="main">
 		<!-- main slider -->
 		<section class="section main-banner-section">
-			<div class="slider-cover">
-				<div class="slider main-slider" aria-label="main banner slider">
-					<div class="slider-track">
-						<ul class="slider-list">
-							<li class="slide">
-								<!-- item -->
-								<div class="main-banner">
-									<div class="inner">
-										<div class="caption">
-											<div class="container">
-												<div class="caption-side">
-													<img src="img/temp/banner-logo1.png" alt="mow2" class="caption-image">
-													<div class="paragraph">
-														As a direct sequel to Men of War, the game features new mechanics and modes and is set on the Eastern and Western Fronts of World War II. Men of War II.
-													</div>
-													<a href="#" class="button button-primary">
-														<span class="text">Wishlist Now</span>
-													</a>
-												</div>
-											</div>
-											<div class="decoration-image top">
-												<!-- <canvas class="canvas-sparks"></canvas> -->
-											</div>
-											<div class="decoration-image bottom">
-												<!-- <canvas class="canvas-flame"></canvas> -->
-												<img src="img/temp/banner-decoration1.png" alt="flame">
-											</div>
-										</div>
-										<div class="banner-image image-cover">
-											<img src="img/temp/banner1.png" alt="mow" class="main-image">
-										</div>
-									</div>
+			<div class="main-banner">
+				<div class="inner">
+					<div class="caption">
+						<div class="container">
+							<div class="caption-side">
+								<img src="img/temp/banner-logo1.png" alt="mow2" class="caption-image">
+								<div class="paragraph">
+									As a direct sequel to Men of War, the game features new mechanics and modes and is set on the Eastern and Western Fronts of World War II. Men of War II.
 								</div>
-								<!-- / item -->
-							</li>
-							<li class="slide">
-								<div class="main-banner">
-									<div class="inner">
-										<div class="caption">
-											<div class="container">
-												<div class="caption-side">
-													<img src="img/temp/banner-logo2.png" alt="mow2" class="caption-image">
-													<div class="paragraph">
-														The second instalment in the series that would become known as Men of War. The most immersive World War II real-time strategy game
-													</div>
-													<a href="#" class="button button-primary">
-														<span class="text">Wishlist Now</span>
-													</a>
-												</div>
-											</div>
-											<div class="decoration-image top">
-												<!-- <canvas class="canvas-sparks"></canvas> -->
-											</div>
-											<div class="decoration-image bottom">
-												<!-- <canvas class="canvas-flame"></canvas> -->
-												<img src="img/temp/banner-decoration1.png" alt="flame">
-											</div>
-										</div>
-										<div class="banner-image image-cover">
-											<img src="img/temp/banner2.png" alt="mow" class="main-image">
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
+								<a href="#" class="button button-primary">
+									<span class="text">Available on Steam</span>
+								</a>
+							</div>
+						</div>
+						<div class="decoration-image top">
+							<!-- <canvas class="canvas-sparks"></canvas> -->
+						</div>
+						<div class="decoration-image bottom">
+							<!-- <canvas class="canvas-flame"></canvas> -->
+						</div>
 					</div>
-					<!-- dots -->
-					<div class="slider-dots">
-						<ul class="slider-pagination" role="tablist" aria-label="Select a slide to show">
-							<li role="presentation">
-								<button class="dot active" type="button" role= "tab" aria-controls="splide01-slide01" aria-label="Go to slide 1" aria-selected="true">
-								</button>
-							</li>
-							<li role="presentation">
-								<button class="dot" type="button" role="tab" aria-controls="splide01-slide02" aria-label="Go to slide 2" tabindex="-1">
-								</button>
-							</li>
-						</ul>
+					<div class="banner-image image-cover">
+						<img src="img/temp/banner2.png" alt="mow" class="main-image">
 					</div>
-					<!-- /dots -->
 				</div>
 			</div>
 		</section>
@@ -164,7 +110,7 @@
 		<!-- about us -->
 		<section class="section about-section">
 			<div class="container">
-				<h2 class="section-title">About Us</h2>
+				<h2 class="section-title">Chronology</h2>
 				<div class="divider"></div>
 				<!-- slider -->
 				<div class="slider-cover">
@@ -235,7 +181,6 @@
 						</div>
 						<!-- dots -->
 						<div class="chronology-list slider-dots">
-							<div class="paragraph">Best Way Chronology</div>
 							<ul class="slider-pagination" role="tablist" aria-label="Select a slide to show">
 								<li role="presentation">
 									<button class="dot active" type="button" role= "tab" aria-controls="splide01-slide01" aria-label="Go to slide 1"
@@ -401,9 +346,11 @@
 
 <footer class="main-footer">
 	<div class="container">
+		<div>
 		<a href="index.html" class="logo" role="banner">
 			<img src="img/bw_logo.png" alt="logo">
 		</a>
+		
 		<!-- sroll to top -->
 <!-- 		<a class="button" href="#mainHeader" data-scrollto="#pageMain">
 			<i class="icon icon-top-simple"></i>

@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		init(){
 			let sparks = [];
-			let sparksCount = 20;
+			let sparksCount = 25;
 
 			let interval = setInterval(()=> {
 				if (sparks.length < sparksCount) {
