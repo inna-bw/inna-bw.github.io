@@ -395,6 +395,10 @@ document.addEventListener('DOMContentLoaded', function(){
 	setMainPageOffset(PAGE_MAIN);
 	setDetectHeaderScroll(MAIN_HEADER);
 });
+document.addEventListener( 'DOMContentLoaded', function() {
+
+
+})
 // popup
 document.addEventListener('DOMContentLoaded', function(){
 

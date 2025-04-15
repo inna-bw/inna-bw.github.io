@@ -39,7 +39,7 @@ html {
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
-  background-color: #0f0a0a;
+  background-color: rgba(15,10,10,.8);
   color: #ababab;
   font-display: swap;
   font-optical-sizing: auto;
@@ -296,7 +296,7 @@ ul > li {
   font-size: var(--subtitle-font-size);
   font-weight: 900;
   margin-bottom: 20px;
-  font-family: "Sofia Sans",sans-serif
+  font-family: "Sofia Sans Extra Condensed",sans-serif
 }
 .about-preview .caption {
   padding-bottom: 100px;
@@ -846,7 +846,7 @@ ul > li {
 .button {
   display: inline-block;
   font-size: var(--buttons-font-size);
-  font-family: "Sofia Sans",sans-serif;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
   vertical-align: middle;
@@ -918,6 +918,31 @@ ul > li {
   background-color: #ec1e24
 }
 .button.button-primary:hover {
+  background-color: #8c0000
+}
+.button.button-round {
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  border-color: #fff;
+  opacity: .5
+}
+.button.button-round:hover {
+  opacity: 1
+}
+.button.button-square {
+  padding: 0;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: var(--border-radius);
+  border-color: #ec1e24;
+  background-color: rgba(140,0,0,.33);
+  color: #fff
+}
+.button.button-square:hover {
   background-color: #8c0000
 }
 :root {
@@ -1011,7 +1036,6 @@ ul > li {
   --border-radius: 4px
 }
 .form .form-group {
-  margin: 17px 0;
   position: relative
 }
 .form .input,
@@ -1019,34 +1043,44 @@ ul > li {
 .form textarea {
   background-color: transparent;
   width: 100%;
-  border: 1px solid transparent;
+  border: 1px solid #ec1e24;
+  background-color: rgba(140,0,0,.33);
+  border-radius: var(--border-radius);
+  padding: 13px 25px 16px;
+  color: #fff;
   -webkit-transition: .2s;
   transition: .2s
 }
 .form .input::-webkit-input-placeholder,
 .form select::-webkit-input-placeholder,
 .form textarea::-webkit-input-placeholder {
-  color: #fff
+  color: #ababab
 }
 .form .input:-moz-placeholder,
 .form select:-moz-placeholder,
 .form textarea:-moz-placeholder {
-  color: #fff
+  color: #ababab
 }
 .form .input::-moz-placeholder,
 .form select::-moz-placeholder,
 .form textarea::-moz-placeholder {
-  color: #fff
+  color: #ababab
 }
 .form .input:-ms-input-placeholder,
 .form select:-ms-input-placeholder,
 .form textarea:-ms-input-placeholder {
-  color: #fff
+  color: #ababab
 }
 .form textarea {
   resize: none;
   height: 88px;
   border-radius: 22px
+}
+.form.inline-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 30px
 }
 .glider-contain {
   width: 100%;
@@ -2453,8 +2487,8 @@ ul > li {
 }
 .main-banner .caption .caption-image {
   width: 100%;
-  -webkit-filter: drop-shadow(0 0 .8rem #000);
-  filter: drop-shadow(0 0 .8rem #000)
+  -webkit-filter: drop-shadow(0 0 1.8rem #000);
+  filter: drop-shadow(0 0 1.8rem #000)
 }
 .main-banner .caption .section-title {
   margin-bottom: 30px
@@ -2520,8 +2554,54 @@ ul > li {
   --border-radius: 4px
 }
 .main-footer {
-  border-top: 1px solid rgba(255,255,255,.1);
-  padding: 50px 0
+  border-top: 1px solid rgba(255,255,255,.1)
+}
+.main-footer .logo-cover {
+  margin-bottom: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 30px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
+}
+.main-footer .footer-title {
+  color: #fff;
+  font-size: var(--section-title-font-size);
+  font-weight: 900;
+  font-family: "Sofia Sans Extra Condensed",sans-serif
+}
+.main-footer .form-cover {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 30px
+}
+.main-footer .footer-main {
+  padding: 30px 0
+}
+.main-footer .form-section {
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  background-color: rgba(255,255,255,.1);
+  padding: 30px 0
+}
+.main-footer .top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
 }
 :root {
   --font-size: 16px;
@@ -2595,7 +2675,7 @@ ul > li {
   text-align: center
 }
 .main-header .header-navigation ul li a .text {
-  font-family: "Sofia Sans",sans-serif;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
   font-size: var(--header-links-font-size);
   font-weight: 900;
   text-transform: uppercase;
@@ -2618,7 +2698,8 @@ ul > li {
   --border-radius: 4px
 }
 .news-preview {
-  position: relative
+  position: relative;
+  display: block
 }
 .news-preview .image-cover {
   padding-top: 76.11%;
@@ -2632,7 +2713,7 @@ ul > li {
   bottom: -1px;
   right: -1px;
   border-radius: var(--border-radius);
-  border: 1px solid #ec1e24;
+  border: 1px solid transparent;
   padding: 40px;
   color: #fff;
   background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,.8)));
@@ -2678,15 +2759,32 @@ ul > li {
   -ms-transform: translateX(3px);
   transform: translateX(3px)
 }
+@-webkit-keyframes pulse-animation {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(140,0,0,.5);
+    box-shadow: 0 0 0 0 rgba(140,0,0,.5)
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 10px rgba(140,0,0,0);
+    box-shadow: 0 0 0 10px rgba(140,0,0,0)
+  }
+}
+@keyframes pulse-animation {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(140,0,0,.5);
+    box-shadow: 0 0 0 0 rgba(140,0,0,.5)
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 10px rgba(140,0,0,0);
+    box-shadow: 0 0 0 10px rgba(140,0,0,0)
+  }
+}
 .news-preview .play-button {
   height: 60px;
   width: 60px;
-  border-radius: var(--border-radius);
-  border: 1px solid #ec1e24;
-  background-color: rgba(140,0,0,.33);
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 20px;
+  right: 20px;
   color: #fff;
   z-index: 2;
   cursor: pointer;
@@ -2695,9 +2793,11 @@ ul > li {
   font-size: 20px
 }
 .news-preview .play-button .icon-cover {
-  background-color: #ec1e24;
+  background-color: #8c0000;
   padding: 10px;
-  border-radius: 50%
+  border-radius: 50%;
+  -webkit-animation: pulse-animation 2s infinite;
+  animation: pulse-animation 2s infinite
 }
 .news-preview .date {
   font-size: var(--article-title-font-size);
@@ -2717,6 +2817,7 @@ ul > li {
   background-image: linear-gradient(180deg,rgba(140,0,2,0) 50%,rgba(140,0,2,.5) 100%);
   border-color: transparent
 }
+
 :root {
   --font-size: 16px;
   --font-size-large: 18px;
@@ -3216,7 +3317,7 @@ ul > li {
   color: #fff;
   font-size: var(--section-title-font-size);
   font-weight: 900;
-  font-family: "Sofia Sans",sans-serif;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
   text-transform: uppercase
 }
 .section .section-title ~ .divider {
@@ -3452,7 +3553,7 @@ h4,
 h5,
 h6 {
   line-height: 1.42;
-  font-family: "Sofia Sans",sans-serif;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
   font-weight: 400
 }
 h1::-moz-selection,
