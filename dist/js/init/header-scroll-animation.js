@@ -7,10 +7,12 @@ document.addEventListener('DOMContentLoaded', function(){
 	let scrollPosition = 0;
 	let scrollDirection = 0;
 
+	let headerIsOnTarget = false;
+
 	let setMainPageOffset = function(mainPage){
 		if (!mainPage) return;
 		let headerHeight = MAIN_HEADER.getBoundingClientRect().height;
-		mainPage.style.paddingTop = headerHeight + 'px'
+		mainPage.style.paddingTop = headerHeight-2 + 'px'
 	};
 
 	let detectScrollDirection = function(){
@@ -25,10 +27,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	let setDetectHeaderScroll = function(header){
 		let bannerClassName = MAIN_HEADER.dataset.scrollCheck;
 		if (!MAIN_HEADER || !MAIN_HEADER.dataset.scrollCheck) return;
-		let bannerEl = document.querySelector('.'+bannerClassName);
 
 		let headerHeight = MAIN_HEADER.getBoundingClientRect().height;
-		let bannerHeight = bannerEl.getBoundingClientRect().height;
 
 		if (window.pageYOffset > headerHeight*2) {
 			header.classList.add('translated');
@@ -42,8 +42,15 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 	};
 
+
+	// get mouse target
+	document.addEventListener('mousemove', (event) => {
+		headerIsOnTarget = event.target.closest('.main-header') ? true : false;
+	});
+
 	// on scroll
 	document.addEventListener("scroll", (event) => {
+		if (headerIsOnTarget) return;
 		detectScrollDirection();
 		setDetectHeaderScroll(MAIN_HEADER);
 	}, {passive: true});

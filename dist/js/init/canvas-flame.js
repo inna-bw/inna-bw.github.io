@@ -34,6 +34,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				this.init();
 				this.updateRects();
 			}, 100);
+
+			window.addEventListener('resize', this.updateRects);
 		}
 
 		updateRects(){

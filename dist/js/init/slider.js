@@ -385,6 +385,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		// only for about
 		if (sliderEl.classList.contains('about-slider')) {
+
 			let setDates = function(){
 				let slider = this;
 
@@ -401,8 +402,23 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				let prevText = dotsCaption[slider.activeIndex-1] || '';
 				let nextText = dotsCaption[slider.activeIndex+1] || '';
 
-				prevCaption.innerHTML = prevText;
-				nextCaption.innerHTML = nextText;
+				// prevCaption.innerHTML = prevText;
+				// nextCaption.innerHTML = nextText;
+
+				// for odoment count
+				let prevOdometr = new Odometer({
+					el: prevCaption,
+					format: '',
+				});
+
+				prevOdometr.update(prevText)
+
+				let nextOdometr = new Odometer({
+					el: nextCaption,
+					format: '',
+				});
+
+				nextOdometr.update(nextText)
 			};
 
 			// set slider callback

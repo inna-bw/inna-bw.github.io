@@ -8,7 +8,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		activeElement = null;
 
+		static #instance = null;
+
 		constructor(lineParent) {
+			if (RunningLine.#instance) { // проверяем что значение #instance не равно null (т.е. уже что-то присвоено), и прерываем инструкцию, чтобы в соответствии с принципом синглтон сохранить значения присвоенные при первой инициации.
+				return RunningLine.#instance;
+			}
+			RunningLine.#instance = this;
 			this.lineParent = lineParent;
 			this.lineElement = lineParent.querySelector('.'+this.lineClassName);
 			this.lineFollowElement = lineParent.querySelector(this.lineFollowTag);
@@ -49,28 +55,34 @@ document.addEventListener('DOMContentLoaded', function(){
 		init() {
 			let runningLine = this;
 			let activeElement = runningLine.lineFollowElement.querySelector('.'+runningLine.activeClassName);
+			runningLine.start(activeElement);
+		};
+
+		start(activeElement){
+			let runningLine = this;
 			runningLine.setActiveElement(activeElement);
 			runningLine.setWidth();
 			runningLine.setPosition();
-
-			Array.prototype.forEach.call(runningLine.lineFollowElement.children, function(item){
-				item.querySelector('a').addEventListener("mouseenter", function (e) {
-					runningLine.setActiveElement(this);
-					runningLine.setWidth();
-					runningLine.setPosition();
-				});
-				item.querySelector('a').addEventListener("mouseleave", function (e) {
-					runningLine.setActiveElement(activeElement);
-					runningLine.setWidth();
-					runningLine.setPosition();
-				});
-			})
-		};
+		}
 	};
 
+
 	Array.prototype.forEach.call(document.querySelectorAll(".running-line"), function(line){
-		const newRunningLine = new RunningLine(line);
-		newRunningLine.init();
+		window.newRunningLine = new RunningLine(line);
+		window.newRunningLine.init();
+
+		Array.prototype.forEach.call(line.parentNode.querySelectorAll('a'), function(link){
+			let allLinks = line.parentNode.querySelectorAll('a');
+			link.addEventListener("mouseenter", function (e) {
+				for (let i = 0; i < allLinks.length; i++) {
+					allLinks[i].classList.remove('active');
+				};
+				this.classList.add('active');
+				window.newRunningLine.start(this);
+			})
+		})
 	});
+
+
 
 });

@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', function(){
 				this.updateRects();
 				this.init();
 			}, 100);
+
+			window.addEventListener('resize', this.updateRects);
 		}
 
 		updateRects(){
@@ -184,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	}
 
 	Array.prototype.forEach.call(document.querySelectorAll(".canvas-sparks"), function(canvasEl){
-		
+
 		const spaksAnimation = new SparksAnimation(canvasEl);
 		spaksAnimation.init();
 	});

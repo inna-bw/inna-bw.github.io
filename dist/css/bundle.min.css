@@ -1,21 +1,25 @@
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -28,7 +32,7 @@
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -222,23 +226,27 @@ ul > li {
   font-variation-settings: "wdth" 100
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -251,7 +259,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -259,23 +267,27 @@ ul > li {
   }
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -288,7 +300,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -367,7 +379,6 @@ ul > li {
   font-size: 0;
   border-radius: var(--border-radius);
   overflow: hidden;
-  background-color: red;
   border-radius: var(--border-radius);
   -webkit-box-flex: 1;
   -ms-flex: 1;
@@ -439,10 +450,12 @@ ul > li {
   line-height: 44px;
   position: absolute;
   top: -1px;
-  border: 1px solid rgba(255,255,255,.5);
+  border: 1px solid rgba(255,255,255,.2);
+  background-color: #1e1e20;
   -webkit-transition: .2s;
   transition: .2s;
-  z-index: 1
+  z-index: 1;
+  color: #d7d6d6
 }
 .about-section .slider-cover .button-arrow .caption {
   position: absolute;
@@ -481,7 +494,8 @@ ul > li {
   color: #000
 }
 .about-section .slider-cover .button-arrow:hover .arrow {
-  background-color: #fff
+  background-color: #fff;
+  color: #000
 }
 .about-section .slider-cover .button-arrow:hover .caption {
   background-color: #fff;
@@ -579,23 +593,27 @@ ul > li {
   border-color: #ec1e24
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -608,7 +626,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -713,23 +731,27 @@ ul > li {
   }
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -742,7 +764,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -803,23 +825,27 @@ ul > li {
   text-decoration: underline
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -832,7 +858,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -943,23 +969,27 @@ ul > li {
   }
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -972,7 +1002,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -1022,23 +1052,27 @@ ul > li {
   color: #ec1e24
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -1051,7 +1085,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -1152,6 +1186,54 @@ ul > li {
 .button.button-primary-text:hover {
   color: #8c0000
 }
+.button.button-secondary,
+.button.button-secondary-transparent {
+  font-family: "Noto Sans",sans-serif;
+  text-transform: none;
+  border: 1px solid #ec1e24;
+  border-radius: var(--border-radius);
+  background-color: rgba(140,0,0,.3);
+  font-weight: 400;
+  font-size: var(--buttons-font-size-small);
+  padding: 5px 21px 7px;
+  line-height: 1.25
+}
+.button.button-secondary-transparent:hover,
+.button.button-secondary:hover {
+  background-color: rgba(236,30,36,.3)
+}
+.button.button-secondary.disabled,
+.button.disabled.button-secondary-transparent {
+  background-color: rgba(215,214,214,.3);
+  border-color: #fff
+}
+.button.button-secondary-transparent {
+  background-color: transparent
+}
+.button.button-secondary-transparent:hover {
+  background-color: transparent;
+  border-color: #8c0000
+}
+.button.button-secondary-transparent.disabled {
+  background-color: transparent
+}
+.button-white-transparent {
+  background-color: transparent;
+  color: #d7d6d6;
+  border-color: #d7d6d6
+}
+.button-white-transparent:hover {
+  color: #fff;
+  border-color: #fff
+}
+.button-white-text {
+  background-color: transparent;
+  color: #d7d6d6;
+  border-color: transparent
+}
+.button-white-text:hover {
+  color: #fff
+}
 .button.button-round {
   padding: 0;
   height: 50px;
@@ -1180,23 +1262,27 @@ ul > li {
   color: #fff
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -1209,7 +1295,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -1253,7 +1339,11 @@ ul > li {
   transition: .2s
 }
 .dropdown .dropdown-inner {
-  display: none
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%
 }
 .dropdown .dropdown-inner::-webkit-scrollbar-thumb {
   border: 1px solid transparent;
@@ -1285,23 +1375,27 @@ ul > li {
   content: "\e90b"
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -1314,7 +1408,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -1329,8 +1423,8 @@ ul > li {
 .form textarea {
   background-color: transparent;
   width: 100%;
-  border: 1px solid #ec1e24;
-  background-color: rgba(140,0,0,.33);
+  border: 1px solid #d7d6d6;
+  background-color: transparent;
   border-radius: var(--border-radius);
   padding: 13px 25px 16px;
   color: #fff;
@@ -1356,6 +1450,11 @@ ul > li {
 .form select:-ms-input-placeholder,
 .form textarea:-ms-input-placeholder {
   color: #ababab
+}
+.form .input:hover,
+.form select:hover,
+.form textarea:hover {
+  border-color: #fff
 }
 .form textarea {
   resize: none;
@@ -1491,23 +1590,27 @@ ul > li {
   }
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -1520,7 +1623,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -1542,6 +1645,12 @@ ul > li {
   padding-right: 30px;
   padding-left: 30px;
   max-width: 100%
+}
+.container-small {
+  margin: 0 auto;
+  padding-right: 30px;
+  padding-left: 30px;
+  max-width: 1456px
 }
 .row {
   -webkit-box-sizing: border-box;
@@ -2680,23 +2789,27 @@ ul > li {
   content: "\e909"
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -2709,7 +2822,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -2881,23 +2994,27 @@ ul > li {
   object-position: right bottom
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -2910,77 +3027,95 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
     --header-links-font-size: 20px
   }
 }
-.main-footer .logo-cover {
-  margin-bottom: 30px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 30px;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between
-}
-.main-footer .footer-title {
+.main-footer .footer-subtitle {
   color: #fff;
-  font-size: var(--section-title-font-size);
-  font-weight: 900;
-  font-family: "Sofia Sans Extra Condensed",sans-serif
+  font-size: var(--large-text-font-size);
+  font-weight: 400;
+  font-family: "Noto Sans",sans-serif;
+  margin-bottom: 24px;
+  display: block
 }
-.main-footer .form-cover {
+.main-footer .scrollto-cover {
+  text-align: right;
+  margin-bottom: 30px
+}
+.main-footer .footer-link {
+  display: block
+}
+.main-footer .footer-link:hover {
+  text-decoration: underline;
+  color: #fff
+}
+.main-footer .contact-group {
+  margin-bottom: 64px
+}
+.main-footer .navigation-group .links-cover {
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  columns: 3
+}
+.main-footer .navigation-group .footer-link {
+  margin-bottom: 24px
+}
+.main-footer .flex-inner {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  gap: 30px
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  gap: 90px
 }
-.main-footer .footer-main {
-  padding: 30px 0
+.main-footer .social-list {
+  gap: 0
 }
-.main-footer .form-section {
-  padding: 30px 0;
-  margin: 30px 0
+.main-footer .social-list li a {
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  font-size: 20px;
+  color: #ababab
 }
-.main-footer .top {
+.main-footer .middle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between
+}
+.main-footer .bottom {
+  padding: 60px 0
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -2993,7 +3128,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3009,9 +3144,11 @@ ul > li {
   left: 0;
   width: 100%;
   z-index: 10;
-  -webkit-backdrop-filter: blur(25px);
-  backdrop-filter: blur(25px);
-  background: rgba(0,0,0,.85)
+  background-color: #000
+}
+.main-header .container {
+  position: relative;
+  z-index: 1
 }
 .main-header .logo {
   width: 220px
@@ -3046,6 +3183,37 @@ ul > li {
   color: #fff;
   font-size: var(--font-size)
 }
+.main-header .language .dropdown .dropdown-header {
+  padding-top: 33px;
+  padding-bottom: 33px
+}
+.main-header .language .dropdown .dropdown-inner {
+  background-color: rgba(0,0,0,.85);
+  border: 1px solid #1e1e20;
+  border-radius: var(--border-radius);
+  padding-bottom: 17px;
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px)
+}
+.main-header .language .dropdown .dropdown-inner .item {
+  display: block;
+  -webkit-transition: .2s;
+  transition: .2s;
+  padding: 0 17px
+}
+.main-header .language .dropdown .dropdown-inner .item .text {
+  font-weight: 700;
+  padding: 17px 0 8px;
+  border-bottom: 1px solid #28292c;
+  display: block
+}
+.main-header .language .dropdown .dropdown-inner .item:hover {
+  background-color: #1e1e20
+}
+.main-header .language .dropdown .dropdown-inner .item:first-child .text {
+  border-top-color: transparent
+}
 .main-header .header-navigation ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3072,24 +3240,168 @@ ul > li {
   -ms-transform: translateY(-200%);
   transform: translateY(-200%)
 }
+.main-header .menu-tab {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  width: 100%;
+  padding: 20px 0 19px;
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+  background-color: rgba(0,0,0,.85);
+  -webkit-transition: .3s;
+  transition: .3s
+}
+.main-header .menu-tab .title {
+  font-weight: 900;
+  font-size: var(--h1-font-size);
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: 1
+}
+.main-header .menu-tab .cards-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 12px 0 17px;
+  gap: 69px
+}
+.main-header .menu-tab .cards-list .item {
+  width: 20%
+}
+.main-header .menu-tab .cards-list .image-cover {
+  display: block;
+  padding-top: 125%;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0)
+}
+.main-header .menu-tab .cards-list .image-cover:hover img {
+  -webkit-transform: translateZ(0) scale(1.01);
+  transform: translateZ(0) scale(1.01)
+}
+.main-header .menu-tab .link {
+  font-weight: 700;
+  font-size: var(--largest-text-font-size);
+  color: #fff
+}
+.main-header .menu-tab .link .icon,
+.main-header .menu-tab .link .text {
+  display: inline-block;
+  vertical-align: middle
+}
+.main-header .menu-tab .link .icon {
+  margin-left: 5px;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.main-header .menu-tab .link .icon:before {
+  position: relative;
+  top: 1px
+}
+.main-header .menu-tab .link:hover .icon {
+  -webkit-transform: translateX(5px);
+  -ms-transform: translateX(5px);
+  transform: translateX(5px)
+}
+.main-header .menu-tab {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%)
+}
+.main-header .menu-tab > div {
+  -webkit-transition: .2s opacity;
+  transition: .2s opacity;
+  opacity: 0
+}
+.main-header .menu-tab li.item {
+  -webkit-transition: .2s opacity;
+  transition: .2s opacity;
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+  opacity: 0;
+  pointer-events: none
+}
+.main-header .menu-tab li.item:first-child + li.item {
+  -webkit-animation-delay: 50ms;
+  animation-delay: 50ms
+}
+.main-header .menu-tab li.item:first-child + * + li.item {
+  -webkit-animation-delay: .1s;
+  animation-delay: .1s
+}
+.main-header .menu-tab li.item:first-child + * + * + li.item {
+  -webkit-animation-delay: .15s;
+  animation-delay: .15s
+}
+.main-header .menu-tab li.item:first-child + * + * + * + li.item {
+  -webkit-animation-delay: .2s;
+  animation-delay: .2s
+}
+.main-header .menu-tab li.item:first-child + * + * + * + * + li.item {
+  -webkit-animation-delay: .25s;
+  animation-delay: .25s
+}
+@-webkit-keyframes show-in-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+}
+@keyframes show-in-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px)
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
+  }
+}
+.main-header .menu-tab.active {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1
+}
+.main-header .menu-tab.active.animated > div,
+.main-header .menu-tab.active.animated li.item {
+  -webkit-animation: show-in-animation .3s forwards;
+  animation: show-in-animation .3s forwards;
+  pointer-events: visible
+}
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3102,7 +3414,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3142,25 +3454,125 @@ ul > li {
   -webkit-transform: translateZ(0) scale(1.01);
   transform: translateZ(0) scale(1.01)
 }
-
+.news-banner .image-cover {
+  padding-top: 30%;
+  margin-bottom: var(--section-margin)
+}
+.odometer.odometer-auto-theme,
+.odometer.odometer-theme-car {
+  display: -moz-inline-box;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative
+}
+.odometer-inside {
+  white-space: nowrap;
+  height: calc(100% - 10px);
+  overflow: hidden;
+  margin: 5px 0;
+  line-height: 2
+}
+.odometer.odometer-auto-theme .odometer-digit,
+.odometer.odometer-theme-car .odometer-digit {
+  display: -moz-inline-box;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer,
+.odometer.odometer-theme-car .odometer-digit .odometer-digit-spacer {
+  display: -moz-inline-box;
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner,
+.odometer.odometer-theme-car .odometer-digit .odometer-digit-inner {
+  text-align: left;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon,
+.odometer.odometer-theme-car .odometer-digit .odometer-ribbon {
+  display: block
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner,
+.odometer.odometer-theme-car .odometer-digit .odometer-ribbon-inner {
+  display: block;
+  -webkit-backface-visibility: hidden
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value,
+.odometer.odometer-theme-car .odometer-digit .odometer-value {
+  display: block;
+  -webkit-transform: translateZ(0)
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value,
+.odometer.odometer-theme-car .odometer-digit .odometer-value.odometer-last-value {
+  position: absolute
+}
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-up .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform .7s;
+  transition: -webkit-transform .7s;
+  transition: transform .7s;
+  transition: transform .7s,-webkit-transform .7s
+}
+.odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-up.odometer-animating .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%)
+}
+.odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-down .odometer-ribbon-inner {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%)
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-down.odometer-animating .odometer-ribbon-inner {
+  -webkit-transition: -webkit-transform .7s;
+  transition: -webkit-transform .7s;
+  transition: transform .7s;
+  transition: transform .7s,-webkit-transform .7s;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
+}
+.odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+.odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-down.odometer-animating .odometer-ribbon-inner,
+.odometer.odometer-theme-car.odometer-animating-up .odometer-ribbon-inner {
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear
+}
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3173,7 +3585,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3227,28 +3639,33 @@ ul > li {
   -webkit-box-shadow: 0 -1px 3px 0 #ec1e24;
   box-shadow: 0 -1px 3px 0 #ec1e24;
   position: absolute;
-  bottom: -1px;
+  bottom: -2px;
   -webkit-transition: .3s;
-  transition: .3s
+  transition: .3s;
+  z-index: 2
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3261,7 +3678,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3345,23 +3762,27 @@ ul > li {
   }
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3374,7 +3795,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3716,23 +4137,27 @@ ul > li {
   animation: fade-in-animation .3s forwards
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3745,7 +4170,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3753,7 +4178,7 @@ ul > li {
   }
 }
 .section {
-  margin: 86px 0
+  margin: var(--section-margin) 0
 }
 .section .section-title {
   color: #fff;
@@ -3767,27 +4192,37 @@ ul > li {
   font-size: 20px;
   font-weight: 400
 }
+.section.collapsed-top {
+  margin-top: 0
+}
+.section.collapsed-bottom {
+  margin-bottom: 0
+}
 .section-title ~ .divider {
   margin-bottom: var(--section-title-margin)
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3800,7 +4235,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3864,23 +4299,27 @@ ul > li {
   pointer-events: none
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3893,7 +4332,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -3936,29 +4375,31 @@ ul > li {
   z-index: 1
 }
 .social-list li a:hover {
-  color: #ec1e24;
-  background-color: rgba(140,0,0,.33);
-  border: 1px solid #ec1e24
+  color: #ec1e24
 }
 
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -3971,7 +4412,84 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
+    --subtitle-font-size: 32px;
+    --article-title-font-size: 20px;
+    --buttons-font-size: 32px;
+    --header-links-font-size: 20px
+  }
+}
+.subscribe-section {
+  position: relative;
+  padding: 90px 0 70px
+}
+.subscribe-section canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  pointer-events: none
+}
+.subscribe-section .container {
+  position: relative;
+  z-index: 2
+}
+.subscribe-section .logo {
+  margin-bottom: 20px
+}
+.subscribe-section .title {
+  font-size: var(--h2-font-size);
+  font-weight: 900;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  margin-bottom: 10px;
+  color: #fff
+}
+.subscribe-section .caption {
+  font-size: 20px;
+  color: #d7d6d6;
+  max-width: 50%;
+  margin: 0 auto
+}
+.subscribe-section .form-cover {
+  display: inline-block;
+  margin-top: 20px
+}
+:root {
+  --large-title-font-size: 48px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
+  --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
+  --large-text-font-size: 20px;
+  --medium-text-font-size: 18px;
+  --normal-text-font-size: 16px;
+  --small-text-font-size: 14px;
+  --font-size: 16px;
+  --font-size-large: 18px;
+  --section-title-font-size: 48px;
+  --subtitle-font-size: 32px;
+  --article-title-font-size: 20px;
+  --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
+  --header-links-font-size: 20px;
+  --border-radius: 4px;
+  --margin: 15px;
+  --section-title-margin: 50px;
+  --section-margin: 86px
+}
+@media (max-width:1200px) {
+  :root {
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
+    --h3-font-size: 18px;
+    --large-text-font-size: 18px;
+    --medium-text-font-size: 16px;
+    --normal-text-font-size: 14px;
+    --small-text-font-size: 12px;
+    --font-size: 16px;
+    --font-size-large: 18px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
@@ -4045,23 +4563,27 @@ ul > li {
   display: block
 }
 :root {
+  --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
   --large-text-font-size: 20px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
   --font-size: 16px;
   --font-size-large: 18px;
-  --section-title-font-size: 40px;
+  --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
   --article-title-font-size: 20px;
   --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
   --header-links-font-size: 20px;
+  --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --border-radius: 4px
+  --section-margin: 86px
 }
 @media (max-width:1200px) {
   :root {
@@ -4074,7 +4596,7 @@ ul > li {
     --small-text-font-size: 12px;
     --font-size: 16px;
     --font-size-large: 18px;
-    --section-title-font-size: 40px;
+    --section-title-font-size: 48px;
     --subtitle-font-size: 32px;
     --article-title-font-size: 20px;
     --buttons-font-size: 32px;
