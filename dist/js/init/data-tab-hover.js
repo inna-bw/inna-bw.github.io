@@ -63,10 +63,12 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 
 		showContainer = function(container){
-			container.classList.add(this.activeClassName);
 			setTimeout(()=> {
-				container.classList.add(this.animatedClassName);
-			}, 350);
+				container.classList.add(this.activeClassName);
+				setTimeout(()=> {
+					container.classList.add(this.animatedClassName);
+				}, 350);
+			}, 250);
 		};
 
 		hideContainer = function(container){
