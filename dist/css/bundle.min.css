@@ -21,22 +21,9 @@
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 *,
@@ -248,22 +235,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 :root {
@@ -289,36 +263,27 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
+}
+:root {
+  --about_image-size: 26.33%;
+  --about_image-margin: 95px
 }
 .about-preview {
   background-repeat: no-repeat;
   background-position: left center;
   background-size: cover;
   position: relative;
-  padding: 38px 142px 100px;
+  padding: 32px;
   color: #fff
 }
 .about-preview .bordered-inner {
-  padding: 0 72px 72px;
   position: relative;
-  height: 100%
+  height: 100%;
+  padding: 6px 252px 140px 111px
 }
 .about-preview .bordered-inner .corner {
   position: absolute;
@@ -369,23 +334,39 @@ ul > li {
 .about-preview .inner {
   position: relative;
   z-index: 1;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 98px;
-  height: 100%
+  height: 100%;
+  white-space: nowrap
 }
 .about-preview .preview-image {
   font-size: 0;
   border-radius: var(--border-radius);
   overflow: hidden;
   border-radius: var(--border-radius);
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1
+  height: 0;
+  width: var(--about_image-size);
+  padding-top: var(--about_image-size);
+  display: inline-block;
+  vertical-align: top;
+  margin-right: var(--about_image-margin)
 }
 .about-preview .preview-image img {
   position: absolute
+}
+.about-preview .caption {
+  padding-bottom: 100px;
+  position: relative;
+  -webkit-box-flex: 3;
+  -ms-flex: 3;
+  flex: 3;
+  white-space: normal;
+  width: calc(100% - var(--about_image-size) - var(--about_image-margin));
+  display: inline-block;
+  vertical-align: top
+}
+.about-preview .caption .button {
+  position: absolute;
+  right: 0;
+  bottom: 0
 }
 .about-preview .title {
   font-size: var(--subtitle-font-size);
@@ -393,25 +374,13 @@ ul > li {
   margin-bottom: 20px;
   font-family: "Sofia Sans Extra Condensed",sans-serif
 }
-.about-preview .caption {
-  padding-bottom: 100px;
-  position: relative;
-  -webkit-box-flex: 3;
-  -ms-flex: 3;
-  flex: 3
-}
-.about-preview .caption .button {
-  position: absolute;
-  right: 0;
-  bottom: 0
-}
 .about-section .slider-cover {
   position: relative
 }
 .about-section .slider-cover .slider-arrows {
   position: absolute;
-  left: 20px;
-  right: 20px;
+  left: 24px;
+  right: 24px;
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -580,6 +549,15 @@ ul > li {
   border-width: 6px;
   border-color: #ec1e24
 }
+@media (max-width:1440px) {
+  :root {
+    --about_image-size: 26.33%;
+    --about_image-margin: 55px
+  }
+  .about-preview .bordered-inner {
+    padding: 6px 64px 102px 64px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -603,22 +581,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .accordeon .accordeon-title {
@@ -741,22 +706,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .article-preview {
@@ -835,22 +787,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .banner-cover {
@@ -979,22 +918,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .breadcrumbs {
@@ -1062,22 +988,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .button {
@@ -1240,7 +1153,7 @@ ul > li {
   width: 50px;
   line-height: 50px;
   border-radius: var(--border-radius);
-  border-color: #1e1e20;
+  border: 1px solid rgba(255,255,255,.2);
   background-color: #1e1e20;
   color: #ababab;
   font-size: 18px
@@ -1272,22 +1185,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .dropdown {
@@ -1385,22 +1285,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .form .form-group {
@@ -1600,22 +1487,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .row,
@@ -2799,22 +2673,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .section.main-banner-section {
@@ -3004,22 +2865,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .main-footer .footer-subtitle {
@@ -3105,22 +2953,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .main-header {
@@ -3271,8 +3106,8 @@ ul > li {
   transform: translateZ(0)
 }
 .main-header .menu-tab .cards-list .image-cover:hover img {
-  -webkit-transform: translateZ(0) scale(1.01);
-  transform: translateZ(0) scale(1.01)
+  -webkit-transform: translateZ(0) scale(1.1);
+  transform: translateZ(0) scale(1.1)
 }
 .main-header .menu-tab .link {
   font-weight: 700;
@@ -3396,22 +3231,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .news-preview {
@@ -3436,16 +3258,35 @@ ul > li {
   gap: 15px;
   margin-bottom: 20px
 }
+.news-preview .top .date {
+  color: #ec1e24;
+  text-transform: uppercase;
+  font-size: var(--large-text-font-size);
+  font-weight: 700
+}
 .news-preview .top .category {
-  color: #fff
+  color: #fff;
+  font-size: var(--large-text-font-size)
+}
+.news-preview .title {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 16px;
+  color: #fff;
+  -webkit-transition: color .2s;
+  transition: color .2s
 }
 .news-preview .caption {
   color: #fff;
   font-size: var(--large-text-font-size)
 }
 .news-preview:hover .image-cover img {
-  -webkit-transform: translateZ(0) scale(1.01);
-  transform: translateZ(0) scale(1.01)
+  -webkit-transform: translateZ(0) scale(1.1);
+  transform: translateZ(0) scale(1.1)
+}
+.news-preview:hover .title {
+  color: #ec1e24
 }
 .news-banner .image-cover {
   padding-top: 30%;
@@ -3567,22 +3408,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .page-main {
@@ -3660,22 +3488,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .pagination {
@@ -3777,22 +3592,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .popup {
@@ -4152,23 +3954,13 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
+}
+:root {
+  --paragraph-font-size: 20px
 }
 .section {
   margin: var(--section-margin) 0
@@ -4217,22 +4009,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .slider-cover {
@@ -4314,22 +4093,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .social-group {
@@ -4357,7 +4123,7 @@ ul > li {
   line-height: 50px;
   border-radius: 50%;
   border: 1px solid transparent;
-  color: #fff;
+  color: #ababab;
   text-align: center;
   font-size: 24px;
   position: relative;
@@ -4394,22 +4160,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .subscribe-section {
@@ -4448,6 +4201,12 @@ ul > li {
   display: inline-block;
   margin-top: 20px
 }
+@media (max-width:1440px) {
+  .subscribe-section {
+    position: relative;
+    padding: 50px 0
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -4471,22 +4230,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 .tabs {
@@ -4578,22 +4324,9 @@ ul > li {
   --section-title-margin: 50px;
   --section-margin: 86px
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   :root {
-    --h1-font-size: 38px;
-    --h2-font-size: 30px;
-    --h3-font-size: 18px;
-    --large-text-font-size: 18px;
-    --medium-text-font-size: 16px;
-    --normal-text-font-size: 14px;
-    --small-text-font-size: 12px;
-    --font-size: 16px;
-    --font-size-large: 18px;
-    --section-title-font-size: 48px;
-    --subtitle-font-size: 32px;
-    --article-title-font-size: 20px;
-    --buttons-font-size: 32px;
-    --header-links-font-size: 20px
+    --section-margin: 66px
   }
 }
 a::-moz-selection,

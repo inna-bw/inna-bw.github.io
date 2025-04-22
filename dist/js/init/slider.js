@@ -399,8 +399,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				let prevCaption = slider.prevButton.querySelector('.caption');
 				let nextCaption = slider.nextButton.querySelector('.caption');
 
-				let prevText = dotsCaption[slider.activeIndex-1] || '';
-				let nextText = dotsCaption[slider.activeIndex+1] || '';
+				let prevText = dotsCaption[slider.activeIndex-1] || 0;
+				let nextText = dotsCaption[slider.activeIndex+1] || 0;
 
 				// prevCaption.innerHTML = prevText;
 				// nextCaption.innerHTML = nextText;
