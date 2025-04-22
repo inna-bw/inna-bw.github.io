@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	let setMainPageOffset = function(mainPage){
 		if (!mainPage) return;
 		let headerHeight = MAIN_HEADER.getBoundingClientRect().height;
-		mainPage.style.paddingTop = headerHeight-2 + 'px'
+		mainPage.style.paddingTop = headerHeight + 'px'
 	};
 
 	let detectScrollDirection = function(){

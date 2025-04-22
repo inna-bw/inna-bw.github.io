@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				this.init();
 			}, 100);
 
-			window.addEventListener('resize', this.updateRects);
+			window.addEventListener('resize', this.updateRects.bind(this));
 		}
 
 		init(){
