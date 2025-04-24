@@ -16,6 +16,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		activeSlideEl = null;
 		activeIndex = 0;
+		activeSlideWidth = 0;
 
 		currentTransition = 0;
 
@@ -75,6 +76,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			this.sliderElment.querySelector('.slider-track').addEventListener('mouseleave', this.end.bind(this));
 			this.sliderElment.querySelector('.slider-track').addEventListener('mouseup', this.end.bind(this));
 			this.sliderElment.querySelector('.slider-track').addEventListener('touchend', this.end.bind(this));
+
+			window.addEventListener('resize', this.resizeSlider.bind(this));
 		};
 
 		end() {
@@ -185,6 +188,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			this.touchTransition = touchTransition;
 		}
 
+		resizeSlider(){
+			if (!this.currentTransition) return;
+			this.translateSlider(this.activeIndex)
+		};
+
 		setScrolledSlidersWidth(){
 			let scrolledWidth = 0;
 			for (const [index, slide] of this.allSlides.entries()) {
@@ -212,6 +220,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 					slide.classList.remove('active');
 				};
 			};
+
+			this.activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
 		};
 
 		setActiveDot(activeIndex){

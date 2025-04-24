@@ -26,6 +26,15 @@
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 *,
 :after,
 :before {
@@ -240,6 +249,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -266,6 +284,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 :root {
@@ -557,6 +584,9 @@ ul > li {
   .about-preview .bordered-inner {
     padding: 6px 64px 102px 64px
   }
+  .about-preview .caption {
+    padding-bottom: 60px
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -584,6 +614,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .accordeon .accordeon-title {
@@ -711,6 +750,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .article-preview {
   display: block
 }
@@ -790,6 +838,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .banner-cover {
@@ -923,6 +980,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .breadcrumbs {
   padding: 30px 0
 }
@@ -991,6 +1057,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .button {
@@ -1190,6 +1265,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .dropdown {
   position: relative
 }
@@ -1262,6 +1346,11 @@ ul > li {
 .dropdown.opened .dropdown-header:after {
   content: "\e90b"
 }
+@media (max-width:1200px) {
+  .dropdown .dropdown-header .item {
+    padding: 0 30px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -1288,6 +1377,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .form .form-group {
@@ -1490,6 +1588,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .row,
@@ -2678,6 +2785,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .section.main-banner-section {
   margin-top: 0
 }
@@ -2836,7 +2952,7 @@ ul > li {
   top: 0
 }
 .main-banner .banner-image {
-  padding-top: 42%
+  height: 87.82vh
 }
 .main-banner .banner-image img {
   -o-object-position: right bottom;
@@ -2868,6 +2984,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .main-footer .footer-subtitle {
@@ -2958,6 +3083,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .main-header {
   position: fixed;
   -webkit-transition: .5s;
@@ -2989,7 +3123,8 @@ ul > li {
   justify-content: space-between;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center
+  align-items: center;
+  gap: 20px
 }
 .main-header .menu-side {
   text-align: center
@@ -3208,6 +3343,17 @@ ul > li {
   animation: show-in-animation .3s forwards;
   pointer-events: visible
 }
+@media (max-width:1200px) {
+  .main-header .logo {
+    width: 170px
+  }
+  .main-header .header-navigation ul li a {
+    padding: 30px 12px
+  }
+  .main-header .menu-tab .cards-list {
+    gap: 30px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -3234,6 +3380,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .news-preview {
@@ -3291,6 +3446,14 @@ ul > li {
 .news-banner .image-cover {
   padding-top: 30%;
   margin-bottom: var(--section-margin)
+}
+@media (max-width:1200px) {
+  .news-preview .top {
+    display: block
+  }
+  .news-preview .inner {
+    padding: 25px
+  }
 }
 .odometer.odometer-auto-theme,
 .odometer.odometer-theme-car {
@@ -3413,6 +3576,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .page-main {
   min-height: 100vh
 }
@@ -3491,6 +3663,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .pagination {
@@ -3595,6 +3776,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .popup {
@@ -3959,8 +4149,17 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 :root {
-  --paragraph-font-size: 20px
+  --paragraph-font-size: var(--large-text-font-size)
 }
 .section {
   margin: var(--section-margin) 0
@@ -3974,7 +4173,7 @@ ul > li {
 }
 .section .paragraph {
   font-family: "Noto Sans",sans-serif;
-  font-size: 20px;
+  font-size: var(--large-text-font-size);
   font-weight: 400
 }
 .section.collapsed-top {
@@ -4012,6 +4211,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .slider-cover {
@@ -4098,6 +4306,15 @@ ul > li {
     --section-margin: 66px
   }
 }
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
 .social-group {
   color: #fff;
   display: -webkit-box;
@@ -4117,6 +4334,10 @@ ul > li {
   display: flex;
   gap: 10px
 }
+.social-list li {
+  height: 50px;
+  width: 50px
+}
 .social-list li a {
   height: 50px;
   width: 50px;
@@ -4135,6 +4356,11 @@ ul > li {
 }
 .social-list li a:hover {
   color: #ec1e24
+}
+@media (max-width:1200px) {
+  .social-list {
+    gap: 0
+  }
 }
 
 :root {
@@ -4163,6 +4389,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .subscribe-section {
@@ -4233,6 +4468,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 .tabs {
@@ -4327,6 +4571,15 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
   }
 }
 a::-moz-selection,
