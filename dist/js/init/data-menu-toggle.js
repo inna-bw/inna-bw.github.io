@@ -1,9 +1,14 @@
 // data-menu-toggle
 document.addEventListener('DOMContentLoaded', function(){
 
+	const PAGE_HEADER = document.getElementById('mainHeader');
+
 	class MenuToggle {
-		activeClassName = 'active';
+		activeButtonClassName = 'active';
+		activeMenuClassName = 'active';
+		animatedMenuClassName = 'animated';
 		toggleButton = null;
+		menuEl = null;
 
 		constructor(toggleButton){
 			this.toggleButton = toggleButton;
@@ -11,32 +16,49 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		init(){
 			this.toggleButton.addEventListener('click', this.menuToggle.bind(this), false);
-			// document.addEventListener("click", function (e) {
-			// 	if (!e.target.closest('[data-dropdown]')) {
-			// 		this.closeAllDropdowns();
-			// 	};
-			// }.bind(this));
+			let menuId = this.toggleButton.dataset.menuToggle;
+			this.menuEl = document.getElementById(menuId);
+
+			this.setTopPosition();
+
+			document.addEventListener("click", function (e) {
+				if (!e.target.closest('[data-menu-toggle]') && !e.target.closest('#'+menuId)) {
+					this.closeMenu();
+				};
+			}.bind(this));
+
+			window.addEventListener('resize', this.setTopPosition.bind(this));
 		}
 
-		// closeAllDropdowns = function(){
-		// 	let allDropdowns = document.querySelectorAll("[data-dropdown]");
-		// 	for (let i = 0; i < allDropdowns.length; i++) {
-		// 		let dropdownInner = allDropdowns[i].querySelector('.dropdown-inner');
-		// 		allDropdowns[i].classList.remove(this.activeClassName);
-		// 		dropdownInner.style.maxHeight = null;
-		// 	}
-		// }
+		setTopPosition = function(){
+			let height = PAGE_HEADER.getBoundingClientRect().height;
+			let innerEl = PAGE_HEADER.querySelector('.bordered-inner');
+			let topOffset = parseInt(window.getComputedStyle(innerEl, null).paddingTop.replace('px', ''));
+			this.menuEl.style.top = height - topOffset + 'px';
+		};
+
+		closeMenu = function(){
+			this.toggleButton.classList.remove(this.activeButtonClassName);
+			this.menuEl.classList.remove(this.animatedMenuClassName);
+			setTimeout(()=>{
+				this.menuEl.classList.remove(this.activeMenuClassName);
+			},50);
+		};
+
+		openMenu = function(){
+			this.toggleButton.classList.add(this.activeButtonClassName);
+			this.menuEl.classList.add(this.activeMenuClassName);
+			setTimeout(()=>{
+				this.menuEl.classList.add(this.animatedMenuClassName);
+			},50);
+		}
 
 		menuToggle = function() {
-			let button = this.toggleButton;
-			console.log(this)
-			// let dropdownInner = button.parentElement.querySelector('.dropdown-inner');
-			// if (button.parentElement.classList.contains(this.activeClassName)) {
-			// 	this.closeAllDropdowns();
-			// } else {
-			// 	this.closeAllDropdowns();
-			// 	button.parentElement.classList.add(this.activeClassName);
-			// };
+			if (this.toggleButton.classList.contains(this.activeButtonClassName)) {
+				this.closeMenu();
+			} else {
+				this.openMenu();
+			};
 		}
 	};
 

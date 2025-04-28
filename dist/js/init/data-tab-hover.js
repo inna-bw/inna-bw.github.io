@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', function(){
 		savedActiveLink = null;
 		currentLink = null;
 
+		maxWindowWidth = 993;
+
 		constructor(tabHoverEl){
 			this.tabHoverEl = tabHoverEl;
 		}

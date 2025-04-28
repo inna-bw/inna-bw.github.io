@@ -35,13 +35,23 @@
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 *,
@@ -267,13 +277,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 :root {
@@ -313,13 +333,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 :root {
@@ -645,6 +675,72 @@ ul > li {
     font-size: calc(var(--font-size) * .8)
   }
 }
+@media (max-width:768px) {
+  :root {
+    --chronology_button-size: 40px
+  }
+  .about-preview {
+    padding: 20px
+  }
+  .about-preview .bordered-inner {
+    padding: 0
+  }
+  .about-preview .bordered-inner .corner {
+    display: none
+  }
+  .about-section .chronology-list {
+    bottom: auto;
+    left: 0;
+    top: 34px;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    display: none
+  }
+  .about-section .chronology-list .slider-pagination {
+    display: block
+  }
+  .about-section .chronology-list .slider-pagination li {
+    margin-bottom: 56px
+  }
+  .about-section .chronology-list .slider-pagination li:after {
+    height: var(--chronology_line-width);
+    width: 2px;
+    left: 50%;
+    bottom: -18px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+  }
+  .about-section .slider-cover .slider-arrows {
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%)
+  }
+  .about-section .slider-cover .slider-arrows .button-arrow {
+    color: #ababab;
+    background-color: #1e1e20
+  }
+  .about-section .slider-cover .slider-arrows .button-arrow:not(.disabled) {
+    width: calc(var(--chronology_button-size) * 2.5)
+  }
+  .about-section .slider-cover .slider-arrows .button-arrow:not(.disabled) .caption {
+    opacity: 1
+  }
+  .about-section .slider-cover .slider-arrows .button-arrow.disabled {
+    opacity: 1;
+    background-color: #0f0a0a
+  }
+  .about-section .slider-cover .slider-arrows .odometer-inside {
+    margin: 2px 0
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -682,13 +778,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .accordeon .accordeon-title {
@@ -825,13 +931,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .article-preview {
@@ -924,13 +1040,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .banner-cover {
@@ -1073,13 +1199,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .breadcrumbs {
@@ -1161,13 +1297,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .button {
@@ -1376,13 +1522,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .dropdown {
@@ -1499,13 +1655,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .form .form-group {
@@ -1571,6 +1737,115 @@ ul > li {
   .form.inline-form .button-group button {
     width: 100%
   }
+}
+:root {
+  --large-title-font-size: 48px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
+  --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
+  --large-text-font-size: 20px;
+  --medium-text-font-size: 18px;
+  --normal-text-font-size: 16px;
+  --small-text-font-size: 14px;
+  --font-size: 16px;
+  --font-size-large: 18px;
+  --section-title-font-size: 48px;
+  --subtitle-font-size: 32px;
+  --article-title-font-size: 20px;
+  --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
+  --header-links-font-size: 20px;
+  --border-radius: 4px;
+  --margin: 15px;
+  --section-title-margin: 50px;
+  --section-margin: 86px
+}
+@media (max-width:1440px) {
+  :root {
+    --section-margin: 66px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --large-text-font-size: 16px;
+    --header-links-font-size: 24px;
+    --article-title-font-size: 16px;
+    --large-title-font-size: 42px;
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
+  }
+}
+.game-preview {
+  display: block;
+  background-color: #000;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  height: 100%
+}
+.game-preview .image-cover {
+  padding-top: 53.14%;
+  overflow: hidden
+}
+.game-preview .inner {
+  padding: 40px
+}
+.game-preview .top {
+  margin-bottom: 20px
+}
+.game-preview .title {
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: var(--h2-font-size);
+  color: #fff;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+  font-family: "Sofia Sans Extra Condensed",sans-serif
+}
+.game-preview .category {
+  font-size: var(--large-text-font-size)
+}
+.game-preview .caption {
+  color: #fff;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 32px
+}
+.game-preview .date {
+  font-size: var(--large-text-font-size);
+  color: #d7d6d6
+}
+.game-preview .date span {
+  color: #ababab
+}
+.game-preview:hover .image-cover img {
+  -webkit-transform: translateZ(0) scale(1.1);
+  transform: translateZ(0) scale(1.1)
+}
+.game-preview:hover .title {
+  color: #ec1e24
+}
+.news-banner .image-cover {
+  padding-top: 30%;
+  margin-bottom: var(--section-margin)
 }
 .glider-contain {
   width: 100%;
@@ -1731,13 +2006,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .row,
@@ -2935,13 +3220,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .section.main-banner-section {
@@ -3169,13 +3464,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .main-footer .footer-subtitle {
@@ -3303,13 +3608,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .main-header {
@@ -3655,6 +3970,9 @@ ul > li {
   }
 }
 @media (max-width:993px) {
+  .main-header .menu-tab {
+    display: none
+  }
   .main-header .bordered-inner {
     padding: 20px 0
   }
@@ -3665,6 +3983,32 @@ ul > li {
   .main-header .right-side {
     display: none
   }
+  .main-header .menu-side {
+    position: fixed;
+    background-color: #000;
+    left: -30px;
+    top: 69px;
+    right: -30px;
+    padding: 0 30px;
+    height: 100vh
+  }
+  .main-header .menu-side.active {
+    display: block
+  }
+  .main-header .header-navigation ul {
+    display: block;
+    padding: 20px 0
+  }
+  .main-header .header-navigation ul li a {
+    display: block;
+    padding: 20px 12px
+  }
+  .main-header .header-navigation ul li a.active {
+    color: #ec1e24
+  }
+  .main-header .running-line .line {
+    display: none
+  }
 }
 @media (max-width:768px) {
   .main-header .logo {
@@ -3672,6 +4016,12 @@ ul > li {
   }
   .main-header .bordered-inner {
     padding: 15px 0
+  }
+  .main-header .header-navigation ul {
+    padding: 12px 0
+  }
+  .main-header .header-navigation ul li a {
+    padding: 12px
   }
 }
 :root {
@@ -3711,13 +4061,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .news-preview {
@@ -3914,13 +4274,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .page-main {
@@ -4012,13 +4382,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .pagination {
@@ -4134,13 +4514,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .popup {
@@ -4514,13 +4904,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 :root {
@@ -4587,13 +4987,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .slider-cover {
@@ -4689,13 +5099,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 :root {
@@ -4796,13 +5216,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .subscribe-section {
@@ -4912,13 +5342,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 .tabs {
@@ -5024,13 +5464,23 @@ ul > li {
     --section-title-font-size: 44px
   }
 }
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
 @media (max-width:768px) {
   :root {
     --large-text-font-size: 16px;
-    --header-links-font-size: 16px;
+    --header-links-font-size: 24px;
     --article-title-font-size: 16px;
     --large-title-font-size: 42px;
-    --section-title-font-size: 42px
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
   }
 }
 a::-moz-selection,
