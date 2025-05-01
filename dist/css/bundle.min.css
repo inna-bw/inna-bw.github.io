@@ -4630,37 +4630,14 @@ ul > li {
   transition: .3s;
   z-index: 2
 }
-.lightbox-animation {
-  -webkit-animation: lightbox-animation 2s ease;
-  animation: lightbox-animation 2s ease
-}
-@-webkit-keyframes lightbox-animation {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
-  50% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg)
-  }
-  100% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
-}
-@keyframes lightbox-animation {
-  0% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
-  50% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg)
-  }
-  100% {
-    -webkit-transform: rotate(0);
-    transform: rotate(0)
-  }
+.general-caption {
+  font-size: var(--h2-font-size);
+  font-weight: 900;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  color: #fff;
+  text-align: center;
+  max-width: 70%;
+  margin: 40px auto 0
 }
 :root {
   --large-title-font-size: 48px;
