@@ -1970,7 +1970,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 document.addEventListener('DOMContentLoaded', function(){
-
 	Array.prototype.forEach.call(document.querySelectorAll("[data-fslightbox]"), function(fslightbox){
 		if (!fslightbox) return;
 		const lightbox = new FsLightbox();

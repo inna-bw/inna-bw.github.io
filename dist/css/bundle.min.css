@@ -4113,6 +4113,9 @@ ul > li {
 .main-header .menu-tab .cards-list .item {
   width: 20%
 }
+.main-header .menu-tab .cards-list .small .image-cover {
+  padding-top: 62.5%
+}
 .main-header .menu-tab .cards-list .image-cover {
   display: block;
   padding-top: 125%;
@@ -4364,20 +4367,10 @@ ul > li {
   padding: 40px
 }
 .news-preview .top {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 15px;
   margin-bottom: 20px
 }
-.news-preview .top .date {
-  color: #ec1e24;
-  text-transform: uppercase;
-  font-size: var(--large-text-font-size);
-  font-weight: 700
-}
 .news-preview .top .category {
-  color: #fff;
+  color: #ec1e24;
   font-size: var(--large-text-font-size)
 }
 .news-preview .title {
@@ -4386,12 +4379,23 @@ ul > li {
   font-size: var(--large-text-font-size);
   margin-bottom: 16px;
   color: #fff;
+  font-family: "Noto Sans",sans-serif;
   -webkit-transition: color .2s;
   transition: color .2s
 }
 .news-preview .caption {
   color: #fff;
   font-size: var(--large-text-font-size)
+}
+.news-preview.small .title {
+  font-size: var(--normal-text-font-size);
+  font-family: "Noto Sans",sans-serif
+}
+.news-preview.small .inner {
+  padding: 16px
+}
+.news-preview.small .image-cover {
+  padding-top: 62.5%
 }
 .news-preview:hover .image-cover img {
   -webkit-transform: translateZ(0) scale(1.1);
@@ -5960,7 +5964,8 @@ h5,
 h6 {
   line-height: 1.42;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
-  font-weight: 400
+  font-weight: 400;
+  color: #fff
 }
 h1::-moz-selection,
 h2::-moz-selection,
@@ -5986,4 +5991,37 @@ a {
 mark {
   color: #000;
   background-color: #8c0000
+}
+article .text {
+  max-width: 828px;
+  margin: 0 auto 32px
+}
+article .text:last-child {
+  margin-bottom: 0
+}
+article h1,
+article h2 {
+  line-height: 1.2;
+  font-size: 48px;
+  font-weight: 900;
+  margin: 0 0 32px
+}
+article img {
+  max-width: 100%;
+  margin: 0 auto 30px;
+  display: block
+}
+article .date {
+  color: #ec1e24;
+  text-transform: uppercase;
+  font-size: var(--article-title-font-size);
+  margin: 32px 0
+}
+article p {
+  font-size: var(--article-title-font-size);
+  color: #fff;
+  margin: 0 0 32px
+}
+article p:last-child {
+  margin-bottom: 0
 }
