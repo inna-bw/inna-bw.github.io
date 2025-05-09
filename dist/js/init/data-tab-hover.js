@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				setTimeout(()=> {
 					container.classList.add(this.animatedClassName);
 				}, 350);
-			}, 250);
+			}, 350);
 		};
 
 		hideContainer = function(container){

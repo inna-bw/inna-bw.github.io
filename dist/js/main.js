@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				setTimeout(()=> {
 					container.classList.add(this.animatedClassName);
 				}, 350);
-			}, 250);
+			}, 350);
 		};
 
 		hideContainer = function(container){
@@ -2871,7 +2871,9 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			transitionDuration: "1s",
 			timing: "ease-in-out",
 			delay: "0s",
-			direction: 'horizontal'
+			direction: 'horizontal',
+			autoplay: false,
+			autoplayTime: 5000,
 		}
 
 		constructor(sliderElment) {
@@ -2904,6 +2906,11 @@ document.addEventListener( 'DOMContentLoaded', function() {
 				this.options.onInit(this);
 			};
 
+
+			if (this.options.autoplay) {
+				this.play(this.activeIndex)
+			};
+
 			this.track = this.sliderElment.querySelector('.slider-list');
 
 			this.sliderElment.querySelector('.slider-track').addEventListener('mousedown', this.start.bind(this));
@@ -2917,6 +2924,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			this.sliderElment.querySelector('.slider-track').addEventListener('touchend', this.end.bind(this));
 
 			window.addEventListener('resize', this.resizeSlider.bind(this));
+
 		};
 
 		end() {
@@ -3025,6 +3033,16 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 			this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${touchTransition}px)` : `translateX(${touchTransition}px)`;
 			this.touchTransition = touchTransition;
+		};
+
+		play(){
+			if (this.activeIndex >= this.allSlides.length-1) {
+				this.activeIndex = -1;
+			}
+			this.goToNextSlide();
+			setTimeout(()=>{
+				this.play()
+			}, this.options.autoplayTime)
 		}
 
 		resizeSlider(){
@@ -3226,6 +3244,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		// for all sliders
 		let options = {
 			direction: 'horizontal',
+			autoplay: sliderEl.dataset && sliderEl.dataset.autoplay ? sliderEl.dataset.autoplay : false,
 			onInit: function(e) {},
 			onTranslated: function(e) {
 				// console.log(e)
