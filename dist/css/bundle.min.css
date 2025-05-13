@@ -19,11 +19,11 @@
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -261,11 +261,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -317,11 +317,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -770,11 +770,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -923,11 +923,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1032,11 +1032,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1191,11 +1191,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1227,7 +1227,11 @@ ul > li {
   }
 }
 .breadcrumbs {
-  padding: 30px 0
+  padding: 56px 0
+}
+.breadcrumbs ~ .feature-card {
+  padding-top: 0;
+  margin-top: 0
 }
 .breadcrumbs-list {
   display: -webkit-box;
@@ -1316,11 +1320,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1434,6 +1438,15 @@ ul > li {
   color: #8c0000;
   border-color: #8c0000
 }
+.button.button-grey-transparent {
+  background-color: transparent;
+  color: #969696;
+  border-color: #969696
+}
+.button.button-grey-transparent:hover {
+  color: #fff;
+  border-color: #fff
+}
 .button.button-primary-text {
   background-color: transparent;
   color: #ec1e24;
@@ -1538,11 +1551,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1705,11 +1718,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1743,7 +1756,7 @@ ul > li {
 .feature-card {
   position: relative;
   overflow: hidden;
-  padding: 52px 0
+  margin: 32px 0
 }
 .feature-card .feature-backgroung {
   position: absolute;
@@ -1807,11 +1820,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1850,7 +1863,7 @@ ul > li {
 .form textarea {
   background-color: transparent;
   width: 100%;
-  border: 1px solid #d7d6d6;
+  border: 1px solid #969696;
   background-color: transparent;
   border-radius: var(--border-radius);
   padding: 13px 25px 16px;
@@ -1861,22 +1874,22 @@ ul > li {
 .form .input::-webkit-input-placeholder,
 .form select::-webkit-input-placeholder,
 .form textarea::-webkit-input-placeholder {
-  color: #d7d6d6
+  color: #969696
 }
 .form .input:-moz-placeholder,
 .form select:-moz-placeholder,
 .form textarea:-moz-placeholder {
-  color: #d7d6d6
+  color: #969696
 }
 .form .input::-moz-placeholder,
 .form select::-moz-placeholder,
 .form textarea::-moz-placeholder {
-  color: #d7d6d6
+  color: #969696
 }
 .form .input:-ms-input-placeholder,
 .form select:-ms-input-placeholder,
 .form textarea:-ms-input-placeholder {
-  color: #d7d6d6
+  color: #969696
 }
 .form .input:hover,
 .form select:hover,
@@ -1927,11 +1940,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -1966,7 +1979,12 @@ ul > li {
   position: relative
 }
 .game-banner .banner-image {
-  padding-top: 400px
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%
 }
 .game-banner .banner-image:before {
   content: "";
@@ -2004,21 +2022,11 @@ ul > li {
 .game-banner .banner-info .left {
   width: 544px
 }
-.game-banner .butons-group {
-  text-align: center;
-  margin-top: 32px
-}
-.game-banner .butons-group .dropdown {
-  display: inline-block;
-  margin-right: 24px
-}
 .game-banner .logo-side {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
   width: 100%;
-  padding: 50px 0
+  padding: 50px 0;
+  z-index: 2;
+  position: relative
 }
 .game-banner .logo-side .logo-cover {
   width: 100%;
@@ -2027,6 +2035,12 @@ ul > li {
 .game-banner .logo-side .logo-cover img {
   -o-object-fit: contain;
   object-fit: contain
+}
+.game-banner .logo-side .dotted-list {
+  max-width: none
+}
+.game-banner .logo-side .dotted-list li {
+  margin-bottom: 0
 }
 :root {
   --large-title-font-size: 48px;
@@ -2049,11 +2063,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -2112,10 +2126,11 @@ ul > li {
   font-family: "Sofia Sans Extra Condensed",sans-serif
 }
 .game-preview .category {
-  font-size: var(--large-text-font-size)
+  font-size: var(--large-text-font-size);
+  color: #969696
 }
 .game-preview .caption {
-  color: #fff;
+  color: #d7d6d6;
   font-size: var(--large-text-font-size);
   margin-bottom: 32px
 }
@@ -2124,7 +2139,7 @@ ul > li {
   color: #d7d6d6
 }
 .game-preview .date span {
-  color: #d7d6d6
+  color: #969696
 }
 .game-preview:hover .image-cover img {
   -webkit-transform: translateZ(0) scale(1.1);
@@ -2280,11 +2295,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -3506,11 +3521,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -3750,11 +3765,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -3794,8 +3809,7 @@ ul > li {
   display: block
 }
 .main-footer .scrollto-cover {
-  text-align: right;
-  margin-bottom: 30px
+  text-align: right
 }
 .main-footer .footer-link {
   display: block
@@ -3844,6 +3858,29 @@ ul > li {
 }
 .main-footer .bottom {
   padding: 60px 0
+}
+.main-footer .scroll-link {
+  position: relative;
+  padding-right: 40px
+}
+.main-footer .scroll-link img {
+  position: absolute;
+  right: -40px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%
+}
+.main-footer .scroll-link .text {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: color .2s;
+  transition: color .2s
+}
+.main-footer .scroll-link:hover .text {
+  color: #ec1e24
 }
 @media (max-width:768px) {
   .main-footer .middle {
@@ -3894,11 +3931,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -4040,7 +4077,7 @@ ul > li {
 .main-header .header-navigation ul li a {
   color: #fff;
   position: relative;
-  padding: 33px 16.5px;
+  padding: 33px;
   text-align: center
 }
 .main-header .header-navigation ul li a .text {
@@ -4347,11 +4384,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -4398,14 +4435,22 @@ ul > li {
   padding: 40px
 }
 .news-preview .top {
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  font-size: var(--large-text-font-size)
 }
 .news-preview .top .date {
-  margin-bottom: 8px
+  display: inline-block;
+  vertical-align: middle;
+  color: #ec1e24;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-right: 5px
 }
 .news-preview .top .category {
-  color: #ec1e24;
-  font-size: var(--large-text-font-size)
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 700;
+  color: #d7d6d6
 }
 .news-preview .title {
   text-transform: uppercase;
@@ -4419,6 +4464,18 @@ ul > li {
 }
 .news-preview .caption {
   font-size: var(--large-text-font-size)
+}
+.news-preview.small .date {
+  color: #d7d6d6;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: none;
+  display: block
+}
+.news-preview.small .category {
+  color: #ec1e24;
+  font-size: 16px;
+  font-weight: 700
 }
 .news-preview.small .title {
   font-size: var(--normal-text-font-size);
@@ -4579,11 +4636,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -4675,6 +4732,35 @@ ul > li {
   max-width: 70%;
   margin: 40px auto 0
 }
+.discord-widget .section-subtitle {
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  font-weight: 900;
+  font-size: var(--h1-font-size);
+  margin-bottom: 16px;
+  text-transform: uppercase
+}
+.discord-widget .info-box {
+  text-align: center;
+  margin-bottom: 32px
+}
+.discord-widget .social-list {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+.discord-widget .social-list li a {
+  height: calc(var(--social-link_size) * 1.28);
+  width: calc(var(--social-link_size) * 1.28);
+  font-size: calc(var(--social-link_font-size) * 1.28)
+}
+.butons-group {
+  text-align: center;
+  margin-top: 32px
+}
+.butons-group .dropdown {
+  display: inline-block;
+  margin-right: 24px
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -4696,11 +4782,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -4828,11 +4914,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -4991,11 +5077,149 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --large-text-font-size: 16px;
+    --header-links-font-size: 24px;
+    --article-title-font-size: 16px;
+    --large-title-font-size: 42px;
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
+  }
+}
+:root {
+  --quote-cards-gap: 24px
+}
+.quote-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: var(--quote-cards-gap)
+}
+.quote-cards .quote-preview {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
+  flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
+  padding: 17px 107px;
+  background-image: url(../img/laurels.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
+}
+.quote-cards .quote-preview blockquote {
+  font-size: var(--h1-font-size);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  color: #fff;
+  line-height: 1.2
+}
+.quote-cards .quote-preview cite {
+  font-style: normal;
+  font-size: var(--large-text-font-size)
+}
+.quote-cards-large {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: var(--quote-cards-gap)
+}
+.quote-cards-large .quote-preview {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 25%;
+  flex: 1 1 25%;
+  background-color: rgba(140,0,0,.3);
+  padding: 32px;
+  border: 1px solid #ec1e24;
+  border-radius: var(--border-radius);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
+}
+.quote-cards-large .quote-preview blockquote {
+  padding-top: 103px;
+  background-image: url(../img/quote.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  margin-bottom: 56px
+}
+.quote-cards-large .quote-preview cite {
+  font-weight: 700;
+  font-style: normal;
+  font-size: var(--large-text-font-size);
+  color: #d7d6d6
+}
+.quote-cards-large .quote-preview cite span {
+  color: #969696
+}
+:root {
+  --large-title-font-size: 48px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
+  --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
+  --large-text-font-size: 20px;
+  --medium-text-font-size: 18px;
+  --normal-text-font-size: 16px;
+  --small-text-font-size: 14px;
+  --font-size: 16px;
+  --font-size-large: 18px;
+  --section-title-font-size: 48px;
+  --subtitle-font-size: 32px;
+  --article-title-font-size: 20px;
+  --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
+  --header-links-font-size: 20px;
+  --border-radius: 4px;
+  --margin: 15px;
+  --section-title-margin: 50px;
+  --section-margin: 56px
+}
+@media (max-width:1440px) {
+  :root {
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5369,11 +5593,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5470,11 +5694,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5623,11 +5847,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5740,11 +5964,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5866,11 +6090,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -5988,11 +6212,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -6096,11 +6320,11 @@ ul > li {
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
-  --section-margin: 86px
+  --section-margin: 56px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 66px
+    --section-margin: 48px
   }
 }
 @media (max-width:1200px) {
@@ -6248,11 +6472,15 @@ dl dd {
 dl + dl {
   margin-top: 8px
 }
+.dotted-list {
+  max-width: 50%
+}
 .dotted-list li {
   position: relative;
   padding-left: 15px;
   line-height: 1.6;
-  font-size: var(--large-text-font-size)
+  font-size: var(--large-text-font-size);
+  margin-bottom: 16px
 }
 .dotted-list li:before {
   position: absolute;
