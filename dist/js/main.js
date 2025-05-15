@@ -2852,6 +2852,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		scrolledWidth = 0;
 		scrolledHeight = 0;
 		totalSlides = 0;
+		savedSlidesLength = 0;
 
 		activeSlideEl = null;
 		activeIndex = 0;
@@ -2873,6 +2874,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			delay: "0s",
 			direction: 'horizontal',
 			autoplay: false,
+			loop: false,
 			autoplayTime: 5000,
 		}
 
@@ -2889,6 +2891,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		init(options){
 			if (!this.sliderElment) return;
 			this.totalSlides =  this.sliderElment.querySelectorAll('.slide').length;
+			this.savedSlidesLength = this.totalSlides;
 
 			this.setActiveSlide(this.activeIndex);
 
@@ -3041,8 +3044,31 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			}
 			this.goToNextSlide();
 			setTimeout(()=>{
-				this.play()
+				this.play();
 			}, this.options.autoplayTime)
+		};
+
+		loop(){
+			if (this.options.loop && this.activeIndex) {
+				if (this.activeIndex >= this.totalSlides-1) {
+					let slidesList = this.sliderElment.querySelector('.slider-list');
+					let firstSlide = slidesList.querySelectorAll('.slide')[this.activeIndex-1];
+					let firstSlideClone = firstSlide.cloneNode(true);
+					firstSlideClone.classList.add('cloned');
+					slidesList.insertBefore(firstSlideClone, slidesList.querySelectorAll('.slide')[slidesList.querySelectorAll('.slide').length-1].nextSibling);
+
+					this.setActiveDot(slidesList.querySelectorAll('.cloned').length-1)
+					if (slidesList.querySelectorAll('.cloned').length+1 >= this.savedSlidesLength+1) {
+						this.activeIndex = -1;
+					};
+
+					// update settings
+					this.totalSlides = this.sliderElment.querySelectorAll('.slide').length
+					this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
+					this.scrolledWidth = this.setScrolledSlidersWidth();
+					this.scrolledHeight = this.setScrolledSlidersHeight();
+				};
+			};
 		}
 
 		resizeSlider(){
@@ -3134,6 +3160,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		goToNextSlide(){
 			this.removeDisabledButton(this.prevButton);
+
 			if (this.activeIndex < this.totalSlides) {
 				this.activeIndex++;
 			};
@@ -3245,6 +3272,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		let options = {
 			direction: 'horizontal',
 			autoplay: sliderEl.dataset && sliderEl.dataset.autoplay ? sliderEl.dataset.autoplay : false,
+			loop: sliderEl.dataset && sliderEl.dataset.loop ? sliderEl.dataset.loop : false,
 			onInit: function(e) {},
 			onTranslated: function(e) {
 				// console.log(e)

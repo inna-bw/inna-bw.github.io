@@ -1753,6 +1753,95 @@ ul > li {
     --buttons-font-size-small: 18px
   }
 }
+.engine-preview {
+  background-color: #000;
+  border: 1px solid #28292c;
+  border-radius: var(--border-radius)
+}
+.engine-preview .logo {
+  padding: 90px 80px 50px
+}
+.engine-preview .logo img {
+  max-width: 100%
+}
+.engine-preview .caption {
+  padding: 40px 32px
+}
+.engine-preview .caption .title {
+  font-size: var(--h2-font-size);
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 32px
+}
+.engine-preview .caption .theme-text {
+  margin-bottom: 32px
+}
+.engine-preview .caption .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 24px;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start
+}
+:root {
+  --large-title-font-size: 48px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
+  --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
+  --large-text-font-size: 20px;
+  --medium-text-font-size: 18px;
+  --normal-text-font-size: 16px;
+  --small-text-font-size: 14px;
+  --font-size: 16px;
+  --font-size-large: 18px;
+  --section-title-font-size: 48px;
+  --subtitle-font-size: 32px;
+  --article-title-font-size: 20px;
+  --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
+  --header-links-font-size: 20px;
+  --border-radius: 4px;
+  --margin: 15px;
+  --section-title-margin: 50px;
+  --section-margin: 56px
+}
+@media (max-width:1440px) {
+  :root {
+    --section-margin: 48px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --large-text-font-size: 16px;
+    --header-links-font-size: 24px;
+    --article-title-font-size: 16px;
+    --large-title-font-size: 42px;
+    --section-title-font-size: 42px;
+    --h1-font-size: 38px;
+    --h2-font-size: 28px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px
+  }
+}
 .feature-card {
   position: relative;
   overflow: hidden;
@@ -3646,7 +3735,7 @@ ul > li {
   height: 100%
 }
 .main-banner .caption .caption-side {
-  max-width: 50.5%;
+  max-width: 45%;
   height: 100%;
   text-align: center;
   z-index: 2;
@@ -3716,7 +3805,8 @@ ul > li {
   top: 0
 }
 .main-banner .banner-image {
-  height: 87.82vh
+  height: 70.3vh;
+  min-height: 640px
 }
 .main-banner .banner-image img {
   -o-object-position: right bottom;
