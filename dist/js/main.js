@@ -798,7 +798,9 @@ document.addEventListener('DOMContentLoaded', function(){
 	}, {passive: true});
 
 	// on load
-	setMainPageOffset(PAGE_MAIN);
+	setTimeout(()=>{
+		setMainPageOffset(PAGE_MAIN);
+	}, 10)
 	setDetectHeaderScroll(MAIN_HEADER);
 });
 !(function (e, t) {
