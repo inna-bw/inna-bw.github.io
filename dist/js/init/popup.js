@@ -2,12 +2,12 @@
 document.addEventListener('DOMContentLoaded', function(){
 
 	class Popup {
-		hidePopupButtonClassName = '.close-popup';
+		hidePopupButtonAttribute = 'data-popup-close';
 
 		constructor(popupId) {
 			this.popupId = popupId;
 			this.called = document.querySelector(popupId);
-			this.hidePopupButton = this.called.querySelector(this.hidePopupButtonClassName);
+			this.hidePopupButtons = this.called.querySelectorAll('['+this.hidePopupButtonAttribute+']');
 		}
 
 		hidePopup = function() {
@@ -46,9 +46,10 @@ document.addEventListener('DOMContentLoaded', function(){
 		init() {
 			let popup = this;
 			popup.showPopup();
-			popup.hidePopupButton.addEventListener("click", popup.hidePopup.bind(popup), false);
+			popup.hidePopupButtons.forEach((button) =>{
+				button.addEventListener("click", popup.hidePopup.bind(popup), false);
+			});
 			popup.called.addEventListener("click", function(e){
-				e.preventDefault();
 				if (!e.target.closest('.inner')) {
 					popup.hidePopup();
 				};

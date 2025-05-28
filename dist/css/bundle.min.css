@@ -1229,7 +1229,7 @@ ul > li {
 .breadcrumbs {
   padding: 56px 0
 }
-.breadcrumbs ~ .feature-card {
+.breadcrumbs ~ .feature-card:not(.backgroung) {
   padding-top: 0;
   margin-top: 0
 }
@@ -1446,6 +1446,16 @@ ul > li {
 .button.button-grey-transparent:hover {
   color: #fff;
   border-color: #fff
+}
+.button.button-grey {
+  background-color: #969696;
+  color: #fff;
+  border-color: #969696
+}
+.button.button-grey:hover {
+  color: #969696;
+  background-color: transparent;
+  border-color: #969696
 }
 .button.button-primary-text {
   background-color: transparent;
@@ -2435,6 +2445,10 @@ ul > li {
   margin-bottom: 0
 }
 .feature-card img {
+  max-width: 100%
+}
+.feature-card ol,
+.feature-card ul {
   max-width: 100%
 }
 :root {
@@ -4174,6 +4188,9 @@ ul > li {
 .icon-download_zip:before {
   content: "\e91b"
 }
+.icon-close:before {
+  content: "\e91c"
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -5627,6 +5644,10 @@ ul > li {
     --buttons-font-size-small: 18px
   }
 }
+:root {
+  --popup-inner-default-width: 600px;
+  --popup-inner-small-width: 828px
+}
 .popup {
   position: fixed;
   z-index: 20;
@@ -5676,7 +5697,7 @@ ul > li {
   width: 100%;
   vertical-align: middle;
   padding: 0;
-  max-width: 600px;
+  max-width: var(--popup-inner-default-width);
   background: 0 0;
   text-align: left;
   background-color: #000;
@@ -5707,9 +5728,12 @@ ul > li {
   border-radius: 0;
   background: 0 0;
   color: #fff;
-  font-size: 32px;
-  top: 0;
+  font-size: 24px;
+  top: 50%;
   right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   -webkit-transition: .2s;
   transition: .2s;
   width: 70px;
@@ -5733,6 +5757,62 @@ ul > li {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0)
+}
+.popup.small .inner {
+  max-width: var(--popup-inner-small-width)
+}
+.popup .inner {
+  border-radius: var(--border-radius);
+  border: 1px solid #29282d
+}
+.popup .header {
+  border-bottom: 1px solid #ec1e24;
+  text-align: left;
+  position: relative;
+  padding: 24px 32px 8px
+}
+.popup .header .title {
+  color: #ec1e24;
+  font-weight: 900;
+  font-size: var(--h1-font-size);
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  text-transform: uppercase
+}
+.popup .main {
+  padding: 16px 32px 32px
+}
+.popup .main ol,
+.popup .main ul {
+  max-width: 100%;
+  color: #d7d6d6
+}
+.popup .main ol li,
+.popup .main ul li {
+  margin-bottom: 8px
+}
+.popup .main .subtitle {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--large-text-font-size);
+  color: #fff;
+  font-family: "Noto Sans",sans-serif;
+  margin-bottom: 16px
+}
+.popup .main .theme-text {
+  color: #d7d6d6;
+  margin: 0
+}
+.popup .bottom {
+  border-top: 1px solid #ec1e24;
+  text-align: left;
+  padding: 16px 32px 32px
+}
+.popup .bottom .butons-group {
+  margin-top: 0;
+  text-align: left
+}
+.popup .bottom .button + .button {
+  margin-left: 24px
 }
 :root {
   --large-title-font-size: 48px;
@@ -7162,6 +7242,14 @@ ul > li {
 }
 .tag:nth-child(5n+5) {
   background-color: #8c0000
+}
+.simple-tags .tag {
+  color: #fff;
+  border: 1px solid #ec1e24;
+  border-radius: 24px;
+  padding: 8px 16px;
+  background-color: rgba(140,0,0,.33);
+  font-weight: 400
 }
 @media (max-width:1200px) {
   :root {
