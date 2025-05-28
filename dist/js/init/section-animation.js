@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	}, {passive: true});
 
 	// on load
-	Array.prototype.forEach.call(document.querySelectorAll(".section"), function(section){
+	Array.prototype.forEach.call(document.querySelectorAll("section"), function(section){
 		setTimeout(function(){
 			setDetectSectionAnimation(section);
 		}, 10)
@@ -26,4 +26,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	setTimeout(function(){
 		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
 	}, 10)
+	setTimeout(function(){
+		document.querySelectorAll('section')[1].classList.add(ANIMATED_CLASS);
+	}, 150)
 });

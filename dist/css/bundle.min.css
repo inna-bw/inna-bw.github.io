@@ -1229,8 +1229,13 @@ ul > li {
 .breadcrumbs {
   padding: 56px 0
 }
+.breadcrumbs ~ .feature-card {
+  margin-top: 0
+}
 .breadcrumbs ~ .feature-card:not(.backgroung) {
-  padding-top: 0;
+  padding-top: 0
+}
+.breadcrumbs .scroll-bottom {
   margin-top: 0
 }
 .breadcrumbs-list {
@@ -2547,6 +2552,11 @@ ul > li {
 .form select:hover,
 .form textarea:hover {
   border-color: #fff
+}
+.form .input.filled,
+.form select.filled,
+.form textarea.filled {
+  background-color: #1e1e20
 }
 .form textarea {
   resize: none;
@@ -4188,6 +4198,15 @@ ul > li {
 .icon-download_zip:before {
   content: "\e91b"
 }
+.icon-attention:before {
+  content: "\e91d"
+}
+.icon-clear:before {
+  content: "\e91e"
+}
+.icon-file:before {
+  content: "\e91f"
+}
 .icon-close:before {
   content: "\e91c"
 }
@@ -4411,8 +4430,8 @@ ul > li {
   min-height: 640px
 }
 .main-banner .banner-image img {
-  -o-object-position: right bottom;
-  object-position: right bottom
+  -o-object-position: right center;
+  object-position: right center
 }
 @media (max-width:993px) {
   .main-banner .caption .caption-side {
@@ -5364,7 +5383,8 @@ ul > li {
   }
 }
 .page-main {
-  min-height: 50vh
+  min-height: 50vh;
+  padding-top: 88px
 }
 .page-main.inner-page {
   padding-top: 46px
@@ -5455,6 +5475,101 @@ ul > li {
 }
 .butons-group .button-primary {
   margin-right: 24px
+}
+.scroll-bottom {
+  text-align: right;
+  margin-top: 16px
+}
+.scroll-bottom .scroll-link {
+  position: relative;
+  padding-right: 40px;
+  text-align: right
+}
+.scroll-bottom .scroll-link .mouse {
+  margin: 0 auto;
+  display: block;
+  border-radius: 24px;
+  border: 2px solid #ec1e24;
+  height: 30px;
+  width: 20px;
+  position: absolute;
+  overflow: hidden;
+  right: 0;
+  -webkit-box-shadow: 0 0 12px 0 rgba(236,30,36,.8);
+  box-shadow: 0 0 12px 0 rgba(236,30,36,.8);
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%
+}
+.scroll-bottom .scroll-link .move {
+  position: absolute;
+  background-color: #ec1e24;
+  height: 6px;
+  width: 3px;
+  border-radius: 4px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  -webkit-animation: topBottom 2s linear infinite;
+  animation: topBottom 2s linear infinite
+}
+@-webkit-keyframes topBottom {
+  0% {
+    -webkit-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    opacity: 0
+  }
+  50% {
+    -webkit-transform: translate(-50%,12px);
+    transform: translate(-50%,12px);
+    opacity: 1
+  }
+  100% {
+    -webkit-transform: translate(-50%,18px);
+    transform: translate(-50%,18px);
+    opacity: 0
+  }
+}
+@keyframes topBottom {
+  0% {
+    -webkit-transform: translate(-50%,0);
+    transform: translate(-50%,0);
+    opacity: 0
+  }
+  50% {
+    -webkit-transform: translate(-50%,12px);
+    transform: translate(-50%,12px);
+    opacity: 1
+  }
+  100% {
+    -webkit-transform: translate(-50%,18px);
+    transform: translate(-50%,18px);
+    opacity: 0
+  }
+}
+.scroll-bottom .scroll-link .text {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+  display: block
+}
+.scroll-bottom .scroll-link .middle-text {
+  color: #969696;
+  font-size: 14px;
+  -webkit-transition: color .2s;
+  transition: color .2s;
+  display: block
+}
+.scroll-bottom .scroll-link:hover .text {
+  color: #ec1e24
+}
+.scroll-bottom .scroll-link:hover .middle-text {
+  color: #ec1e24
 }
 :root {
   --large-title-font-size: 48px;
@@ -6485,6 +6600,22 @@ ul > li {
     opacity: 1
   }
 }
+.banner-section .inner {
+  -webkit-transform: translateY(-20px);
+  -ms-transform: translateY(-20px);
+  transform: translateY(-20px);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s,-webkit-transform .5s;
+  opacity: 0
+}
+.banner-section.animated .inner {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
+}
 .section.animated .social {
   opacity: 1
 }
@@ -6603,7 +6734,8 @@ ul > li {
   margin-bottom: var(--section-title-margin)
 }
 .banner-section {
-  position: relative
+  position: relative;
+  min-height: 400px
 }
 .banner-section .banner-text {
   position: absolute;
