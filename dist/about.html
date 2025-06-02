@@ -209,7 +209,7 @@
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
 		<!-- banner -->
-		<section class="banner-section">
+		<div class="banner-section">
 			<div class="news-banner">
 				<div class="image-cover">
 					<img src="img/top-banner.png" alt="mow" class="main-image">
@@ -225,31 +225,16 @@
 					</div>
 				</div>
 			</div>
-		</section>
+		</div>
 		<!-- / banner -->
 
 		<!-- breadcrumbs -->
 		<div class="breadcrumbs">
 			<div class="container">
-				<div class="row middle-xs">
-					<div class="col-xs-12 col-sm-6">
-						<ul class="breadcrumbs-list clear">
-							<li><a href="index.html" class="text" aria-label="main page">Main</a></li>
-							<li><span class="text">About Us</span></li>
-						</ul>
-					</div>
-					<div class="col-xs-12 col-sm-6">
-						<div class="scroll-bottom">
-							<a class="scroll-link" href="#aboutSection" data-scrollto="#aboutSection" role="link">
-								<span class="text">Scroll Down</span>
-								<span class="middle-text">to see more info</span>
-								<span class="mouse">
-									<span class="move"></span>
-								</span>
-							</a>
-						</div>
-					</div>
-				</div>
+				<ul class="breadcrumbs-list clear">
+					<li><a href="index.html" class="text" aria-label="main page">Main</a></li>
+					<li><span class="text">About Us</span></li>
+				</ul>
 			</div>
 		</div>
 		<!-- / breadcrumbs -->
@@ -368,7 +353,29 @@
 	<!-- / subscribe-section -->
 
 	<!-- footer -->
-	<footer class="main-footer">
+	<!-- scroll button -->
+<div class="scroll-button to-bottom" id="scrollButton">
+	<div class="container">
+		<button class="scroll-link" type="button" role="button">
+			<span class="inner">
+				<span class="bottom-text">
+					<span class="text">Scroll Down</span>
+					<span class="middle-text">to see more info</span>
+					<span class="mouse">
+						<span class="move"></span>
+					</span>
+				</span>
+				<span class="top-text">
+					<span class="text">Back to Top</span>
+					<img src="img/scroll-top.png" alt="icon">
+				</span>
+			</span>
+		</button>
+	</div>
+</div>
+<!-- / scroll button -->
+
+<footer class="main-footer" id="mainFooter">
 	<div class="container">
 		<div class="middle">
 			<div class="navigation-group">
@@ -410,20 +417,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="bottom">
-			<div class="row middle-xs">
-				<div class="col-xs-12 col-ms-10 align-center">
-					© 2025 Best Way
-				</div>
-				<div class="col-xs-12 col-ms-2">
-					<div class="scrollto-cover">
-						<a class="scroll-link" href="#mainHeader" data-scrollto="#pageMain">
-							<span class="text">Back to Top</span>
-							<img src="img/scroll-top.svg" alt="icon">
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="bottom align-center">
+			© 2025 Best Way
 		</div>
 	</div>
 </footer>

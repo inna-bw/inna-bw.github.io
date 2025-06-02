@@ -25,8 +25,11 @@ document.addEventListener('DOMContentLoaded', function(){
 	});
 	setTimeout(function(){
 		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
+		if (document.querySelector('.banner-section')) {
+			document.querySelector('.banner-section').classList.add(ANIMATED_CLASS);
+		}
 	}, 10)
 	setTimeout(function(){
-		document.querySelectorAll('section')[1].classList.add(ANIMATED_CLASS);
+		document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
 	}, 150)
 });

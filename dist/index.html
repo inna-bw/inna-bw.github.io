@@ -208,7 +208,7 @@
 	<!-- / header -->
 	<main class="page-main" id="pageMain" role="main">
 		<!-- main slider -->
-		<section class="section main-banner-section collapsed-bottom">
+		<div class="section main-banner-section collapsed-bottom">
 			<div class="main-banner">
 				<div class="inner">
 					<div class="caption">
@@ -235,22 +235,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="scroll-bottom">
-				<div class="container">
-					<a class="scroll-link" href="#chronologySection" data-scrollto="#chronologySection" role="link">
-						<span class="text">Scroll Down</span>
-						<span class="middle-text">to see more info</span>
-						<span class="mouse">
-							<span class="move"></span>
-						</span>
-					</a>
-				</div>
-			</div>
-		</section>
+		</div>
 		<!-- / main slider -->
 
 		<!-- about us -->
-		<section class="section about-section collapsed-top" id="chronologySection">
+		<section class="section about-section" id="chronologySection">
 			<div class="container">
 				<h2 class="section-title">Chronology</h2>
 				<div class="divider"></div>
@@ -605,7 +594,29 @@
 	<!-- / subscribe-section -->
 
 	<!-- footer -->
-	<footer class="main-footer">
+	<!-- scroll button -->
+<div class="scroll-button to-bottom" id="scrollButton">
+	<div class="container">
+		<button class="scroll-link" type="button" role="button">
+			<span class="inner">
+				<span class="bottom-text">
+					<span class="text">Scroll Down</span>
+					<span class="middle-text">to see more info</span>
+					<span class="mouse">
+						<span class="move"></span>
+					</span>
+				</span>
+				<span class="top-text">
+					<span class="text">Back to Top</span>
+					<img src="img/scroll-top.png" alt="icon">
+				</span>
+			</span>
+		</button>
+	</div>
+</div>
+<!-- / scroll button -->
+
+<footer class="main-footer" id="mainFooter">
 	<div class="container">
 		<div class="middle">
 			<div class="navigation-group">
@@ -647,20 +658,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="bottom">
-			<div class="row middle-xs">
-				<div class="col-xs-12 col-ms-10 align-center">
-					© 2025 Best Way
-				</div>
-				<div class="col-xs-12 col-ms-2">
-					<div class="scrollto-cover">
-						<a class="scroll-link" href="#mainHeader" data-scrollto="#pageMain">
-							<span class="text">Back to Top</span>
-							<img src="img/scroll-top.svg" alt="icon">
-						</a>
-					</div>
-				</div>
-			</div>
+		<div class="bottom align-center">
+			© 2025 Best Way
 		</div>
 	</div>
 </footer>
