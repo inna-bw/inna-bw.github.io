@@ -239,12 +239,14 @@
 
 		<!-- tags -->
 		<div class="container">
-			<div class="tags">
-				<div class="tag">Men Of War 2</div>
-				<div class="tag">Games</div>
-				<div class="tag">RTT</div>
-				<div class="tag">Games</div>
-				<div class="tag">RTT</div>
+			<div class="tags simple-tags" data-filter="newsList">
+				<div class="tag active" data-tag-filter="all">All</div>
+				<div class="tag" data-tag-filter="mow2">Men Of War 2</div>
+				<div class="tag" data-tag-filter="games">Games</div>
+				<div class="tag" data-tag-filter="rtt">RTT</div>
+				<div class="tag" data-tag-filter="engines">Engines</div>
+				<div class="tag" data-tag-filter="tools">Tools</div>
+				<div class="tag" data-tag-filter="updates">Updates</div>
 			</div>
 		</div>
 		<!-- / tags -->
@@ -268,8 +270,8 @@
 				</div>
 
 				<!-- news list -->
-				<div class="row">
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+				<div class="row" id="newsList">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news1.jpg" alt="news item">
@@ -279,10 +281,10 @@
 									<div class="date">March 13, 2025</div>
 									<div class="category">Adjusts</div>
 								</div>
-								<div class="tags">
-									<div class="tag">Men Of War 2</div>
-									<div class="tag">Games</div>
-									<div class="tag">RTT</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="mow2">Men Of War 2</div>
+									<div class="tag" data-tag="games">Games</div>
+									<div class="tag" data-tag="rtt">RTT</div>
 								</div>
 								<div class="title">AI Improvements Lorem ipsum dolor sit amet, consectetur</div>
 								<div class="caption">
@@ -291,7 +293,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news2.jpg" alt="news item">
@@ -301,9 +303,9 @@
 									<div class="date">March 13, 2025</div>
 									<div class="category">Adjusts</div>
 								</div>
-								<div class="tags">
-									<div class="tag">Updates</div>
-									<div class="tag">Tools</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="updates">Updates</div>
+									<div class="tag" data-tag="tools">Tools</div>
 								</div>
 								<div class="title">AI Improvements Lorem ipsum dolor sit amet, consectetur </div>
 								<div class="caption">
@@ -312,7 +314,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news3.jpg" alt="news item">
@@ -322,12 +324,12 @@
 									<div class="date">March 13, 2025</div>
 									<div class="category">Adjusts</div>
 								</div>
-								<div class="tags">
-									<div class="tag">Men Of War 2</div>
-									<div class="tag">Games</div>
-									<div class="tag">RTT</div>
-									<div class="tag">Updates</div>
-									<div class="tag">Tools</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="mow2">Men Of War 2</div>
+									<div class="tag" data-tag="games">Games</div>
+									<div class="tag" data-tag="rtt">RTT</div>
+									<div class="tag" data-tag="updates">Updates</div>
+									<div class="tag" data-tag="engines">Engines</div>
 								</div>
 								<div class="title">AI Improvements</div>
 								<div class="caption">
@@ -336,7 +338,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news1.jpg" alt="news item">
@@ -346,6 +348,10 @@
 									<div class="date">March 13, 2025</div>
 									<div class="category">Adjusts</div>
 								</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="mow2">Men Of War 2</div>
+									<div class="tag" data-tag="tools">Tools</div>
+								</div>
 								<div class="title">AI Improvements</div>
 								<div class="caption">
 									Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -353,7 +359,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news2.jpg" alt="news item">
@@ -363,6 +369,10 @@
 									<div class="date">March 13, 2025</div>
 									<div class="category">News type</div>
 								</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="updates">Updates</div>
+									<div class="tag" data-tag="tools">Tools</div>
+								</div>
 								<div class="title">AI Improvements</div>
 								<div class="caption">
 									Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos enim exercitationem odit illo quod expedita nesciunt modi in? Inventore tempore aspernatur doloribus, cupiditate deleniti aliquid at error. Aspernatur esse, quaerat.
@@ -370,7 +380,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around">
+					<div class="col-xs-12 col-ms-6 col-md-4 spaced-around news-cover visible">
 						<a href="detail-news.html" class="news-preview" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/news3.jpg" alt="news item">
@@ -379,6 +389,10 @@
 								<div class="top">
 									<div class="date">March 13, 2025</div>
 									<div class="category">News type</div>
+								</div>
+								<div class="tags simple-tags">
+									<div class="tag" data-tag="mow2">Men Of War 2</div>
+									<div class="tag" data-tag="games">Games</div>
 								</div>
 								<div class="title">AI Improvements</div>
 								<div class="caption">

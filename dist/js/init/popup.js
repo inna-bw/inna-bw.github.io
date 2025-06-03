@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function(){
 			}, 300);
 		};
 
-		init() {
+		init = function() {
 			let popup = this;
 			popup.showPopup();
 			popup.hidePopupButtons.forEach((button) =>{

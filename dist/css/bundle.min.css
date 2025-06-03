@@ -1479,9 +1479,11 @@ ul > li {
   padding: 5px 21px 7px;
   line-height: 1.25
 }
+.button.active.button-secondary-transparent,
 .button.button-secondary-transparent:hover,
+.button.button-secondary.active,
 .button.button-secondary:hover {
-  background-color: rgba(236,30,36,.3)
+  background-color: rgba(236,30,36,.4)
 }
 .button.button-secondary.disabled,
 .button.disabled.button-secondary-transparent {
@@ -5199,6 +5201,20 @@ ul > li {
   box-shadow: 0 0 100px 25px #000 inset;
   pointer-events: none
 }
+.news-cover {
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: none;
+  -webkit-transform: translateY(-50px);
+  -ms-transform: translateY(-50px);
+  transform: translateY(-50px)
+}
+.news-cover.visible {
+  display: block;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
+}
 @media (max-width:1200px) {
   .news-preview .top {
     display: block
@@ -6682,18 +6698,26 @@ ul > li {
 }
 @-webkit-keyframes fade-in-animation {
   0% {
-    opacity: 0
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px)
   }
   100% {
-    opacity: 1
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
   }
 }
 @keyframes fade-in-animation {
   0% {
-    opacity: 0
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px)
   }
   100% {
-    opacity: 1
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0)
   }
 }
 .banner-section .inner {
@@ -7454,7 +7478,15 @@ ul > li {
   border-radius: var(--border-radius);
   color: #fff;
   font-weight: 700;
-  font-size: var(--small-text-font-size)
+  font-size: var(--small-text-font-size);
+  cursor: pointer;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.tag.active,
+.tag:hover {
+  -webkit-filter: brightness(120%);
+  filter: brightness(120%)
 }
 .tag:nth-child(5n+1) {
   background-color: #ec1e24
@@ -7477,7 +7509,13 @@ ul > li {
   border-radius: 24px;
   padding: 8px 16px;
   background-color: rgba(140,0,0,.33);
-  font-weight: 400
+  font-weight: 400;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.simple-tags .tag.active,
+.simple-tags .tag:hover {
+  background-color: rgba(236,30,36,.4)
 }
 @media (max-width:1200px) {
   :root {
