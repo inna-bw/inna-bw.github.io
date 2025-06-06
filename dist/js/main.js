@@ -1,3 +1,58 @@
+// data-accordeon
+document.addEventListener('DOMContentLoaded', function(){
+	let ACCORDEON_ACTIVE_CLASS = 'active';
+
+	let allAccordeons = document.querySelectorAll("[data-accordeon]");
+	let allAccordeonsButtons = document.querySelectorAll(".accordeon-title");
+
+	let closeAllAccordeons = function(){
+		for (i = 0; i < allAccordeons.length; i++) {
+			let accordeonInner = allAccordeons[i].querySelector('.accordeon-inner');
+			allAccordeons[i].classList.remove(ACCORDEON_ACTIVE_CLASS);
+		}
+	};
+
+	let openAllAccordeons = function(){
+		for (i = 0; i < allAccordeons.length; i++) {
+			let accordeonInner = allAccordeons[i].querySelector('.accordeon-inner');
+			allAccordeons[i].classList.add(ACCORDEON_ACTIVE_CLASS);
+		}
+	};
+
+	let accordeonToggle = function() {
+		if (this.parentElement.classList.contains(ACCORDEON_ACTIVE_CLASS)) {
+			closeAllAccordeons();
+		} else {
+			closeAllAccordeons();
+			this.parentElement.classList.add(ACCORDEON_ACTIVE_CLASS);
+		};
+	}
+
+	Array.prototype.forEach.call(document.querySelectorAll("[data-accordeon-open]"), function(button){
+		button.addEventListener("click", function (e) {
+			if (!button.dataset.accordeonOpen) return;
+			let accordeonsCover = document.getElementById(button.dataset.accordeonOpen);
+			let allAccordeons = accordeonsCover.querySelectorAll("[data-accordeon]");
+			if (button.classList.contains(ACCORDEON_ACTIVE_CLASS)) {
+				button.classList.remove(ACCORDEON_ACTIVE_CLASS);
+				closeAllAccordeons();
+			} else {
+				button.classList.add(ACCORDEON_ACTIVE_CLASS);
+				openAllAccordeons();
+			};
+		});
+	});
+
+	document.body.addEventListener('click', function(e){
+		let accordeonButton = e.target.closest(".accordeon-title");
+		if (accordeonButton){
+			accordeonToggle.call(accordeonButton);
+		};
+	});
+
+
+
+});
 document.addEventListener('DOMContentLoaded', function(){
 
 	class waveLines {
@@ -688,6 +743,99 @@ document.addEventListener('DOMContentLoaded', function(){
 	});
 });
 
+document.addEventListener('DOMContentLoaded', function(){
+
+	class TooltipHint {
+
+		element = null;
+		newTooltip = null;
+
+		coordinanes = {
+			x: 0,
+			y: 0,
+		};
+
+		constructor(tooltipEl) {
+			this.element = tooltipEl;
+
+			this.element.addEventListener("mouseenter", function (e) {
+				this.show(this.element, e);
+			}.bind(this));
+			this.element.addEventListener("mouseleave", function () {
+				this.hide();
+			}.bind(this));
+		};
+
+		setCoordinates(pageX, pageY, element) {
+			this.coordinanes.x = pageX;
+			this.coordinanes.y = pageY;
+			// + element height/width
+		};
+
+		setText(text) {
+			this.text = text;
+		};
+
+		getCoordinates() {
+			return {x: this.coordinanes.x, y: this.coordinanes.y}
+		};
+
+		getText() {
+			return this.text;
+		};
+
+		getElementSize() {
+			return this.element.getBoundingClientRect();
+		};
+
+		setTooltipPosition() {
+			// console.log(this.getElementSize())
+			
+			// this.getCoordinates().y + "px";
+			// this.getCoordinates().x + "px";
+		};
+
+		createTooltipElement() {
+			this.newTooltip = document.createElement('div');
+			this.newTooltip.className = "tooltip";
+			this.newTooltip.setAttribute("id", "tooltip");
+			this.newTooltip.appendChild(document.createTextNode(this.getText()));
+			// postion
+			this.newTooltip.style.top = this.getCoordinates().y + "px";
+			this.newTooltip.style.left = this.getCoordinates().x + "px";
+					document.body.appendChild(this.newTooltip);
+		};
+
+		show(element, event) {
+			if (!element || !event) return;
+			let text = element.dataset.tooltip.trim();
+			this.element = element;
+			this.setText(text);
+			this.setCoordinates(event.pageX,event.pageY, element);
+			this.createTooltipElement();
+
+			setTimeout(function(){
+				this.newTooltip.classList.add("active");
+			}.bind(this), 250)
+		};
+
+		hide(){
+			this.setText('');
+			this.setCoordinates(0, 0);
+			let tooltip = document.getElementById('tooltip');
+			if (tooltip) {
+				tooltip.remove();
+			}
+		};
+	};
+
+	Array.prototype.forEach.call(document.querySelectorAll("[data-tooltip]"), function(tooltip){
+		const tooltipHint = new TooltipHint(tooltip);
+
+	});
+
+
+});
 //dropdown
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -736,6 +884,164 @@ document.addEventListener('DOMContentLoaded', function(){
 		dropdown.init();
 	});
 });
+function handleFiles(){
+	let files = this.files;
+	let loaderMainWrap = null;
+	let uploadBox = this.parentElement.querySelectorAll('[data-upload]')[0];
+	if (uploadBox.classList.contains('single-load')) {
+		oldPhoto = uploadBox.children;
+		for (var i = 0; i < oldPhoto.length; i++) {
+			oldPhoto[i].remove();
+		}
+	}
+	for (var i = 0; i < files.length; i++) {
+		getBase64(files[i], uploadBox);
+	}
+}
+
+function removeFiles(){
+	this.remove();
+	window.tooltipHint.hide();
+}
+
+function hasClass(element, className) {
+	return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
+}
+
+function getBase64(file, loaderMainWrap) {
+	var reader = new FileReader();
+	reader.readAsDataURL(file);
+	if (file.type.startsWith("image/")) {
+		reader.onload = function () {
+			appendImage(file.name, reader.result, loaderMainWrap);
+		};
+		reader.onerror = function (error) {
+			console.error('Error: ', error);
+		};
+	} else if (file.type.startsWith("video/")) {
+		reader.onload = function () {
+			appendVideo(file.name, reader.result, loaderMainWrap);
+		};
+		reader.onerror = function (error) {
+			appendError(file.name,'load', loaderMainWrap);
+		};
+	} else {
+		appendError(file.name, 'type', loaderMainWrap);
+	};
+};
+
+function appendImage(name, src, loaderMainWrap){
+	let coverEl = document.createElement("div");
+			coverEl.classList.add('files-cover');
+			coverEl.setAttribute('data-tooltip', 'Click to delete')
+	let innerCover = document.createElement("div");
+			innerCover.classList.add('inner');
+	let imgEl = document.createElement('img');
+			imgEl.src = src;
+	innerCover.appendChild(imgEl);
+	coverEl.appendChild(innerCover);
+	let nameEl = document.createElement("div");
+			nameEl.classList.add('file-name');
+			nameEl.appendChild(document.createTextNode(name));
+	coverEl.appendChild(nameEl);
+	coverEl.addEventListener("click", removeFiles, false);
+	if (loaderMainWrap) {
+		loaderMainWrap.appendChild(coverEl);
+	}
+};
+
+function appendVideo(name, src, loaderMainWrap){
+	let coverEl = document.createElement("div");
+			coverEl.classList.add('files-cover');
+			coverEl.setAttribute('data-tooltip', 'Click to delete')
+	let innerCover = document.createElement("div");
+			innerCover.classList.add('inner');
+	let videoEl = document.createElement('video')
+			videoEl.src = src
+			videoEl.controls = true;
+	innerCover.appendChild(videoEl);
+	coverEl.appendChild(innerCover);
+	let nameEl = document.createElement("div");
+			nameEl.classList.add('file-name');
+			nameEl.appendChild(document.createTextNode(name));
+	coverEl.appendChild(nameEl);
+	coverEl.addEventListener("click", removeFiles, false);
+	if (loaderMainWrap) {
+		loaderMainWrap.appendChild(coverEl);
+	}
+};
+
+function appendError(name, type, loaderMainWrap){
+	let errorStatus = {
+		load: 'Loadind error',
+		type: 'Only for .png, .jpg, .mp4'
+	}
+	let coverEl = document.createElement("div");
+			coverEl.classList.add('error-cover');
+			coverEl.classList.add('files-cover');
+			coverEl.setAttribute('data-tooltip', 'Click to delete')
+	let textEl = document.createElement("div");
+			textEl.classList.add('error-text');
+			textEl.appendChild(document.createTextNode(errorStatus[type]));
+	coverEl.appendChild(textEl);
+	let nameEl = document.createElement("div");
+			nameEl.classList.add('file-name');
+			nameEl.appendChild(document.createTextNode(name));
+	coverEl.appendChild(nameEl);
+	coverEl.addEventListener("click", removeFiles, false);
+	if (loaderMainWrap) {
+		loaderMainWrap.appendChild(coverEl);
+	}
+};
+
+document.querySelectorAll('[data-loader]').forEach(function(loaderCover, i){
+	let uploadBox = loaderCover.querySelectorAll('[data-upload]')[0];
+	coverChildren = loaderCover.children;
+	for (var i = 0; i < coverChildren.length; i++) {
+		if (coverChildren[i].hasAttribute('data-label')) {
+			let fileLoader = coverChildren[i];
+					fileLoader.ondragover = function (e) {
+						e.preventDefault();
+						fileLoader.classList.add('hover')
+					};
+					fileLoader.ondragend = function (e) {
+						e.preventDefault();
+						fileLoader.classList.remove('hover');
+					};
+					fileLoader.ondrop = function (e) {
+						e.preventDefault();
+						fileLoader.classList.remove('hover');
+						for (var i = 0; i < e.dataTransfer.files.length; i++) {
+							getBase64(e.dataTransfer.files[i], uploadBox);
+						}
+					}
+		} else if (coverChildren[i].hasAttribute('data-file')) {
+			let inputElement = coverChildren[i];
+					inputElement.addEventListener("change", handleFiles, false);
+		} else {
+			appendError('type', uploadBox);
+		}
+	}
+})
+
+// delete loaded files
+document.querySelectorAll('.files-cover').forEach(function(loaderCover, i){
+	loaderCover.addEventListener("click", removeFiles, false);
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // header scroll animation
 document.addEventListener('DOMContentLoaded', function(){
 	const SCROLLED_CLASS = 'scrolled'
@@ -794,14 +1100,12 @@ document.addEventListener('DOMContentLoaded', function(){
 	}, {passive: true});
 
 	// on resize
-	window.addEventListener("resize", (event) => {
-		setMainPageOffset(PAGE_MAIN);
-	}, {passive: true});
+	// window.addEventListener("resize", (event) => {
+	// 	setMainPageOffset(PAGE_MAIN);
+	// }, {passive: true});
 
 	// on load
-	setTimeout(()=>{
-		setMainPageOffset(PAGE_MAIN);
-	}, 10)
+	// setMainPageOffset(PAGE_MAIN);
 	setDetectHeaderScroll(MAIN_HEADER);
 });
 !(function (e, t) {
@@ -2923,6 +3227,135 @@ document.addEventListener('DOMContentLoaded', function(){
 	const scrollButtonAnimation = new scrollButtonAnimationComponent(scrollButton);
 	scrollButtonAnimation.init();
 });
+//form animations + search filter
+document.addEventListener('DOMContentLoaded', function(){
+
+	let filterSearchInput = document.querySelector('[data-filter]');
+	let filterSearchInputValue = '';
+	let filterFields = filterSearchInput && filterSearchInput.dataset ? filterSearchInput.dataset.filterFields : '';
+
+	function clearFilter(selector){
+		let allFilteredItems = document.querySelectorAll(selector);
+		for (let i = 0; i < allFilteredItems.length; i++) {
+			allFilteredItems[i].innerHTML = allFilteredItems[i].innerHTML.replace(/(<mark>|<\/mark>)/gim, '');
+			allFilteredItems[i].parentNode.classList.remove('hidden');
+			setCounter(allFilteredItems[i], 0);
+		};
+		alertMessageToggle(false);
+	};
+
+	function alertMessageToggle(open){
+		let alertMessage = document.getElementById('searchEmptyMessage');
+		let showMore = document.getElementById('showMore');
+
+		if (open) {
+			if (alertMessage) alertMessage.classList.remove('hidden');
+			if (showMore) showMore.classList.add('hidden');
+		} else {
+			if (alertMessage) alertMessage.classList.add('hidden');
+			if (showMore) showMore.classList.remove('hidden');
+		};
+	};
+
+	function highlightText(selector, searchText){
+		if (!selector || !selector.innerHTML) return;
+		const regex = new RegExp(searchText, 'gi');
+
+		let text = selector.innerHTML;
+				text = text.replace(/(<mark>|<\/mark>)/gim, '');
+
+		const newtext = text.replace(regex, '<mark>$&</mark>');
+
+		selector.innerHTML = newtext;
+	}
+
+	function setCounter(parent, number){
+		if (parent.querySelector('.search-tooltip') && parent.querySelector('.search-tooltip').querySelector('.count')) {
+			parent.querySelector('.search-tooltip').querySelector('.count').innerHTML = number;
+		}
+
+		if (!number) {
+			parent.classList.remove('success');
+		} else {
+			parent.classList.add('success');
+		}
+	}
+
+	function checkFilters(item) {
+		if (!item.querySelector('mark')) {
+			item.parentNode.classList.add('hidden');
+		} else {
+			item.parentNode.classList.remove('hidden');
+			setCounter(item, item.querySelectorAll('mark').length)
+		};
+
+		let allListItems = item.closest('ul').querySelectorAll('li');
+		let hiddenListItems = item.closest('ul').querySelectorAll('.hidden');
+
+		if (hiddenListItems.length >= allListItems.length) {
+			alertMessageToggle(true);
+		} else {
+			alertMessageToggle(false);
+		}
+	};
+
+	function applyFilter(selector, searchText){
+		if (!selector) return;
+		let allFilteredItems = document.querySelectorAll(selector);
+		let fieldsArray = filterFields.split(',');
+
+		for (let i = 0; i < allFilteredItems.length; i++) {
+			for (let n = 0; n < fieldsArray.length; n++) {
+				let fieldElements = allFilteredItems[i].querySelector(fieldsArray[n]);
+				highlightText(fieldElements, searchText);
+			};
+			checkFilters(allFilteredItems[i]);
+		};
+	};
+
+	function onCaseSearchKeyDown(event) {
+		const waitForFinalEvent = (function(){
+			var timers = {};
+			return function (callback, ms, uniqueId) {
+				if (!uniqueId) {
+					uniqueId = "Don't call this twice without a uniqueId";
+				}
+				if (timers[uniqueId]) {
+					clearTimeout (timers[uniqueId]);
+				}
+				timers[uniqueId] = setTimeout(callback, ms);
+			};
+		})();
+
+		let input = this;
+		waitForFinalEvent(function(){
+			if (input.value && input.value.length) {
+				input.parentElement.classList.add('focused');
+				if (filterSearchInput.dataset.filter) {
+					applyFilter(filterSearchInput.dataset.filter, input.value.toLowerCase());
+				};
+			} else {
+				input.parentElement.classList.remove('focused');
+				if (filterSearchInput.dataset.filter) {
+					clearFilter(filterSearchInput.dataset.filter);
+				};
+			}
+			filterSearchInputValue = input.value;
+		}, 100)
+
+		if (event.keyCode == 13 && window.searchCaseCallback) {
+			window.searchCaseCallback();
+
+			if (filterSearchInput.dataset.filter && filterSearchInputValue.length) {
+				applyFilter(filterSearchInput.dataset.filter, filterSearchInputValue);
+			};
+		};
+	}
+
+	if (filterSearchInput) {
+		filterSearchInput.addEventListener('keydown', onCaseSearchKeyDown, {passive: true});
+	}
+})
 // section scroll animation
 document.addEventListener('DOMContentLoaded', function(){
 	let ANIMATED_CLASS = 'animated'
@@ -2950,8 +3383,8 @@ document.addEventListener('DOMContentLoaded', function(){
 	});
 	setTimeout(function(){
 		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
-		if (document.querySelector('.banner-section')) {
-			document.querySelector('.banner-section').classList.add(ANIMATED_CLASS);
+		if (document.querySelector('.banner')) {
+			document.querySelector('.banner').classList.add(ANIMATED_CLASS);
 		}
 	}, 10)
 	setTimeout(function(){

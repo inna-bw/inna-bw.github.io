@@ -56,13 +56,11 @@ document.addEventListener('DOMContentLoaded', function(){
 	}, {passive: true});
 
 	// on resize
-	window.addEventListener("resize", (event) => {
-		setMainPageOffset(PAGE_MAIN);
-	}, {passive: true});
+	// window.addEventListener("resize", (event) => {
+	// 	setMainPageOffset(PAGE_MAIN);
+	// }, {passive: true});
 
 	// on load
-	setTimeout(()=>{
-		setMainPageOffset(PAGE_MAIN);
-	}, 10)
+	// setMainPageOffset(PAGE_MAIN);
 	setDetectHeaderScroll(MAIN_HEADER);
 });

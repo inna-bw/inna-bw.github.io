@@ -209,7 +209,7 @@
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
 		<!-- banner -->
-		<div class="banner-section">
+		<div class="banner-section banner">
 			<div class="news-banner">
 				<div class="image-cover">
 					<img src="img/top-banner.png" alt="mow" class="main-image">
@@ -221,11 +221,11 @@
 						<div class="inner">
 							<h1>Welcome to <br>Best Way Support</h1>
 							<div class="spaced-top">
-								<form action="javascript:void()" class="form validate-form">
-									<div class="form-group">
-										<input type="text" class="input filled" placeholder="Search">
-									</div>
-								</form>
+								<form action="javascript:void(0)" class="form validate-form" id="searchCaseForm">
+								<div class="form-group">
+									<input type="text" class="input" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search">
+								</div>
+							</form>
 							</div>
 						</div>
 					</div>
@@ -345,6 +345,167 @@
 			</div>
 		</section>
 		<!-- / engines -->
+
+		<!-- fag -->
+		<section class="collapsed-top section" id="faqSection">
+			<div class="container">
+				<div class="title-with-links">
+					<h2 class="section-title">General Information (FAQ)</h2>
+					<div class="social-group">
+						<button type="button" role="button" class="button button-secondary" data-accordeon-open="faqList">
+							<span class="text closed">Open All</span>
+							<span class="text opened">Close All</span>
+						</button>
+					</div>
+					<div class="divider"></div>
+				</div>
+				<ul class="faq-list" id="faqList">
+					<li class="item">
+						<div class="accordeon" data-accordeon>
+							<div class="accordeon-title">
+								<div class="search-tooltip">Results: <span class="count">0</span></div>
+								<h2 class="title" data-title>GEM RTS tech specs</h2>
+							</div>
+							<div class="accordeon-inner">
+								<div class="theme-text" data-description>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="item">
+						<div class="accordeon" data-accordeon>
+							<div class="accordeon-title">
+								<div class="search-tooltip">Results: <span class="count">0</span></div>
+								<h2 class="title" data-title>GEM RTS tech specs</h2>
+							</div>
+							<div class="accordeon-inner">
+								<div class="theme-text" data-description>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="item">
+						<div class="accordeon" data-accordeon>
+							<div class="accordeon-title">
+								<div class="search-tooltip">Results: <span class="count">0</span></div>
+								<h2 class="title" data-title>What is the GEM RTS License Agreement?</h2>
+							</div>
+							<div class="accordeon-inner">
+								<div class="theme-text" data-description>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="item">
+						<div class="accordeon" data-accordeon>
+							<div class="accordeon-title">
+								<div class="search-tooltip">Results: <span class="count">0</span></div>
+								<h2 class="title" data-title>Where can I buy Best Way games?</h2>
+							</div>
+							<div class="accordeon-inner">
+								<div class="theme-text" data-description>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+								</div>
+							</div>
+						</div>
+					</li>
+					<li class="item">
+						<div class="accordeon" data-accordeon>
+							<div class="accordeon-title">
+								<div class="search-tooltip">Results: <span class="count">0</span></div>
+								<h2 class="title" data-title>What platforms are Best Way games available on?</h2>
+							</div>
+							<div class="accordeon-inner">
+								<div class="theme-text" data-description>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+				<!-- alert message if list is empty -->
+				<div id="searchEmptyMessage" class="hidden search-alert">
+					<div class="section-title-small">No questions found</div>
+					<div class="theme-text">Try changing your search query</div>
+				</div>
+				<!-- alert message if list is empty -->
+			</div>
+		</section>
+		<!-- / fag -->
+		<!-- discord -->
+		<div class="discord-widget section">
+	<div class="container">
+		<div class="info-box">
+			<h2 class="section-subtitle">Join our support chanel on discord</h2>
+			<!-- support -->
+			<iframe src="https://discord.com/widget?id=1317098133842296872&theme=dark" width="404" height="423" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+		</div>
+		<div class="info-box">
+			<h2 class="section-subtitle">Stay connected</h2>
+				<ul class="social-list">
+					<li><a href="#"><i class="icon icon-youtube"></i></a></li>
+					<li><a href="#"><i class="icon icon-x"></i></a></li>
+					<li><a href="#"><i class="icon icon-facebook"></i></a></li>
+					<li><a href="#"><i class="icon icon-reddit"></i></a></li>
+					<li><a href="#"><i class="icon icon-tiktok"></i></a></li>
+				</ul>
+		</div>
+		<div class="info-box">
+			<h2 class="section-subtitle">Still need help?</h2>
+			<!-- support -->
+			<form action="#" class="form validate-form small-size">
+				<div class="form-title">Submit a request</div>
+				<div class="form-helpers">
+					Fields marked with an asterisk (<span class="color-primary">*</span>) are required.
+				</div>
+				<div class="form-group spaced">
+					<label for="name" class="label">Name <sup>*</sup></label>
+					<input type="text" class="input" id="name">
+				</div>
+				<div class="form-group spaced">
+					<label for="email" class="label">Email <sup>*</sup></label>
+					<input type="text" class="input" id="email">
+				</div>
+				<div class="form-group spaced">
+					<label for="message" class="label">Description <sup>*</sup></label>
+					<textarea name="message" id="message" class="textarea"></textarea>
+				</div>
+				<div class="form-helpers">
+					Please enter the details of your request. A member of our support staff will respond as soon as possible.
+				</div>
+				<div class="form-group spaced load-cover" id="addFilesLoader" data-loader>
+					<span class="label">
+						Attachments (Optional)
+						<span data-tooltip="Only for .png, .jpg, .mp4" class="info-helper">
+							<i class="icon icon-attention"></i>
+						</span>
+					</span>
+					<label id="addFileLoader" class="label-file" for="addObjFiles" data-label>
+						<div class="caption">
+							<img src="img/file-load.svg" alt="">
+							<div class="text">Drag n Drop here</div>
+							<div class="text">or <b class="color-primary">Browse</b></div>
+						</div>
+					</label>
+					<input type="file" id="addObjFiles" multiple data-file>
+					<div data-upload></div>
+				</div>
+				<div class="form-helpers">
+					You can also go to our <a href="#" class="primary-link">Discord</a> where you can find answers to common questions, as well as the option to submit your query to our Support Team or ask our Community.
+				</div>
+				<div class="form-buttons">
+					<button type="submit" role="button" class="button button-primary">
+						<span class="text">Submit</span>
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+		<!-- / discord -->
 	</main>
 
 	<!-- subscribe-section -->
