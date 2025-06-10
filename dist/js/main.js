@@ -968,9 +968,7 @@ window.addEventListener("DOMContentLoaded", function() {
 				_this.inputFile.files = newFileList.files;
 			};
 
-			if (!uploadBox.querySelectorAll(`.${this._this.classes.error}`).length) {
-				loaderCover.classList.remove(this._this.classes.error);
-			};
+			this._this.removeError();
 		};
 
 		getBase64(file) {
@@ -996,6 +994,8 @@ window.addEventListener("DOMContentLoaded", function() {
 				this.loaderCover.classList.add(this.classes.error);
 				console.error('Error: ', error);
 			}.bind(this);
+
+			this.removeError();
 		};
 
 		appendError(name, type, reader){
@@ -1005,6 +1005,12 @@ window.addEventListener("DOMContentLoaded", function() {
 			console.error('Error: ', type + ' type is not correct');
 		};
 
+		removeError(){
+			if (!this.uploadBox.querySelectorAll(`.${this.classes.error}`).length) {
+				this.loaderCover.classList.remove(this.classes.error);
+			};
+		};
+
 		appendFileToBox(name, type, src, showPreview){
 			let coverEl = document.createElement("div");
 					coverEl.classList.add('files-cover');
@@ -1012,7 +1018,7 @@ window.addEventListener("DOMContentLoaded", function() {
 			let innerCover = document.createElement("div");
 					innerCover.classList.add('inner');
 
-			if (showPreview) {
+			if (this.acceptedFileTypes.indexOf(type) >= 0) {
 				switch (type) {
 					case "png":
 					case "jpg":
