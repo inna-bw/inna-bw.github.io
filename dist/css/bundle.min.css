@@ -1485,6 +1485,9 @@ ul > li {
 .button.button-secondary-transparent.disabled {
   background-color: transparent
 }
+.button.button-secondary-transparent.no-borders {
+  border-color: transparent
+}
 .button-white-transparent {
   background-color: transparent;
   color: #d7d6d6;
@@ -1528,6 +1531,10 @@ ul > li {
 .button.button-square:hover {
   border-color: #ababab;
   color: #fff
+}
+.button.button-block {
+  display: block;
+  width: 100%
 }
 :root {
   --large-title-font-size: 48px;
@@ -2596,7 +2603,11 @@ ul > li {
   text-align: left
 }
 .form .form-group {
-  position: relative
+  position: relative;
+  text-align: left
+}
+.form .form-group .info-helper {
+  color: #fff
 }
 .form .form-group .label {
   text-align: left;
@@ -2608,8 +2619,56 @@ ul > li {
 .form .form-group sup {
   color: #ec1e24
 }
+.form .form-group .input-helper {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 2px);
+  font-size: 12px;
+  text-align: right;
+  max-width: 50%
+}
+.form .form-group .alert {
+  position: absolute;
+  right: 0;
+  top: 10px;
+  font-size: 12px;
+  max-width: 50%;
+  color: #ec1e24;
+  text-align: right;
+  -webkit-transform: translateY(-10px);
+  -ms-transform: translateY(-10px);
+  transform: translateY(-10px);
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.form .form-group .alert.top-position {
+  top: auto;
+  bottom: calc(100% + 2px)
+}
 .form .form-group.spaced {
   margin: 24px 0
+}
+.form .form-group.error .alert {
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  opacity: 1
+}
+.form .form-group.error .input,
+.form .form-group.error .label-file,
+.form .form-group.error .select,
+.form .form-group.error .textarea,
+.form .form-group.error select,
+.form .form-group.error textarea {
+  border-color: #ec1e24
+}
+.form .form-group.success .input,
+.form .form-group.success .select,
+.form .form-group.success .textarea,
+.form .form-group.success select,
+.form .form-group.success textarea {
+  border-color: #27ae60
 }
 .form .input,
 .form select,
@@ -2689,21 +2748,24 @@ ul > li {
   transition: .2s;
   margin: var(--files-list-gap) 0
 }
-.form .load-cover .files-cover.error-cover {
-  background-image: url(../img/picture-broken.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 20px;
-  font-size: var(--font-size);
+.form .load-cover .files-cover.error {
   border: 1px solid #ec1e24
 }
-.form .load-cover .files-cover.error-cover .error-text {
+.form .load-cover .files-cover.error img {
   position: absolute;
-  bottom: 5px;
-  left: 5px;
-  right: 5px;
-  line-height: 1.2;
-  font-size: 12px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 32px;
+  width: 32px;
+  margin: auto;
+  opacity: .2;
+  -webkit-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0)
+}
+.form .load-cover .files-cover.error .file-name {
   color: #ec1e24
 }
 .form .load-cover .files-cover .inner {
@@ -2787,11 +2849,74 @@ ul > li {
 }
 .form .label-file.hover,
 .form .label-file:hover {
-  border-color: #ec1e24
+  border-color: #fff
 }
 .form .label-file.hover b,
 .form .label-file:hover b {
   text-decoration: underline
+}
+.form .checkbox-group {
+  position: relative
+}
+.form .checkbox-group [type=checkbox] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  width: auto;
+  opacity: 0
+}
+.form .checkbox-group [type=checkbox]:checked ~ .checkbox-label:before {
+  border-color: #ec1e24;
+  background-color: #ec1e24
+}
+.form .checkbox-group [type=checkbox]:checked ~ .checkbox-label:after {
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1);
+  opacity: 1
+}
+.form .checkbox-group .checkbox-label {
+  cursor: pointer;
+  position: relative;
+  padding-left: 40px;
+  display: block
+}
+.form .checkbox-group .checkbox-label:before {
+  content: "";
+  height: 24px;
+  width: 24px;
+  border: 2px solid #969696;
+  background-color: transparent;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 2px;
+  left: 0;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.form .checkbox-group .checkbox-label:after {
+  content: "\e922";
+  font-family: icomoon;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  position: absolute;
+  top: 6px;
+  left: 4px;
+  -webkit-transition: .2s;
+  transition: .2s;
+  font-size: 12px;
+  -webkit-transform: scale(.7);
+  -ms-transform: scale(.7);
+  transform: scale(.7);
+  opacity: 0
+}
+.form .checkbox-group .checkbox-label:hover:before {
+  border-color: #fff
+}
+.form .checkbox-group.error .checkbox-label:before {
+  border-color: #ec1e24
 }
 .form.inline-form {
   display: -webkit-box;
@@ -4460,6 +4585,18 @@ ul > li {
 .icon-minus:before {
   content: "\e920"
 }
+.icon-check:before {
+  content: "\e922"
+}
+.icon-input-success:before {
+  content: "\e923"
+}
+.icon-input-error:before {
+  content: "\e924"
+}
+.icon-question:before {
+  content: "\e925"
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -5728,15 +5865,20 @@ ul > li {
   margin-right: 24px
 }
 .info-helper {
-  height: 24px;
-  width: 24px;
+  height: 18px;
+  width: 18px;
   display: inline-block;
   vertical-align: middle;
   font-size: 0;
-  color: #ec1e24
+  color: #ec1e24;
+  margin-left: 5px
 }
 .info-helper .icon {
-  font-size: 24px
+  font-size: 18px
+}
+.info-helper .icon:before {
+  position: relative;
+  top: -1px
 }
 :root {
   --large-title-font-size: 48px;
