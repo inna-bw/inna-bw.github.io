@@ -884,163 +884,470 @@ document.addEventListener('DOMContentLoaded', function(){
 		dropdown.init();
 	});
 });
-function handleFiles(){
-	let files = this.files;
-	let loaderMainWrap = null;
-	let uploadBox = this.parentElement.querySelectorAll('[data-upload]')[0];
-	if (uploadBox.classList.contains('single-load')) {
-		oldPhoto = uploadBox.children;
-		for (var i = 0; i < oldPhoto.length; i++) {
-			oldPhoto[i].remove();
-		}
-	}
-	for (var i = 0; i < files.length; i++) {
-		getBase64(files[i], uploadBox);
-	}
-}
+// fileLoader
+window.addEventListener("DOMContentLoaded", function() {
 
-function removeFiles(){
-	this.remove();
-	window.tooltipHint.hide();
-}
+	class FileLoader {
+		loaderCover = null;
+		acceptedFileTypes = [];
 
-function hasClass(element, className) {
-	return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
-}
+		inputLabel = null;
+		inputFile = null;
+		uploadBox = null;
 
-function getBase64(file, loaderMainWrap) {
-	var reader = new FileReader();
-	reader.readAsDataURL(file);
-	if (file.type.startsWith("image/")) {
-		reader.onload = function () {
-			appendImage(file.name, reader.result, loaderMainWrap);
+		loadedSrc = {
+			pdf: 'img/file-load.svg',
+			error: 'img/picture-broken.svg'
 		};
-		reader.onerror = function (error) {
-			console.error('Error: ', error);
+
+		classes = {
+			error: 'error',
+			success: 'success'
 		};
-	} else if (file.type.startsWith("video/")) {
-		reader.onload = function () {
-			appendVideo(file.name, reader.result, loaderMainWrap);
+
+		constructor(loaderCover) {
+			this.loaderCover = loaderCover;
+			if (loaderCover.dataset.loader) {
+				this.acceptedFileTypes = loaderCover.dataset.loader.split(",");
+				this.inputLabel = loaderCover.querySelector('[data-label]');
+				this.inputFile = loaderCover.querySelector('[data-file]');
+				this.uploadBox = loaderCover.querySelector('[data-upload]');
+			}
+
+			if (this.inputFile) {
+				this.inputFile.addEventListener("change", this.handleFiles.bind(this), false)
+			}
 		};
-		reader.onerror = function (error) {
-			appendError(file.name,'load', loaderMainWrap);
+
+		hasClass(element, className) {
+			return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
 		};
-	} else {
-		appendError(file.name, 'type', loaderMainWrap);
-	};
-};
 
-function appendImage(name, src, loaderMainWrap){
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let innerCover = document.createElement("div");
-			innerCover.classList.add('inner');
-	let imgEl = document.createElement('img');
-			imgEl.src = src;
-	innerCover.appendChild(imgEl);
-	coverEl.appendChild(innerCover);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+		handleFiles(){
+			let files = this.inputFile.files;
+			let uploadBox = this.uploadBox;
 
-function appendVideo(name, src, loaderMainWrap){
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let innerCover = document.createElement("div");
-			innerCover.classList.add('inner');
-	let videoEl = document.createElement('video')
-			videoEl.src = src
-			videoEl.controls = true;
-	innerCover.appendChild(videoEl);
-	coverEl.appendChild(innerCover);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+			if (!this.inputFile.getAttribute('multiple')) {
+				this.removeOldFiles();
+			};
 
-function appendError(name, type, loaderMainWrap){
-	let errorStatus = {
-		load: 'Loadind error',
-		type: 'Only for .png, .jpg, .mp4'
-	}
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('error-cover');
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let textEl = document.createElement("div");
-			textEl.classList.add('error-text');
-			textEl.appendChild(document.createTextNode(errorStatus[type]));
-	coverEl.appendChild(textEl);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+			for (var i = 0; i < files.length; i++) {
+				this.getBase64(files[i]);
+			};
+		};
 
-document.querySelectorAll('[data-loader]').forEach(function(loaderCover, i){
-	let uploadBox = loaderCover.querySelectorAll('[data-upload]')[0];
-	coverChildren = loaderCover.children;
-	for (var i = 0; i < coverChildren.length; i++) {
-		if (coverChildren[i].hasAttribute('data-label')) {
-			let fileLoader = coverChildren[i];
-					fileLoader.ondragover = function (e) {
-						e.preventDefault();
-						fileLoader.classList.add('hover')
-					};
-					fileLoader.ondragend = function (e) {
-						e.preventDefault();
-						fileLoader.classList.remove('hover');
-					};
-					fileLoader.ondrop = function (e) {
-						e.preventDefault();
-						fileLoader.classList.remove('hover');
-						for (var i = 0; i < e.dataTransfer.files.length; i++) {
-							getBase64(e.dataTransfer.files[i], uploadBox);
-						}
+		removeOldFiles(){
+			let oldFiles = this.uploadBox.children;
+			for (var i = 0; i < oldFiles.length; i++) {
+				oldFiles[i].remove();
+			};
+		};
+
+		removeFile(){
+			let fileToRemove = this.file;
+			let _this = this._this;
+			let uploadBox = this._this.uploadBox;
+			let loaderCover = this._this.loaderCover;
+
+			let removedFileName = fileToRemove.querySelector('.file-name').innerHTML;
+			fileToRemove.remove();
+			if (window.tooltipHint) {
+				window.tooltipHint.hide();
+			};
+
+			let files = Array.prototype.slice.call(_this.inputFile.files);
+			if (files) {
+				for (let i = 0; i < files.length; i++) {
+					const file = files[i];
+					if (removedFileName == file.name) {
+						files.splice(i, 1);
 					}
-		} else if (coverChildren[i].hasAttribute('data-file')) {
-			let inputElement = coverChildren[i];
-					inputElement.addEventListener("change", handleFiles, false);
-		} else {
-			appendError('type', uploadBox);
-		}
+				}
+				const newFileList = new DataTransfer();
+				files.forEach(file => newFileList.items.add(file));
+				_this.inputFile.files = newFileList.files;
+			};
+
+			if (!uploadBox.querySelectorAll(`.${this._this.classes.error}`).length) {
+				loaderCover.classList.remove(this._this.classes.error);
+			};
+		};
+
+		getBase64(file) {
+			let reader = new FileReader();
+					reader.readAsDataURL(file);
+			let uploadBox = this.uploadBox;
+			let fileType = file.name.split('.').pop();
+
+			if (this.acceptedFileTypes.indexOf(fileType) >= 0) {
+				this.appendFile(file.name, fileType, reader);
+			} else {
+				this.appendError(file.name, fileType, reader);
+			};
+		};
+
+		appendFile(name, type, reader){
+			if (!name || !type || !reader) return;
+			let showPreview = type == 'jpg' || type == 'png' || type == 'mp4';
+			reader.onload = function () {
+				this.appendFileToBox(name, type, reader.result, showPreview);
+			}.bind(this);
+			reader.onerror = function (error) {
+				this.loaderCover.classList.add(this.classes.error);
+				console.error('Error: ', error);
+			}.bind(this);
+		};
+
+		appendError(name, type, reader){
+			if (!name || !type || !reader) return;
+			this.loaderCover.classList.add(this.classes.error);
+			this.appendFileToBox(name, type, reader.result, false);
+			console.error('Error: ', type + ' type is not correct');
+		};
+
+		appendFileToBox(name, type, src, showPreview){
+			let coverEl = document.createElement("div");
+					coverEl.classList.add('files-cover');
+					coverEl.setAttribute('data-tooltip', 'Click to delete')
+			let innerCover = document.createElement("div");
+					innerCover.classList.add('inner');
+
+			if (showPreview) {
+				switch (type) {
+					case "png":
+					case "jpg":
+						let imgEl = document.createElement('img');
+								imgEl.src = src;
+						innerCover.appendChild(imgEl);
+						break;
+					case "mp4":
+						let videoEl = document.createElement('video');
+								videoEl.src = src;
+								videoEl.controls = true;
+						break;
+					case "pdf":
+						let pdfEl = document.createElement('img');
+								pdfEl.src = this.loadedSrc.pdf;
+						innerCover.appendChild(pdfEl);
+						break;
+					default:
+						let errorEl = document.createElement('img');
+								errorEl.src = this.loadedSrc.error;
+						innerCover.appendChild(errorEl);
+						coverEl.classList.add('error');
+				};
+			} else {
+				let errorEl = document.createElement('img');
+						errorEl.src = this.loadedSrc.error;
+				innerCover.appendChild(errorEl);
+				coverEl.classList.add('error');
+			};
+
+			coverEl.appendChild(innerCover);
+			let nameEl = document.createElement("div");
+					nameEl.classList.add('file-name');
+					nameEl.appendChild(document.createTextNode(name));
+			coverEl.appendChild(nameEl);
+			coverEl.addEventListener("click", this.removeFile.bind({file: coverEl, _this: this}), false);
+			if (this.uploadBox) {
+				this.uploadBox.appendChild(coverEl);
+			}
+		};
+
+	};
+
+	let fileLoaderCovers = document.querySelectorAll('[data-loader]');
+
+	for (i = 0; i < fileLoaderCovers.length; i++) {
+		const fileLoader = new FileLoader(fileLoaderCovers[i]);
 	}
-})
 
-// delete loaded files
-document.querySelectorAll('.files-cover').forEach(function(loaderCover, i){
-	loaderCover.addEventListener("click", removeFiles, false);
-})
+});
+// validation
+window.addEventListener("DOMContentLoaded", function() {
 
+	class ValidationForm {
 
+		classes = {
+			success: 'success',
+			error: 'error',
+			focused: 'focused',
+			ignored: 'ignored'
+		}
 
+		form = null;
+		formInputs = null;
+		formTextareas = null;
+		formSelects = null;
+		formCheckboxes = null;
+		formFileInputs = null;
 
+		constructor(form) {
+			this.form = form;
+			this.formInputs = form.querySelectorAll(`.input:not(.${this.classes.ignored})`);
+			this.formTextareas = form.querySelectorAll(`.textarea:not(.${this.classes.ignored})`);
+			this.formSelects = form.querySelectorAll(`.select:not(.${this.classes.ignored})`);
+			this.formCheckboxes = form.querySelectorAll(`.checkbox:not(.${this.classes.ignored})`);
+			this.formFileInputs = form.querySelectorAll(`.file:not(.${this.classes.ignored})`);
 
+			this.form.addEventListener('submit', (event) => {
+				this.onFormSubmit(event);
+			});
 
+			this.form.addEventListener('reset', (event) => {
+				this.onFormReset(event);
+			});
+			
+		};
 
+		onFormSubmit(event){
+			let form = this.form;
 
+			let formInputs = this.formInputs;
+			let formTextareas = this.formTextareas;
+			let formSelects = this.formSelects;
+			let formFileInputs = this.formFileInputs;
+			let formCheckboxes  = this.formCheckboxes;
 
+			if (formInputs && formInputs.length) {
+				for (let i = 0; i < formInputs.length; i++) {
+					let input = formInputs[i];
+					this.validateByTextLength(input);
+				};
+			};
 
+			if (formTextareas && formTextareas.length) {
+				for (let t = 0; t < formTextareas.length; t++) {
+					let textArea = formTextareas[t];
+					this.validateByTextLength(textArea);
+				};
+			};
 
+			if (formSelects && formSelects.length) {
+				for (let s = 0; s < formSelects.length; s++) {
+					let formSelect = formSelects[s];
+					this.validateBySelectOptions(formSelect);
+				};
+			};
 
+			if (formFileInputs && formFileInputs.length) {
+				for (let s = 0; s < formFileInputs.length; s++) {
+					let formFileInput = formFileInputs[s];
+					this.validateByFileUpload(formFileInput);
+				};
+			};
 
+			if (formCheckboxes && formCheckboxes.length) {
+				for (let s = 0; s < formCheckboxes.length; s++) {
+					let formCheckbox = formCheckboxes[s];
+					this.validateCheckbox(formCheckbox);
+				};
+			};
+
+			// callback
+			if (window.onContactFormSubmit) {
+				window.onContactFormSubmit(this);
+			};
+		};
+
+		onFormReset(event){
+			let allFormGroup = this.form.querySelectorAll('.form-group');
+			let allFormUploads = this.form.querySelectorAll('.files-cover');
+			let allChartCounters = this.form.querySelectorAll('.chart-counter');
+			for (let i = 0; i < allFormGroup.length; i++) {
+				allFormGroup[i].classList.remove(this.classes.success, this.classes.error, this.classes.focused)
+			};
+			if (allFormUploads && allFormUploads.length) {
+				for (var i = 0; i < allFormUploads.length; i++) {
+					allFormUploads[i].remove();
+				};
+			};
+			if (allChartCounters && allChartCounters.length) {
+				for (var i = 0; i < allChartCounters.length; i++) {
+					allChartCounters[i].innerHTML = '0';
+				};
+			};
+		};
+
+		setFocusedClass(inputParent, hasValue){
+			if (hasValue) {
+				inputParent.classList.add(this.classes.focused);
+			} else {
+				inputParent.classList.remove(this.classes.focused);
+			}
+		};
+
+		onInputKeyDown(){
+			if (!this.event || !this.form) return;
+			let event = this.event;
+			let form = this.form;
+			let input = event.srcElement.activeElement;
+			let inputType = input.classList.contains('phone') ? 'phone' : input.classList.contains('email') ? 'email' : '';
+
+			const waitForFinalEvent = (function(){
+				var timers = {};
+				return function (callback, ms, uniqueId) {
+					if (!uniqueId) {
+						uniqueId = "Don't call this twice without a uniqueId";
+					}
+					if (timers[uniqueId]) {
+						clearTimeout (timers[uniqueId]);
+					}
+					timers[uniqueId] = setTimeout(callback, ms);
+				};
+			})();
+
+			waitForFinalEvent(function(){
+				form.setFocusedClass(input.parentElement, input.value.length);
+				switch (inputType) {
+					case 'phone':
+						form.setPhoneMask(event, input);
+						break;
+					case 'email':
+						form.validateEmail(event, input);
+						break;
+					default:
+						// for textarea and inputs text
+						form.setChartsCount(input.value.length, input);
+						form.validateByTextLength(input);
+				}
+			}, 5);
+		};
+
+		onCheckboxChange(){
+			this._this.validateCheckbox(this.checkbox);
+		};
+
+		isValidEmail(email){
+			let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			return re.test(email);
+		};
+
+		setValidationClass(element, validationSuccess){
+			if (validationSuccess) {
+				element.classList.add(this.classes.success);
+				element.classList.remove(this.classes.error);
+			} else {
+				element.classList.add(this.classes.error);
+				element.classList.remove(this.classes.success);
+			}
+		};
+
+		setChartsCount(valLength, element){
+			if (!element || !element.nextElementSibling) return;
+			let counterEl = element.nextElementSibling.querySelector('.chart-counter');
+			if (!counterEl) return;
+			counterEl.innerText = valLength;
+		};
+
+		setPhoneMask(event, input){
+			let keyCode = event.keyCode;
+			let pos = input.selectionStart;
+			if (pos < 3) event.preventDefault();
+			let matrix = input.getAttribute('placeholder') ? input.getAttribute('placeholder') : '+380 (___) ___ __ _',
+					i = 0,
+					def = matrix.replace(/\D/g, ""),
+					val = input.value.replace(/\D/g, ""),
+					new_value = matrix.replace(/[_\d]/g, function(a) {
+							return i < val.length ? val.charAt(i++) || def.charAt(i) : a
+					});
+			i = new_value.indexOf("_");
+			if (i != -1) {
+				i < 5 && (i = 3);
+				new_value = new_value.slice(0, i);
+			}
+			let reg = matrix.substr(0, input.value.length).replace(/_+/g,
+					function(a) {
+							return "\\d{1," + a.length + "}"
+					}).replace(/[+()]/g, "\\$&");
+			reg = new RegExp("^" + reg + "$");
+			if (!reg.test(input.value) || input.value.trim().length < 5 || keyCode > 47 && keyCode < 58) {
+				input.value = new_value;
+			}
+			if (event.type == "blur" && input.value.trim().length < 5) {
+				input.value = "";
+			}
+			this.setValidationClass(input.parentElement, input.value.length == matrix.length);
+		};
+
+		validateEmail(event, input){
+			this.setValidationClass(input.parentElement, this.isValidEmail(input.value.trim()));
+		};
+
+		validateByTextLength(field){
+			let minlength = parseInt(field.dataset.minlength) || 2;
+			this.setValidationClass(field.parentElement,field.value.length >= minlength);
+		};
+
+		validateBySelectOptions(select){
+			let defaultOption = select.querySelector('[disabled]');
+			this.setValidationClass(select.parentElement,select.value !== defaultOption.innerHTML);
+		};
+
+		validateByFileUpload(fileInput){
+			let inputHasFiles = fileInput.files.length;
+			this.setValidationClass(fileInput.parentElement, inputHasFiles);
+		};
+
+		validateCheckbox(checkbox) {
+			let isChecked = checkbox.checked;
+			this.setValidationClass(checkbox.parentElement, isChecked);
+		};
+
+		onSelectChange(){
+			let event = this;
+			let select = event.srcElement.activeElement;
+			validateBySelectOptions(select);
+		};
+
+		init() {
+			let formInputs = this.form.querySelectorAll('.input');
+			let formTextareas = this.form.querySelectorAll('.textarea');
+			let formSelects = this.form.querySelectorAll('.select');
+			let formFileInputs = this.form.querySelectorAll('.file');
+			let formCheckboxes = this.form.querySelectorAll('.checkbox');
+
+			if (formInputs && formInputs.length) {
+				for (let i = 0; i < formInputs.length; i++) {
+					let input = formInputs[i];
+					this.setFocusedClass(input.parentElement, input.value.length);
+					input.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
+				};
+			};
+
+			if (formTextareas && formTextareas.length) {
+				for (let t = 0; t < formTextareas.length; t++) {
+					let textArea = formTextareas[t];
+					this.setFocusedClass(textArea.parentElement, textArea.value.length);
+					textArea.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
+				};
+			};
+
+			if (formSelects && formSelects.length) {
+				for (let s = 0; s < formSelects.length; s++) {
+					let formSelect = formSelects[s];
+					this.setFocusedClass(formSelect.parentElement, formSelect.value.length);
+					formSelect.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
+				};
+			};
+
+			if (formCheckboxes && formCheckboxes.length) {
+				for (let s = 0; s < formCheckboxes.length; s++) {
+					let formCheckbox = formCheckboxes[s];
+					this.setFocusedClass(formCheckbox.parentElement, formCheckbox.checked);
+					formCheckbox.addEventListener('change', this.onCheckboxChange.bind({_this: this, checkbox: formCheckbox}), {passive: true});
+				};
+			};
+		};
+	};
+
+	let allValidateForms = document.querySelectorAll('.validate-form');
+
+	for (i = 0; i < allValidateForms.length; i++) {
+		const newForm = new ValidationForm(allValidateForms[i]);
+		newForm.init();
+	};
+});
 
 // header scroll animation
 document.addEventListener('DOMContentLoaded', function(){
