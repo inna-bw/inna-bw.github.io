@@ -2746,7 +2746,8 @@ ul > li {
   cursor: pointer;
   -webkit-transition: .2s;
   transition: .2s;
-  margin: var(--files-list-gap) 0
+  margin: var(--files-list-gap) 0;
+  border: 1px solid #969696
 }
 .form .load-cover .files-cover.error {
   border: 1px solid #ec1e24
