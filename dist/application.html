@@ -219,7 +219,98 @@
 			</div>
 		</div>
 		<!-- / breadcrumbs -->
-	
+		<section class="section collapsed-top">
+			<div class="container">
+				<!-- support -->
+				<form action="javascript:void(0)" class="form validate-form middle-size">
+					<h2 class="section-title">Personal information</h2>
+					<div class="divider"></div>
+					<div class="form-helpers">
+						Fields marked with an asterisk (<span class="color-primary">*</span>) are required.
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<div class="form-group spaced-top">
+								<div class="alert">Min 2 characters</div>
+								<label for="firstName" class="label">First name <sup>*</sup></label>
+								<input type="text" class="input" id="firstName" data-minlength="2">
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<div class="form-group spaced-top">
+								<div class="alert">Min 2 characters</div>
+								<label for="lastName" class="label">Last name <sup>*</sup></label>
+								<input type="text" class="input" id="lastName" data-minlength="2">
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group spaced">
+						<div class="alert">Enter the valid email</div>
+						<label for="email" class="label">Email <sup>*</sup></label>
+						<input type="email" class="input email" id="email">
+						<!-- <div class="input-helper">Check for the "@" symbol, the domain name format, the absence of special charts</div> -->
+					</div>
+					<div class="form-group spaced">
+						<label for="portfolio" class="label">Portfolio Link (Optional)
+							<span data-tooltip="for example, behance or github" class="info-helper">
+								<i class="icon icon-question"></i>
+							</span>
+						</label>
+						<input type="text" class="input ignored" id="portfolio">
+					</div>
+					<div class="form-group spaced">
+						<div class="alert">Min 2 characters</div>
+						<label for="message" class="label">Cover letter <sup>*</sup></label>
+						<textarea name="message" id="message" class="textarea" data-minlength="2"maxlength="100"></textarea>
+						<div class="input-helper"><span class="chart-counter">0</span>/100</div>
+					</div>
+					<!-- file -->
+					<div class="form-group spaced load-cover" id="addFilesLoader" data-loader="pdf">
+						<div class="alert">Upload your CV with .pdf format</div>
+						<span class="label">
+							Your CV
+							<span data-tooltip="Only for .pdf" class="info-helper">
+								<i class="icon icon-question"></i>
+							</span>
+						</span>
+						<label id="addFileLoader" class="label-file" for="addObjFiles" data-label>
+							<div class="caption">
+								<img src="img/file-load.svg" alt="">
+								<div class="text">Drag n Drop here</div>
+								<div class="text">or <b class="color-primary">Browse</b></div>
+							</div>
+							<div class="input-helper">Only for .pdf</div>
+						</label>
+						<input type="file" id="addObjFiles" data-file class="file">
+						<div data-upload></div>
+					</div>
+					<!-- / file -->
+					<div class="form-group spaced checkbox-group">
+						<input type="checkbox" class="checkbox input" id="policy">
+						<label for="policy" class="checkbox-label">
+							I have read, understand and accept the content of then <a href="policy.html" class="primary-link">Privacy Police</a> and consent to the processing of my data as part of this application.<sup>*</sup>
+						</label>
+					</div>
+					<!-- buttons -->
+					<div class="row">
+						<div class="col-xs-12 col-sm-6">
+							<button type="reset" role="button" class="button button-grey button-block">
+								<span class="text">Clear application</span>
+							</button>
+						</div>
+						<div class="col-xs-12 col-sm-6">
+							<button type="submit" role="button" class="button button-primary button-block">
+								<span class="text">Submit application</span>
+							</button>
+						</div>
+					</div>
+					<div class="form-helpers spaced-top">
+						Best Way does not discriminate on the basis of race, sex, color, religion, age, national origin, marital status, disability, veteran status, genetic information, sexual orientation, gender identity or any other reason prohibited by law in provision of employment opportunities and benefits.
+					</div>
+				</form>
+			</div>
+		</section>
 	</main>
 
 	<!-- subscribe-section -->

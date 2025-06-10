@@ -223,6 +223,7 @@
 							<div class="spaced-top">
 								<form action="javascript:void(0)" class="form validate-form" id="searchCaseForm">
 								<div class="form-group">
+									<div class="alert top-position">Min 2 characters</div>
 									<input type="text" class="input" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search">
 								</div>
 							</form>
@@ -456,31 +457,37 @@
 		<div class="info-box">
 			<h2 class="section-subtitle">Still need help?</h2>
 			<!-- support -->
-			<form action="#" class="form validate-form small-size">
-				<div class="form-title">Submit a request</div>
+			<form action="javascript:void(0)" class="form validate-form small-size">
 				<div class="form-helpers">
 					Fields marked with an asterisk (<span class="color-primary">*</span>) are required.
 				</div>
 				<div class="form-group spaced">
+					<div class="alert">Min 2 characters</div>
 					<label for="name" class="label">Name <sup>*</sup></label>
-					<input type="text" class="input" id="name">
+					<input type="text" class="input" id="name" data-minlength="2">
+					<!-- <div class="input-helper">Min 2 characters</div> -->
 				</div>
 				<div class="form-group spaced">
+					<div class="alert">Enter the valid email</div>
 					<label for="email" class="label">Email <sup>*</sup></label>
-					<input type="text" class="input" id="email">
+					<input type="text" class="input email" id="email">
+					<!-- <div class="input-helper">Check for the "@" symbol, the domain name format, the absence of special charts</div> -->
 				</div>
 				<div class="form-group spaced">
+					<div class="alert">Min 2 characters</div>
 					<label for="message" class="label">Description <sup>*</sup></label>
-					<textarea name="message" id="message" class="textarea"></textarea>
+					<textarea name="message" id="message" class="textarea" data-minlength="2"maxlength="100"></textarea>
+					<div class="input-helper"><span class="chart-counter">0</span>/100</div>
 				</div>
 				<div class="form-helpers">
 					Please enter the details of your request. A member of our support staff will respond as soon as possible.
 				</div>
-				<div class="form-group spaced load-cover" id="addFilesLoader" data-loader>
+				<div class="form-group spaced load-cover" id="addFilesLoader" data-loader="png,jpg,mp4">
+					<div class="alert">Upload only .png, .jpg, .mp4</div>
 					<span class="label">
 						Attachments (Optional)
 						<span data-tooltip="Only for .png, .jpg, .mp4" class="info-helper">
-							<i class="icon icon-attention"></i>
+							<i class="icon icon-question"></i>
 						</span>
 					</span>
 					<label id="addFileLoader" class="label-file" for="addObjFiles" data-label>
@@ -489,17 +496,32 @@
 							<div class="text">Drag n Drop here</div>
 							<div class="text">or <b class="color-primary">Browse</b></div>
 						</div>
+						<div class="input-helper">Only for .png, .jpg, .mp4</div>
 					</label>
-					<input type="file" id="addObjFiles" multiple data-file>
+					<input type="file" id="addObjFiles" multiple="true" data-file class="ignored file">
+					<!-- accept="image/png, image/jpeg" -->
 					<div data-upload></div>
 				</div>
-				<div class="form-helpers">
-					You can also go to our <a href="#" class="primary-link">Discord</a> where you can find answers to common questions, as well as the option to submit your query to our Support Team or ask our Community.
+				<div class="form-group spaced checkbox-group">
+					<input type="checkbox" class="checkbox input" id="policy">
+					<label for="policy" class="checkbox-label">
+						I have read, understand and accept the content of then <a href="policy.html" class="primary-link">Privacy Police</a> and consent to the processing of my data as part of this application.<sup>*</sup>
+					</label>
 				</div>
-				<div class="form-buttons">
-					<button type="submit" role="button" class="button button-primary">
-						<span class="text">Submit</span>
-					</button>
+				<div class="row">
+					<div class="col-xs-12 col-sm-6">
+						<button type="reset" role="button" class="button button-grey button-block">
+							<span class="text">Clear</span>
+						</button>
+					</div>
+					<div class="col-xs-12 col-sm-6">
+						<button type="submit" role="button" class="button button-primary button-block">
+							<span class="text">Submit a request</span>
+						</button>
+					</div>
+				</div>
+				<div class="form-helpers spaced-top">
+					You can also go to our <a href="#" class="primary-link">Discord</a> where you can find answers to common questions, as well as the option to submit your query to our Support Team or ask our Community.
 				</div>
 			</form>
 		</div>
