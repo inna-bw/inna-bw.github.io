@@ -65,12 +65,6 @@
 								<a href="#" lang="uk" class="item" role="link">
 									<span class="text">Ukraine</span>
 								</a>
-								<a href="#" lang="esp" class="item" role="link">
-									<span class="text">Español</span>
-								</a>
-								<a href="#" lang="de" class="item" role="link">
-									<span class="text">Deutch</span>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -210,21 +204,17 @@
 	<main class="page-main inner-page" id="pageMain">
 		<!-- banner -->
 		<div class="banner-section banner">
-			<div class="news-banner">
-				<div class="image-cover">
-					<img src="img/top-banner.png" alt="mow" class="main-image">
-				</div>
-			</div>
+			<img src="img/top-banner.png" alt="mow" class="main-image banner-image">
 			<div class="banner-text">
 				<div class="container">
 					<div class="verticaly-middle">
 						<div class="inner">
 							<h1>Welcome to <br>Best Way Support</h1>
 							<div class="spaced-top">
-								<form action="javascript:void(0)" class="form validate-form" id="searchCaseForm">
+								<form action="javascript:void(0)" class="form" id="searchCaseForm">
 								<div class="form-group">
 									<div class="alert top-position">Min 2 characters</div>
-									<input type="text" class="input" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search">
+									<input type="text" class="input filled" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search">
 								</div>
 							</form>
 							</div>
@@ -545,7 +535,8 @@
 			<div class="form-cover">
 				<form action="javascript:void()" class="form validate-form inline-form">
 					<div class="form-group">
-						<input type="text" placeholder="Enter Your Email" class="input">
+						<div class="alert">Enter the valid email</div>
+						<input type="email" placeholder="Enter Your Email" class="input email">
 					</div>
 					<div class="button-group">
 						<button class="button button-grey-transparent" type="submit">

@@ -20,11 +20,12 @@
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -33,12 +34,14 @@
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -46,13 +49,14 @@
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 *,
@@ -263,11 +267,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -276,12 +281,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -289,13 +296,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -320,11 +328,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -333,12 +342,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -346,13 +357,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -774,11 +786,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -787,12 +800,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -800,13 +815,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 [data-accordeon-open] .text.opened {
@@ -905,11 +921,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -918,12 +935,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -931,13 +950,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .article-preview {
@@ -1015,11 +1035,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1028,12 +1049,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1041,13 +1064,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .banner-cover {
@@ -1148,9 +1172,98 @@ ul > li {
 .section-banner .social a:hover {
   opacity: 1
 }
+.banner-section {
+  position: relative;
+  min-height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
+}
+.banner-section:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-color: rgba(0,0,0,.5)
+}
+.banner-section .banner-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: right center;
+  object-position: right center;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0)
+}
+.banner-section .banner-text {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 2;
+  padding: 50px 0
+}
+.banner-section .banner-text h1 {
+  line-height: 1.2
+}
+.banner-section .banner-text img {
+  max-width: 100%
+}
+.banner-section .banner-text .inner {
+  max-width: 50%
+}
+.banner-section .container {
+  height: 100%
+}
+@media (max-width:1440px) {
+  .banner-section {
+    min-height: 300px
+  }
+  .banner-section .banner-text .inner {
+    max-width: 60%
+  }
+}
+@media (max-width:1200px) {
+  .banner-section .banner-text .inner {
+    max-width: 80%
+  }
+}
 @media (max-width:768px) {
   .banner-cover {
     height: calc(100vh - 70px)
+  }
+  .banner-section {
+    min-height: auto
+  }
+  .banner-section .banner-text .inner {
+    max-width: 100%
+  }
+  .banner-section .banner-text .theme-text {
+    max-width: 50%;
+    margin: 16px auto 0
+  }
+}
+@media (max-width:768px) {
+  .banner-section .banner-text .theme-text {
+    max-width: 100%
   }
 }
 :root {
@@ -1175,11 +1288,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1188,12 +1302,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1201,13 +1317,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .breadcrumbs {
@@ -1285,6 +1402,21 @@ ul > li {
 .breadcrumbs-list a.text:hover {
   color: #ec1e24
 }
+@media (max-width:1200px) {
+  .breadcrumbs {
+    padding: 32px 0
+  }
+}
+@media (max-width:768px) {
+  .breadcrumbs {
+    padding: 24px 0
+  }
+}
+@media (max-width:420px) {
+  .breadcrumbs {
+    padding: 16px 0
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -1307,11 +1439,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1320,12 +1453,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1333,13 +1468,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .button {
@@ -1558,11 +1694,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1571,12 +1708,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1584,13 +1723,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .career-line {
@@ -1724,11 +1864,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1737,12 +1878,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1750,13 +1893,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -1830,6 +1974,22 @@ ul > li {
 .career-preview:hover:after {
   height: 6px
 }
+@media (max-width:1440px) {
+  .career-preview .detail {
+    padding-left: 32px;
+    padding-right: 32px
+  }
+}
+@media (max-width:1440px) {
+  :root {
+    --careers-list-columns: 2
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --careers-list-columns: 1
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -1852,11 +2012,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1865,12 +2026,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -1878,13 +2041,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .contact-box {
@@ -1961,6 +2125,14 @@ ul > li {
   color: #d7d6d6;
   font-size: var(--normal-text-font-size)
 }
+@media (max-width:1440px) {
+  .contact-info .icons-list .item {
+    padding: 0
+  }
+  .contact-info .icons-list .item img {
+    height: 90px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -1983,11 +2155,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -1996,12 +2169,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2009,13 +2184,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .documentation-links-list li {
@@ -2110,11 +2286,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2123,12 +2300,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2136,13 +2315,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .dropdown {
@@ -2278,11 +2458,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2291,12 +2472,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2304,13 +2487,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .engine-preview {
@@ -2368,11 +2552,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2381,12 +2566,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2394,24 +2581,28 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .faq-list .item .title {
   font-weight: 900;
-  font-size: var(--h1-font-size);
+  font-size: var(--h2-font-size);
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   color: #fff;
   text-transform: uppercase
 }
 .faq-list .accordeon {
   border-bottom: 1px solid #969696
+}
+.faq-list .accordeon .accordeon-title {
+  padding: 8px 0
 }
 .faq-list .accordeon .accordeon-title:after {
   color: #ec1e24
@@ -2441,11 +2632,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2454,12 +2646,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2467,13 +2661,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .feature-card {
@@ -2511,6 +2706,7 @@ ul > li {
   text-transform: uppercase;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   font-weight: 900;
+  line-height: 1.15;
   margin-bottom: 16px
 }
 .feature-card .paragraph {
@@ -2526,6 +2722,27 @@ ul > li {
 .feature-card ol,
 .feature-card ul {
   max-width: 100%
+}
+@media (max-width:1200px) {
+  .feature-card {
+    padding: 32px 0
+  }
+}
+@media (max-width:1200px) {
+  .feature-card img {
+    width: 100%
+  }
+  .feature-card .feature-backgroung img {
+    min-width: 100%;
+    width: auto;
+    height: 100%;
+    top: 0;
+    right: auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%)
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -2549,11 +2766,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2562,12 +2780,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2575,13 +2795,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -2925,6 +3146,9 @@ ul > li {
   display: flex;
   gap: 30px
 }
+.form.inline-form .alert {
+  top: -20px
+}
 .form.small-size {
   max-width: 514px;
   margin: 0 auto
@@ -2967,11 +3191,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -2980,12 +3205,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -2993,13 +3220,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .game-banner {
@@ -3124,11 +3352,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -3137,12 +3366,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -3150,13 +3381,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .game-preview {
@@ -3360,11 +3592,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -3373,12 +3606,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -3386,13 +3621,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .row,
@@ -3447,8 +3683,7 @@ ul > li {
   clear: both
 }
 .row > .spaced-around {
-  padding-top: 12px;
-  padding-bottom: 12px
+  padding: 12px
 }
 .row.collapsed-row {
   margin-right: 0;
@@ -4395,21 +4630,20 @@ ul > li {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 15px;
-    padding-left: 15px
+    padding-right: 24px;
+    padding-left: 24px
   }
   .container,
   .container-fluid {
-    padding-right: 30px;
-    padding-left: 30px
+    padding-right: 48px;
+    padding-left: 48px
   }
   .row {
-    margin-right: -15px;
-    margin-left: -15px
+    margin-right: -24px;
+    margin-left: -24px
   }
   .row > .spaced-around {
-    padding-top: 15px;
-    padding-bottom: 15px
+    padding: 12px
   }
 }
 @media (max-width:993px) {
@@ -4418,21 +4652,23 @@ ul > li {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 15px;
-    padding-left: 15px
+    padding-right: 24px;
+    padding-left: 24px
   }
   .container,
   .container-fluid {
-    padding-right: 30px;
-    padding-left: 30px
+    padding-right: 48px;
+    padding-left: 48px
   }
   .row {
-    margin-right: -15px;
-    margin-left: -15px
+    margin-right: -24px;
+    margin-left: -24px
   }
   .row > .spaced-around {
-    padding-top: 15px;
-    padding-bottom: 15px
+    padding: 12px
+  }
+  .spaced-bottom-sm {
+    margin-bottom: 24px
   }
 }
 @media (max-width:768px) {
@@ -4441,27 +4677,45 @@ ul > li {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 10px;
-    padding-left: 10px
+    padding-right: 24px;
+    padding-left: 24px
   }
   .container,
   .container-fluid {
-    padding-right: 20px;
-    padding-left: 20px
+    padding-right: 24px;
+    padding-left: 24px
   }
   .row {
-    margin-right: -10px;
-    margin-left: -10px
+    margin-right: -24px;
+    margin-left: -24px
   }
   .row > .spaced-around {
-    padding-top: 10px;
-    padding-bottom: 10px
+    padding: 12px
   }
-  .sm-hide {
-    display: none
+}
+@media (max-width:640px) {
+  [class*=col-lg-],
+  [class*=col-md-],
+  [class*=col-ms-],
+  [class*=col-sm-],
+  [class*=col-xs-] {
+    padding-right: 24px;
+    padding-left: 24px
   }
-  .sm-show {
-    display: block
+  .container,
+  .container-fluid {
+    padding-right: 24px;
+    padding-left: 24px
+  }
+  .row {
+    margin-right: -24px;
+    margin-left: -24px
+  }
+  .row > .spaced-around {
+    padding: 12px
+  }
+  .spaced-bottom-ms {
+    margin-bottom: 24px
   }
 }
 @font-face {
@@ -4620,11 +4874,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -4633,12 +4888,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -4646,13 +4903,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .section.main-banner-section {
@@ -4866,11 +5124,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -4879,12 +5138,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -4892,13 +5153,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .main-footer .footer-subtitle {
@@ -5007,11 +5269,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -5020,12 +5283,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -5033,13 +5298,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .main-header {
@@ -5374,6 +5640,15 @@ ul > li {
 .main-header .menu-button {
   display: none
 }
+@media (max-width:1440px) {
+  .main-header .logo {
+    width: 190px
+  }
+  .main-header .header-navigation ul li a {
+    padding-left: 18px;
+    padding-right: 18px
+  }
+}
 @media (max-width:1200px) {
   .main-header .logo {
     width: 170px
@@ -5390,14 +5665,31 @@ ul > li {
     display: none
   }
   .main-header .bordered-inner {
-    padding: 20px 0
+    padding: 15px 0
   }
   .main-header .menu-button {
     display: block
   }
-  .main-header .menu-side,
-  .main-header .right-side {
+  .main-header .menu-side {
     display: none
+  }
+  .main-header .right-side {
+    -webkit-box-flex: 1;
+    -ms-flex: auto;
+    flex: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: end
+  }
+  .main-header .language .item .text {
+    font-size: var(--small-text-font-size)
+  }
+  .main-header .language .dropdown .dropdown-header {
+    padding-top: 20px;
+    padding-bottom: 20px
   }
   .main-header .menu-side {
     position: fixed;
@@ -5431,7 +5723,7 @@ ul > li {
     width: 150px
   }
   .main-header .bordered-inner {
-    padding: 15px 0
+    padding: 10px 0
   }
   .main-header .header-navigation ul {
     padding: 12px 0
@@ -5462,11 +5754,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -5475,12 +5768,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -5488,13 +5783,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .news-preview {
@@ -5606,12 +5902,17 @@ ul > li {
   -ms-transform: translateY(0);
   transform: translateY(0)
 }
+@media (max-width:1440px) {
+  .news-preview .inner {
+    padding: 32px
+  }
+}
 @media (max-width:1200px) {
   .news-preview .top {
     display: block
   }
   .news-preview .inner {
-    padding: 25px
+    padding: 24px
   }
 }
 .odometer.odometer-auto-theme,
@@ -5729,11 +6030,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -5742,12 +6044,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -5755,21 +6059,19 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .page-main {
   min-height: 50vh;
-  padding-top: var(--headed-height)
-}
-.page-main.inner-page {
-  padding-top: 46px
+  padding-top: var(--header-height)
 }
 .divider {
   height: 1px;
@@ -5881,6 +6183,11 @@ ul > li {
   position: relative;
   top: -1px
 }
+@media (max-width:1200px) {
+  .page-main {
+    padding-top: var(--header-height)
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -5903,11 +6210,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -5916,12 +6224,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -5929,13 +6239,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .pagination {
@@ -6036,11 +6347,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -6049,12 +6361,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -6062,13 +6376,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -6263,11 +6578,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -6276,12 +6592,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -6289,13 +6607,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -6431,6 +6750,29 @@ ul > li {
 .press-games-list .press-games-link:hover:after {
   background-color: rgba(0,0,0,.2)
 }
+@media (max-width:1740px) {
+  :root {
+    --press-games-list-columns: 5
+  }
+  .press-games-list .item:last-child {
+    display: none
+  }
+  .press-games-list .press-games-link .button {
+    left: 24px;
+    right: 24px
+  }
+}
+@media (max-width:1440px) {
+  :root {
+    --press-games-list-columns: 6
+  }
+  .press-games-list .item:last-child {
+    display: block
+  }
+  .press-games-list .button {
+    display: none
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -6453,11 +6795,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -6466,12 +6809,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -6479,13 +6824,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -6592,11 +6938,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -6605,12 +6952,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -6618,13 +6967,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .screens .screen-list {
@@ -6742,11 +7092,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -6755,12 +7106,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -6768,13 +7121,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .scroll-button {
@@ -6937,6 +7291,12 @@ ul > li {
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%)
+}
+@media (max-width:768px) {
+  .scroll-button .scroll-link .middle-text,
+  .scroll-button .scroll-link .text {
+    display: none
+  }
 }
 .main-header .header-container {
   opacity: 0;
@@ -7213,11 +7573,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7226,12 +7587,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7239,13 +7602,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -7275,28 +7639,6 @@ ul > li {
 .section-title ~ .divider {
   margin-bottom: var(--section-title-margin)
 }
-.banner-section {
-  position: relative;
-  min-height: 400px
-}
-.banner-section .banner-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  z-index: 2
-}
-.banner-section .banner-text img {
-  max-width: 100%
-}
-.banner-section .banner-text .inner {
-  max-width: 50%
-}
-.banner-section .container {
-  height: 100%
-}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -7319,11 +7661,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7332,12 +7675,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7345,13 +7690,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .slider-cover {
@@ -7473,11 +7819,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7486,12 +7833,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7499,13 +7848,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -7591,11 +7941,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7604,12 +7955,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7617,13 +7970,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .subscribe-section {
@@ -7687,7 +8041,6 @@ ul > li {
 @media (max-width:640px) {
   .subscribe-section .form-cover {
     display: block;
-    max-width: 80%;
     margin: 20px auto 0
   }
 }
@@ -7718,11 +8071,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7731,12 +8085,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7744,13 +8100,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .tabs {
@@ -7841,11 +8198,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7854,12 +8212,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7867,13 +8227,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 :root {
@@ -7972,11 +8333,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -7985,12 +8347,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -7998,13 +8362,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 .tooltip {
@@ -8051,11 +8416,12 @@ ul > li {
   --margin: 15px;
   --section-title-margin: 50px;
   --section-margin: 56px;
-  --headed-height: 91px
+  --header-height: 91px
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px
+    --section-margin: 48px;
+    --large-text-font-size: 18px
   }
 }
 @media (max-width:1200px) {
@@ -8064,12 +8430,14 @@ ul > li {
     --header-links-font-size: 18px;
     --article-title-font-size: 18px;
     --large-title-font-size: 44px;
-    --section-title-font-size: 44px
+    --section-title-font-size: 44px;
+    --header-height: 82px
   }
 }
 @media (max-width:993px) {
   :root {
-    --header-links-font-size: 24px
+    --header-links-font-size: 24px;
+    --header-height: 80px
   }
 }
 @media (max-width:768px) {
@@ -8077,13 +8445,14 @@ ul > li {
     --large-text-font-size: 16px;
     --header-links-font-size: 24px;
     --article-title-font-size: 16px;
-    --large-title-font-size: 42px;
-    --section-title-font-size: 42px;
-    --h1-font-size: 38px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 36px;
     --h2-font-size: 28px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
-    --buttons-font-size-small: 18px
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
   }
 }
 a::-moz-selection,
