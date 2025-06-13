@@ -157,11 +157,12 @@ document.addEventListener( 'DOMContentLoaded', function() {
 					this.touchStartX = e.pageX || e.touches[0].pageX;
 					break;
 			};
+
 			this.track.classList.add('drag-active');
 		};
 
 		move(e){
-			if(!this.isTouchDown) return;
+			if(!this.isTouchDown || this.touchStartX < 300) return;
 			e.preventDefault();
 
 			function between(x, min, max) {

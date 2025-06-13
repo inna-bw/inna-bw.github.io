@@ -1,157 +1,185 @@
-function handleFiles(){
-	let files = this.files;
-	let loaderMainWrap = null;
-	let uploadBox = this.parentElement.querySelectorAll('[data-upload]')[0];
-	if (uploadBox.classList.contains('single-load')) {
-		oldPhoto = uploadBox.children;
-		for (var i = 0; i < oldPhoto.length; i++) {
-			oldPhoto[i].remove();
-		}
-	}
-	for (var i = 0; i < files.length; i++) {
-		getBase64(files[i], uploadBox);
-	}
-}
+// fileLoader
+window.addEventListener("DOMContentLoaded", function() {
 
-function removeFiles(){
-	this.remove();
-	window.tooltipHint.hide();
-}
+	class FileLoader {
+		loaderCover = null;
+		acceptedFileTypes = [];
 
-function hasClass(element, className) {
-	return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
-}
+		inputLabel = null;
+		inputFile = null;
+		uploadBox = null;
 
-function getBase64(file, loaderMainWrap) {
-	var reader = new FileReader();
-	reader.readAsDataURL(file);
-	if (file.type.startsWith("image/")) {
-		reader.onload = function () {
-			appendImage(file.name, reader.result, loaderMainWrap);
+		loadedSrc = {
+			pdf: 'img/file-load.svg',
+			error: 'img/picture-broken.svg'
 		};
-		reader.onerror = function (error) {
-			console.error('Error: ', error);
+
+		classes = {
+			error: 'error',
+			success: 'success'
 		};
-	} else if (file.type.startsWith("video/")) {
-		reader.onload = function () {
-			appendVideo(file.name, reader.result, loaderMainWrap);
+
+		constructor(loaderCover) {
+			this.loaderCover = loaderCover;
+			if (loaderCover.dataset.loader) {
+				this.acceptedFileTypes = loaderCover.dataset.loader.split(",");
+				this.inputLabel = loaderCover.querySelector('[data-label]');
+				this.inputFile = loaderCover.querySelector('[data-file]');
+				this.uploadBox = loaderCover.querySelector('[data-upload]');
+			}
+
+			if (this.inputFile) {
+				this.inputFile.addEventListener("change", this.handleFiles.bind(this), false)
+			}
 		};
-		reader.onerror = function (error) {
-			appendError(file.name,'load', loaderMainWrap);
+
+		hasClass(element, className) {
+			return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
 		};
-	} else {
-		appendError(file.name, 'type', loaderMainWrap);
-	};
-};
 
-function appendImage(name, src, loaderMainWrap){
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let innerCover = document.createElement("div");
-			innerCover.classList.add('inner');
-	let imgEl = document.createElement('img');
-			imgEl.src = src;
-	innerCover.appendChild(imgEl);
-	coverEl.appendChild(innerCover);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+		handleFiles(){
+			let files = this.inputFile.files;
+			let uploadBox = this.uploadBox;
 
-function appendVideo(name, src, loaderMainWrap){
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let innerCover = document.createElement("div");
-			innerCover.classList.add('inner');
-	let videoEl = document.createElement('video')
-			videoEl.src = src
-			videoEl.controls = true;
-	innerCover.appendChild(videoEl);
-	coverEl.appendChild(innerCover);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+			if (!this.inputFile.getAttribute('multiple')) {
+				this.removeOldFiles();
+			};
 
-function appendError(name, type, loaderMainWrap){
-	let errorStatus = {
-		load: 'Loadind error',
-		type: 'Only for .png, .jpg, .mp4'
-	}
-	let coverEl = document.createElement("div");
-			coverEl.classList.add('error-cover');
-			coverEl.classList.add('files-cover');
-			coverEl.setAttribute('data-tooltip', 'Click to delete')
-	let textEl = document.createElement("div");
-			textEl.classList.add('error-text');
-			textEl.appendChild(document.createTextNode(errorStatus[type]));
-	coverEl.appendChild(textEl);
-	let nameEl = document.createElement("div");
-			nameEl.classList.add('file-name');
-			nameEl.appendChild(document.createTextNode(name));
-	coverEl.appendChild(nameEl);
-	coverEl.addEventListener("click", removeFiles, false);
-	if (loaderMainWrap) {
-		loaderMainWrap.appendChild(coverEl);
-	}
-};
+			for (var i = 0; i < files.length; i++) {
+				this.getBase64(files[i]);
+			};
+		};
 
-document.querySelectorAll('[data-loader]').forEach(function(loaderCover, i){
-	let uploadBox = loaderCover.querySelectorAll('[data-upload]')[0];
-	coverChildren = loaderCover.children;
-	for (var i = 0; i < coverChildren.length; i++) {
-		if (coverChildren[i].hasAttribute('data-label')) {
-			let fileLoader = coverChildren[i];
-					fileLoader.ondragover = function (e) {
-						e.preventDefault();
-						fileLoader.classList.add('hover')
-					};
-					fileLoader.ondragend = function (e) {
-						e.preventDefault();
-						fileLoader.classList.remove('hover');
-					};
-					fileLoader.ondrop = function (e) {
-						e.preventDefault();
-						fileLoader.classList.remove('hover');
-						for (var i = 0; i < e.dataTransfer.files.length; i++) {
-							getBase64(e.dataTransfer.files[i], uploadBox);
-						}
+		removeOldFiles(){
+			let oldFiles = this.uploadBox.children;
+			for (var i = 0; i < oldFiles.length; i++) {
+				oldFiles[i].remove();
+			};
+		};
+
+		removeFile(){
+			let fileToRemove = this.file;
+			let _this = this._this;
+			let uploadBox = this._this.uploadBox;
+			let loaderCover = this._this.loaderCover;
+
+			let removedFileName = fileToRemove.querySelector('.file-name').innerHTML;
+			fileToRemove.remove();
+			if (window.tooltipHint) {
+				window.tooltipHint.hide();
+			};
+
+			let files = Array.prototype.slice.call(_this.inputFile.files);
+			if (files) {
+				for (let i = 0; i < files.length; i++) {
+					const file = files[i];
+					if (removedFileName == file.name) {
+						files.splice(i, 1);
 					}
-		} else if (coverChildren[i].hasAttribute('data-file')) {
-			let inputElement = coverChildren[i];
-					inputElement.addEventListener("change", handleFiles, false);
-		} else {
-			appendError('type', uploadBox);
-		}
+				}
+				const newFileList = new DataTransfer();
+				files.forEach(file => newFileList.items.add(file));
+				_this.inputFile.files = newFileList.files;
+			};
+
+			this._this.removeError();
+		};
+
+		getBase64(file) {
+			let reader = new FileReader();
+					reader.readAsDataURL(file);
+			let uploadBox = this.uploadBox;
+			let fileType = file.name.split('.').pop();
+
+			if (this.acceptedFileTypes.indexOf(fileType) >= 0) {
+				this.appendFile(file.name, fileType, reader);
+			} else {
+				this.appendError(file.name, fileType, reader);
+			};
+		};
+
+		appendFile(name, type, reader){
+			if (!name || !type || !reader) return;
+			let showPreview = type == 'jpg' || type == 'png' || type == 'mp4';
+			reader.onload = function () {
+				this.appendFileToBox(name, type, reader.result, showPreview);
+			}.bind(this);
+			reader.onerror = function (error) {
+				this.loaderCover.classList.add(this.classes.error);
+				console.error('Error: ', error);
+			}.bind(this);
+
+			this.removeError();
+		};
+
+		appendError(name, type, reader){
+			if (!name || !type || !reader) return;
+			this.loaderCover.classList.add(this.classes.error);
+			this.appendFileToBox(name, type, reader.result, false);
+			console.error('Error: ', type + ' type is not correct');
+		};
+
+		removeError(){
+			if (!this.uploadBox.querySelectorAll(`.${this.classes.error}`).length) {
+				this.loaderCover.classList.remove(this.classes.error);
+			};
+		};
+
+		appendFileToBox(name, type, src, showPreview){
+			let coverEl = document.createElement("div");
+					coverEl.classList.add('files-cover');
+					coverEl.setAttribute('data-tooltip', 'Click to delete')
+			let innerCover = document.createElement("div");
+					innerCover.classList.add('inner');
+
+			if (this.acceptedFileTypes.indexOf(type) >= 0) {
+				switch (type) {
+					case "png":
+					case "jpg":
+						let imgEl = document.createElement('img');
+								imgEl.src = src;
+						innerCover.appendChild(imgEl);
+						break;
+					case "mp4":
+						let videoEl = document.createElement('video');
+								videoEl.src = src;
+								videoEl.controls = true;
+						break;
+					case "pdf":
+						let pdfEl = document.createElement('img');
+								pdfEl.src = this.loadedSrc.pdf;
+						innerCover.appendChild(pdfEl);
+						break;
+					default:
+						let errorEl = document.createElement('img');
+								errorEl.src = this.loadedSrc.error;
+						innerCover.appendChild(errorEl);
+						coverEl.classList.add('error');
+				};
+			} else {
+				let errorEl = document.createElement('img');
+						errorEl.src = this.loadedSrc.error;
+				innerCover.appendChild(errorEl);
+				coverEl.classList.add('error');
+			};
+
+			coverEl.appendChild(innerCover);
+			let nameEl = document.createElement("div");
+					nameEl.classList.add('file-name');
+					nameEl.appendChild(document.createTextNode(name));
+			coverEl.appendChild(nameEl);
+			coverEl.addEventListener("click", this.removeFile.bind({file: coverEl, _this: this}), false);
+			if (this.uploadBox) {
+				this.uploadBox.appendChild(coverEl);
+			}
+		};
+
+	};
+
+	let fileLoaderCovers = document.querySelectorAll('[data-loader]');
+
+	for (i = 0; i < fileLoaderCovers.length; i++) {
+		const fileLoader = new FileLoader(fileLoaderCovers[i]);
 	}
-})
 
-// delete loaded files
-document.querySelectorAll('.files-cover').forEach(function(loaderCover, i){
-	loaderCover.addEventListener("click", removeFiles, false);
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
+});
