@@ -3863,11 +3863,12 @@ document.addEventListener( 'DOMContentLoaded', function() {
 					this.touchStartX = e.pageX || e.touches[0].pageX;
 					break;
 			};
+
 			this.track.classList.add('drag-active');
 		};
 
 		move(e){
-			if(!this.isTouchDown) return;
+			if(!this.isTouchDown || this.touchStartX < 300) return;
 			e.preventDefault();
 
 			function between(x, min, max) {
@@ -3875,7 +3876,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 			}
 
 			let dragTranslation = 0;
-
 
 			switch (this.options.direction) {
 				case "vertical":
@@ -3896,17 +3896,6 @@ document.addEventListener( 'DOMContentLoaded', function() {
 						dragTranslation = e.pageX - this.touchStartX;
 					};
 					break;
-			};
-
-			if (this.options.direction == "horizontal" && (this.touchDirection == "top" || this.touchDirection == "bottom")) {
-				this.sliderElment.classList.add('disabled-touch');
-			} else {
-				this.sliderElment.classList.remove('disabled-touch');
-			};
-			if (this.options.direction == "vertical" && (this.touchDirection == "left" || this.touchDirection == "right")) {
-				this.sliderElment.classList.add('disabled-touch');
-			} else {
-				this.sliderElment.classList.remove('disabled-touch');
 			};
 
 			let touchTransition = this.currentTransition + dragTranslation;
