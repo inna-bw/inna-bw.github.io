@@ -3876,6 +3876,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 			let dragTranslation = 0;
 
+
 			switch (this.options.direction) {
 				case "vertical":
 					if (this.isTouchDown == true && e.pageY <= this.touchStartY) {
@@ -3895,6 +3896,17 @@ document.addEventListener( 'DOMContentLoaded', function() {
 						dragTranslation = e.pageX - this.touchStartX;
 					};
 					break;
+			};
+
+			if (this.options.direction == "horizontal" && (this.touchDirection == "top" || this.touchDirection == "bottom")) {
+				this.sliderElment.classList.add('disabled-touch');
+			} else {
+				this.sliderElment.classList.remove('disabled-touch');
+			};
+			if (this.options.direction == "vertical" && (this.touchDirection == "left" || this.touchDirection == "right")) {
+				this.sliderElment.classList.add('disabled-touch');
+			} else {
+				this.sliderElment.classList.remove('disabled-touch');
 			};
 
 			let touchTransition = this.currentTransition + dragTranslation;
