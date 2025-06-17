@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="css/bundle.min.css">
 
 </head>
-<body id="innerBody">
+<body id="innerBody" class="dark">
 	<!-- header -->
 	<header class="main-header fixed" id="mainHeader" data-scroll-check="main-banner">
 	<div class="bordered-inner">
@@ -38,6 +38,11 @@
 					</a>
 				</div>
 				<div class="menu-side" id="menuSide">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<nav class="header-navigation running-line">
 						<div class="line"></div>
 						<ul class="clear">
@@ -53,6 +58,11 @@
 					</nav>
 				</div>
 				<div class="right-side">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<div class="language">
 						<div class="dropdown" data-dropdown>
 							<div class="dropdown-header">
@@ -199,6 +209,8 @@
 		</div>
 	</div>
 </header>
+<div class="fake-mode"></div>
+
 	<!-- / header -->
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
@@ -224,7 +236,7 @@
 					<div class="caption">
 						<div class="title">Looking for support for a game?</div>
 						<div class="theme-text">
-							Please go to our <a href="#">Support</a> where you can find answers to common questions, as well as the option to <br>submit your query to our Support Team.
+							Please go to our <a href="support.html">Support</a> where you can find answers to common questions, as well as the option to submit your query to our Support Team.
 						</div>
 					</div>
 				</div>
@@ -232,27 +244,27 @@
 					<h3 class="section-subtitle">Please use this form if you…</h3>
 					<ul class="icons-list clear">
 						<li class="item">
-							<img src="img/icons/icon-journalist.svg" alt="icon">
+							<i class="icon icon-cont1"></i>
 							<div class="caption">Are a journalist or blogger with a press query</div>
 						</li>
 						<li class="item">
-							<img src="img/icons/icon-business.svg" alt="icon">
+							<i class="icon icon-cont2"></i>
 							<div class="caption">Want to chat about a business or advertising opportunity</div>
 						</li>
 						<li class="item">
-							<img src="img/icons/icon-problem.svg" alt="icon">
+							<i class="icon icon-cont3"></i>
 							<div class="caption">Have spotted a problem with this website</div>
 						</li>
 						<li class="item">
-							<img src="img/icons/icon-job.svg" alt="icon">
+							<i class="icon icon-cont4"></i>
 							<div class="caption">Have a job vacancy or work experience related query</div>
 						</li>
 						<li class="item">
-							<img src="img/icons/icon-message.svg" alt="icon">
+							<i class="icon icon-cont5"></i>
 							<div class="caption">Have a question or feedback about accessibility at Best Way</div>
 						</li>
 						<li class="item">
-							<img src="img/icons/icon-licensing.svg" alt="icon">
+							<i class="icon icon-cont6"></i>
 							<div class="caption">Have a question about engine licensing</div>
 						</li>
 					</ul>

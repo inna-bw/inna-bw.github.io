@@ -162,7 +162,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		};
 
 		move(e){
-			if(!this.isTouchDown || this.touchStartX < 300) return;
+			if(!this.isTouchDown || this.touchStartX < 500) return;
 			e.preventDefault();
 
 			function between(x, min, max) {

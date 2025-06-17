@@ -26,7 +26,7 @@
 	<link rel="stylesheet" href="css/bundle.min.css">
 
 </head>
-<body id="innerBody">
+<body id="innerBody" class="dark">
 	<!-- header -->
 	<header class="main-header fixed" id="mainHeader" data-scroll-check="main-banner">
 	<div class="bordered-inner">
@@ -38,6 +38,11 @@
 					</a>
 				</div>
 				<div class="menu-side" id="menuSide">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<nav class="header-navigation running-line">
 						<div class="line"></div>
 						<ul class="clear">
@@ -53,6 +58,11 @@
 					</nav>
 				</div>
 				<div class="right-side">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<div class="language">
 						<div class="dropdown" data-dropdown>
 							<div class="dropdown-header">
@@ -199,6 +209,8 @@
 		</div>
 	</div>
 </header>
+<div class="fake-mode"></div>
+
 	<!-- / header -->
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
