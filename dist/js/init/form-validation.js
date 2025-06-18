@@ -282,4 +282,15 @@ window.addEventListener("DOMContentLoaded", function() {
 		const newForm = new ValidationForm(allValidateForms[i]);
 		newForm.init();
 	};
+
+	let allSearchReset = document.querySelectorAll('.search-reset');
+	if (allSearchReset && allSearchReset.length) {
+		for (let i = 0; i < allSearchReset.length; i++) {
+			let resetButton = allSearchReset[i];
+			resetButton.addEventListener('click', (e) => {
+				let input = e.target.closest('.form-group').querySelector('input');
+				input.focus();
+			});
+		};
+	};
 });

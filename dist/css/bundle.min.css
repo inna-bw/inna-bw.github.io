@@ -51,8 +51,8 @@
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -298,8 +298,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -359,8 +359,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -817,8 +817,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -952,8 +952,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1066,8 +1066,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1319,8 +1319,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1470,8 +1470,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1725,8 +1725,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1895,8 +1895,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -1917,7 +1917,6 @@ ul > li {
 }
 .career-preview {
   background-color: #000;
-  border-left: 1px solid #ec1e24;
   padding: 24px;
   cursor: pointer;
   position: relative;
@@ -1965,6 +1964,19 @@ ul > li {
   -webkit-transition: height .2s;
   transition: height .2s
 }
+.career-preview:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background-color: #ec1e24;
+  -webkit-box-shadow: 0 -1px 3px 0 #ec1e24;
+  box-shadow: 0 -1px 3px 0 #ec1e24;
+  -webkit-transition: .2s;
+  transition: .2s
+}
 .career-preview:hover {
   background-color: #1e1e20
 }
@@ -1973,6 +1985,9 @@ ul > li {
 }
 .career-preview:hover:after {
   height: 6px
+}
+.career-preview:hover:before {
+  width: 2px
 }
 @media (max-width:1440px) {
   .career-preview .detail {
@@ -2043,8 +2058,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2071,7 +2086,9 @@ ul > li {
   height: 100%;
   background-color: #ec1e24;
   -webkit-box-shadow: 0 -1px 3px 0 #ec1e24;
-  box-shadow: 0 -1px 3px 0 #ec1e24
+  box-shadow: 0 -1px 3px 0 #ec1e24;
+  -webkit-transition: .2s;
+  transition: .2s
 }
 .contact-box .caption {
   padding-left: 96px
@@ -2083,11 +2100,19 @@ ul > li {
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   text-transform: uppercase
 }
+.contact-box .theme-text:last-child {
+  margin-bottom: 0
+}
 .contact-box .image {
-  max-width: 50%
+  width: 320px;
+  height: 180px;
+  overflow: hidden
 }
 .contact-box .image img {
-  width: 100%
+  height: 100%
+}
+.contact-box:hover:before {
+  width: 6px
 }
 :root {
   --icons-list-gap: 24px;
@@ -2134,8 +2159,109 @@ ul > li {
   .contact-info .icons-list .item {
     padding: 0
   }
-  .contact-info .icons-list .item img {
-    height: 90px
+  .contact-info .icons-list .item .icon {
+    font-size: 90px
+  }
+}
+@media (max-width:1320px) {
+  :root {
+    --icons-list-gap: 48px;
+    --icons-list-columns: 3
+  }
+  .contact-box .caption {
+    padding-left: 24px
+  }
+  .contact-info .icons-list .item .icon {
+    font-size: 72px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --icons-list-gap: 48px;
+    --icons-list-columns: 3
+  }
+  .contact-box {
+    position: relative;
+    overflow: hidden
+  }
+  .contact-box .image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    max-width: none;
+    width: auto;
+    height: auto
+  }
+  .contact-box .image img {
+    min-height: 100%;
+    height: auto;
+    width: 100%
+  }
+  .contact-box .image:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(30,30,32,.2)
+  }
+  .contact-box .caption {
+    padding-left: 0;
+    position: relative;
+    z-index: 1
+  }
+  .contact-info .icons-list .item .icon {
+    font-size: 72px
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --icons-list-gap: 24px;
+    --icons-list-columns: 2
+  }
+  .contact-info .icons-list .item {
+    text-align: left;
+    position: relative;
+    padding-left: 64px;
+    min-height: 55px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+  }
+  .contact-info .icons-list .item .icon {
+    margin-bottom: 0;
+    font-size: 48px;
+    position: absolute;
+    left: 0;
+    top: 5px
+  }
+  .contact-box:before {
+    width: 6px
+  }
+}
+@media (max-width:670px) {
+  :root {
+    --icons-list-gap: 24px;
+    --icons-list-columns: 1
+  }
+  .contact-box dl {
+    margin-bottom: 16px
+  }
+  .contact-box dl:last-child {
+    margin-bottom: 0
+  }
+  .contact-box dl dt {
+    margin-right: 0;
+    display: block
+  }
+  .contact-box dl dd {
+    display: block
   }
 }
 :root {
@@ -2191,8 +2317,305 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
+    --h3-font-size: 20px;
+    --buttons-font-size: 28px;
+    --buttons-font-size-small: 18px;
+    --header-height: 70px
+  }
+}
+discord-widget {
+  --color: #2c2f34;
+  --bgColor: #23272a;
+  --textColor: #fff;
+  --buttonColor: #5865f2;
+  --statusColor: #858585;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Noto Sans",sans-serif;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  border-radius: 4px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #fff;
+  max-width: 100%;
+  max-height: 100%
+}
+discord-widget ::-webkit-scrollbar {
+  width: 20px
+}
+discord-widget ::-webkit-scrollbar-track {
+  background: var(--bgColor)
+}
+discord-widget ::-webkit-scrollbar-thumb {
+  background: #222;
+  border: 8px solid var(--bgColor);
+  border-radius: 10px;
+  -webkit-transition: ease-in-out .5s;
+  transition: ease-in-out .5s
+}
+discord-widget ::-webkit-scrollbar-thumb:hover {
+  background: var(--color);
+  -webkit-transition: ease-in-out .5s;
+  transition: ease-in-out .5s
+}
+discord-widget widget-header {
+  background-color: var(--color);
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-negative: 0;
+  flex-shrink: 0
+}
+discord-widget widget-header widget-logo {
+  background: url(../img/discord-logo-white.svg) 50% no-repeat;
+  width: 124px;
+  height: 34px;
+  background-size: 124px 34px;
+  display: inline-block;
+  -webkit-transition: opacity .25s ease-out;
+  transition: opacity .25s ease-out
+}
+discord-widget widget-header widget-header-count {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  text-align: right
+}
+discord-widget widget-body {
+  background-color: var(--bgColor);
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  -webkit-box-shadow: 0 1px 0 var(--bgColor);
+  box-shadow: 0 1px 0 var(--bgColor);
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: scroll
+}
+discord-widget widget-body widget-member {
+  position: relative;
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-flex: 0;
+  -ms-flex: 0;
+  flex: 0;
+  margin: 6px 0
+}
+discord-widget widget-body widget-member widget-member-avatar {
+  margin-right: 4px;
+  position: relative;
+  contain: content
+}
+discord-widget widget-body widget-member widget-member-avatar img {
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  border: 2px solid var(--color);
+  background-color: var(--color)
+}
+discord-widget widget-body widget-member .widget-member-status {
+  color: var(--statusColor);
+  border-radius: 50%;
+  bottom: 5px;
+  height: 10px;
+  position: absolute;
+  right: 0;
+  width: 10px;
+  border: 2px solid var(--color)
+}
+discord-widget widget-body widget-member widget-member-status-online {
+  background-color: #57f287
+}
+discord-widget widget-body widget-member widget-member-status-idle {
+  background-color: #fee75c
+}
+discord-widget widget-body widget-member widget-member-status-dnd {
+  background-color: #ed4245
+}
+discord-widget widget-body widget-member widget-member-status-text {
+  height: 32px;
+  max-width: 80px;
+  overflow: hidden;
+  line-height: 32px;
+  padding: 0 8px 0 37px;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 0;
+  left: 172px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  color: var(--statusColor)
+}
+discord-widget widget-body widget-member widget-member-name {
+  height: 32px;
+  max-width: 160px;
+  overflow: hidden;
+  line-height: 32px;
+  padding: 0 8px 0 37px;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 0;
+  left: 12px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  white-space: nowrap
+}
+discord-widget widget-footer {
+  background-color: var(--bgColor);
+  -webkit-box-shadow: 0 -1px 18px var(--bgColor),0 -1px 0 var(--bgColor);
+  box-shadow: 0 -1px 18px var(--bgColor),0 -1px 0 var(--bgColor);
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  padding: 6px 6px 6px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: right;
+  -ms-flex-align: right;
+  align-items: right;
+  min-height: 30px
+}
+discord-widget widget-footer widget-footer-info {
+  display: inline-block;
+  font-weight: 500;
+  opacity: .1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1
+}
+discord-widget widget-footer widget-button-join {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 120px;
+  height: 30px;
+  border-radius: 4px;
+  background-clip: padding-box;
+  background-color: var(--color);
+  color: var(--textColor)!important;
+  text-decoration: none;
+  font-weight: 700;
+  -webkit-transition: opacity .25s ease-out;
+  transition: opacity .25s ease-out
+}
+discord-widget widget-footer widget-button-join:hover {
+  background-color: var(--buttonColor);
+  cursor: pointer
+}
+.discord-support {
+  width: 350px;
+  height: 400px;
+  overflow: hidden;
+  margin: auto
+}
+@media (max-width:640px) {
+  .discord-support {
+    width: 300px;
+    height: 400px
+  }
+  .discord-support discord-widget widget-header {
+    display: block
+  }
+  .discord-support discord-widget widget-header widget-header-count,
+  .discord-support discord-widget widget-header widget-logo {
+    display: block;
+    text-align: left
+  }
+}
+@media (max-width:360px) {
+  .discord-support {
+    width: 270px;
+    height: 400px
+  }
+}
+:root {
+  --large-title-font-size: 48px;
+  --h1-font-size: 40px;
+  --h2-font-size: 32px;
+  --h3-font-size: 20px;
+  --largest-text-font-size: 24px;
+  --large-text-font-size: 20px;
+  --medium-text-font-size: 18px;
+  --normal-text-font-size: 16px;
+  --small-text-font-size: 14px;
+  --font-size: 16px;
+  --font-size-large: 18px;
+  --section-title-font-size: 48px;
+  --subtitle-font-size: 32px;
+  --article-title-font-size: 20px;
+  --buttons-font-size: 32px;
+  --buttons-font-size-small: 20px;
+  --header-links-font-size: 20px;
+  --border-radius: 4px;
+  --margin: 15px;
+  --section-title-margin: 50px;
+  --section-margin: 56px;
+  --header-height: 91px
+}
+@media (max-width:1440px) {
+  :root {
+    --section-margin: 48px;
+    --large-text-font-size: 18px
+  }
+}
+@media (max-width:1200px) {
+  :root {
+    --large-text-font-size: 18px;
+    --header-links-font-size: 18px;
+    --article-title-font-size: 18px;
+    --large-title-font-size: 44px;
+    --section-title-font-size: 44px;
+    --header-height: 82px
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --header-links-font-size: 24px;
+    --header-height: 80px
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --large-text-font-size: 16px;
+    --header-links-font-size: 24px;
+    --article-title-font-size: 16px;
+    --large-title-font-size: 38px;
+    --section-title-font-size: 38px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2322,8 +2745,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2495,8 +2918,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2589,8 +3012,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2669,8 +3092,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2803,8 +3226,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -2876,6 +3299,24 @@ ul > li {
 .form .form-group.spaced {
   margin: 24px 0
 }
+.form .form-group .icon-status {
+  position: absolute;
+  right: 12px;
+  top: 51px;
+  font-size: 18px;
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+  opacity: 0;
+  -webkit-transition: .2s;
+  transition: .2s
+}
+.form .form-group .icon-input-error {
+  color: #ec1e24
+}
+.form .form-group .icon-input-success {
+  color: #27ae60
+}
 .form .form-group.error .alert {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -2890,12 +3331,34 @@ ul > li {
 .form .form-group.error textarea {
   border-color: #ec1e24
 }
+.form .form-group.error .input:after,
+.form .form-group.error select:after,
+.form .form-group.error textarea:after {
+  content: "\e924"
+}
+.form .form-group.error .icon-input-error {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
+}
 .form .form-group.success .input,
 .form .form-group.success .select,
 .form .form-group.success .textarea,
 .form .form-group.success select,
 .form .form-group.success textarea {
   border-color: #27ae60
+}
+.form .form-group.success .input:after,
+.form .form-group.success select:after,
+.form .form-group.success textarea:after {
+  content: "\e923"
+}
+.form .form-group.success .icon-input-success {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
 }
 .form .input,
 .form select,
@@ -2907,8 +3370,9 @@ ul > li {
   border-radius: var(--border-radius);
   padding: 13px 25px 16px;
   color: #fff;
-  -webkit-transition: .2s;
-  transition: .2s
+  -webkit-transition: border-color .2s;
+  transition: border-color .2s;
+  position: relative
 }
 .form .input::-webkit-input-placeholder,
 .form select::-webkit-input-placeholder,
@@ -3075,6 +3539,9 @@ ul > li {
   -webkit-transition: .2s;
   transition: .2s
 }
+.form .label-file .icon-status {
+  top: 16px
+}
 .form .label-file.hover,
 .form .label-file:hover {
   border-color: #fff
@@ -3145,6 +3612,54 @@ ul > li {
 }
 .form .checkbox-group.error .checkbox-label:before {
   border-color: #ec1e24
+}
+.form .search-group {
+  position: relative
+}
+.form .search-group .input,
+.form .search-group select,
+.form .search-group textarea {
+  padding-left: 52px;
+  padding-right: 52px
+}
+.form .search-group .icon-search {
+  position: absolute;
+  left: 12px;
+  z-index: 1;
+  top: 14px;
+  font-size: 24px;
+  color: #969696
+}
+.form .search-group .search-reset {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  top: 8px;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  font-size: 24px;
+  color: #969696;
+  -webkit-transition: .2s;
+  transition: .2s;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  transform: translateY(5px)
+}
+.form .search-group .search-reset:hover {
+  color: #ec1e24
+}
+.form .search-group.focused .search-reset {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+  visibility: visible
 }
 .form.inline-form {
   display: -webkit-box;
@@ -3228,8 +3743,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -3389,8 +3904,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -3631,8 +4146,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -4878,6 +5393,12 @@ ul > li {
 .icon-cont1:before {
   content: "\e92b"
 }
+.icon-search:before {
+  content: "\e92d"
+}
+.icon-linkedin:before {
+  content: "\e92c"
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -4931,8 +5452,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -5181,8 +5702,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -5326,8 +5847,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -5844,8 +6365,8 @@ ul > li {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -6152,6 +6673,28 @@ body.light .form .input::-moz-placeholder {
 body.light .form .input:-ms-input-placeholder {
   color: #28292c
 }
+body.light .main-header .menu-button .lines,
+body.light .main-header .menu-button .lines:after,
+body.light .main-header .menu-button .lines:before {
+  background-color: #28292c
+}
+body.light .main-header .menu-button:hover .lines,
+body.light .main-header .menu-button:hover .lines:after,
+body.light .main-header .menu-button:hover .lines:before {
+  background-color: #d7d6d6
+}
+body.light .main-header .menu-button.active .lines {
+  background-color: transparent
+}
+body.light .form .search-group .icon-search {
+  color: #28292c
+}
+body.light .form .search-group .search-reset {
+  color: #28292c
+}
+body.light .form .search-group .search-reset:hover {
+  color: #ec1e24
+}
 body.light .discord-widget .section-subtitle,
 body.light .main-footer .footer-subtitle {
   color: #28292c
@@ -6192,7 +6735,8 @@ body.light .career-line .line-cover .translate-inner .line-item .text {
   color: #d7d6d6
 }
 body.light .popup .inner {
-  background-color: #d7d6d6
+  background-color: #d7d6d6;
+  border-color: #d7d6d6
 }
 body.light .dotted-list li,
 body.light .popup .main .subtitle,
@@ -6285,8 +6829,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -6561,8 +7105,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -6741,8 +7285,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -6878,8 +7422,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -7109,8 +7653,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -7313,8 +7857,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -7456,8 +8000,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -7610,8 +8154,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8091,8 +8635,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8179,8 +8723,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8340,8 +8884,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8461,8 +9005,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8591,8 +9135,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8718,8 +9262,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8853,8 +9397,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;
@@ -8936,8 +9480,8 @@ body.light .form .form-title {
     --article-title-font-size: 16px;
     --large-title-font-size: 38px;
     --section-title-font-size: 38px;
-    --h1-font-size: 36px;
-    --h2-font-size: 28px;
+    --h1-font-size: 30px;
+    --h2-font-size: 26px;
     --h3-font-size: 20px;
     --buttons-font-size: 28px;
     --buttons-font-size-small: 18px;

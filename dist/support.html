@@ -24,7 +24,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Sofia+Sans+Extra+Condensed:ital,wght@0,1..1000;1,1..1000&display=swap" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/bundle.min.css">
-
 </head>
 <body id="innerBody" class="dark">
 	<!-- header -->
@@ -223,10 +222,13 @@
 						<div class="inner">
 							<h1>Welcome to <br>Best Way Support</h1>
 							<div class="spaced-top">
-								<form action="javascript:void(0)" class="form" id="searchCaseForm">
-								<div class="form-group">
+								<form action="javascript:void(0)" class="validate-form form" id="searchCaseForm">
+								<div class="form-group search-group">
 									<div class="alert top-position">Min 2 characters</div>
-									<input type="text" class="input filled" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search">
+									<i class="icon icon-search"></i>
+									<input type="text" class="input filled" id="filterInput" placeholder="Search">
+									<!-- <input type="text" class="input filled" id="filterInput" data-filter=".accordeon" data-filter-fields="[data-description], [data-title]" placeholder="Search"> -->
+									<button type="reset" class="search-reset"><i class="icon icon-close"></i></button>
 								</div>
 							</form>
 							</div>
@@ -444,7 +446,9 @@
 		<div class="info-box">
 			<h2 class="section-subtitle">Join our support chanel on discord</h2>
 			<!-- support -->
-			<iframe src="https://discord.com/widget?id=1317098133842296872&theme=dark" width="404" height="423" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+			<div class="discord-support">
+				<discord-widget id="1317098133842296872"></discord-widget>
+			</div>
 		</div>
 		<div class="info-box">
 			<h2 class="section-subtitle">Stay connected</h2>
@@ -467,18 +471,24 @@
 					<div class="alert">Min 2 characters</div>
 					<label for="name" class="label">Name <sup>*</sup></label>
 					<input type="text" class="input" id="name" data-minlength="2">
+					<i class="icon icon-input-error icon-status"></i>
+					<i class="icon icon-input-success icon-status"></i>
 					<!-- <div class="input-helper">Min 2 characters</div> -->
 				</div>
 				<div class="form-group spaced">
 					<div class="alert">Enter the valid email</div>
 					<label for="email" class="label">Email <sup>*</sup></label>
 					<input type="text" class="input email" id="email">
+					<i class="icon icon-input-error icon-status"></i>
+					<i class="icon icon-input-success icon-status"></i>
 					<!-- <div class="input-helper">Check for the "@" symbol, the domain name format, the absence of special charts</div> -->
 				</div>
 				<div class="form-group spaced">
 					<div class="alert">Min 2 characters</div>
 					<label for="message" class="label">Description <sup>*</sup></label>
 					<textarea name="message" id="message" class="textarea" data-minlength="2"maxlength="100"></textarea>
+					<i class="icon icon-input-error icon-status"></i>
+					<i class="icon icon-input-success icon-status"></i>
 					<div class="input-helper"><span class="chart-counter">0</span>/100</div>
 				</div>
 				<div class="form-helpers">
