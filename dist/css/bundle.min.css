@@ -25,6 +25,9 @@
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -54,9 +57,11 @@
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 *,
@@ -272,6 +277,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -301,9 +309,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -333,6 +343,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -362,9 +375,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -791,6 +806,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -820,9 +838,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 [data-accordeon-open] .text.opened {
@@ -926,6 +946,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -955,9 +978,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .article-preview {
@@ -1040,6 +1065,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -1069,9 +1097,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .banner-cover {
@@ -1258,7 +1288,7 @@ ul > li {
   }
   .banner-section .banner-text .theme-text {
     max-width: 50%;
-    margin: 16px auto 0
+    margin: 16px auto 16px
   }
 }
 @media (max-width:768px) {
@@ -1293,6 +1323,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -1322,9 +1355,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .breadcrumbs {
@@ -1444,6 +1479,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -1473,9 +1511,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .button {
@@ -1699,6 +1739,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -1728,9 +1771,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .career-line {
@@ -1869,6 +1914,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -1898,9 +1946,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -2032,6 +2082,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -2061,9 +2114,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .contact-box {
@@ -2291,6 +2346,9 @@ ul > li {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -2320,9 +2378,11 @@ ul > li {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 discord-widget {
@@ -2541,9 +2601,9 @@ discord-widget widget-footer widget-button-join:hover {
   overflow: hidden;
   margin: auto
 }
-@media (max-width:640px) {
+@media (max-width:400px) {
   .discord-support {
-    width: 300px;
+    width: 100%;
     height: 400px
   }
   .discord-support discord-widget widget-header {
@@ -2553,12 +2613,6 @@ discord-widget widget-footer widget-button-join:hover {
   .discord-support discord-widget widget-header widget-logo {
     display: block;
     text-align: left
-  }
-}
-@media (max-width:360px) {
-  .discord-support {
-    width: 270px;
-    height: 400px
   }
 }
 :root {
@@ -2588,6 +2642,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -2617,9 +2674,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .documentation-links-list li {
@@ -2719,6 +2778,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -2748,9 +2810,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .dropdown {
@@ -2865,6 +2929,13 @@ discord-widget widget-footer widget-button-join:hover {
     padding: 0 30px
   }
 }
+@media (max-width:768px) {
+  .dropdown .dropdown-inner .item .text,
+  .dropdown.button-dropdown .dropdown-inner .item .text {
+    font-size: 14px;
+    padding: 7px 0
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -2892,6 +2963,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -2921,9 +2995,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .engine-preview {
@@ -2959,6 +3035,23 @@ discord-widget widget-footer widget-button-join:hover {
   -ms-flex-pack: start;
   justify-content: flex-start
 }
+@media (max-width:993px) {
+  .engine-preview .caption .title {
+    margin-bottom: 16px
+  }
+  .engine-preview .caption .theme-text {
+    margin: 16px 0 24px
+  }
+  .engine-preview .caption .buttons {
+    display: block
+  }
+  .engine-preview .caption .buttons .button {
+    display: block
+  }
+  .engine-preview .caption .buttons .button:last-child {
+    margin-top: 24px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -2986,6 +3079,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -3015,9 +3111,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .faq-list .item .title {
@@ -3066,6 +3164,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -3095,9 +3196,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .feature-card {
@@ -3156,21 +3259,30 @@ discord-widget widget-footer widget-button-join:hover {
   .feature-card {
     padding: 32px 0
   }
-}
-@media (max-width:1200px) {
   .feature-card img {
     width: 100%
   }
+  .feature-card .feature-backgroung {
+    right: 0
+  }
   .feature-card .feature-backgroung img {
-    min-width: 100%;
+    position: relative;
+    right: 0;
+    top: auto;
+    bottom: 0;
+    left: auto;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none;
     width: auto;
-    height: 100%;
-    top: 0;
-    right: auto;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%)
+    max-width: none;
+    height: 100%
+  }
+}
+@media (max-width:993px) {
+  .feature-card {
+    padding: 16px 0;
+    margin: 16px 0
   }
 }
 :root {
@@ -3200,6 +3312,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -3229,9 +3344,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -3678,16 +3795,25 @@ discord-widget widget-footer widget-button-join:hover {
   max-width: 828px;
   margin: 0 auto
 }
-@media (max-width:640px) {
+@media (max-width:768px) {
+  .form.small-size {
+    max-width: 100%
+  }
   .form.inline-form {
     display: block;
     width: 100%
   }
   .form.inline-form .button-group {
-    margin-top: 20px
+    margin-top: 24px
   }
   .form.inline-form .button-group button {
     width: 100%
+  }
+  .form .input,
+  .form select,
+  .form textarea {
+    padding-top: 12px;
+    padding-bottom: 13px
   }
 }
 :root {
@@ -3717,6 +3843,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -3746,9 +3875,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .game-banner {
@@ -3781,8 +3912,7 @@ discord-widget widget-footer widget-button-join:hover {
   backdrop-filter: blur(25px);
   border: 1px solid rgba(255,255,255,.2);
   background-color: rgba(15,10,10,.2);
-  padding: 16px 22px;
-  right: 0
+  padding: 16px 22px
 }
 .game-banner .video-side {
   height: 100%;
@@ -3851,6 +3981,49 @@ discord-widget widget-footer widget-button-join:hover {
 .game-banner .logo-side .dotted-list li {
   margin-bottom: 0
 }
+@media (max-width:1440px) {
+  .game-banner .logo-side .logo-cover {
+    padding-top: 180px
+  }
+  .game-banner .banner-info {
+    display: block
+  }
+  .game-banner .banner-info .left {
+    width: 100%;
+    margin-bottom: 56px
+  }
+  .game-banner .text-side {
+    max-width: 60%;
+    margin: auto
+  }
+}
+@media (max-width:993px) {
+  .game-banner .text-side {
+    max-width: 80%
+  }
+}
+@media (max-width:768px) {
+  .game-banner .text-side {
+    max-width: 90%
+  }
+  .game-banner .banner-info .left {
+    margin-bottom: 32px
+  }
+}
+@media (max-width:640px) {
+  .game-banner .text-side {
+    max-width: 100%
+  }
+  .game-banner .logo-side {
+    padding: 32px 0
+  }
+  .game-banner .banner-info .left {
+    margin-bottom: 16px
+  }
+  .game-banner .butons-group {
+    margin-top: 16px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -3878,6 +4051,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -3907,9 +4083,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .game-preview {
@@ -3970,6 +4148,11 @@ discord-widget widget-footer widget-button-join:hover {
 .game-video img {
   max-width: 100%;
   width: 100%
+}
+@media (max-width:768px) {
+  .game-preview .inner {
+    padding: 24px
+  }
 }
 .glider-contain {
   width: 100%;
@@ -4120,6 +4303,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -4149,9 +4335,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .row,
@@ -5153,8 +5341,8 @@ discord-widget widget-footer widget-button-join:hover {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 24px;
-    padding-left: 24px
+    padding-right: 12px;
+    padding-left: 12px
   }
   .container,
   .container-fluid {
@@ -5162,11 +5350,14 @@ discord-widget widget-footer widget-button-join:hover {
     padding-left: 24px
   }
   .row {
-    margin-right: -24px;
-    margin-left: -24px
+    margin-right: -12px;
+    margin-left: -12px
   }
   .row > .spaced-around {
     padding: 12px
+  }
+  .spaced-bottom-md {
+    margin-bottom: 12px
   }
 }
 @media (max-width:993px) {
@@ -5175,8 +5366,8 @@ discord-widget widget-footer widget-button-join:hover {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 24px;
-    padding-left: 24px
+    padding-right: 12px;
+    padding-left: 12px
   }
   .container,
   .container-fluid {
@@ -5184,14 +5375,14 @@ discord-widget widget-footer widget-button-join:hover {
     padding-left: 24px
   }
   .row {
-    margin-right: -24px;
-    margin-left: -24px
+    margin-right: -12px;
+    margin-left: -12px
   }
   .row > .spaced-around {
     padding: 12px
   }
   .spaced-bottom-sm {
-    margin-bottom: 24px
+    margin-bottom: 12px
   }
 }
 @media (max-width:768px) {
@@ -5200,8 +5391,8 @@ discord-widget widget-footer widget-button-join:hover {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 24px;
-    padding-left: 24px
+    padding-right: 12px;
+    padding-left: 12px
   }
   .container,
   .container-fluid {
@@ -5209,11 +5400,11 @@ discord-widget widget-footer widget-button-join:hover {
     padding-left: 24px
   }
   .row {
-    margin-right: -24px;
-    margin-left: -24px
+    margin-right: -12px;
+    margin-left: -12px
   }
-  .row > .spaced-around {
-    padding: 12px
+  .spaced-bottom-xs {
+    margin-bottom: 12px
   }
 }
 @media (max-width:640px) {
@@ -5222,23 +5413,20 @@ discord-widget widget-footer widget-button-join:hover {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 24px;
-    padding-left: 24px
+    padding-right: 16px;
+    padding-left: 16px
   }
   .container,
   .container-fluid {
-    padding-right: 24px;
-    padding-left: 24px
+    padding-right: 32px;
+    padding-left: 32px
   }
   .row {
-    margin-right: -24px;
-    margin-left: -24px
-  }
-  .row > .spaced-around {
-    padding: 12px
+    margin-right: -16px;
+    margin-left: -16px
   }
   .spaced-bottom-ms {
-    margin-bottom: 24px
+    margin-bottom: 16px
   }
 }
 @font-face {
@@ -5426,6 +5614,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -5455,9 +5646,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .section.main-banner-section {
@@ -5676,6 +5869,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -5705,9 +5901,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .main-footer .footer-subtitle {
@@ -5821,6 +6019,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -5850,9 +6051,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .main-header {
@@ -6017,8 +6220,10 @@ discord-widget widget-footer widget-button-join:hover {
   content: "";
   width: 100%;
   display: block;
-  -webkit-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out,-webkit-transform .2s ease-in-out;
   background-color: #fff;
   border-radius: 12px;
   height: 1px
@@ -6246,10 +6451,6 @@ discord-widget widget-footer widget-button-join:hover {
   .main-header .menu-side {
     display: none
   }
-  .main-header .menu-side .mode-toggle {
-    display: block;
-    text-align: left
-  }
   .main-header .right-side {
     -webkit-box-flex: 1;
     -ms-flex: auto;
@@ -6260,9 +6461,6 @@ discord-widget widget-footer widget-button-join:hover {
     -webkit-box-pack: end;
     -ms-flex-pack: end;
     justify-content: end
-  }
-  .main-header .right-side .mode-toggle {
-    display: none
   }
   .main-header .language .item .text {
     font-size: var(--small-text-font-size)
@@ -6305,11 +6503,42 @@ discord-widget widget-footer widget-button-join:hover {
   .main-header .bordered-inner {
     padding: 10px 0
   }
+  .main-header .language .dropdown .dropdown-header {
+    padding-top: 10px;
+    padding-bottom: 10px
+  }
+  .main-header .language .dropdown .dropdown-inner {
+    top: calc(100% + 15px)
+  }
+  .main-header .language .dropdown .dropdown-inner .item .text {
+    padding-top: 7px;
+    padding-bottom: 7px
+  }
+  .main-header .language .item {
+    padding-right: 24px
+  }
+  .main-header .language .item .text {
+    width: 26px;
+    display: block;
+    overflow: hidden;
+    line-height: 24px
+  }
   .main-header .header-navigation ul {
     padding: 12px 0
   }
   .main-header .header-navigation ul li a {
     padding: 12px
+  }
+}
+@media (max-width:450px) {
+  .main-header .header-container {
+    gap: 8px
+  }
+  .main-header .logo {
+    width: 100px
+  }
+  .main-header .right-side {
+    gap: 8px
   }
 }
 :root {
@@ -6339,6 +6568,9 @@ discord-widget widget-footer widget-button-join:hover {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -6368,9 +6600,11 @@ discord-widget widget-footer widget-button-join:hover {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -6524,6 +6758,27 @@ discord-widget widget-footer widget-button-join:hover {
     --side-position: 6px
   }
 }
+@media (max-width:450px) {
+  :root {
+    --mode-button-width: 50px;
+    --mode-button-height: 30px;
+    --mode-button-radius: 65px;
+    --mode-icon-size: 18px;
+    --side-position: 6px
+  }
+}
+@media (max-width:375px) {
+  :root {
+    --mode-button-width: 42px;
+    --mode-button-height: 30px;
+    --mode-button-radius: 65px;
+    --mode-icon-size: 18px;
+    --side-position: 6px
+  }
+  .mode-button.light:before {
+    background-size: contain
+  }
+}
 body.dark {
   background-color: #0f0a0a
 }
@@ -6537,12 +6792,19 @@ body.light {
 body.light .fake-mode {
   background-color: #0f0a0a
 }
-body.light .main-header .bordered-inner {
+body.light .main-header .bordered-inner,
+body.light .main-header .menu-side {
   background-color: #d7d6d6
 }
 body.light .main-header .header-navigation ul li a,
 body.light .main-header .language .item .text {
   color: #28292c
+}
+body.light .main-header .header-navigation ul li a.active {
+  color: #ec1e24
+}
+body.light .main-header .menu-button:hover {
+  background-color: #969696
 }
 body.light .main-header .menu-tab {
   background-color: rgba(215,214,214,.5);
@@ -6803,6 +7065,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -6832,9 +7097,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .news-preview {
@@ -7079,6 +7346,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -7108,9 +7378,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .page-main {
@@ -7208,6 +7480,9 @@ body.light .form .form-title {
   display: inline-block;
   margin-right: 24px
 }
+.butons-group .dropdown.button-dropdown .button {
+  margin-right: 0
+}
 .butons-group .button-primary {
   margin-right: 24px
 }
@@ -7230,6 +7505,24 @@ body.light .form .form-title {
 @media (max-width:1200px) {
   .page-main {
     padding-top: var(--header-height)
+  }
+}
+@media (max-width:768px) {
+  .butons-group {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%
+  }
+  .butons-group .button,
+  .butons-group .dropdown {
+    margin: 0;
+    display: block;
+    width: 100%
+  }
+  .butons-group .button + .button,
+  .butons-group .dropdown + .button {
+    margin-top: 16px
   }
 }
 :root {
@@ -7259,6 +7552,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -7288,9 +7584,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .pagination {
@@ -7396,6 +7694,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -7425,9 +7726,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -7627,6 +7930,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -7656,9 +7962,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -7804,6 +8112,25 @@ body.light .form .form-title {
     --press-games-list-columns: 3
   }
 }
+@media (max-width:993px) {
+  :root {
+    --press-engines-list-gap: 24px;
+    --press-engines-list-columns: 2;
+    --press-games-list-gap: 24px;
+    --press-games-list-columns: 2
+  }
+}
+@media (max-width:993px) {
+  :root {
+    --press-engines-list-columns: 2;
+    --press-games-list-columns: 3
+  }
+}
+@media (max-width:768px) {
+  :root {
+    --press-games-list-columns: 2
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -7831,6 +8158,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -7860,9 +8190,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -7878,10 +8210,7 @@ body.light .form .form-title {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
   flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
-  padding: 17px 107px;
-  background-image: url(../img/laurels.png);
-  background-repeat: no-repeat;
-  background-position: center;
+  padding: 17px 100px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7892,7 +8221,40 @@ body.light .form .form-title {
   flex-direction: column;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
-  justify-content: space-between
+  justify-content: space-between;
+  position: relative
+}
+.quote-cards .quote-preview:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  height: 206px;
+  width: 140px;
+  background-image: url(../img/laurel-right.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  pointer-events: none;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%
+}
+.quote-cards .quote-preview:before {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 206px;
+  width: 140px;
+  background-image: url(../img/laurel-left.svg);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  pointer-events: none;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%
 }
 .quote-cards .quote-preview blockquote {
   font-size: var(--h1-font-size);
@@ -7900,7 +8262,7 @@ body.light .form .form-title {
   text-transform: uppercase;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   color: #fff;
-  line-height: 1.2
+  line-height: 1.1
 }
 .quote-cards .quote-preview cite {
   font-style: normal;
@@ -7947,6 +8309,91 @@ body.light .form .form-title {
 .quote-cards-large .quote-preview cite span {
   color: #969696
 }
+@media (max-width:1720px) {
+  .quote-cards .quote-preview blockquote br {
+    display: none
+  }
+}
+@media (max-width:1440px) {
+  .quote-cards .quote-preview {
+    padding-left: 70px;
+    padding-right: 70px
+  }
+  .quote-cards .quote-preview:after,
+  .quote-cards .quote-preview:before {
+    height: 176px;
+    width: 100px
+  }
+  .quote-cards .quote-preview blockquote {
+    font-size: var(--h2-font-size);
+    line-height: 1.1;
+    margin-bottom: 16px
+  }
+  .quote-cards .quote-preview blockquote br {
+    display: none
+  }
+  .quote-cards-large .quote-preview blockquote {
+    margin-bottom: 32px;
+    background-size: 32px;
+    padding-top: 56px
+  }
+}
+@media (max-width:1200px) {
+  .quote-cards-large {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+  }
+  .quote-cards-large .quote-preview {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 calc(50% - var(--quote-cards-gap));
+    flex: 1 1 calc(50% - var(--quote-cards-gap))
+  }
+  .quote-cards .quote-preview {
+    padding-left: 50px;
+    padding-right: 50px
+  }
+  .quote-cards .quote-preview:after,
+  .quote-cards .quote-preview:before {
+    height: 150px;
+    width: 90px
+  }
+}
+@media (max-width:993px) {
+  .quote-cards {
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap
+  }
+  .quote-cards .quote-preview {
+    padding-left: 50px;
+    padding-right: 50px;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%
+  }
+  .quote-cards .quote-preview:after,
+  .quote-cards .quote-preview:before {
+    height: 120px;
+    width: 70px
+  }
+  .quote-cards .quote-preview blockquote {
+    font-size: var(--h1-font-size)
+  }
+  .quote-cards .quote-preview cite {
+    font-size: var(--font-size)
+  }
+}
+@media (max-width:768px) {
+  .quote-cards-large {
+    display: block;
+    white-space: nowrap
+  }
+  .quote-cards-large .quote-preview {
+    display: inline-block;
+    width: 80%;
+    margin-right: 24px;
+    white-space: normal
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -7974,6 +8421,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -8003,9 +8453,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .screens .screen-list {
@@ -8101,6 +8553,104 @@ body.light .form .form-title {
   max-width: 100%;
   width: 100%
 }
+@media (max-width:993px) {
+  .screens .screen-list {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2,1fr);
+    -ms-grid-rows: (1fr)[2];
+    grid-template-rows: repeat(2,1fr)
+  }
+  .screens .screen-list .item:nth-child(1) {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 1/1/2/2
+  }
+  .screens .screen-list .item:nth-child(2) {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 2;
+    grid-area: 1/2/2/2
+  }
+  .screens .screen-list .item:nth-child(3) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 2/1/2/2
+  }
+  .screens .screen-list .item:nth-child(4) {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    grid-area: 2/2/2/2
+  }
+  .screens .screen-list .item:nth-child(5) {
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 1;
+    grid-area: 3/2/3/3
+  }
+  .screens .screen-list .item:nth-child(6) {
+    -ms-grid-row: 4;
+    -ms-grid-row-span: -1;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: -1;
+    grid-area: 4/2/3/1
+  }
+  .screens .screen-list .item:nth-child(7) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: -1;
+    grid-area: 4/2/4/1
+  }
+  .screens .screen-list .item:nth-child(8) {
+    -ms-grid-row: 4;
+    -ms-grid-column: 2;
+    grid-area: 4/2/4/2
+  }
+  .screens .screen-list .item:nth-child(9) {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: -1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 6/1/5/2
+  }
+  .screens .screen-list .item:nth-child(10) {
+    -ms-grid-row: 6;
+    -ms-grid-row-span: -1;
+    -ms-grid-column: 2;
+    grid-area: 6/2/5/2
+  }
+}
+@media (max-width:768px) {
+  .screens .screen-list {
+    display: block;
+    white-space: nowrap
+  }
+  .screens .screen-list .item {
+    display: inline-block;
+    width: 80%;
+    margin-right: 24px;
+    padding-top: 300px
+  }
+  .screens .screen-list .item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -8128,6 +8678,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -8157,9 +8710,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .scroll-button {
@@ -8609,6 +9164,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -8638,9 +9196,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -8697,6 +9257,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -8726,10 +9289,18 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
+}
+.mobile-slider-section {
+  overflow: hidden
+}
+.mobile-slider-section .mobile-slider-dots {
+  display: none
 }
 .slider-cover {
   position: relative;
@@ -8801,10 +9372,10 @@ body.light .form .form-title {
   height: 60vh;
   gap: 16px
 }
-.slider-cover .gallery-slider .slider-dots {
+.slider-cover .slider-dots {
   margin-top: 32px
 }
-.slider-cover .gallery-slider .slider-dots .dot {
+.slider-cover .slider-dots .dot {
   height: 16px;
   width: 16px;
   border-radius: 24px;
@@ -8814,15 +9385,15 @@ body.light .form .form-title {
   -webkit-transition: .3s;
   transition: .3s
 }
-.slider-cover .gallery-slider .slider-dots .dot.active,
-.slider-cover .gallery-slider .slider-dots .dot:hover {
+.slider-cover .slider-dots .dot.active,
+.slider-cover .slider-dots .dot:hover {
   background-color: #ec1e24
 }
-.slider-cover .gallery-slider .slider-dots .dot.active {
+.slider-cover .slider-dots .dot.active {
   width: 80px;
   border-radius: 8px
 }
-.slider-cover .gallery-slider .slider-dots .slider-pagination {
+.slider-cover .slider-dots .slider-pagination {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8830,6 +9401,11 @@ body.light .form .form-title {
   -ms-flex-pack: center;
   justify-content: center;
   gap: 4px
+}
+@media (max-width:768px) {
+  .mobile-slider-section .mobile-slider-dots {
+    display: block
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -8858,6 +9434,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -8887,9 +9466,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -8979,6 +9560,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -9008,9 +9592,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .subscribe-section {
@@ -9070,15 +9656,9 @@ body.light .form .form-title {
     margin-bottom: 10px;
     font-size: 16px
   }
-}
-@media (max-width:640px) {
   .subscribe-section .form-cover {
     display: block;
-    margin: 20px auto 0
-  }
-}
-@media (max-width:440px) {
-  .subscribe-section .form-cover {
+    margin: 24px auto 0;
     max-width: 100%
   }
 }
@@ -9109,6 +9689,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -9138,9 +9721,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .tabs {
@@ -9236,6 +9821,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -9265,9 +9853,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 :root {
@@ -9371,6 +9961,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -9400,9 +9993,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 .tooltip {
@@ -9454,6 +10049,9 @@ body.light .form .form-title {
 @media (max-width:1440px) {
   :root {
     --section-margin: 48px;
+    --large-title-font-size: 44px;
+    --h1-font-size: 38px;
+    --h2-font-size: 30px;
     --large-text-font-size: 18px
   }
 }
@@ -9483,9 +10081,11 @@ body.light .form .form-title {
     --h1-font-size: 30px;
     --h2-font-size: 26px;
     --h3-font-size: 20px;
-    --buttons-font-size: 28px;
+    --buttons-font-size: 26px;
     --buttons-font-size-small: 18px;
-    --header-height: 70px
+    --header-height: 70px;
+    --section-margin: 32px;
+    --section-title-margin: 32px
   }
 }
 a::-moz-selection,
@@ -9651,4 +10251,15 @@ dl + dl {
 }
 .simple-link:hover {
   color: #ec1e24
+}
+@media (max-width:1200px) {
+  .dotted-list {
+    max-width: 100%
+  }
+}
+@media (max-width:768px) {
+  article h1,
+  article h2 {
+    line-height: 1.1
+  }
 }
