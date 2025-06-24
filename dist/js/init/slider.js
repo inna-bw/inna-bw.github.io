@@ -41,7 +41,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		constructor(sliderElment) {
 			this.sliderElment = sliderElment;
-			this.sliderDots = this.sliderElment.querySelector('.slider-dots').querySelectorAll('.dot');
+			this.sliderDots = this.sliderElment.querySelector('[data-dots]').querySelectorAll('.dot');
 			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows');
 
 			this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));

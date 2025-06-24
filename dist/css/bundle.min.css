@@ -1862,18 +1862,51 @@ ul > li {
   .animation-line {
     min-width: 150%
   }
+  .career-line {
+    height: 110px
+  }
+  .career-line .line-cover {
+    height: 110px
+  }
+  .career-line .line-cover .translate-inner .line-item .text {
+    line-height: 1;
+    font-size: 80px;
+    text-shadow: 0 0 3px #ee0004,0 1px 0 rgba(236,30,36,.25),1px 0 0 rgba(236,30,36,.25)
+  }
 }
 @media (max-width:960px) {
   .career-line {
-    margin-top: 0
+    margin-top: 0;
+    height: 90px
+  }
+  .career-line .line-cover {
+    height: 90px
+  }
+  .career-line .line-cover .translate-inner .line-item .text {
+    font-size: 60px
   }
   .animation-line {
     min-width: 200%
   }
 }
-@media (max-width:760px) {
+@media (max-width:768px) {
   .animation-line {
     min-width: 250%
+  }
+  .career-line {
+    height: 60px
+  }
+  .career-line .line-cover {
+    height: 60px
+  }
+  .career-line .line-cover .translate-inner .line-item .text {
+    font-size: 40px
+  }
+  .career-line .line-cover .translate-inner .line-item .text:before {
+    height: 24px;
+    width: 24px;
+    left: -5px;
+    background-size: contain
   }
 }
 @media (max-width:640px) {
@@ -3036,6 +3069,9 @@ discord-widget widget-footer widget-button-join:hover {
   justify-content: flex-start
 }
 @media (max-width:993px) {
+  .engine-preview .logo {
+    padding: 50px 40px 50px
+  }
   .engine-preview .caption .title {
     margin-bottom: 16px
   }
@@ -3050,6 +3086,11 @@ discord-widget widget-footer widget-button-join:hover {
   }
   .engine-preview .caption .buttons .button:last-child {
     margin-top: 24px
+  }
+}
+@media (max-width:768px) {
+  .engine-preview .logo {
+    padding: 40px 32px 24px
   }
 }
 :root {
@@ -3887,7 +3928,6 @@ discord-widget widget-footer widget-button-join:hover {
 }
 .game-banner .banner-image {
   position: absolute;
-  z-index: 1;
   top: 0;
   left: 0;
   height: 100%;
@@ -4149,9 +4189,25 @@ discord-widget widget-footer widget-button-join:hover {
   max-width: 100%;
   width: 100%
 }
+@media (max-width:1440px) {
+  .game-preview .inner {
+    padding: 32px
+  }
+}
 @media (max-width:768px) {
   .game-preview .inner {
     padding: 24px
+  }
+  .game-preview .image-cover {
+    padding-top: 75%
+  }
+}
+@media (max-width:640px) {
+  .game-preview .inner {
+    padding: 24px
+  }
+  .game-preview .image-cover {
+    padding-top: 55%
   }
 }
 .glider-contain {
@@ -6618,14 +6674,13 @@ discord-widget widget-footer widget-button-join:hover {
   font-size: 0
 }
 .banner.animated-mode {
-  position: relative;
-  z-index: 15
+  position: relative
 }
 .fake-mode {
   position: fixed;
   height: 100px;
   width: 100px;
-  z-index: 12;
+  z-index: 20;
   pointer-events: none;
   border-radius: 50%;
   border: 1px solid #ec1e24;
@@ -6783,14 +6838,14 @@ body.dark {
   background-color: #0f0a0a
 }
 body.dark .fake-mode {
-  background-color: #d7d6d6
+  background-color: rgba(215,214,214,.5)
 }
 body.light {
   background-color: #d7d6d6;
   color: #28292c
 }
 body.light .fake-mode {
-  background-color: #0f0a0a
+  background-color: rgba(15,10,10,.5)
 }
 body.light .main-header .bordered-inner,
 body.light .main-header .menu-side {
@@ -7524,6 +7579,15 @@ body.light .form .form-title {
   .butons-group .dropdown + .button {
     margin-top: 16px
   }
+  .title-with-links {
+    display: block
+  }
+  .title-with-links .social-group {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    padding-bottom: 16px
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -7902,6 +7966,17 @@ body.light .form .form-title {
 }
 .popup .bottom .button + .button {
   margin-left: 24px
+}
+@media (max-width:768px) {
+  .popup .header {
+    padding: 24px 32px
+  }
+  .popup .bottom {
+    padding: 24px 32px
+  }
+  .popup .bottom .button + .button {
+    margin: 16px 0 0
+  }
 }
 :root {
   --large-title-font-size: 48px;
