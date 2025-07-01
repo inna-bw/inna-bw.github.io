@@ -24,7 +24,7 @@
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -276,7 +276,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -342,7 +342,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -805,7 +805,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -945,7 +945,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -1064,7 +1064,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -1322,7 +1322,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -1437,7 +1437,7 @@ ul > li {
 .breadcrumbs-list a.text:hover {
   color: #ec1e24
 }
-@media (max-width:1200px) {
+@media (max-width:1440px) {
   .breadcrumbs {
     padding: 32px 0
   }
@@ -1478,7 +1478,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -1738,7 +1738,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -1946,7 +1946,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -2114,7 +2114,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -2378,7 +2378,7 @@ ul > li {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -2674,7 +2674,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -2784,6 +2784,37 @@ discord-widget widget-footer widget-button-join:hover {
   text-transform: uppercase;
   margin-bottom: 8px
 }
+@media (max-width:768px) {
+  .documentation-link {
+    display: block
+  }
+  .documentation-link .caption {
+    display: block
+  }
+  .documentation-link .caption .title {
+    font-size: 24px
+  }
+  .documentation-link .caption .button-cover {
+    margin-top: 16px;
+    text-align: left
+  }
+  .documentation-link .image-link {
+    width: 100%
+  }
+  .documentation-link .image-link:not(.logo) img {
+    height: auto;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%)
+  }
+  .documentation-link .image-link.logo img {
+    margin: auto;
+    height: calc(100% - 60px)
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -2810,7 +2841,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -2995,7 +3026,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -3119,7 +3150,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -3204,7 +3235,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -3352,7 +3383,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -3883,7 +3914,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -4032,25 +4063,86 @@ discord-widget widget-footer widget-button-join:hover {
     width: 100%;
     margin-bottom: 56px
   }
+  .game-banner .banner-info .left.engine-description {
+    text-align: center;
+    max-width: 60%;
+    margin: 0 auto 32px;
+    position: relative;
+    z-index: 2
+  }
+  .game-banner .banner-info .left.engine-description .logo-cover {
+    margin: 0 auto 32px;
+    width: 300px;
+    padding-top: 150px
+  }
+  .game-banner .banner-info .left.engine-description .butons-group {
+    text-align: center
+  }
   .game-banner .text-side {
     max-width: 60%;
     margin: auto
   }
+  .game-banner .video-side {
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    position: absolute;
+    padding: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    overflow: hidden
+  }
+  .game-banner .video-side img,
+  .game-banner .video-side video {
+    height: 100%;
+    width: auto;
+    top: 0;
+    left: 0
+  }
+  .game-banner .video-side:before {
+    height: 100%;
+    width: 100%;
+    content: "";
+    background-color: rgba(0,0,0,.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1
+  }
 }
 @media (max-width:993px) {
-  .game-banner .text-side {
+  .game-banner .banner-info .left.engine-description,
+  .game-banner .text-sidem {
     max-width: 80%
   }
 }
 @media (max-width:768px) {
+  .game-banner .banner-info .left.engine-description,
   .game-banner .text-side {
     max-width: 90%
   }
   .game-banner .banner-info .left {
     margin-bottom: 32px
   }
+  .game-banner .video-side {
+    position: relative;
+    height: 350px
+  }
+  .game-banner .video-side img,
+  .game-banner .video-side video {
+    position: static;
+    margin: auto;
+    display: block
+  }
+  .game-banner .video-side:before {
+    display: none
+  }
 }
 @media (max-width:640px) {
+  .game-banner .banner-info .left.engine-description,
   .game-banner .text-side {
     max-width: 100%
   }
@@ -4090,7 +4182,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -4195,18 +4287,27 @@ discord-widget widget-footer widget-button-join:hover {
   }
 }
 @media (max-width:768px) {
-  .game-preview .inner {
+  .game-preview .inner,
+  .game-preview.large .inner {
     padding: 24px
   }
-  .game-preview .image-cover {
-    padding-top: 75%
+  .game-preview .image-cover,
+  .game-preview.large .image-cover {
+    padding-top: 52.5%
+  }
+  .game-preview .image-cover img,
+  .game-preview.large .image-cover img {
+    -o-object-position: bottom;
+    object-position: bottom
   }
 }
 @media (max-width:640px) {
-  .game-preview .inner {
+  .game-preview .inner,
+  .game-preview.large .inner {
     padding: 24px
   }
-  .game-preview .image-cover {
+  .game-preview .image-cover,
+  .game-preview.large .image-cover {
     padding-top: 55%
   }
 }
@@ -4358,7 +4459,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -5469,20 +5570,20 @@ discord-widget widget-footer widget-button-join:hover {
   [class*=col-ms-],
   [class*=col-sm-],
   [class*=col-xs-] {
-    padding-right: 16px;
-    padding-left: 16px
+    padding-right: 12px;
+    padding-left: 12px
   }
   .container,
   .container-fluid {
-    padding-right: 32px;
-    padding-left: 32px
+    padding-right: 24px;
+    padding-left: 24px
   }
   .row {
-    margin-right: -16px;
-    margin-left: -16px
+    margin-right: -12px;
+    margin-left: -12px
   }
   .spaced-bottom-ms {
-    margin-bottom: 16px
+    margin-bottom: 12px
   }
 }
 @font-face {
@@ -5669,7 +5770,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -5924,7 +6025,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -6074,7 +6175,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -6623,7 +6724,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -7119,7 +7220,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -7400,7 +7501,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -7615,7 +7716,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -7757,7 +7858,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -8004,7 +8105,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -8232,7 +8333,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -8495,7 +8596,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -8752,7 +8853,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9238,7 +9339,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9305,6 +9406,14 @@ body.light .form .form-title {
 .section-title ~ .divider {
   margin-bottom: var(--section-title-margin)
 }
+@media (max-width:768px) {
+  .section-title ~ .divider {
+    margin-bottom: 24px
+  }
+  .title-with-links {
+    margin-bottom: 16px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -9331,7 +9440,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9478,8 +9587,48 @@ body.light .form .form-title {
   gap: 4px
 }
 @media (max-width:768px) {
-  .mobile-slider-section .mobile-slider-dots {
+  .section.mobile-slider-section .mobile-slider-dots {
     display: block
+  }
+  .section.mobile-slider-section .mobile-slider-track {
+    white-space: nowrap;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    margin: 0;
+    gap: 24px
+  }
+  .section.mobile-slider-section .mobile-slider-track > div,
+  .section.mobile-slider-section .mobile-slider-track li {
+    width: 80%;
+    margin: 0;
+    -ms-flex-preferred-size: 80%;
+    flex-basis: 80%;
+    max-width: 80%;
+    float: none;
+    display: block;
+    white-space: normal;
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+  }
+  .section.mobile-slider-section .mobile-slider-track > div.spaced-around,
+  .section.mobile-slider-section .mobile-slider-track li.spaced-around {
+    padding: 0
+  }
+  .slider-cover .slider.gallery-slider .slider-list {
+    height: 250px
+  }
+  .slider-cover .slider.gallery-slider .slider-list li > div {
+    height: 250px
+  }
+  .slider-cover .slider-dots {
+    margin-top: 24px
   }
 }
 :root {
@@ -9508,7 +9657,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9634,7 +9783,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9763,7 +9912,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -9895,7 +10044,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -10035,7 +10184,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -10123,7 +10272,7 @@ body.light .form .form-title {
 }
 @media (max-width:1440px) {
   :root {
-    --section-margin: 48px;
+    --section-margin: 40px;
     --large-title-font-size: 44px;
     --h1-font-size: 38px;
     --h2-font-size: 30px;
@@ -10241,7 +10390,7 @@ article .text:last-child {
 article h1,
 article h2 {
   line-height: 1.2;
-  font-size: 48px;
+  font-size: var(--section-title-font-size);
   font-weight: 900;
   margin: 0 0 32px
 }
@@ -10335,6 +10484,10 @@ dl + dl {
 @media (max-width:768px) {
   article h1,
   article h2 {
-    line-height: 1.1
+    line-height: 1;
+    margin-bottom: 24px
+  }
+  article .date {
+    margin: 24px 0
   }
 }
