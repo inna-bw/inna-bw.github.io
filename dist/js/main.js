@@ -791,13 +791,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			this.hoveredContainer = document.querySelector(`[data-tab-index="${this.tabIndex}"]`);
 			if (!this.hoveredContainer) return;
 
-			this.savedActiveLink = this.tabHoverEl.parentNode.querySelector('a.active');
-			this.currentLink = this.tabHoverEl.querySelector('a');
-
 			this.tabHoverEl.addEventListener('mouseenter', function(e){
 				e.stopPropagation();
 				e.stopImmediatePropagation();
-				this.setActiveLinkClass(this.savedActiveLink, this.currentLink);
 				this.closeAllContainers();
 				this.showContainer(this.hoveredContainer);
 			}.bind(this));
@@ -806,22 +802,29 @@ document.addEventListener('DOMContentLoaded', function(){
 				e.stopPropagation();
 				e.stopImmediatePropagation();
 				this.hideContainer(this.hoveredContainer);
+				if (!document.querySelector('.current_page_item')) {
+					window.newRunningLine.destroy();
+				} else {
+					window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'));
+				}
+			}.bind(this));
+
+			this.hoveredContainer.addEventListener('mouseenter', function(e){
+				if (window.newRunningLine) {
+					window.newRunningLine.start(window.newRunningLine.activeElement);
+				}
 			}.bind(this));
 
 			document.addEventListener('mousemove', function(e){
 				if (!e.target.closest('.line') && !e.target.closest('[data-tab-hover]') && !e.target.closest('[data-tab-index]')) {
 					this.closeAllContainers();
 				}
-				if (!e.target.closest('.header-navigation') && !e.target.closest('[data-tab-index]')) {
-					this.setActiveLinkClass(this.currentLink, this.savedActiveLink);
-					window.newRunningLine.start(this.savedActiveLink);
-				}
 			}.bind(this));
 		};
 
 		setActiveLinkClass = function(prevLink, currentLink) {
-			prevLink.classList.remove(this.activeLinkClassName);
-			currentLink.classList.add(this.activeLinkClassName);
+			// prevLink.classList.remove(this.activeLinkClassName);
+			// currentLink.classList.add(this.activeLinkClassName);
 		};
 
 		closeAllContainers = function(){
@@ -832,19 +835,16 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 
 		showContainer = function(container){
+			container.classList.add(this.activeClassName);
 			setTimeout(()=> {
-				container.classList.add(this.activeClassName);
-				setTimeout(()=> {
-					container.classList.add(this.animatedClassName);
-				}, 350);
-			}, 350);
+				container.classList.add(this.animatedClassName);
+			}, 100);
 		};
 
 		hideContainer = function(container){
 			container.classList.remove(this.animatedClassName);
 			container.classList.remove(this.activeClassName);
 		};
-
 	};
 
 	Array.prototype.forEach.call(document.querySelectorAll("[data-tab-hover]"), function(tabHoverEl){
@@ -3559,6 +3559,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		activeElement = null;
 
+		lineStarted = false;
+
 		static #instance = null;
 
 		constructor(lineParent) {
@@ -3605,6 +3607,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		init() {
 			let runningLine = this;
+			let lineStarted = true;
 			let activeElement = runningLine.lineFollowElement.querySelector('.'+runningLine.activeClassName);
 			runningLine.start(activeElement);
 		};
@@ -3614,13 +3617,24 @@ document.addEventListener('DOMContentLoaded', function(){
 			runningLine.setActiveElement(activeElement);
 			runningLine.setWidth();
 			runningLine.setPosition();
+		};
+
+		destroy(){
+			this.lineStarted = false;
+			this.lineElement.style.width = '0px';
 		}
 	};
 
 
 	Array.prototype.forEach.call(document.querySelectorAll(".running-line"), function(line){
-		window.newRunningLine = new RunningLine(line);
-		window.newRunningLine.init();
+		let activeListItem = document.querySelector('.current_page_item');
+
+		if (activeListItem) {
+			let activeListItemLink = activeListItem.querySelector('a');
+			activeListItemLink.classList.add('active');
+			window.newRunningLine = new RunningLine(line);
+			window.newRunningLine.init();
+		};
 
 		Array.prototype.forEach.call(line.parentNode.querySelectorAll('a'), function(link){
 			let allLinks = line.parentNode.querySelectorAll('a');
@@ -3629,14 +3643,29 @@ document.addEventListener('DOMContentLoaded', function(){
 					allLinks[i].classList.remove('active');
 				};
 				this.classList.add('active');
+
+				if (!window.newRunningLine) {
+					window.newRunningLine = new RunningLine(line);
+					window.newRunningLine.init();
+				}
 				window.newRunningLine.start(this);
 			})
-		})
+		});
+
+			line.parentNode.addEventListener("mouseleave", function (e) {
+				let openedMenutab = document.querySelector('.menu-tab.active');
+				if (!activeListItem) {
+					window.newRunningLine.destroy();
+				} else {
+					if (!openedMenutab) {
+						window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'))
+					}
+				};
+			})
 	});
-
-
-
 });
+
+
 // scrollButton
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -3909,7 +3938,9 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}, 10)
 	setTimeout(function(){
-		document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
+		if (document.querySelectorAll('section') && document.querySelectorAll('section')[0]) {
+			document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
+		}
 	}, 150)
 });
 document.addEventListener( 'DOMContentLoaded', function() {

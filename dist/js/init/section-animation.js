@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}, 10)
 	setTimeout(function(){
-		document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
+		if (document.querySelectorAll('section') && document.querySelectorAll('section')[0]) {
+			document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
+		}
 	}, 150)
 });

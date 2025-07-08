@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		activeElement = null;
 
+		lineStarted = false;
+
 		static #instance = null;
 
 		constructor(lineParent) {
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 		init() {
 			let runningLine = this;
+			let lineStarted = true;
 			let activeElement = runningLine.lineFollowElement.querySelector('.'+runningLine.activeClassName);
 			runningLine.start(activeElement);
 		};
@@ -63,13 +66,24 @@ document.addEventListener('DOMContentLoaded', function(){
 			runningLine.setActiveElement(activeElement);
 			runningLine.setWidth();
 			runningLine.setPosition();
+		};
+
+		destroy(){
+			this.lineStarted = false;
+			this.lineElement.style.width = '0px';
 		}
 	};
 
 
 	Array.prototype.forEach.call(document.querySelectorAll(".running-line"), function(line){
-		window.newRunningLine = new RunningLine(line);
-		window.newRunningLine.init();
+		let activeListItem = document.querySelector('.current_page_item');
+
+		if (activeListItem) {
+			let activeListItemLink = activeListItem.querySelector('a');
+			activeListItemLink.classList.add('active');
+			window.newRunningLine = new RunningLine(line);
+			window.newRunningLine.init();
+		};
 
 		Array.prototype.forEach.call(line.parentNode.querySelectorAll('a'), function(link){
 			let allLinks = line.parentNode.querySelectorAll('a');
@@ -78,11 +92,25 @@ document.addEventListener('DOMContentLoaded', function(){
 					allLinks[i].classList.remove('active');
 				};
 				this.classList.add('active');
+
+				if (!window.newRunningLine) {
+					window.newRunningLine = new RunningLine(line);
+					window.newRunningLine.init();
+				}
 				window.newRunningLine.start(this);
 			})
-		})
+		});
+
+			line.parentNode.addEventListener("mouseleave", function (e) {
+				let openedMenutab = document.querySelector('.menu-tab.active');
+				if (!activeListItem) {
+					window.newRunningLine.destroy();
+				} else {
+					if (!openedMenutab) {
+						window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'))
+					}
+				};
+			})
 	});
-
-
-
 });
+

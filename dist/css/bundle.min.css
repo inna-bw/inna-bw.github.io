@@ -122,6 +122,9 @@ a:focus,
 a:hover {
   text-decoration: none
 }
+a:visited {
+  color: #ababab
+}
 a,
 img {
   -webkit-user-select: none;
@@ -6073,9 +6076,11 @@ discord-widget widget-footer widget-button-join:hover {
   margin-bottom: 24px;
   display: block
 }
+.main-footer .detail.link,
 .main-footer .footer-link {
   display: block
 }
+.main-footer .detail.link:hover,
 .main-footer .footer-link:hover {
   text-decoration: underline;
   color: #ec1e24
@@ -6088,6 +6093,7 @@ discord-widget widget-footer widget-button-join:hover {
   -moz-columns: 3;
   columns: 3
 }
+.main-footer .navigation-group .detail.link,
 .main-footer .navigation-group .footer-link {
   margin-bottom: 24px
 }
@@ -6135,9 +6141,11 @@ discord-widget widget-footer widget-button-join:hover {
   .main-footer .flex-inner .cell:first-child {
     margin-bottom: 10px
   }
+  .main-footer .detail.link,
   .main-footer .footer-link {
     margin-bottom: 10px
   }
+  .main-footer .detail.link:last-child,
   .main-footer .footer-link:last-child {
     margin-bottom: 0
   }
