@@ -123,7 +123,7 @@ a:hover {
   text-decoration: none
 }
 a:visited {
-  color: #ababab
+  color: inherit
 }
 a,
 img {
@@ -237,6 +237,10 @@ ul > li {
   transition: .2s;
   -webkit-transform: translateZ(0);
   transform: translateZ(0)
+}
+.image-cover img.no-image-logo {
+  -o-object-fit: none;
+  object-fit: none
 }
 .inline-block {
   display: inline-block
@@ -496,6 +500,9 @@ ul > li {
   margin-bottom: 20px;
   font-family: "Sofia Sans Extra Condensed",sans-serif
 }
+.about-preview .wp-block-post-date {
+  display: none
+}
 .about-section .slider-cover {
   position: relative
 }
@@ -517,12 +524,14 @@ ul > li {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  pointer-events: none;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   top: 50%
 }
 .about-section .slider-cover .button-arrow {
+  pointer-events: visible;
   background-color: transparent;
   border: 1px solid transparent;
   height: var(--chronology_button-size);
@@ -10124,7 +10133,8 @@ body.light .form .form-title {
   font-size: var(--small-text-font-size);
   cursor: pointer;
   -webkit-transition: .2s;
-  transition: .2s
+  transition: .2s;
+  text-transform: capitalize
 }
 .tag.active,
 .tag:hover {
