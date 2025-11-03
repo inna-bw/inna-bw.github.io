@@ -19,23 +19,20 @@ document.addEventListener('DOMContentLoaded', function(){
 			let menuId = this.toggleButton.dataset.menuToggle;
 			this.menuEl = document.getElementById(menuId);
 
-			this.setTopPosition();
-
 			document.addEventListener("click", function (e) {
 				if (!e.target.closest('[data-menu-toggle]') && !e.target.closest('#'+menuId)) {
 					this.closeMenu();
 				};
 			}.bind(this));
 
-			window.addEventListener('resize', this.setTopPosition.bind(this));
-		}
+			document.addEventListener("click", function (e) {
+				if (e.target.closest('[data-scrollto]')) {
+					console.log('close')
+					this.closeMenu();
+				};
+			}.bind(this));
 
-		setTopPosition = function(){
-			let height = PAGE_HEADER.getBoundingClientRect().height;
-			let innerEl = PAGE_HEADER.querySelector('.bordered-inner');
-			let topOffset = parseInt(window.getComputedStyle(innerEl, null).paddingTop.replace('px', ''));
-			this.menuEl.style.top = height - topOffset + 'px';
-		};
+		}
 
 		closeMenu = function(){
 			this.toggleButton.classList.remove(this.activeButtonClassName);

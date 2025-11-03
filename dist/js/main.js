@@ -570,7 +570,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
-
 // data-menu-toggle
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -592,23 +591,20 @@ document.addEventListener('DOMContentLoaded', function(){
 			let menuId = this.toggleButton.dataset.menuToggle;
 			this.menuEl = document.getElementById(menuId);
 
-			this.setTopPosition();
-
 			document.addEventListener("click", function (e) {
 				if (!e.target.closest('[data-menu-toggle]') && !e.target.closest('#'+menuId)) {
 					this.closeMenu();
 				};
 			}.bind(this));
 
-			window.addEventListener('resize', this.setTopPosition.bind(this));
-		}
+			document.addEventListener("click", function (e) {
+				if (e.target.closest('[data-scrollto]')) {
+					console.log('close')
+					this.closeMenu();
+				};
+			}.bind(this));
 
-		setTopPosition = function(){
-			let height = PAGE_HEADER.getBoundingClientRect().height;
-			let innerEl = PAGE_HEADER.querySelector('.bordered-inner');
-			let topOffset = parseInt(window.getComputedStyle(innerEl, null).paddingTop.replace('px', ''));
-			this.menuEl.style.top = height - topOffset + 'px';
-		};
+		}
 
 		closeMenu = function(){
 			this.toggleButton.classList.remove(this.activeButtonClassName);
@@ -802,10 +798,12 @@ document.addEventListener('DOMContentLoaded', function(){
 				e.stopPropagation();
 				e.stopImmediatePropagation();
 				this.hideContainer(this.hoveredContainer);
-				if (!document.querySelector('.current_page_item')) {
+				if (!document.querySelector('.current_page_item') && window.newRunningLine) {
 					window.newRunningLine.destroy();
 				} else {
-					window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'));
+					if (window.newRunningLine) {
+						window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'));
+					}
 				}
 			}.bind(this));
 
@@ -946,44 +944,79 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 });
-//Discord Widget plugin
-//v2
-//made by Dipped
+// Discord Widget plugin (updated)
+// v3.1 — with init guard
+// - Читає атрибути з data-*
+// - Показує activity (legacy user.game або user.activities[0].name)
+// - Join disabled, якщо немає instant_invite
+// - Захист від повторної ініціалізації через data-initialized
 
 'use strict';
+
+function LDColor(color, percent) {
+	let num = parseInt(color, 16);
+	let amt = Math.round(2.55 * percent);
+	let R = (num >> 16) + amt;
+	let G = ((num >> 8) & 0x00ff) + amt;
+	let B = (num & 0x0000ff) + amt;
+	return (
+		0x1000000 +
+		(R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 +
+		(G < 255 ? (G < 1 ? 0 : G) : 255) * 0x100 +
+		(B < 255 ? (B < 1 ? 0 : B) : 255)
+	).toString(16).slice(1);
+}
+
 window.addEventListener('load', () => {
-	for (let widget of document.getElementsByTagName('discord-widget')) {
-		//getting attributes
-		let id = widget.getAttribute('id') ?? null;
-		let width = widget.getAttribute('width') ?? '350px';
-		let height = widget.getAttribute('height') ?? '400px';
-		let footerText = widget.getAttribute('footerText') ?? '';
-		let color = widget.getAttribute('color') ?? '#2c2f34';
-		let backgroundColor = widget.getAttribute('backgroundColor') ?? '#23272a';
-		let textColor = widget.getAttribute('textColor') ?? '#fff';
-		let statusColor = widget.getAttribute('statusColor') ?? '#858585';
-		//header
-		let head = document.createElement('widget-header');
-		let logo = document.createElement('widget-logo');
-		let count = document.createElement('widget-header-count');
+	for (const widget of document.getElementsByTagName('discord-widget')) {
+		// ---- guard: already initialized? ----
+		if (widget.dataset.initialized === '1') continue;
+		widget.dataset.initialized = '1';
+
+		// --- read attributes strictly from data-* ---
+		const id               = widget.dataset.id;             // ОБОВ'ЯЗКОВО
+		const width            = widget.dataset.width  || '350px';
+		const height           = widget.dataset.height || '400px';
+		const footerText       = widget.dataset.footertext || '';
+		const color            = widget.dataset.color  || '#2c2f34';
+		const backgroundColor  = widget.dataset.backgroundcolor || '#23272a';
+		const textColor        = widget.dataset.textcolor || '#fff';
+		const statusColor      = widget.dataset.statuscolor || '#858585';
+
+		// Якщо немає ID — показуємо одне повідомлення і все
+		if (!id) {
+			const body = document.createElement('widget-body');
+			body.textContent = 'No Discord server ID was specified.';
+			widget.append(body);
+			continue;
+		}
+
+		// header
+		const head  = document.createElement('widget-header');
+		const logo  = document.createElement('widget-logo');
+		const count = document.createElement('widget-header-count');
 		head.append(logo, count);
-		//body
-		let body = document.createElement('widget-body');
-		if (!id) body.innerHTML = 'No Discord server ID was specified.';
-		//footer
-		let footer = document.createElement('widget-footer');
-		let footerInfo = document.createElement('widget-footer-info');
-		let joinButton = document.createElement('widget-button-join');
-		joinButton.addEventListener('click', (e) => {
-			if (joinButton.getAttribute('href')) {
-				window.open(joinButton.getAttribute('href') || '', joinButton.getAttribute('target') || '', '');
-			}
-		});
-		footerInfo.innerText = footerText;
+
+		// body
+		const body = document.createElement('widget-body');
+
+		// footer
+		const footer     = document.createElement('widget-footer');
+		const footerInfo = document.createElement('widget-footer-info');
+		const joinButton = document.createElement('widget-button-join');
+		footerInfo.innerText = footerText || '';
 		joinButton.innerText = 'Join';
+		joinButton.addEventListener('click', (e) => {
+			if (joinButton.classList.contains('is-disabled')) {
+				e.preventDefault();
+				return;
+			}
+			const href = joinButton.getAttribute('href');
+			if (href) window.open(href, '_blank', '');
+		});
 		footer.append(footerInfo, joinButton);
-		//style
-		// widget.innerHTML = '<link rel="stylesheet" href="https://dipped.dev/static/plugins/discordwidget/index.css">';
+
+		// styles
 		widget.style.height = height;
 		widget.style.width = width;
 		widget.style.setProperty('--color', color);
@@ -991,48 +1024,73 @@ window.addEventListener('load', () => {
 		widget.style.setProperty('--textColor', textColor);
 		widget.style.setProperty('--buttonColor', `#${LDColor(color.replace('#', ''), -10)}`);
 		widget.style.setProperty('--statusColor', statusColor);
-		//appending head, body and footer to the widget
+
+		// mount
 		widget.append(head, body, footer);
-		//data
-		fetch(`https://discord.com/api/guilds/${id}/widget.json`).then((data) => {
-			console.log(data)
-			data.json().then((data) => {
-				//member count
+
+		// data
+		fetch(`https://discord.com/api/guilds/${id}/widget.json`)
+			.then((resp) => {
+				if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+				return resp.json();
+			})
+			.then((data) => {
+				// member count
 				count.innerHTML = `<strong>${data.presence_count || 0}</strong> Members Online`;
-				//join button
-				joinButton.setAttribute('href', data.instant_invite);
-				joinButton.setAttribute('target', '_blank');
-				if (data.instant_invite === null || data.instant_invite === undefined) joinButton.remove();
-				//users
-				data.members.forEach((user) => {
-					let member = document.createElement('widget-member');
-					let avatar = document.createElement('widget-member-avatar');
-					let avatarIMG = document.createElement('img');
-					let status = document.createElement(`widget-member-status-${user.status}`);
-					let name = document.createElement('widget-member-name');
-					let statusText = document.createElement('widget-member-status-text');
-					avatarIMG.src = user.avatar_url;
+
+				// join button
+				if (data.instant_invite) {
+					joinButton.setAttribute('href', data.instant_invite);
+				} else {
+					joinButton.classList.add('is-disabled');
+					joinButton.title = 'Invite is not configured for this server';
+				}
+
+				// members
+				body.innerHTML = '';
+				(Array.isArray(data.members) ? data.members : []).forEach((user) => {
+					const member = document.createElement('widget-member');
+
+					const avatar = document.createElement('widget-member-avatar');
+					const avatarIMG = document.createElement('img');
+					avatarIMG.src = user.avatar_url || '';
+					const status = document.createElement(`widget-member-status-${user.status || 'offline'}`);
 					status.classList.add('widget-member-status');
-					name.innerText = user.username;
-					if (user.game) {
-						statusText.innerText = user.game.name;
-					}
 					avatar.append(avatarIMG, status);
-					member.append(avatar, name, statusText);
+
+					const name = document.createElement('widget-member-name');
+					name.innerText = user.username || '';
+
+					// activity/status text
+					let activityName = '';
+					if (user && user.game && user.game.name) {
+						activityName = user.game.name;
+					} else if (Array.isArray(user.activities) && user.activities.length) {
+						activityName = user.activities[0]?.name || '';
+					}
+
+					member.append(avatar, name);
+
+					if (activityName) {
+						const statusText = document.createElement('widget-member-status-text');
+						statusText.innerText = activityName;
+						member.append(statusText);
+					}
+
 					body.append(member);
 				});
+			})
+			.catch((err) => {
+				console.error('Discord widget error:', err);
+				count.innerHTML = `<strong>0</strong> Members Online`;
+				const note = document.createElement('widget-error');
+				note.textContent = 'Discord widget is unavailable.';
+				body.append(note);
+				joinButton.classList.add('is-disabled');
 			});
-		});
 	}
 });
-function LDColor(color, percent) {
-	let num = parseInt(color, 16);
-	let amt = Math.round(2.55 * percent);
-	let R = (num >> 16) + amt;
-	let B = ((num >> 8) & 0x00ff) + amt;
-	let G = (num & 0x0000ff) + amt;
-	return (0x1000000 + (R < 255 ? (R < 1 ? 0 : R) : 255) * 0x10000 + (B < 255 ? (B < 1 ? 0 : B) : 255) * 0x100 + (G < 255 ? (G < 1 ? 0 : G) : 255)).toString(16).slice(1);
-}
+
 //dropdown
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -1081,6 +1139,16 @@ document.addEventListener('DOMContentLoaded', function(){
 		dropdown.init();
 	});
 });
+window.addEventListener("DOMContentLoaded", function() {
+	const blocks = document.querySelectorAll(".feature-background");
+	const width = window.innerWidth;
+
+	console.log(blocks)
+
+	blocks.forEach(function(block) {
+		block.style.width = width + "px";
+	});
+});
 // fileLoader
 window.addEventListener("DOMContentLoaded", function() {
 
@@ -1088,13 +1156,15 @@ window.addEventListener("DOMContentLoaded", function() {
 		loaderCover = null;
 		acceptedFileTypes = [];
 
+		templateDirectory = '';
+
 		inputLabel = null;
 		inputFile = null;
 		uploadBox = null;
 
 		loadedSrc = {
-			pdf: 'img/file-load.svg',
-			error: 'img/picture-broken.svg'
+			pdf: `${this.templateDirectory}/img/file-load.svg`,
+			error: `${this.templateDirectory}/img/picture-broken.svg`
 		};
 
 		classes = {
@@ -1300,12 +1370,9 @@ window.addEventListener("DOMContentLoaded", function() {
 			this.form.addEventListener('reset', (event) => {
 				this.onFormReset(event);
 			});
-			
 		};
 
 		onFormSubmit(event){
-			let form = this.form;
-
 			let formInputs = this.formInputs;
 			let formTextareas = this.formTextareas;
 			let formSelects = this.formSelects;
@@ -1316,41 +1383,41 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let i = 0; i < formInputs.length; i++) {
 					let input = formInputs[i];
 					this.validateByTextLength(input);
-				};
-			};
+				}
+			}
 
 			if (formTextareas && formTextareas.length) {
 				for (let t = 0; t < formTextareas.length; t++) {
 					let textArea = formTextareas[t];
 					this.validateByTextLength(textArea);
-				};
-			};
+				}
+			}
 
 			if (formSelects && formSelects.length) {
 				for (let s = 0; s < formSelects.length; s++) {
 					let formSelect = formSelects[s];
 					this.validateBySelectOptions(formSelect);
-				};
-			};
+				}
+			}
 
 			if (formFileInputs && formFileInputs.length) {
 				for (let s = 0; s < formFileInputs.length; s++) {
 					let formFileInput = formFileInputs[s];
 					this.validateByFileUpload(formFileInput);
-				};
-			};
+				}
+			}
 
 			if (formCheckboxes && formCheckboxes.length) {
 				for (let s = 0; s < formCheckboxes.length; s++) {
 					let formCheckbox = formCheckboxes[s];
 					this.validateCheckbox(formCheckbox);
-				};
-			};
+				}
+			}
 
 			// callback
 			if (window.onContactFormSubmit) {
 				window.onContactFormSubmit(this);
-			};
+			}
 		};
 
 		onFormReset(event){
@@ -1359,17 +1426,17 @@ window.addEventListener("DOMContentLoaded", function() {
 			let allChartCounters = this.form.querySelectorAll('.chart-counter');
 			for (let i = 0; i < allFormGroup.length; i++) {
 				allFormGroup[i].classList.remove(this.classes.success, this.classes.error, this.classes.focused)
-			};
+			}
 			if (allFormUploads && allFormUploads.length) {
-				for (var i = 0; i < allFormUploads.length; i++) {
+				for (let i = 0; i < allFormUploads.length; i++) {
 					allFormUploads[i].remove();
-				};
-			};
+				}
+			}
 			if (allChartCounters && allChartCounters.length) {
-				for (var i = 0; i < allChartCounters.length; i++) {
+				for (let i = 0; i < allChartCounters.length; i++) {
 					allChartCounters[i].innerHTML = '0';
-				};
-			};
+				}
+			}
 		};
 
 		setFocusedClass(inputParent, hasValue){
@@ -1380,41 +1447,26 @@ window.addEventListener("DOMContentLoaded", function() {
 			}
 		};
 
-		onInputKeyDown(){
-			if (!this.event || !this.form) return;
-			let event = this.event;
-			let form = this.form;
-			let input = event.srcElement.activeElement;
-			let inputType = input.classList.contains('phone') ? 'phone' : input.classList.contains('email') ? 'email' : '';
+		// FIX: нормальний обробник введення для input/textarea/select
+		onFieldInput(e){
+			const el = e.target;
+			const type =
+				el.classList.contains('phone') ? 'phone' :
+				el.classList.contains('email') ? 'email' : '';
 
-			const waitForFinalEvent = (function(){
-				var timers = {};
-				return function (callback, ms, uniqueId) {
-					if (!uniqueId) {
-						uniqueId = "Don't call this twice without a uniqueId";
-					}
-					if (timers[uniqueId]) {
-						clearTimeout (timers[uniqueId]);
-					}
-					timers[uniqueId] = setTimeout(callback, ms);
-				};
-			})();
+			this.setFocusedClass(el.parentElement, el.value.length);
 
-			waitForFinalEvent(function(){
-				form.setFocusedClass(input.parentElement, input.value.length);
-				switch (inputType) {
-					case 'phone':
-						form.setPhoneMask(event, input);
-						break;
-					case 'email':
-						form.validateEmail(event, input);
-						break;
-					default:
-						// for textarea and inputs text
-						form.setChartsCount(input.value.length, input);
-						form.validateByTextLength(input);
-				}
-			}, 5);
+			switch (type) {
+				case 'phone':
+					this.setPhoneMask(e, el);
+					break;
+				case 'email':
+					this.validateEmail(e, el);
+					break;
+				default:
+					this.setChartsCount(el.value.length, el); // лічильник символів
+					this.validateByTextLength(el);
+			}
 		};
 
 		onCheckboxChange(){
@@ -1436,17 +1488,20 @@ window.addEventListener("DOMContentLoaded", function() {
 			}
 		};
 
+		// FIX: шукаємо .chart-counter у межах .form-group, а не nextElementSibling
 		setChartsCount(valLength, element){
-			if (!element || !element.nextElementSibling) return;
-			let counterEl = element.nextElementSibling.querySelector('.chart-counter');
+			if (!element) return;
+			const group = element.closest('.form-group');
+			if (!group) return;
+			const counterEl = group.querySelector('.chart-counter');
 			if (!counterEl) return;
-			counterEl.innerText = valLength;
+			counterEl.textContent = valLength;
 		};
 
 		setPhoneMask(event, input){
-			let keyCode = event.keyCode;
-			let pos = input.selectionStart;
-			if (pos < 3) event.preventDefault();
+			let keyCode = event.keyCode || 0;
+			let pos = input.selectionStart || 0;
+			if (pos < 3 && event.type === 'keydown') event.preventDefault();
 			let matrix = input.getAttribute('placeholder') ? input.getAttribute('placeholder') : '+380 (___) ___ __ _',
 					i = 0,
 					def = matrix.replace(/\D/g, ""),
@@ -1464,7 +1519,7 @@ window.addEventListener("DOMContentLoaded", function() {
 							return "\\d{1," + a.length + "}"
 					}).replace(/[+()]/g, "\\$&");
 			reg = new RegExp("^" + reg + "$");
-			if (!reg.test(input.value) || input.value.trim().length < 5 || keyCode > 47 && keyCode < 58) {
+			if (!reg.test(input.value) || input.value.trim().length < 5 || (keyCode > 47 && keyCode < 58)) {
 				input.value = new_value;
 			}
 			if (event.type == "blur" && input.value.trim().length < 5) {
@@ -1479,12 +1534,12 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		validateByTextLength(field){
 			let minlength = parseInt(field.dataset.minlength) || 2;
-			this.setValidationClass(field.parentElement,field.value.length >= minlength);
+			this.setValidationClass(field.parentElement, field.value.length >= minlength);
 		};
 
 		validateBySelectOptions(select){
 			let defaultOption = select.querySelector('[disabled]');
-			this.setValidationClass(select.parentElement,select.value !== defaultOption.innerHTML);
+			this.setValidationClass(select.parentElement, select.value !== (defaultOption ? defaultOption.innerHTML : ''));
 		};
 
 		validateByFileUpload(fileInput){
@@ -1498,9 +1553,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 
 		onSelectChange(){
-			let event = this;
-			let select = event.srcElement.activeElement;
-			validateBySelectOptions(select);
+			let select = document.activeElement;
+			this.validateBySelectOptions(select);
 		};
 
 		init() {
@@ -1510,46 +1564,54 @@ window.addEventListener("DOMContentLoaded", function() {
 			let formFileInputs = this.form.querySelectorAll('.file');
 			let formCheckboxes = this.form.querySelectorAll('.checkbox');
 
+			// INPUTS
 			if (formInputs && formInputs.length) {
 				for (let i = 0; i < formInputs.length; i++) {
 					let input = formInputs[i];
 					this.setFocusedClass(input.parentElement, input.value.length);
-					input.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					this.setChartsCount(input.value.length, input); // FIX: початкове значення
+					input.addEventListener('input', this.onFieldInput.bind(this), {passive: true}); // FIX
+					input.addEventListener('blur', this.onFieldInput.bind(this), {passive: true});
+				}
+			}
 
+			// TEXTAREAS
 			if (formTextareas && formTextareas.length) {
 				for (let t = 0; t < formTextareas.length; t++) {
 					let textArea = formTextareas[t];
 					this.setFocusedClass(textArea.parentElement, textArea.value.length);
-					textArea.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					this.setChartsCount(textArea.value.length, textArea); // FIX: початкове значення для textarea
+					textArea.addEventListener('input', this.onFieldInput.bind(this), {passive: true}); // FIX
+					textArea.addEventListener('blur', this.onFieldInput.bind(this), {passive: true});
+				}
+			}
 
+			// SELECTS
 			if (formSelects && formSelects.length) {
 				for (let s = 0; s < formSelects.length; s++) {
 					let formSelect = formSelects[s];
 					this.setFocusedClass(formSelect.parentElement, formSelect.value.length);
-					formSelect.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					formSelect.addEventListener('change', this.onFieldInput.bind(this), {passive: true}); // FIX
+				}
+			}
 
+			// CHECKBOXES
 			if (formCheckboxes && formCheckboxes.length) {
 				for (let s = 0; s < formCheckboxes.length; s++) {
 					let formCheckbox = formCheckboxes[s];
 					this.setFocusedClass(formCheckbox.parentElement, formCheckbox.checked);
 					formCheckbox.addEventListener('change', this.onCheckboxChange.bind({_this: this, checkbox: formCheckbox}), {passive: true});
-				};
-			};
+				}
+			}
 		};
 	};
 
 	let allValidateForms = document.querySelectorAll('.validate-form');
 
-	for (i = 0; i < allValidateForms.length; i++) {
+	for (let i = 0; i < allValidateForms.length; i++) {
 		const newForm = new ValidationForm(allValidateForms[i]);
 		newForm.init();
-	};
+	}
 
 	let allSearchReset = document.querySelectorAll('.search-reset');
 	if (allSearchReset && allSearchReset.length) {
@@ -1557,10 +1619,10 @@ window.addEventListener("DOMContentLoaded", function() {
 			let resetButton = allSearchReset[i];
 			resetButton.addEventListener('click', (e) => {
 				let input = e.target.closest('.form-group').querySelector('input');
-				input.focus();
+				if (input) input.focus();
 			});
-		};
-	};
+		}
+	}
 });
 
 // header scroll animation
@@ -3943,497 +4005,537 @@ document.addEventListener('DOMContentLoaded', function(){
 		}
 	}, 150)
 });
-document.addEventListener( 'DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 	class Slider {
 		sliderElment = null;
+		track = null;
+
 		sliderDots = null;
 		sliderArrows = null;
 
-		allSlides = null;
-
+		allSlides = [];
 		prevButton = null;
 		nextButton = null;
 
-		scrolledWidth = 0;
-		scrolledHeight = 0;
 		totalSlides = 0;
-		savedSlidesLength = 0;
 
 		activeSlideEl = null;
 		activeIndex = 0;
-		activeSlideWidth = 0;
 
 		currentTransition = 0;
-
 		isTouchDown = false;
 
 		touchStartX = 0;
 		touchStartY = 0;
-
-		touchTransition = 0;
-		touchDirection = '';
+		touchMoveX = 0;
+		touchMoveY = 0;
 
 		options = {
-			transitionDuration: "1s",
-			timing: "ease-in-out",
-			delay: "0s",
-			direction: 'horizontal',
+			transitionDuration: '0.6s',
+			timing: 'ease-in-out',
+			delay: '0s',
+			direction: 'horizontal', // 'horizontal' | 'vertical'
 			autoplay: false,
-			loop: false,
 			autoplayTime: 5000,
-		}
+			loop: false,
+			pauseOnHover: true,
+			onInit: null,
+			onTranslated: null,
+			// селектори під різні розмітки
+			trackSelector: '.slider-list',
+			slideSelector: '.slide'
+		};
+
+		_autoplayTimer = null;
+		_resizeRaf = null;
+
+		_handlers = {
+			onResize: null,
+			onTouchStart: null,
+			onTouchMove: null,
+			onTouchEnd: null,
+			onMouseDown: null,
+			onMouseMove: null,
+			onMouseUp: null,
+			onMouseLeave: null,
+			onMouseEnter: null,
+			onMouseOut: null,
+			onPrevClick: null,
+			onNextClick: null
+		};
 
 		constructor(sliderElment) {
 			this.sliderElment = sliderElment;
-			this.sliderDots = this.sliderElment.querySelector('[data-dots]').querySelectorAll('.dot');
-			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows');
-
-			this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
-			this.scrolledWidth = this.setScrolledSlidersWidth();
-			this.scrolledHeight = this.setScrolledSlidersHeight();
 		}
 
-		init(options){
+		init(options) {
 			if (!this.sliderElment) return;
-			this.totalSlides =  this.sliderElment.querySelectorAll('.slide').length;
-			this.savedSlidesLength = this.totalSlides;
 
-			this.setActiveSlide(this.activeIndex);
+			if (options) Object.assign(this.options, options);
 
-			if (options) {
-				this.options = Object.assign(this.options, options)
-			};
-			if (this.sliderDots) {
-				this.setDots();
-			};
-			if (this.sliderArrows) {
-				this.setArrows();
-			};
+			const ds = this.sliderElment.dataset || {};
+			if (typeof ds.autoplay !== 'undefined') this.options.autoplay = this._toBool(ds.autoplay);
+			if (typeof ds.loop !== 'undefined') this.options.loop = this._toBool(ds.loop);
+			if (typeof ds.autoplayTime !== 'undefined') this.options.autoplayTime = this._toInt(ds.autoplayTime, this.options.autoplayTime);
+			if (typeof ds.direction !== 'undefined') this.options.direction = (ds.direction === 'vertical') ? 'vertical' : 'horizontal';
 
-			if (this.options.onInit) {
+			this.track = this.sliderElment.querySelector(this.options.trackSelector);
+			this.sliderDots = this.sliderElment.querySelector('[data-dots]')?.querySelectorAll('.dot') || null;
+			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows') || null;
+			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
+			this.totalSlides = this.allSlides.length;
+
+			if (!this.track || !this.totalSlides) return;
+
+			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
+			this._setActiveSlide(this.activeIndex);
+			this._setActiveDot(this.activeIndex);
+
+			this._setupArrows();
+			this._setupDots();
+			this._bindEvents();
+
+			this._applyTransform(this._calcTranslation(this.activeIndex), true);
+
+			if (typeof this.options.onInit === 'function') {
 				this.options.onInit(this);
-			};
-
+			}
 
 			if (this.options.autoplay) {
-				this.play(this.activeIndex)
-			};
-
-			this.track = this.sliderElment.querySelector('.slider-list');
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mousedown', this.start.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchstart', this.start.bind(this));
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mousemove', this.move.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchmove', this.move.bind(this));
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mouseleave', this.end.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('mouseup', this.end.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchend', this.end.bind(this));
-
-			window.addEventListener('resize', this.resizeSlider.bind(this));
-
-		};
-
-		end() {
-			this.isTouchDown = false;
-			if (!this.touchDirection) return;
-
-			let middleXPosition = this.activeSlideEl.getBoundingClientRect().width/6;
-			let middleYPosition = this.activeSlideEl.getBoundingClientRect().height/6;
-			let index = 0;
-
-			if (!Math.abs(this.currentTransition) && !Math.abs(this.touchTransition)) return;
-
-			switch (this.touchDirection) {
-				case "left":
-					if (Math.abs(this.touchTransition) > middleXPosition && Math.abs(this.currentTransition) < this.scrolledWidth) {
-						index = this.activeIndex+1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "right":
-					if (this.scrolledWidth + this.touchTransition > middleXPosition){
-						index = this.activeIndex-1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "top":
-					if (Math.abs(this.touchTransition) > middleYPosition && Math.abs(this.currentTransition) < this.scrolledHeight) {
-						index = this.activeIndex+1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "bottom":
-					if (this.scrolledHeight + this.touchTransition > middleYPosition){
-						index = this.activeIndex-1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-			};
-
-			this.activeIndex = index;
-
-			this.setActiveSlide(index);
-			this.goToSlide(index);
-			this.setActiveDot(index);
-
-			this.setButtonsState(index);
-
-			this.touchDirection = '';
-			this.touchTransition = 0;
-			this.track.classList.remove('drag-active');
-		};
-
-		start(e){
-			this.isTouchDown = true;
-			this.track.style.transition = `none`;
-
-			switch (this.options.direction) {
-				case "vertical":
-					this.touchStartY = e.pageY || e.touches[0].pageY;
-					break;
-				case "horizontal":
-					this.touchStartX = e.pageX || e.touches[0].pageX;
-					break;
-			};
-
-			this.track.classList.add('drag-active');
-		};
-
-		move(e){
-			if(!this.isTouchDown || this.touchStartX < 500) return;
-			e.preventDefault();
-
-			function between(x, min, max) {
-				return x >= min && x <= max;
+				this._startAutoplay();
 			}
 
-			let dragTranslation = 0;
-
-			switch (this.options.direction) {
-				case "vertical":
-					if (this.isTouchDown == true && e.pageY <= this.touchStartY) {
-						this.touchDirection = "top";
-						dragTranslation = (this.touchStartY - e.pageY)*-1;
-					} else if (this.isTouchDown == true && e.pageY > this.touchStartY) {
-						this.touchDirection = "bottom";
-						dragTranslation = e.pageY - this.touchStartY;
-					};
-					break;
-				case "horizontal":
-					if (this.isTouchDown == true && e.pageX <= this.touchStartX) {
-						this.touchDirection = "left";
-						dragTranslation = (this.touchStartX - e.pageX)*-1;
-					} else if (this.isTouchDown == true && e.pageX > this.touchStartX) {
-						this.touchDirection = "right";
-						dragTranslation = e.pageX - this.touchStartX;
-					};
-					break;
-			};
-
-			let touchTransition = this.currentTransition + dragTranslation;
-
-			if (!between(touchTransition, this.scrolledWidth*-1, 0) || !this.isTouchDown || !dragTranslation) return;
-
-			this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${touchTransition}px)` : `translateX(${touchTransition}px)`;
-			this.touchTransition = touchTransition;
-		};
-
-		play(){
-			if (this.activeIndex >= this.allSlides.length-1) {
-				this.activeIndex = -1;
-			}
-			this.goToNextSlide();
-			setTimeout(()=>{
-				this.play();
-			}, this.options.autoplayTime)
-		};
-
-		loop(){
-			if (this.options.loop && this.activeIndex) {
-				if (this.activeIndex >= this.totalSlides-1) {
-					let slidesList = this.sliderElment.querySelector('.slider-list');
-					let firstSlide = slidesList.querySelectorAll('.slide')[this.activeIndex-1];
-					let firstSlideClone = firstSlide.cloneNode(true);
-					firstSlideClone.classList.add('cloned');
-					slidesList.insertBefore(firstSlideClone, slidesList.querySelectorAll('.slide')[slidesList.querySelectorAll('.slide').length-1].nextSibling);
-
-					this.setActiveDot(slidesList.querySelectorAll('.cloned').length-1)
-					if (slidesList.querySelectorAll('.cloned').length+1 >= this.savedSlidesLength+1) {
-						this.activeIndex = -1;
-					};
-
-					// update settings
-					this.totalSlides = this.sliderElment.querySelectorAll('.slide').length
-					this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
-					this.scrolledWidth = this.setScrolledSlidersWidth();
-					this.scrolledHeight = this.setScrolledSlidersHeight();
-				};
-			};
+			this.sliderElment._sliderInstance = this;
+			this.sliderElment.setAttribute('data-slider-initialized', 'true');
 		}
 
-		resizeSlider(){
-			if (!this.currentTransition) return;
-			this.translateSlider(this.activeIndex)
-		};
+		_bindEvents() {
+			if (this.prevButton) {
+				this._handlers.onPrevClick = (e) => { e.preventDefault(); this.prev(); };
+				this.prevButton.addEventListener('click', this._handlers.onPrevClick);
+			}
+			if (this.nextButton) {
+				this._handlers.onNextClick = (e) => { e.preventDefault(); this.next(); };
+				this.nextButton.addEventListener('click', this._handlers.onNextClick);
+			}
 
-		setScrolledSlidersWidth(){
-			let scrolledWidth = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				scrolledWidth += slide.getBoundingClientRect().width;
+			if (this.sliderDots) {
+				this.sliderDots.forEach((dot, index) => {
+					const fn = (e) => { e.preventDefault(); this.goTo(index); };
+					dot._onDotClick = fn;
+					dot.addEventListener('click', fn);
+				});
+			}
+
+			this._handlers.onResize = () => {
+				if (this._resizeRaf) cancelAnimationFrame(this._resizeRaf);
+				this._resizeRaf = requestAnimationFrame(() => this.update());
 			};
-			scrolledWidth = scrolledWidth - this.sliderElment.getBoundingClientRect().width;
-			return scrolledWidth;
-		};
+			window.addEventListener('resize', this._handlers.onResize);
 
-		setScrolledSlidersHeight(){
-			let scrolledHeight = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				scrolledHeight += slide.getBoundingClientRect().height;
+			this._handlers.onTouchStart = (e) => this._onTouchStart(e);
+			this._handlers.onTouchMove = (e) => this._onTouchMove(e);
+			this._handlers.onTouchEnd = () => this._onTouchEnd();
+
+			this.sliderElment.addEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
+			this.sliderElment.addEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
+			this.sliderElment.addEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
+
+			let mouseDown = false;
+			let mouseStartX = 0;
+			let mouseStartY = 0;
+
+			this._handlers.onMouseDown = (e) => {
+				mouseDown = true;
+				this.isTouchDown = true;
+				mouseStartX = e.clientX;
+				mouseStartY = e.clientY;
+				this._cancelAutoplay();
+				this._disableTransition();
 			};
-			scrolledHeight = scrolledHeight - this.sliderElment.getBoundingClientRect().height;
-			return scrolledHeight;
-		};
+			this._handlers.onMouseMove = (e) => {
+				if (!mouseDown) return;
+				this._dragByDelta(e.clientX - mouseStartX, e.clientY - mouseStartY);
+			};
+			this._handlers.onMouseUp = (e) => {
+				if (!mouseDown) return;
+				mouseDown = false;
+				this.isTouchDown = false;
+				this._endDrag(e.clientX - mouseStartX, e.clientY - mouseStartY);
+			};
+			this._handlers.onMouseLeave = (e) => {
+				if (!mouseDown) return;
+				mouseDown = false;
+				this.isTouchDown = false;
+				this._endDrag(0, 0);
+			};
 
-		setActiveSlide(activeIndex){
-			for (const [index, slide] of this.allSlides.entries()) {
-				if (index == activeIndex) {
+			this.sliderElment.addEventListener('mousedown', this._handlers.onMouseDown);
+			this.sliderElment.addEventListener('mousemove', this._handlers.onMouseMove);
+			this.sliderElment.addEventListener('mouseup', this._handlers.onMouseUp);
+			this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseLeave);
+
+			if (this.options.pauseOnHover) {
+				this._handlers.onMouseEnter = () => this._cancelAutoplay();
+				this._handlers.onMouseOut = () => this._startAutoplay();
+				this.sliderElment.addEventListener('mouseenter', this._handlers.onMouseEnter);
+				this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseOut);
+			}
+		}
+
+		update() {
+			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
+			this.totalSlides = this.allSlides.length;
+			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
+			this._setActiveSlide(this.activeIndex);
+			this._applyTransform(this._calcTranslation(this.activeIndex), true);
+		}
+
+		prev() {
+			const nextIndex = (this.activeIndex - 1);
+			if (nextIndex < 0) {
+				if (this.options.loop) {
+					this.goTo(this.totalSlides - 1);
+				} else {
+					this.goTo(0);
+				}
+			} else {
+				this.goTo(nextIndex);
+			}
+		}
+
+		next() {
+			const nextIndex = (this.activeIndex + 1);
+			if (nextIndex > this.totalSlides - 1) {
+				if (this.options.loop) {
+					this.goTo(0);
+				} else {
+					this.goTo(this.totalSlides - 1);
+				}
+			} else {
+				this.goTo(nextIndex);
+			}
+		}
+
+		goTo(index) {
+			index = this._clamp(index, 0, this.totalSlides - 1);
+			if (index === this.activeIndex) return;
+
+			this._cancelAutoplay();
+
+			this.activeIndex = index;
+			this._setActiveSlide(index);
+			this._setActiveDot(index);
+
+			this._enableTransition();
+			this._applyTransform(this._calcTranslation(index), false);
+
+			if (typeof this.options.onTranslated === 'function') {
+				this.options.onTranslated(this);
+			}
+
+			if (this.options.autoplay) {
+				this._startAutoplay();
+			}
+
+			this._updateArrowsState();
+		}
+
+		_setActiveSlide(index) {
+			this.allSlides.forEach((slide, i) => {
+				if (i === index) {
 					slide.classList.add('active');
 					this.activeSlideEl = slide;
 				} else {
 					slide.classList.remove('active');
-				};
-			};
-
-			this.activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
-		};
-
-		setActiveDot(activeIndex){
-			if (!this.sliderDots || !this.sliderDots.length) return;
-			for (const [index, dot] of this.sliderDots.entries()) {
-				if (index == activeIndex) {
-					dot.classList.add('active');
-				} else {
-					dot.classList.remove('active')
-				};
-			};
-		};
-
-		setArrows(){
-			this.prevButton = this.sliderArrows.querySelector('.prev');
-			this.nextButton = this.sliderArrows.querySelector('.next');
-
-			this.setDisabledButton(0, this.prevButton);
-
-			this.prevButton.addEventListener("click", function (e) {
-				e.preventDefault();
-				this.goToPrevSlide();
-			}.bind(this), false);
-
-			this.nextButton.addEventListener("click", function (e) {
-				e.preventDefault();
-				this.goToNextSlide();
-			}.bind(this), false);
-		};
-
-		setDisabledButton(index, button){
-			if (!button) return;
-			if (this.activeIndex == index) {
-				button.classList.add('disabled');
-			};
-		};
-
-		removeDisabledButton(button){
-			if (!button) return;
-			button.classList.remove('disabled');
-		};
-
-		goToPrevSlide(){
-			this.removeDisabledButton(this.nextButton);
-			if (this.activeIndex > 0) {
-				this.activeIndex--;
-			};
-			this.setActiveSlide(this.activeIndex);
-			this.goToSlide(this.activeIndex);
-			this.setDisabledButton(0, this.prevButton);
-			this.setActiveDot(this.activeIndex);
-		};
-
-		goToNextSlide(){
-			this.removeDisabledButton(this.prevButton);
-
-			if (this.activeIndex < this.totalSlides) {
-				this.activeIndex++;
-			};
-			this.setActiveSlide(this.activeIndex);
-			this.setActiveDot(this.activeIndex);
-			this.goToSlide(this.activeIndex);
-			this.setDisabledButton(this.totalSlides-1, this.nextButton);
-		};
-
-		translateSlider(index){
-			switch (this.options.direction) {
-				case "vertical":
-					this.currentTransition = this.calculateVericalTransition(index);
-					break;
-				case "horizontal":
-					this.currentTransition = this.calculateHorizontalTransition(index);
-					break;
-			};
-			this.animateTranslation(this.currentTransition, this.options.direction);
-		};
-
-		animateTranslation(translation, direction){
-			requestAnimationFrame(()=>{
-				this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
-				this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${translation}px)` : `translateX(${translation}px)`;
-			});
-			this.isTouchDown = false;
-		};
-
-		calculateVericalTransition(index){
-			let currentTransition = 0;
-			let activeSlideHeight = this.activeSlideEl.getBoundingClientRect().height;
-
-			let slidesArray = Array.prototype.slice.call(this.allSlides);
-			let slidesHeight = 0;
-
-			if (index == 0) {
-				currentTransition = slidesHeight = 0;
-			} else {
-				for (let slide of  this.allSlides.slice(0, index)) {
-					slidesHeight += slide.getBoundingClientRect().height;
 				}
+			});
+		}
 
-				currentTransition = slidesHeight*-1;
-			};
-			return currentTransition;
-		};
+		_setActiveDot(index) {
+			if (!this.sliderDots) return;
+			this.sliderDots.forEach((dot, i) => {
+				dot.classList.toggle('active', i === index);
+			});
+		}
 
-		calculateHorizontalTransition(index){
-			let currentTransition = 0;
-			let activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
+		_setupArrows() {
+			if (!this.sliderArrows) return;
+			this.prevButton = this.sliderArrows.querySelector('.prev') || null;
+			this.nextButton = this.sliderArrows.querySelector('.next') || null;
+			this._updateArrowsState();
+		}
 
-			let slidesArray = Array.prototype.slice.call(this.allSlides);
-			let slidesWidth = 0;
+		_updateArrowsState() {
+			if (!this.prevButton || !this.nextButton) return;
+			if (this.options.loop) {
+				this.prevButton.classList.remove('disabled');
+				this.nextButton.classList.remove('disabled');
+				return;
+			}
+			this.prevButton.classList.toggle('disabled', this.activeIndex === 0);
+			this.nextButton.classList.toggle('disabled', this.activeIndex === this.totalSlides - 1);
+		}
 
-			if (index == 0) {
-				currentTransition = slidesWidth = 0;
+		_setupDots() { /* уже знайдені у init */ }
+
+		_calcTranslation(index) {
+			let offset = 0;
+			if (index === 0) return 0;
+
+			if (this.options.direction === 'vertical') {
+				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().height;
+				return -offset;
 			} else {
-				for (let slide of  this.allSlides.slice(0, index)) {
-					slidesWidth += slide.getBoundingClientRect().width;
-				};
-				currentTransition = slidesWidth*-1;
-			};
-
-			return currentTransition;
-		};
-
-		setDots(){
-			for (const [index, dot] of this.sliderDots.entries()) {
-				dot.addEventListener("click", function (e) {
-					e.preventDefault();
-					this.activeIndex = index;
-					this.setActiveSlide(index);
-					this.goToSlide(index);
-					this.setActiveDot(index);
-					this.setButtonsState(index);
-				}.bind(this), false);
-			};
-		};
-
-		setButtonsState(index){
-			if (index !== 0 && index !== this.totalSlides-1){
-				this.removeDisabledButton(this.prevButton);
-				this.removeDisabledButton(this.nextButton);
-			} else if (index == this.totalSlides-1) {
-				this.setDisabledButton(index, this.nextButton);
-				this.removeDisabledButton(this.prevButton);
-			} else if (index == 0) {
-				this.setDisabledButton(0, this.prevButton);
-				this.removeDisabledButton(this.nextButton);
-			};
+				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().width;
+				return -offset;
+			}
 		}
 
-		goToSlide(index){
-			if (index > this.totalSlides) return;
-			this.translateSlider(index);
-
-			if (this.options.onTranslated) {
-				this.options.onTranslated(this)
-			};
+		_applyTransform(value, noAnimation = false) {
+			if (noAnimation) this._disableTransition();
+			const axis = (this.options.direction === 'vertical') ? 'Y' : 'X';
+			this.currentTransition = value;
+			this.track.style.transform = `translate${axis}(${value}px)`;
 		}
-	};
 
-	// initialization
-	Array.prototype.forEach.call(document.querySelectorAll(".slider"), function(sliderEl){
+		_enableTransition() {
+			this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
+		}
+
+		_disableTransition() {
+			this.track.style.transition = 'none';
+		}
+
+		_startAutoplay() {
+			if (!this.options.autoplay) return;
+			this._cancelAutoplay();
+
+			this._autoplayTimer = setInterval(() => {
+				const atLast = this.activeIndex >= this.totalSlides - 1;
+				if (!this.options.loop && atLast) {
+					this._cancelAutoplay();
+					return;
+				}
+				this.next();
+			}, this.options.autoplayTime);
+		}
+
+		_cancelAutoplay() {
+			if (this._autoplayTimer) {
+				clearInterval(this._autoplayTimer);
+				this._autoplayTimer = null;
+			}
+		}
+
+		_onTouchStart(e) {
+			if (e.touches.length !== 1) return;
+			this.isTouchDown = true;
+			this._disableTransition();
+			this._cancelAutoplay();
+
+			this.touchStartX = e.touches[0].clientX;
+			this.touchStartY = e.touches[0].clientY;
+			this.touchMoveX = this.touchStartX;
+			this.touchMoveY = this.touchStartY;
+		}
+
+		_onTouchMove(e) {
+			if (!this.isTouchDown) return;
+
+			this.touchMoveX = e.touches[0].clientX;
+			this.touchMoveY = e.touches[0].clientY;
+
+			const deltaX = this.touchMoveX - this.touchStartX;
+			const deltaY = this.touchMoveY - this.touchStartY;
+
+			const horizontal = (this.options.direction === 'horizontal');
+			const primaryDelta = horizontal ? deltaX : deltaY;
+			const crossDelta = horizontal ? Math.abs(deltaY) : Math.abs(deltaX);
+
+			if (Math.abs(primaryDelta) > crossDelta) e.preventDefault();
+
+			this._dragByDelta(deltaX, deltaY);
+		}
+
+		_onTouchEnd() {
+			if (!this.isTouchDown) return;
+			this.isTouchDown = false;
+
+			const deltaX = this.touchMoveX - this.touchStartX;
+			const deltaY = this.touchMoveY - this.touchStartY;
+			this._endDrag(deltaX, deltaY);
+		}
+
+		_dragByDelta(deltaX, deltaY) {
+			const horizontal = (this.options.direction === 'horizontal');
+			const delta = horizontal ? deltaX : deltaY;
+			const axis = horizontal ? 'X' : 'Y';
+			this.track.style.transform = `translate${axis}(${this.currentTransition + delta}px)`;
+		}
+
+		_endDrag(deltaX, deltaY) {
+			const horizontal = (this.options.direction === 'horizontal');
+			const delta = horizontal ? deltaX : deltaY;
+
+			const activeSize = horizontal
+				? this.activeSlideEl.getBoundingClientRect().width
+				: this.activeSlideEl.getBoundingClientRect().height;
+
+			const threshold = Math.max(30, activeSize * 0.2);
+
+			if (Math.abs(delta) >= threshold) {
+				if (delta > 0) this.prev();
+				else this.next();
+			} else {
+				this._enableTransition();
+				this._applyTransform(this._calcTranslation(this.activeIndex), false);
+			}
+
+			if (this.options.autoplay) this._startAutoplay();
+		}
+
+		destroy() {
+			this._cancelAutoplay();
+			this._disableTransition();
+			if (this.track) this.track.style.transform = '';
+
+			if (this.allSlides && this.allSlides.length) {
+				this.allSlides.forEach(slide => slide.classList.remove('active'));
+			}
+			if (this.sliderDots) {
+				this.sliderDots.forEach(dot => dot.classList.remove('active'));
+			}
+
+			if (this._handlers.onResize) window.removeEventListener('resize', this._handlers.onResize);
+
+			if (this.sliderElment) {
+				if (this._handlers.onTouchStart) this.sliderElment.removeEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
+				if (this._handlers.onTouchMove) this.sliderElment.removeEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
+				if (this._handlers.onTouchEnd) this.sliderElment.removeEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
+
+				if (this._handlers.onMouseDown) this.sliderElment.removeEventListener('mousedown', this._handlers.onMouseDown);
+				if (this._handlers.onMouseMove) this.sliderElment.removeEventListener('mousemove', this._handlers.onMouseMove);
+				if (this._handlers.onMouseUp) this.sliderElment.removeEventListener('mouseup', this._handlers.onMouseUp);
+				if (this._handlers.onMouseLeave) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseLeave);
+
+				if (this.options.pauseOnHover) {
+					if (this._handlers.onMouseEnter) this.sliderElment.removeEventListener('mouseenter', this._handlers.onMouseEnter);
+					if (this._handlers.onMouseOut) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseOut);
+				}
+			}
+
+			if (this.prevButton && this._handlers.onPrevClick) this.prevButton.removeEventListener('click', this._handlers.onPrevClick);
+			if (this.nextButton && this._handlers.onNextClick) this.nextButton.removeEventListener('click', this._handlers.onNextClick);
+
+			if (this.sliderDots) {
+				this.sliderDots.forEach(dot => {
+					if (dot._onDotClick) {
+						dot.removeEventListener('click', dot._onDotClick);
+						delete dot._onDotClick;
+					}
+				});
+			}
+
+			if (this.sliderElment) {
+				delete this.sliderElment._sliderInstance;
+				this.sliderElment.removeAttribute('data-slider-initialized');
+			}
+		}
+
+		_clamp(n, min, max) { return Math.min(Math.max(n, min), max); }
+		_toBool(v) { if (typeof v === 'boolean') return v; if (typeof v === 'number') return v !== 0; return String(v).toLowerCase() === 'true'; }
+		_toInt(v, def = 0) { const x = parseInt(v, 10); return Number.isFinite(x) ? x : def; }
+	}
+
+	// Ініціалізація усіх .slider, окрім тих, що всередині .mobile-slider-section (ними керуємо нижче)
+	Array.prototype.forEach.call(document.querySelectorAll('.slider'), function (sliderEl) {
+		if (sliderEl.closest('.mobile-slider-section')) return;
+
 		const slider = new Slider(sliderEl);
 
-		// for all sliders
 		let options = {
 			direction: 'horizontal',
-			autoplay: sliderEl.dataset && sliderEl.dataset.autoplay ? sliderEl.dataset.autoplay : false,
-			loop: sliderEl.dataset && sliderEl.dataset.loop ? sliderEl.dataset.loop : false,
-			onInit: function(e) {},
-			onTranslated: function(e) {
-				// console.log(e)
-			}
+			autoplay: false,
+			loop: false,
+			onInit: function (api) {},
+			onTranslated: function (api) {}
 		};
 
-		// only for about
 		if (sliderEl.classList.contains('about-slider')) {
+			const setDates = function () {
+				const dots = Array.from(sliderEl.querySelector('.chronology-list')?.querySelectorAll('.dot') || []);
+				const captions = dots.map(d => d.textContent.trim());
+				const prevCaption = slider.prevButton?.querySelector('.caption');
+				const nextCaption = slider.nextButton?.querySelector('.caption');
 
-			let setDates = function(){
-				let slider = this;
+				const prevText = captions[this.activeIndex - 1] || 0;
+				const nextText = captions[this.activeIndex + 1] || 0;
 
-				let allDots = Array.prototype.slice.call(sliderEl.querySelector('.chronology-list').querySelectorAll('.dot'));
-				let dotsCaption = [];
+				if (prevCaption && window.Odometer) {
+					const o = new Odometer({ el: prevCaption, format: '' });
+					o.update(prevText);
+				} else if (prevCaption) {
+					prevCaption.textContent = prevText;
+				}
 
-				for (let dot of allDots) {
-					dotsCaption.push(dot.innerHTML.trim());
-				};
-
-				let prevCaption = slider.prevButton.querySelector('.caption');
-				let nextCaption = slider.nextButton.querySelector('.caption');
-
-				let prevText = dotsCaption[slider.activeIndex-1] || 0;
-				let nextText = dotsCaption[slider.activeIndex+1] || 0;
-
-				// prevCaption.innerHTML = prevText;
-				// nextCaption.innerHTML = nextText;
-
-				// for odoment count
-				let prevOdometr = new Odometer({
-					el: prevCaption,
-					format: '',
-				});
-
-				prevOdometr.update(prevText)
-
-				let nextOdometr = new Odometer({
-					el: nextCaption,
-					format: '',
-				});
-
-				nextOdometr.update(nextText)
+				if (nextCaption && window.Odometer) {
+					const o = new Odometer({ el: nextCaption, format: '' });
+					o.update(nextText);
+				} else if (nextCaption) {
+					nextCaption.textContent = nextText;
+				}
 			};
-
-			// set slider callback
 			options.onInit = setDates.bind(slider);
 			options.onTranslated = setDates.bind(slider);
-		};
+		}
 
 		slider.init(options);
 	});
+
+	/* =============================================================================
+	   МОБІЛЬНІ СЛАЙДЕРИ (кілька на сторінці)
+	   Кожен .mobile-slider-section .slider-cover -> окремий інстанс
+	   < 769px  => init
+	   >= 769px => destroy
+	============================================================================= */
+
+	function setupMobileSectionSliders() {
+		const covers = document.querySelectorAll('.mobile-slider-section .slider-cover');
+		if (!covers.length) return;
+
+		const needInit = window.innerWidth < 769;
+
+		covers.forEach((cover) => {
+			let instance = cover._sliderInstance || null;
+			const isInited = cover.getAttribute('data-slider-initialized') === 'true';
+
+			if (needInit && !isInited) {
+				const slider = new Slider(cover);
+				slider.init({
+					trackSelector: '.mobile-slider-track',
+					slideSelector: '.mobile-slider-track > *',
+					direction: 'horizontal'
+					// loop/autoplay можна задати через data-*, наприклад:
+					// data-loop="true" data-autoplay="true" data-autoplay-time="4000"
+				});
+			} else if (!needInit && isInited && instance) {
+				instance.destroy();
+			}
+		});
+	}
+
+	// перший запуск для всіх мобільних
+	setupMobileSectionSliders();
+
+	// дебаунс resize для всіх мобільних
+	let mobileRaf = null;
+	window.addEventListener('resize', () => {
+		if (mobileRaf) cancelAnimationFrame(mobileRaf);
+		mobileRaf = requestAnimationFrame(setupMobileSectionSliders);
+	});
 });
-
-
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -4461,12 +4563,12 @@ document.addEventListener('DOMContentLoaded', function(){
 			let tagsCover = Array.prototype.slice.call(tagsParent.querySelectorAll('.simple-tags'));
 			tagsCover.forEach((cover) => {
 				if (tag === 'all') {
-					cover.closest('.news-cover').classList.add('visible');
+					cover.closest('.tag-item-cover').classList.add('visible');
 				} else {
 					if (cover.querySelectorAll(`[${attr}=${tag}]`) && cover.querySelectorAll(`[${attr}=${tag}]`).length) {
-						cover.closest('.news-cover').classList.add('visible');
+						cover.closest('.tag-item-cover').classList.add('visible');
 					} else {
-						cover.closest('.news-cover').classList.remove('visible');
+						cover.closest('.tag-item-cover').classList.remove('visible');
 					}
 				}
 			});

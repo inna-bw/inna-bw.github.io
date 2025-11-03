@@ -5,13 +5,15 @@ window.addEventListener("DOMContentLoaded", function() {
 		loaderCover = null;
 		acceptedFileTypes = [];
 
+		templateDirectory = '';
+
 		inputLabel = null;
 		inputFile = null;
 		uploadBox = null;
 
 		loadedSrc = {
-			pdf: 'img/file-load.svg',
-			error: 'img/picture-broken.svg'
+			pdf: `${this.templateDirectory}/img/file-load.svg`,
+			error: `${this.templateDirectory}/img/picture-broken.svg`
 		};
 
 		classes = {

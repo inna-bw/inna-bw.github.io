@@ -123,7 +123,10 @@ a:hover {
   text-decoration: none
 }
 a:visited {
-  color: inherit
+  color: #fff
+}
+a:visited:hover {
+  color: #ababab
 }
 a,
 img {
@@ -257,6 +260,55 @@ ul > li {
   font-style: normal;
   font-variation-settings: "wdth" 100
 }
+@media (min-width:1200px) {
+  .container-game .paragraph,
+  .container-game .theme-text,
+  .container-game .title,
+  .container-game .wp-block-heading,
+  .container-game .wp-block-list,
+  .container-game h1,
+  .container-game h2:not(.full-width),
+  .container-game h3,
+  .container-game h4,
+  .container-game h5,
+  .container-game ol,
+  .container-game p,
+  .container-game ul {
+    margin: 0 auto;
+    padding-right: 24px;
+    padding-left: 24px;
+    max-width: 1248px
+  }
+}
+@media (max-width:1200px) {
+  .container-game .paragraph,
+  .container-game .theme-text,
+  .container-game .title,
+  .container-game .wp-block-heading,
+  .container-game .wp-block-list,
+  .container-game h1,
+  .container-game h2,
+  .container-game h3,
+  .container-game h4,
+  .container-game h5,
+  .container-game ol,
+  .container-game p,
+  .container-game ul {
+    margin: 0 auto;
+    padding-right: 0;
+    padding-left: 0
+  }
+  .feature-card .container-game {
+    padding-left: 24px;
+    padding-right: 24px
+  }
+  .feature-card .container {
+    padding: 0
+  }
+  #gameTrailer .container-small {
+    padding: 0
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -390,8 +442,7 @@ ul > li {
   }
 }
 :root {
-  --about_image-size: 26.33%;
-  --about_image-margin: 95px;
+  --about_image-size: 330px;
   --chronology_gap: 42px;
   --chronology_shape-size: 36px;
   --chronology_shape-border: 3px;
@@ -403,13 +454,13 @@ ul > li {
   background-position: left center;
   background-size: cover;
   position: relative;
-  padding: 32px;
+  padding: 24px;
   color: #fff
 }
 .about-preview .bordered-inner {
   position: relative;
   height: 100%;
-  padding: 6px 252px 140px 111px
+  padding: 24px 72px
 }
 .about-preview .bordered-inner .corner {
   position: absolute;
@@ -461,25 +512,26 @@ ul > li {
   position: relative;
   z-index: 1;
   height: 100%;
-  white-space: nowrap
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 32px;
+  padding-bottom: 80px
 }
 .about-preview .preview-image {
   font-size: 0;
-  border-radius: var(--border-radius);
   overflow: hidden;
   border-radius: var(--border-radius);
   height: 0;
   width: var(--about_image-size);
   padding-top: var(--about_image-size);
   display: inline-block;
-  vertical-align: top;
-  margin-right: var(--about_image-margin)
+  vertical-align: top
 }
 .about-preview .preview-image img {
   position: absolute
 }
 .about-preview .caption {
-  padding-bottom: 100px;
   position: relative;
   -webkit-box-flex: 3;
   -ms-flex: 3;
@@ -498,7 +550,10 @@ ul > li {
   font-size: var(--subtitle-font-size);
   font-weight: 900;
   margin-bottom: 20px;
-  font-family: "Sofia Sans Extra Condensed",sans-serif
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  text-align: left;
+  margin-left: 0;
+  margin-right: 0
 }
 .about-preview .wp-block-post-date {
   display: none
@@ -680,115 +735,76 @@ ul > li {
   border-width: calc(var(--chronology_shape-border) * 2);
   border-color: #ec1e24
 }
-@media (max-width:1440px) {
+@media (max-width:1520px) {
+  .about-preview .bordered-inner .corner {
+    display: none
+  }
+}
+@media (max-width:1199px) {
   :root {
-    --about_image-size: 26.33%;
-    --about_image-margin: 55px
+    --about_image-size: 330px;
+    --chronology_gap: 24px;
+    --chronology_line-width: 16px
   }
-  .about-preview .bordered-inner {
-    padding: 6px 64px 102px 64px
+  .about-preview .preview-image {
+    width: 100%
   }
-  .about-preview .caption {
-    padding-bottom: 60px
+  .about-preview .inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+  }
+  .about-preview .bordered-inner .corner {
+    width: 150px;
+    height: 75px
   }
 }
 @media (max-width:993px) {
-  .about-preview .inner {
-    white-space: normal
-  }
-  .about-preview .preview-image {
-    margin-right: 0;
-    width: 100%;
-    margin-bottom: 30px;
-    padding-top: 38%
-  }
-  .about-preview .caption {
-    width: 100%
-  }
   :root {
-    --chronology_shape-size: 30px;
-    --chronology_gap: 30px;
-    --chronology_line-width: 18px
+    --chronology_gap: 8px;
+    --chronology_line-width: 16px;
+    --chronology_shape-size: 24px
   }
-  .about-section .chronology-list {
-    bottom: 60px
+  .about-preview .inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
   }
-  .about-section .chronology-list .slider-pagination button {
-    font-size: calc(var(--font-size) * .8)
+  .about-section .slider-cover .slider-arrows {
+    top: calc(var(--about_image-size) + 4px);
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none
+  }
+  .about-section .chronology-list .slider-pagination li:after {
+    left: 34px;
+    width: 12px
   }
 }
 @media (max-width:768px) {
-  :root {
-    --chronology_button-size: 40px
+  .about-section {
+    overflow: hidden
   }
-  .about-preview {
-    padding: 20px
+  .about-section .chronology-list {
+    display: none
+  }
+  .about-section .slider-cover {
+    margin-left: -24px;
+    margin-right: -24px
+  }
+  .about-section .slider-cover .slider-arrows {
+    top: calc(var(--about_image-size) - 20px)
   }
   .about-preview .bordered-inner {
     padding: 0
   }
-  .about-preview .bordered-inner .corner {
-    display: none
-  }
   .about-preview .preview-image {
-    padding-top: 52%
+    width: 100%
   }
-  .about-section .chronology-list {
-    bottom: auto;
-    left: 0;
-    top: 34px;
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-    display: none
-  }
-  .about-section .chronology-list .slider-pagination {
-    display: block
-  }
-  .about-section .chronology-list .slider-pagination li {
-    margin-bottom: 56px
-  }
-  .about-section .chronology-list .slider-pagination li:after {
-    height: var(--chronology_line-width);
-    width: 2px;
-    left: 50%;
-    bottom: -18px;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%)
-  }
-  .about-section .slider-cover .slider-arrows {
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
-    top: 0;
-    left: 0;
-    right: 0;
-    -webkit-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    transform: translateY(100%)
-  }
-  .about-section .slider-cover .slider-arrows .button-arrow {
-    color: #ababab;
-    background-color: #1e1e20
-  }
-  .about-section .slider-cover .slider-arrows .button-arrow:not(.disabled) {
-    width: calc(var(--chronology_button-size) * 2.5)
-  }
-  .about-section .slider-cover .slider-arrows .button-arrow:not(.disabled) .caption {
-    opacity: 1
-  }
-  .about-section .slider-cover .slider-arrows .button-arrow.disabled {
-    opacity: 1;
-    background-color: #0f0a0a
-  }
-  .about-section .slider-cover .slider-arrows .odometer-inside {
-    margin: 2px 0
-  }
-}
-@media (max-width:525px) {
-  .about-preview .preview-image {
-    padding-top: 75%
+  .about-preview .inner {
+    padding-bottom: 0
   }
 }
 :root {
@@ -1380,7 +1396,7 @@ ul > li {
 .breadcrumbs ~ .feature-card {
   margin-top: 0
 }
-.breadcrumbs ~ .feature-card:not(.backgroung) {
+.breadcrumbs ~ .feature-card:not(.background) {
   padding-top: 0
 }
 .breadcrumbs-list {
@@ -1397,6 +1413,9 @@ ul > li {
   position: relative;
   line-height: 1;
   margin-right: 32px
+}
+.breadcrumbs-list li .text:visited {
+  color: inherit
 }
 .breadcrumbs-list li .text,
 .breadcrumbs-list li:before {
@@ -1585,7 +1604,8 @@ ul > li {
   position: relative;
   top: 2px
 }
-.button.disabled {
+.button.disabled,
+.button[disabled] {
   pointer-events: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1595,9 +1615,11 @@ ul > li {
 .button.button-primary {
   background-color: #ec1e24
 }
-.button.button-primary:hover {
+.button.button-primary:hover,
+.button.button-primary:visited {
   background-color: #8c0000;
-  border-color: #8c0000
+  border-color: #8c0000;
+  color: #d7d6d6
 }
 .button.button-primary.disabled {
   background-color: #ababab;
@@ -1605,11 +1627,14 @@ ul > li {
   box-shadow: none
 }
 .button.button-primary-transparent {
-  background-color: transparent;
+  background-color: rgba(15,10,10,.25);
   color: #ec1e24;
-  border-color: #ec1e24
+  border-color: #ec1e24;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px)
 }
-.button.button-primary-transparent:hover {
+.button.button-primary-transparent:hover,
+.button.button-primary-transparent:visited {
   color: #8c0000;
   border-color: #8c0000
 }
@@ -1618,7 +1643,8 @@ ul > li {
   color: #969696;
   border-color: #969696
 }
-.button.button-grey-transparent:hover {
+.button.button-grey-transparent:hover,
+.button.button-grey-transparent:visited {
   color: #fff;
   border-color: #fff
 }
@@ -1627,7 +1653,8 @@ ul > li {
   color: #fff;
   border-color: #969696
 }
-.button.button-grey:hover {
+.button.button-grey:hover,
+.button.button-grey:visited {
   color: #969696;
   background-color: transparent;
   border-color: #969696
@@ -1637,7 +1664,8 @@ ul > li {
   color: #ec1e24;
   border-color: transparent
 }
-.button.button-primary-text:hover {
+.button.button-primary-text:hover,
+.button.button-primary-text:visited {
   color: #8c0000
 }
 .button.button-secondary,
@@ -1654,8 +1682,10 @@ ul > li {
 }
 .button.active.button-secondary-transparent,
 .button.button-secondary-transparent:hover,
+.button.button-secondary-transparent:visited,
 .button.button-secondary.active,
-.button.button-secondary:hover {
+.button.button-secondary:hover,
+.button.button-secondary:visited {
   background-color: rgba(236,30,36,.4)
 }
 .button.button-secondary.disabled,
@@ -1666,7 +1696,8 @@ ul > li {
 .button.button-secondary-transparent {
   background-color: transparent
 }
-.button.button-secondary-transparent:hover {
+.button.button-secondary-transparent:hover,
+.button.button-secondary-transparent:visited {
   background-color: transparent;
   border-color: #8c0000
 }
@@ -1681,7 +1712,8 @@ ul > li {
   color: #d7d6d6;
   border-color: #d7d6d6
 }
-.button-white-transparent:hover {
+.button-white-transparent:hover,
+.button-white-transparent:visited {
   color: #fff;
   border-color: #fff
 }
@@ -1690,7 +1722,8 @@ ul > li {
   color: #d7d6d6;
   border-color: transparent
 }
-.button-white-text:hover {
+.button-white-text:hover,
+.button-white-text:visited {
   color: #fff
 }
 .button.button-round {
@@ -1702,7 +1735,8 @@ ul > li {
   border-color: #fff;
   opacity: .5
 }
-.button.button-round:hover {
+.button.button-round:hover,
+.button.button-round:visited {
   opacity: 1
 }
 .button.button-square {
@@ -1716,13 +1750,18 @@ ul > li {
   color: #ababab;
   font-size: 18px
 }
-.button.button-square:hover {
+.button.button-square:hover,
+.button.button-square:visited {
   border-color: #ababab;
   color: #fff
 }
 .button.button-block {
   display: block;
   width: 100%
+}
+.wp-block-button {
+  display: inline-block;
+  vertical-align: middle
 }
 :root {
   --large-title-font-size: 48px;
@@ -2010,6 +2049,10 @@ ul > li {
   -ms-flex-wrap: wrap;
   flex-wrap: wrap
 }
+.careers-list .tags:first-child,
+.careers-list .tags:last-child {
+  margin-bottom: 0
+}
 .career-preview {
   background-color: #000;
   padding: 24px;
@@ -2033,6 +2076,10 @@ ul > li {
 }
 .career-preview .detail {
   padding: 0 50px
+}
+.career-preview .tags,
+.career-preview .tags:first-child {
+  margin-top: 16px
 }
 .career-preview .keys {
   margin-top: 16px
@@ -2098,6 +2145,14 @@ ul > li {
 @media (max-width:768px) {
   :root {
     --careers-list-columns: 1
+  }
+  .career-preview .detail {
+    padding-left: 0;
+    padding-right: 0
+  }
+  .career-preview .tags,
+  .career-preview .tags:first-child {
+    margin-bottom: 0
   }
 }
 :root {
@@ -2199,6 +2254,10 @@ ul > li {
   font-weight: 900;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   text-transform: uppercase
+}
+.contact-box .theme-text {
+  margin: 32px 0;
+  font-size: var(--large-text-font-size)
 }
 .contact-box .theme-text:last-child {
   margin-bottom: 0
@@ -2362,6 +2421,12 @@ ul > li {
   }
   .contact-box dl dd {
     display: block
+  }
+  .contact-box .link {
+    text-decoration: underline
+  }
+  .contact-box .link:hover {
+    text-decoration: none
   }
 }
 :root {
@@ -2746,14 +2811,6 @@ discord-widget widget-footer widget-button-join:hover {
 }
 .documentation-link .image-link img {
   position: absolute;
-  height: 100%;
-  left: 50%;
-  top: 0;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%)
-}
-.documentation-link .image-link.logo img {
   top: 30px;
   left: 30px;
   bottom: 30px;
@@ -2763,6 +2820,25 @@ discord-widget widget-footer widget-button-join:hover {
   -webkit-transform: none;
   -ms-transform: none;
   transform: none
+}
+.documentation-link .image-link img.full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0)
 }
 .documentation-link .caption {
   background-color: #1e1e20;
@@ -2811,20 +2887,18 @@ discord-widget widget-footer widget-button-join:hover {
     text-align: left
   }
   .documentation-link .image-link {
-    width: 100%
-  }
-  .documentation-link .image-link:not(.logo) img {
-    height: auto;
     width: 100%;
-    top: 50%;
-    left: 0;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%)
+    font-size: 0
   }
-  .documentation-link .image-link.logo img {
-    margin: auto;
-    height: calc(100% - 60px)
+  .documentation-link .image-link img,
+  .documentation-link .image-link img.full {
+    position: static;
+    margin: 0 auto;
+    display: block
+  }
+  .documentation-link .image-link img:not(.full) {
+    margin-top: 24px;
+    margin-bottom: 24px
   }
 }
 :root {
@@ -2995,7 +3069,8 @@ discord-widget widget-footer widget-button-join:hover {
   padding: 13px 0;
   display: block;
   text-align: left;
-  color: #fff
+  color: #fff;
+  word-wrap: break-word
 }
 .dropdown.button-dropdown .dropdown-inner .item:hover {
   background-color: #1e1e20
@@ -3081,7 +3156,8 @@ discord-widget widget-footer widget-button-join:hover {
 .engine-preview {
   background-color: #000;
   border: 1px solid #28292c;
-  border-radius: var(--border-radius)
+  border-radius: var(--border-radius);
+  height: 100%
 }
 .engine-preview .logo {
   padding: 90px 80px 50px
@@ -3289,20 +3365,24 @@ discord-widget widget-footer widget-button-join:hover {
 }
 .feature-card {
   position: relative;
-  overflow: hidden;
-  margin: 32px 0;
+  margin: 48px 0;
   padding: 48px 0
 }
-.feature-card .feature-backgroung {
+.feature-card .feature-background {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
+  width: 1920px;
   height: 100%;
-  opacity: .1
+  opacity: .1;
+  overflow: hidden;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%)
 }
-.feature-card .feature-backgroung img {
-  width: 100%;
+.feature-card .feature-background img {
+  max-width: 100%;
+  min-height: 100%;
   position: absolute;
   right: 0;
   -webkit-filter: grayscale(1);
@@ -3316,7 +3396,8 @@ discord-widget widget-footer widget-button-join:hover {
   position: relative;
   z-index: 1
 }
-.feature-card .title {
+.feature-card .title,
+.feature-card h2 {
   font-size: var(--h1-font-size);
   color: #fff;
   text-transform: uppercase;
@@ -3325,15 +3406,33 @@ discord-widget widget-footer widget-button-join:hover {
   line-height: 1.15;
   margin-bottom: 16px
 }
-.feature-card .paragraph {
+.feature-card h3 {
+  font-size: var(--h2-font-size);
+  color: #fff;
+  text-transform: uppercase;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  font-weight: 900;
+  line-height: 1.15;
+  margin-bottom: 16px
+}
+.feature-card .paragraph,
+.feature-card p {
   font-size: var(--large-text-font-size);
   margin-bottom: 32px
 }
-.feature-card .paragraph:last-child {
+.feature-card .paragraph:last-child,
+.feature-card p:last-child {
   margin-bottom: 0
 }
-.feature-card img {
-  max-width: 100%
+.feature-card strong {
+  color: inherit;
+  font-weight: 900;
+  line-height: 1.15
+}
+.feature-card img,
+.feature-card video {
+  max-width: 100%;
+  width: 100%
 }
 .feature-card ol,
 .feature-card ul {
@@ -3360,13 +3459,23 @@ discord-widget widget-footer widget-button-join:hover {
     transform: none;
     width: auto;
     max-width: none;
-    height: 100%
+    min-width: 100%;
+    min-height: 100%;
+    height: auto;
+    max-height: 150%
   }
 }
 @media (max-width:993px) {
   .feature-card {
-    padding: 16px 0;
-    margin: 16px 0
+    margin: 24px 0;
+    padding-top: 24px;
+    padding-bottom: 24px
+  }
+  .feature-card .title {
+    margin-bottom: 8px
+  }
+  .feature-card .spaced-bottom-md {
+    margin-bottom: 24px
   }
 }
 :root {
@@ -3817,11 +3926,41 @@ discord-widget widget-footer widget-button-join:hover {
 .form .search-group {
   position: relative
 }
+.form .search-group .input-helper {
+  opacity: 0
+}
 .form .search-group .input,
 .form .search-group select,
 .form .search-group textarea {
-  padding-left: 52px;
-  padding-right: 52px
+  padding-left: 52px
+}
+.form .search-group .input:focus ~ .input-helper,
+.form .search-group select:focus ~ .input-helper,
+.form .search-group textarea:focus ~ .input-helper {
+  opacity: 1
+}
+.form .search-group input[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  border-radius: 50em;
+  background: url(../img/close.svg) no-repeat 50% 50%;
+  background-size: contain;
+  opacity: 0;
+  pointer-events: none;
+  cursor: pointer
+}
+.form .search-group input[type=search]::-webkit-search-cancel-button:hover {
+  -webkit-filter: brightness(150%);
+  filter: brightness(150%)
+}
+.form .search-group input[type=search]:focus::-webkit-search-cancel-button {
+  opacity: .3;
+  pointer-events: all
+}
+.form .search-group input[type=search].dark::-webkit-search-cancel-button {
+  -webkit-filter: invert(1);
+  filter: invert(1)
 }
 .form .search-group .icon-search {
   position: absolute;
@@ -3967,7 +4106,8 @@ discord-widget widget-footer widget-button-join:hover {
   }
 }
 .game-banner {
-  position: relative
+  position: relative;
+  min-height: 360px
 }
 .game-banner .banner-image {
   position: absolute;
@@ -3990,6 +4130,18 @@ discord-widget widget-footer widget-button-join:hover {
   box-shadow: 0 0 100px 25px #000 inset;
   pointer-events: none
 }
+.game-banner .banner-image img:not(.no-image-logo) {
+  -o-object-position: center 63%;
+  object-position: center 63%
+}
+.game-banner .no-image-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto
+}
 .game-banner .text-side {
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
@@ -4001,15 +4153,20 @@ discord-widget widget-footer widget-button-join:hover {
   height: 100%;
   width: 50%;
   padding-top: 30%;
-  position: relative
+  position: relative;
+  overflow: hidden
 }
 .game-banner .video-side iframe,
-.game-banner .video-side img {
+.game-banner .video-side img,
+.game-banner .video-side video {
   position: absolute;
-  top: 0;
-  left: 0;
   height: 100%;
-  width: 100%
+  top: 0;
+  width: auto;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%)
 }
 .game-banner .banner-info {
   display: -webkit-box;
@@ -4018,15 +4175,29 @@ discord-widget widget-footer widget-button-join:hover {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  -webkit-box-align: end;
-  -ms-flex-align: end;
-  align-items: end
+  gap: 32px;
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch
+}
+.game-banner .banner-info .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
 }
 .game-banner .banner-info .left {
   width: 544px
 }
 .game-banner .banner-info .engine-description {
-  width: 700px
+  width: 700px;
+  position: relative
 }
 .game-banner .banner-info .engine-description .logo-cover {
   width: 128px;
@@ -4064,20 +4235,28 @@ discord-widget widget-footer widget-button-join:hover {
 .game-banner .logo-side .dotted-list li {
   margin-bottom: 0
 }
-@media (max-width:1440px) {
+@media (max-width:993px) {
+  .game-banner {
+    min-height: 300px
+  }
+  .game-banner .logo-side {
+    padding: 32px 0
+  }
   .game-banner .logo-side .logo-cover {
-    padding-top: 180px
+    padding-top: 220px
   }
   .game-banner .banner-info {
-    display: block
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
   }
   .game-banner .banner-info .left {
-    width: 100%;
-    margin-bottom: 56px
+    width: 100%
   }
   .game-banner .banner-info .left.engine-description {
     text-align: center;
-    max-width: 60%;
+    max-width: 90%;
     margin: 0 auto 32px;
     position: relative;
     z-index: 2
@@ -4090,10 +4269,6 @@ discord-widget widget-footer widget-button-join:hover {
   .game-banner .banner-info .left.engine-description .butons-group {
     text-align: center
   }
-  .game-banner .text-side {
-    max-width: 60%;
-    margin: auto
-  }
   .game-banner .video-side {
     width: 100%;
     max-width: 100%;
@@ -4105,14 +4280,28 @@ discord-widget widget-footer widget-button-join:hover {
     bottom: 0;
     right: 0;
     z-index: 1;
-    overflow: hidden
+    overflow: hidden;
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1
   }
   .game-banner .video-side img,
   .game-banner .video-side video {
-    height: 100%;
-    width: auto;
+    position: absolute;
     top: 0;
-    left: 0
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    -webkit-transition: .2s;
+    transition: .2s;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
   }
   .game-banner .video-side:before {
     height: 100%;
@@ -4124,48 +4313,85 @@ discord-widget widget-footer widget-button-join:hover {
     left: 0;
     z-index: 1
   }
-}
-@media (max-width:993px) {
+  .game-banner {
+    min-height: 250px
+  }
   .game-banner .banner-info .left.engine-description,
-  .game-banner .text-sidem {
-    max-width: 80%
+  .game-banner .left,
+  .game-banner .text-side {
+    width: 80%;
+    margin: 0 auto
+  }
+  .game-banner .butons-group {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 32px;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+  }
+  .game-banner .butons-group .dropdown {
+    margin-right: 0
   }
 }
 @media (max-width:768px) {
+  .game-banner {
+    min-height: 200px
+  }
+  .game-banner .butons-group .button + .button,
+  .game-banner .butons-group .dropdown + .button {
+    margin: 0
+  }
   .game-banner .banner-info .left.engine-description,
   .game-banner .text-side {
-    max-width: 90%
+    max-width: 100%
   }
-  .game-banner .banner-info .left {
-    margin-bottom: 32px
+  .game-banner .banner-image img:not(.no-image-logo) {
+    -o-object-position: 74% center;
+    object-position: 74% center
   }
   .game-banner .video-side {
     position: relative;
-    height: 350px
+    height: auto;
+    margin-bottom: 32px
   }
   .game-banner .video-side img,
   .game-banner .video-side video {
     position: static;
     margin: auto;
-    display: block
+    display: block;
+    height: auto;
+    min-height: auto
   }
   .game-banner .video-side:before {
     display: none
   }
 }
-@media (max-width:640px) {
-  .game-banner .banner-info .left.engine-description,
+@media (min-width:767px) {
   .game-banner .text-side {
-    max-width: 100%
+    min-width: 420px
+  }
+}
+@media (max-width:640px) {
+  .game-banner .banner-info {
+    gap: 24px
+  }
+  .game-banner .banner-info .left.engine-description,
+  .game-banner .butons-group,
+  .game-banner .text-side {
+    width: 100%
   }
   .game-banner .logo-side {
     padding: 32px 0
   }
-  .game-banner .banner-info .left {
-    margin-bottom: 16px
-  }
   .game-banner .butons-group {
-    margin-top: 16px
+    margin-top: 24px;
+    gap: 16px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
   }
 }
 :root {
@@ -4252,6 +4478,16 @@ discord-widget widget-footer widget-button-join:hover {
 .game-preview .top {
   margin-bottom: 20px
 }
+.game-preview .game-logo {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: 250px
+}
+.game-preview .game-logo img {
+  width: 100%;
+  position: static
+}
 .game-preview .title {
   text-transform: uppercase;
   font-weight: 900;
@@ -4289,13 +4525,40 @@ discord-widget widget-footer widget-button-join:hover {
 .game-preview.large .image-cover {
   padding-top: 89.5%
 }
+.game-video {
+  font-size: 0;
+  width: 100%;
+  padding-top: 56.25%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 32px
+}
+.game-video iframe,
 .game-video img {
-  max-width: 100%;
-  width: 100%
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0
 }
 @media (max-width:1440px) {
   .game-preview .inner {
     padding: 32px
+  }
+}
+@media (max-width:1199px) {
+  .game-preview .game-logo {
+    width: 170px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0)
+  }
+}
+@media (max-width:993px) {
+  .game-preview .game-logo {
+    top: 16px;
+    left: 16px;
+    width: 150px
   }
 }
 @media (max-width:768px) {
@@ -4531,13 +4794,13 @@ discord-widget widget-footer widget-button-join:hover {
   margin: 0 auto;
   padding-right: 24px;
   padding-left: 24px;
-  max-width: 1456px
+  max-width: 1248px
 }
 .container-smaller {
   margin: 0 auto;
   padding-right: 24px;
   padding-left: 24px;
-  max-width: 888px
+  max-width: 1248px
 }
 .row {
   -webkit-box-sizing: border-box;
@@ -5756,6 +6019,9 @@ discord-widget widget-footer widget-button-join:hover {
 .icon-linkedin:before {
   content: "\e92c"
 }
+.icon-instagram:before {
+  content: "\ea92"
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
@@ -5931,16 +6197,19 @@ discord-widget widget-footer widget-button-join:hover {
   -ms-flex-pack: center;
   justify-content: center
 }
+.main-banner .caption .section-title {
+  margin: 0;
+  text-align: center;
+  width: 100%
+}
 .main-banner .caption .caption-image {
   width: 100%;
   -webkit-filter: drop-shadow(0 0 1.8rem #000);
-  filter: drop-shadow(0 0 1.8rem #000)
-}
-.main-banner .caption .section-title {
-  margin-bottom: 30px
+  filter: drop-shadow(0 0 1.8rem #000);
+  margin-bottom: 24px
 }
 .main-banner .caption .paragraph {
-  margin: 34px auto;
+  margin: 24px auto;
   max-width: 85%
 }
 .main-banner .caption .button {
@@ -6077,6 +6346,9 @@ discord-widget widget-footer widget-button-join:hover {
     --section-title-margin: 32px
   }
 }
+.main-footer {
+  padding: 32px 0
+}
 .main-footer .footer-subtitle {
   color: #fff;
   font-size: var(--large-text-font-size);
@@ -6085,8 +6357,7 @@ discord-widget widget-footer widget-button-join:hover {
   margin-bottom: 24px;
   display: block
 }
-.main-footer .detail.link,
-.main-footer .footer-link {
+.main-footer .label {
   display: block
 }
 .main-footer .detail.link:hover,
@@ -6094,26 +6365,9 @@ discord-widget widget-footer widget-button-join:hover {
   text-decoration: underline;
   color: #ec1e24
 }
-.main-footer .contact-group {
-  margin-bottom: 64px
-}
-.main-footer .navigation-group .links-cover {
-  -webkit-columns: 3;
-  -moz-columns: 3;
-  columns: 3
-}
-.main-footer .navigation-group .detail.link,
-.main-footer .navigation-group .footer-link {
-  margin-bottom: 24px
-}
-.main-footer .flex-inner {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  gap: 90px
+.main-footer .detail.link:visited,
+.main-footer .footer-link:visited {
+  color: inherit
 }
 .main-footer .social-list {
   gap: 0
@@ -6125,45 +6379,83 @@ discord-widget widget-footer widget-button-join:hover {
   font-size: 20px;
   color: #d7d6d6
 }
+.main-footer .footer-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  gap: 60px
+}
 .main-footer .middle {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  gap: 24px;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between
 }
-.main-footer .bottom {
-  padding: 60px 0
+.main-footer .navigation-group .links-cover ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  gap: 24px 24px;
+  max-width: 350px
+}
+.main-footer .links-group .flex-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px
+}
+.main-footer .links-group .cell {
+  gap: 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column
+}
+.main-footer .contact-group {
+  gap: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex
+}
+@media (max-width:1199px) {
+  .main-footer .contact-group {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+  }
 }
 @media (max-width:768px) {
+  .main-footer .footer-subtitle {
+    font-weight: 700
+  }
   .main-footer .middle {
-    display: block
-  }
-  .main-footer .contact-group,
-  .main-footer .navigation-group {
-    margin-bottom: 40px
-  }
-  .main-footer .flex-inner {
-    display: block
-  }
-  .main-footer .flex-inner .cell:first-child {
-    margin-bottom: 10px
-  }
-  .main-footer .detail.link,
-  .main-footer .footer-link {
-    margin-bottom: 10px
-  }
-  .main-footer .detail.link:last-child,
-  .main-footer .footer-link:last-child {
-    margin-bottom: 0
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 40px
   }
 }
 @media (max-width:640px) {
-  .main-footer .navigation-group .links-cover {
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    columns: 2
+  .main-footer .links-group .flex-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 24px
   }
 }
 :root {
@@ -6469,6 +6761,19 @@ discord-widget widget-footer widget-button-join:hover {
 .main-header .menu-tab .cards-list .small .image-cover {
   padding-top: 62.5%
 }
+.main-header .menu-tab .cards-list .game-logo {
+  position: absolute;
+  z-index: 1;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  height: 70px
+}
+.main-header .menu-tab .cards-list .game-logo img {
+  position: static;
+  max-width: 100%;
+  height: auto
+}
 .main-header .menu-tab .cards-list .image-cover {
   display: block;
   padding-top: 125%;
@@ -6479,6 +6784,11 @@ discord-widget widget-footer widget-button-join:hover {
 .main-header .menu-tab .cards-list .image-cover:hover img {
   -webkit-transform: translateZ(0) scale(1.1);
   transform: translateZ(0) scale(1.1)
+}
+.main-header .menu-tab .cards-list .image-cover:hover .game-logo img {
+  -webkit-transform: none;
+  -ms-transform: none;
+  transform: none
 }
 .main-header .menu-tab .link {
   font-weight: 700;
@@ -6594,7 +6904,7 @@ discord-widget widget-footer widget-button-join:hover {
     gap: 24px
   }
 }
-@media (max-width:1200px) {
+@media (max-width:1220px) {
   .main-header .logo {
     width: 130px
   }
@@ -6647,7 +6957,7 @@ discord-widget widget-footer widget-button-join:hover {
     position: fixed;
     background-color: #000;
     left: -30px;
-    top: 69px;
+    top: 60px;
     right: -30px;
     padding: 0 30px;
     height: 100vh
@@ -6706,13 +7016,28 @@ discord-widget widget-footer widget-button-join:hover {
 }
 @media (max-width:450px) {
   .main-header .header-container {
-    gap: 8px
+    gap: 12px
   }
   .main-header .logo {
-    width: 100px
+    width: 96px
   }
   .main-header .right-side {
-    gap: 8px
+    gap: 8px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between
+  }
+  .main-header .language .item {
+    padding: 0 22px 0 0
+  }
+  .main-header .language .dropdown .dropdown-header .icon {
+    margin-right: 0;
+    font-size: 16px;
+    display: none
+  }
+  .main-header .language .dropdown .dropdown-header:after {
+    font-size: 12px;
+    top: 55%
   }
 }
 :root {
@@ -6973,6 +7298,10 @@ body.light .main-header .header-navigation ul li a,
 body.light .main-header .language .item .text {
   color: #28292c
 }
+body.light .main-header .menu-tab .link,
+body.light .main-header .menu-tab .title {
+  color: #28292c
+}
 body.light .main-header .header-navigation ul li a.active {
   color: #ec1e24
 }
@@ -7011,11 +7340,19 @@ body.light .dropdown .dropdown-header .icon,
 body.light .dropdown .dropdown-header:after {
   color: #28292c
 }
-body.light .section .section-title {
+body.light .feature-card h3,
+body.light .section .section-title,
+body.light .section h1,
+body.light .section h2,
+body.light .section h3,
+body.light .section h4 {
   color: #28292c
 }
 body.light .main-banner .caption .paragraph {
   color: #d7d6d6
+}
+body.light .main-banner .caption .section-title {
+  color: #fff
 }
 body.light .about-preview:before {
   background-color: rgba(215,214,214,.8)
@@ -7045,6 +7382,9 @@ body.light .game-preview,
 body.light .news-preview {
   background-color: #969696
 }
+body.light .news-preview:visited:hover {
+  color: inherit
+}
 body.light .press-engines-list .press-engine-link {
   background-color: #969696
 }
@@ -7072,6 +7412,12 @@ body.light .about-section .chronology-list .slider-pagination li:after {
 body.light .game-preview .category,
 body.light .game-preview .date span {
   color: #d7d6d6
+}
+body.light .documentation-link .caption .theme-text {
+  color: #d7d6d6
+}
+body.light .documentation-link .caption .title {
+  color: #fff
 }
 body.light .game-preview .caption,
 body.light .game-preview .date {
@@ -7141,16 +7487,15 @@ body.light .game-banner .logo-side .dotted-list li {
   color: #d7d6d6
 }
 body.light .feature-card .title,
-body.light .general-caption {
+body.light .general-caption,
+body.light .quote-simple cite,
+body.light .quote-simple cite span {
   color: #28292c
 }
 body.light .game-banner .text-side {
   background-color: rgba(255,255,255,.1);
   background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(171,171,171,.3)),to(rgba(69,69,69,.3)));
   background-image: linear-gradient(180deg,rgba(171,171,171,.3) 0,rgba(69,69,69,.3) 100%)
-}
-body.light dl dt {
-  color: #28292c
 }
 body.light .dropdown.button-dropdown .dropdown-header .icon,
 body.light .dropdown.button-dropdown .dropdown-header:after {
@@ -7175,7 +7520,12 @@ body.light .popup .inner {
 }
 body.light .dotted-list li,
 body.light .popup .main .subtitle,
-body.light .popup .main .theme-text {
+body.light .popup .main .theme-text,
+body.light .popup .main h2,
+body.light .popup .main h3,
+body.light .popup .main h4,
+body.light .popup .main li,
+body.light .popup .main p {
   color: #28292c
 }
 body.light .popup .close-popup {
@@ -7210,6 +7560,9 @@ body.light .contact-info .icons-list .item .caption,
 body.light .contact-info .section-subtitle,
 body.light .form .form-title {
   color: #28292c
+}
+body.light .button.button-primary-transparent {
+  background-color: rgba(215,214,214,.2)
 }
 :root {
   --large-title-font-size: 48px;
@@ -7352,6 +7705,10 @@ body.light .form .form-title {
 .news-preview:hover .title {
   color: #ec1e24
 }
+.news-preview:visited,
+.news-preview:visited:hover {
+  color: inherit
+}
 .news-banner {
   position: relative
 }
@@ -7371,20 +7728,6 @@ body.light .form .form-title {
   -webkit-box-shadow: 0 0 100px 25px #000 inset;
   box-shadow: 0 0 100px 25px #000 inset;
   pointer-events: none
-}
-.news-cover {
-  -webkit-transition: .2s;
-  transition: .2s;
-  display: none;
-  -webkit-transform: translateY(-50px);
-  -ms-transform: translateY(-50px);
-  transform: translateY(-50px)
-}
-.news-cover.visible {
-  display: block;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0)
 }
 @media (max-width:1440px) {
   .news-preview .inner {
@@ -7624,6 +7967,9 @@ body.light .form .form-title {
 .primary-link:hover {
   text-decoration: none
 }
+.primary-link:visited {
+  color: #8c0000
+}
 .discord-widget .section-subtitle {
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   font-weight: 900;
@@ -7675,6 +8021,26 @@ body.light .form .form-title {
   position: relative;
   top: -1px
 }
+.wp-block-list {
+  margin-bottom: 32px
+}
+.wp-block-list li {
+  position: relative;
+  padding-left: 15px;
+  line-height: 1.6;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 0
+}
+.wp-block-list li:before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  top: 13px;
+  left: 0;
+  background-color: #ec1e24
+}
 @media (max-width:1200px) {
   .page-main {
     padding-top: var(--header-height)
@@ -7705,6 +8071,17 @@ body.light .form .form-title {
     -ms-flex-pack: start;
     justify-content: flex-start;
     padding-bottom: 16px
+  }
+  .full-width-xs.row {
+    margin-right: -24px;
+    margin-left: -24px;
+    gap: 24px
+  }
+  .full-width-xs.row > .spaced-around {
+    padding: 0
+  }
+  .full-width-xs ~ .spaced-top {
+    margin-top: 0
   }
 }
 :root {
@@ -8061,10 +8438,27 @@ body.light .form .form-title {
 .popup .main ul li {
   margin-bottom: 8px
 }
-.popup .main .subtitle {
+.popup .main .subtitle,
+.popup .main h2 {
   font-weight: 700;
   text-transform: uppercase;
   font-size: var(--large-text-font-size);
+  color: #fff;
+  font-family: "Noto Sans",sans-serif;
+  margin-bottom: 16px
+}
+.popup .main h3 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--medium-text-font-size);
+  color: #fff;
+  font-family: "Noto Sans",sans-serif;
+  margin-bottom: 16px
+}
+.popup .main h4 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--normal-text-font-size);
   color: #fff;
   font-family: "Noto Sans",sans-serif;
   margin-bottom: 16px
@@ -8084,6 +8478,10 @@ body.light .form .form-title {
 }
 .popup .bottom .button + .button {
   margin-left: 24px
+}
+.popup .tags:first-child,
+.popup .tags:last-child {
+  margin-bottom: 0
 }
 @media (max-width:768px) {
   .popup .header {
@@ -8191,6 +8589,7 @@ body.light .form .form-title {
   margin: auto;
   top: 32px;
   left: 32px;
+  height: auto;
   right: 32px;
   bottom: 32px
 }
@@ -8393,18 +8792,11 @@ body.light .form .form-title {
 :root {
   --quote-cards-gap: 24px
 }
-.quote-cards {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: var(--quote-cards-gap)
-}
-.quote-cards .quote-preview {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
-  flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
-  padding: 17px 100px;
-  text-align: center;
+.quote-simple {
+  background-color: rgba(140,0,0,.3);
+  padding: 32px;
+  border: 1px solid #ec1e24;
+  border-radius: var(--border-radius);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8415,9 +8807,50 @@ body.light .form .form-title {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  position: relative
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 32px;
+  max-width: 33.3333333333%
 }
-.quote-cards .quote-preview:after {
+.quote-simple p {
+  margin-bottom: 0;
+  font-weight: 400
+}
+.quote-simple blockquote {
+  padding-top: 80px;
+  background-image: url(../img/quote.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  margin-bottom: 32px
+}
+.quote-simple cite {
+  font-weight: 700;
+  font-style: normal;
+  font-size: var(--large-text-font-size);
+  color: #d7d6d6
+}
+.quote-simple cite span {
+  color: #969696
+}
+.quote-preview {
+  max-width: 33.3333333333%;
+  padding: 16px 64px;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: relative;
+  min-height: 206px;
+  margin-bottom: 0
+}
+.quote-preview:after {
   position: absolute;
   content: "";
   right: 0;
@@ -8433,7 +8866,7 @@ body.light .form .form-title {
   transform: translateY(-50%);
   top: 50%
 }
-.quote-cards .quote-preview:before {
+.quote-preview:before {
   position: absolute;
   content: "";
   left: 0;
@@ -8449,58 +8882,33 @@ body.light .form .form-title {
   transform: translateY(-50%);
   top: 50%
 }
-.quote-cards .quote-preview blockquote {
-  font-size: var(--h1-font-size);
+.quote-preview blockquote {
+  font-size: var(--h2-font-size);
   font-weight: 900;
   text-transform: uppercase;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
   color: #fff;
-  line-height: 1.1
+  line-height: 1.1;
+  margin-bottom: 32px
 }
-.quote-cards .quote-preview cite {
-  font-style: normal;
-  font-size: var(--large-text-font-size)
-}
-.quote-cards-large {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: var(--quote-cards-gap)
-}
-.quote-cards-large .quote-preview {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 25%;
-  flex: 1 1 25%;
-  background-color: rgba(140,0,0,.3);
-  padding: 32px;
-  border: 1px solid #ec1e24;
-  border-radius: var(--border-radius);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between
-}
-.quote-cards-large .quote-preview blockquote {
-  padding-top: 103px;
-  background-image: url(../img/quote.png);
-  background-repeat: no-repeat;
-  background-position: top left;
-  margin-bottom: 56px
-}
-.quote-cards-large .quote-preview cite {
-  font-weight: 700;
+.quote-preview cite {
   font-style: normal;
   font-size: var(--large-text-font-size);
-  color: #d7d6d6
+  max-width: 75%;
+  margin: 0 auto
 }
-.quote-cards-large .quote-preview cite span {
-  color: #969696
+.quote-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: var(--quote-cards-gap);
+  padding: var(--section-margin) 0
+}
+.quote-cards .quote-preview,
+.quote-cards .quote-simple {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap));
+  flex: 1 1 calc(33.3333333333% - var(--quote-cards-gap))
 }
 @media (max-width:1720px) {
   .quote-cards .quote-preview blockquote br {
@@ -8525,18 +8933,21 @@ body.light .form .form-title {
   .quote-cards .quote-preview blockquote br {
     display: none
   }
-  .quote-cards-large .quote-preview blockquote {
+  .quote-simple blockquote {
     margin-bottom: 32px;
     background-size: 32px;
     padding-top: 56px
   }
 }
 @media (max-width:1200px) {
+  .quote-simple {
+    margin-bottom: 24px
+  }
   .quote-cards-large {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap
   }
-  .quote-cards-large .quote-preview {
+  .quote-cards-large .quote-simple {
     -webkit-box-flex: 1;
     -ms-flex: 1 1 calc(50% - var(--quote-cards-gap));
     flex: 1 1 calc(50% - var(--quote-cards-gap))
@@ -8550,41 +8961,92 @@ body.light .form .form-title {
     height: 150px;
     width: 90px
   }
+  .quote-cards .quote-preview blockquote {
+    font-size: calc(var(--h2-font-size) * .8)
+  }
+  .quote-cards .quote-preview cite {
+    font-size: 16px
+  }
 }
 @media (max-width:993px) {
+  .quote-preview,
+  .quote-simple {
+    max-width: calc(50% - var(--quote-cards-gap))
+  }
   .quote-cards {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap
+  }
+  .quote-cards.mobile-slider-track {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start
   }
   .quote-cards .quote-preview {
     padding-left: 50px;
     padding-right: 50px;
     -webkit-box-flex: 1;
-    -ms-flex: 1 1 100%;
-    flex: 1 1 100%
+    -ms-flex: 1 1 calc(50% - 12px);
+    flex: 1 1 calc(50% - 12px);
+    max-width: calc(50% - 12px)
   }
   .quote-cards .quote-preview:after,
   .quote-cards .quote-preview:before {
     height: 120px;
     width: 70px
   }
-  .quote-cards .quote-preview blockquote {
-    font-size: var(--h1-font-size)
-  }
-  .quote-cards .quote-preview cite {
-    font-size: var(--font-size)
+  .quote-cards .quote-simple {
+    -webkit-box-flex: calc(50% - var(--quote-cards-gap));
+    -ms-flex: calc(50% - var(--quote-cards-gap));
+    flex: calc(50% - var(--quote-cards-gap))
   }
 }
 @media (max-width:768px) {
+  .quote-preview,
+  .quote-simple {
+    max-width: 100%
+  }
   .quote-cards-large {
     display: block;
     white-space: nowrap
   }
-  .quote-cards-large .quote-preview {
+  .quote-cards-large .quote-simple {
     display: inline-block;
     width: 80%;
     margin-right: 24px;
-    white-space: normal
+    white-space: normal;
+    padding: 24px
+  }
+  .quote-cards .quote-preview blockquote {
+    font-size: 16px;
+    margin-bottom: 8px
+  }
+  .quote-cards .quote-preview cite {
+    font-size: 12px
+  }
+}
+@media (max-width:525px) {
+  .quote-cards {
+    display: block;
+    padding: 0
+  }
+  .quote-cards .quote-preview {
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 100%;
+    flex: 1 1 100%;
+    min-height: 106px;
+    max-width: 80%;
+    display: block;
+    margin: auto;
+    margin-bottom: 32px
+  }
+  .quote-cards .quote-preview blockquote {
+    font-size: 24px
+  }
+}
+@media (max-width:375px) {
+  .quote-cards .quote-preview {
+    max-width: 100%
   }
 }
 :root {
@@ -8656,21 +9118,44 @@ body.light .form .form-title {
 .screens .screen-list {
   display: -ms-grid;
   display: grid;
+  grid-auto-flow: dense;
   -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4,1fr);
   -ms-grid-rows: (1fr)[4];
   grid-template-rows: repeat(4,1fr);
-  grid-gap: 24px;
+  gap: 24px;
   font-size: 0
+}
+.screens .screen-list > .item img:not([src]),
+.screens .screen-list > .item img[src=""],
+.screens .screen-list > .item:empty,
+.screens .screen-list > .item:not(:has(img)) {
+  display: none
 }
 .screens .screen-list .item {
   font-size: 0;
   overflow: hidden;
   cursor: -webkit-zoom-in;
-  cursor: zoom-in
+  cursor: zoom-in;
+  position: relative;
+  min-height: 226px
 }
 .screens .screen-list .item img {
-  height: 100%
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  -webkit-transition: .2s;
+  transition: .2s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0)
 }
 .screens .screen-list .item:nth-child(1) {
   -ms-grid-row: 1;
@@ -8764,55 +9249,64 @@ body.light .form .form-title {
     -ms-grid-row: 1;
     -ms-grid-row-span: 1;
     -ms-grid-column: 2;
-    grid-area: 1/2/2/2
+    -ms-grid-column-span: 1;
+    grid-area: 1/2/2/3
   }
   .screens .screen-list .item:nth-child(3) {
     -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
-    grid-area: 2/1/2/2
+    grid-area: 2/1/3/2
   }
   .screens .screen-list .item:nth-child(4) {
     -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 2;
-    grid-area: 2/2/2/2
+    -ms-grid-column-span: 1;
+    grid-area: 2/2/3/3
   }
   .screens .screen-list .item:nth-child(5) {
     -ms-grid-row: 3;
-    -ms-grid-column: 2;
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
     -ms-grid-column-span: 1;
-    grid-area: 3/2/3/3
+    grid-area: 3/1/4/2
   }
   .screens .screen-list .item:nth-child(6) {
-    -ms-grid-row: 4;
-    -ms-grid-row-span: -1;
+    -ms-grid-row: 3;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 2;
-    -ms-grid-column-span: -1;
-    grid-area: 4/2/3/1
+    -ms-grid-column-span: 1;
+    grid-area: 3/2/4/3
   }
   .screens .screen-list .item:nth-child(7) {
     -ms-grid-row: 4;
-    -ms-grid-column: 2;
-    -ms-grid-column-span: -1;
-    grid-area: 4/2/4/1
+    -ms-grid-row-span: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-area: 4/1/5/2
   }
   .screens .screen-list .item:nth-child(8) {
     -ms-grid-row: 4;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 2;
-    grid-area: 4/2/4/2
+    -ms-grid-column-span: 1;
+    grid-area: 4/2/5/3
   }
   .screens .screen-list .item:nth-child(9) {
-    -ms-grid-row: 6;
-    -ms-grid-row-span: -1;
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 1;
     -ms-grid-column-span: 1;
-    grid-area: 6/1/5/2
+    grid-area: 5/1/6/2
   }
   .screens .screen-list .item:nth-child(10) {
-    -ms-grid-row: 6;
-    -ms-grid-row-span: -1;
+    -ms-grid-row: 5;
+    -ms-grid-row-span: 1;
     -ms-grid-column: 2;
-    grid-area: 6/2/5/2
+    -ms-grid-column-span: 1;
+    grid-area: 5/2/6/3
   }
 }
 @media (max-width:768px) {
@@ -9402,17 +9896,47 @@ body.light .form .form-title {
 .section {
   margin: var(--section-margin) 0
 }
-.section .section-title {
+.section:not(.inner-banner) {
+  overflow: hidden
+}
+.section .section-title,
+.section h2 {
   color: #fff;
   font-size: var(--section-title-font-size);
   font-weight: 900;
   font-family: "Sofia Sans Extra Condensed",sans-serif;
-  text-transform: uppercase
+  text-transform: uppercase;
+  line-height: 1.2
+}
+.section .section-title.spaced-top,
+.section h2.spaced-top {
+  margin-top: var(--section-margin)
+}
+.section .section-title.full-width,
+.section h2.full-width {
+  max-width: 100%
 }
 .section .paragraph {
   font-family: "Noto Sans",sans-serif;
   font-size: var(--large-text-font-size);
   font-weight: 400
+}
+.section h3 {
+  font-size: var(--h2-font-size);
+  font-weight: 900;
+  font-family: "Sofia Sans Extra Condensed",sans-serif;
+  color: #fff
+}
+.section h3.has-text-align-center {
+  text-align: center;
+  max-width: 70%;
+  margin: 40px auto 0
+}
+.section h4 {
+  font-size: var(--largest-text-font-size);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 32px
 }
 .section.collapsed-top {
   margin-top: 0
@@ -9604,6 +10128,12 @@ body.light .form .form-title {
   gap: 4px
 }
 @media (max-width:768px) {
+  .section.mobile-slider-section {
+    margin-bottom: 32px
+  }
+  .section.mobile-slider-section .quote-cards {
+    padding-bottom: 0
+  }
   .section.mobile-slider-section .mobile-slider-dots {
     display: block
   }
@@ -9874,7 +10404,15 @@ body.light .form .form-title {
 }
 .subscribe-section .form-cover {
   display: inline-block;
-  margin-top: 20px
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 40px
+}
+.subscribe-section .form-cover .subscribe-feedback {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  max-width: 100%
 }
 @media (max-width:1440px) {
   .subscribe-section {
@@ -10133,13 +10671,17 @@ body.light .form .form-title {
   font-size: var(--small-text-font-size);
   cursor: pointer;
   -webkit-transition: .2s;
-  transition: .2s;
-  text-transform: capitalize
+  transition: .2s
 }
 .tag.active,
 .tag:hover {
   -webkit-filter: brightness(120%);
   filter: brightness(120%)
+}
+.tag.disabled {
+  pointer-events: none;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1)
 }
 .tag:nth-child(5n+1) {
   background-color: #ec1e24
@@ -10168,12 +10710,31 @@ body.light .form .form-title {
 }
 .simple-tags .tag.active,
 .simple-tags .tag:hover {
-  background-color: rgba(236,30,36,.4)
+  background-color: rgba(236,30,36,.7)
+}
+.tag-item-cover {
+  -webkit-transition: .2s;
+  transition: .2s;
+  display: none;
+  -webkit-transform: translateY(-50px);
+  -ms-transform: translateY(-50px);
+  transform: translateY(-50px)
+}
+.tag-item-cover.visible {
+  display: block;
+  -webkit-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0)
 }
 @media (max-width:1200px) {
   :root {
     --tag-padding: 5px;
     --tag-gap: 10px
+  }
+}
+@media (max-width:768px) {
+  .tags:first-child {
+    margin-top: 24px
   }
 }
 :root {
@@ -10395,9 +10956,15 @@ h1 {
 a {
   color: inherit
 }
+p a:visited {
+  color: #ec1e24
+}
 mark {
   color: #000;
   background-color: #8c0000
+}
+article .wp-block-image img {
+  width: 100%
 }
 article .text {
   margin: 0 auto 32px
@@ -10412,6 +10979,22 @@ article h2 {
   font-weight: 900;
   margin: 0 0 32px
 }
+article h3 {
+  font-size: var(--largest-text-font-size);
+  font-weight: 900;
+  margin: 0 0 32px
+}
+article h4 {
+  font-size: calc(var(--largest-text-font-size) * .9);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 32px
+}
+article h5 {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 0 32px
+}
 article img {
   max-width: 100%;
   margin: 0 auto 30px;
@@ -10423,13 +11006,41 @@ article .date {
   font-size: var(--article-title-font-size);
   margin: 32px 0
 }
+article ul {
+  margin-bottom: 32px
+}
+article ul li {
+  position: relative;
+  padding-left: 15px;
+  line-height: 1.6;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 0
+}
+article ul li:before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  top: 13px;
+  left: 0;
+  background-color: #ec1e24
+}
 article p {
   font-size: var(--article-title-font-size);
   color: #fff;
-  margin: 0 0 32px
+  margin: 0 0 32px;
+  line-height: 1.66
 }
 article p:last-child {
   margin-bottom: 0
+}
+article a {
+  color: #ec1e24;
+  text-decoration: underline
+}
+article a:visited {
+  color: #8c0000
 }
 dl {
   font-size: var(--large-text-font-size)
@@ -10446,6 +11057,12 @@ dl dd {
 }
 dl + dl {
   margin-top: 8px
+}
+dl .link {
+  text-decoration: underline
+}
+dl .link:hover {
+  text-decoration: none
 }
 .dotted-list {
   max-width: 50%
@@ -10470,21 +11087,27 @@ dl + dl {
 .dotted-list.primary li:before {
   background-color: #ec1e24
 }
-.theme-text {
+.theme-text,
+p {
   margin: 32px 0;
-  font-size: var(--large-text-font-size)
+  font-size: var(--large-text-font-size);
+  line-height: 1.66
 }
-.theme-text:first-child {
+.theme-text:first-child,
+p:first-child {
   margin-top: 0
 }
-.theme-text:last-child {
+.theme-text:last-child,
+p:last-child {
   margin-top: 0
 }
-.theme-text a {
+.theme-text a,
+p a {
   color: #ec1e24;
   text-decoration: underline
 }
-.theme-text a:hover {
+.theme-text a:hover,
+p a:hover {
   text-decoration: none
 }
 .simple-link {

@@ -1,491 +1,531 @@
-document.addEventListener( 'DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
 	class Slider {
 		sliderElment = null;
+		track = null;
+
 		sliderDots = null;
 		sliderArrows = null;
 
-		allSlides = null;
-
+		allSlides = [];
 		prevButton = null;
 		nextButton = null;
 
-		scrolledWidth = 0;
-		scrolledHeight = 0;
 		totalSlides = 0;
-		savedSlidesLength = 0;
 
 		activeSlideEl = null;
 		activeIndex = 0;
-		activeSlideWidth = 0;
 
 		currentTransition = 0;
-
 		isTouchDown = false;
 
 		touchStartX = 0;
 		touchStartY = 0;
-
-		touchTransition = 0;
-		touchDirection = '';
+		touchMoveX = 0;
+		touchMoveY = 0;
 
 		options = {
-			transitionDuration: "1s",
-			timing: "ease-in-out",
-			delay: "0s",
-			direction: 'horizontal',
+			transitionDuration: '0.6s',
+			timing: 'ease-in-out',
+			delay: '0s',
+			direction: 'horizontal', // 'horizontal' | 'vertical'
 			autoplay: false,
-			loop: false,
 			autoplayTime: 5000,
-		}
+			loop: false,
+			pauseOnHover: true,
+			onInit: null,
+			onTranslated: null,
+			// селектори під різні розмітки
+			trackSelector: '.slider-list',
+			slideSelector: '.slide'
+		};
+
+		_autoplayTimer = null;
+		_resizeRaf = null;
+
+		_handlers = {
+			onResize: null,
+			onTouchStart: null,
+			onTouchMove: null,
+			onTouchEnd: null,
+			onMouseDown: null,
+			onMouseMove: null,
+			onMouseUp: null,
+			onMouseLeave: null,
+			onMouseEnter: null,
+			onMouseOut: null,
+			onPrevClick: null,
+			onNextClick: null
+		};
 
 		constructor(sliderElment) {
 			this.sliderElment = sliderElment;
-			this.sliderDots = this.sliderElment.querySelector('[data-dots]').querySelectorAll('.dot');
-			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows');
-
-			this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
-			this.scrolledWidth = this.setScrolledSlidersWidth();
-			this.scrolledHeight = this.setScrolledSlidersHeight();
 		}
 
-		init(options){
+		init(options) {
 			if (!this.sliderElment) return;
-			this.totalSlides =  this.sliderElment.querySelectorAll('.slide').length;
-			this.savedSlidesLength = this.totalSlides;
 
-			this.setActiveSlide(this.activeIndex);
+			if (options) Object.assign(this.options, options);
 
-			if (options) {
-				this.options = Object.assign(this.options, options)
-			};
-			if (this.sliderDots) {
-				this.setDots();
-			};
-			if (this.sliderArrows) {
-				this.setArrows();
-			};
+			const ds = this.sliderElment.dataset || {};
+			if (typeof ds.autoplay !== 'undefined') this.options.autoplay = this._toBool(ds.autoplay);
+			if (typeof ds.loop !== 'undefined') this.options.loop = this._toBool(ds.loop);
+			if (typeof ds.autoplayTime !== 'undefined') this.options.autoplayTime = this._toInt(ds.autoplayTime, this.options.autoplayTime);
+			if (typeof ds.direction !== 'undefined') this.options.direction = (ds.direction === 'vertical') ? 'vertical' : 'horizontal';
 
-			if (this.options.onInit) {
+			this.track = this.sliderElment.querySelector(this.options.trackSelector);
+			this.sliderDots = this.sliderElment.querySelector('[data-dots]')?.querySelectorAll('.dot') || null;
+			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows') || null;
+			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
+			this.totalSlides = this.allSlides.length;
+
+			if (!this.track || !this.totalSlides) return;
+
+			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
+			this._setActiveSlide(this.activeIndex);
+			this._setActiveDot(this.activeIndex);
+
+			this._setupArrows();
+			this._setupDots();
+			this._bindEvents();
+
+			this._applyTransform(this._calcTranslation(this.activeIndex), true);
+
+			if (typeof this.options.onInit === 'function') {
 				this.options.onInit(this);
-			};
-
+			}
 
 			if (this.options.autoplay) {
-				this.play(this.activeIndex)
-			};
-
-			this.track = this.sliderElment.querySelector('.slider-list');
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mousedown', this.start.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchstart', this.start.bind(this));
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mousemove', this.move.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchmove', this.move.bind(this));
-
-			this.sliderElment.querySelector('.slider-track').addEventListener('mouseleave', this.end.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('mouseup', this.end.bind(this));
-			this.sliderElment.querySelector('.slider-track').addEventListener('touchend', this.end.bind(this));
-
-			window.addEventListener('resize', this.resizeSlider.bind(this));
-
-		};
-
-		end() {
-			this.isTouchDown = false;
-			if (!this.touchDirection) return;
-
-			let middleXPosition = this.activeSlideEl.getBoundingClientRect().width/6;
-			let middleYPosition = this.activeSlideEl.getBoundingClientRect().height/6;
-			let index = 0;
-
-			if (!Math.abs(this.currentTransition) && !Math.abs(this.touchTransition)) return;
-
-			switch (this.touchDirection) {
-				case "left":
-					if (Math.abs(this.touchTransition) > middleXPosition && Math.abs(this.currentTransition) < this.scrolledWidth) {
-						index = this.activeIndex+1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "right":
-					if (this.scrolledWidth + this.touchTransition > middleXPosition){
-						index = this.activeIndex-1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "top":
-					if (Math.abs(this.touchTransition) > middleYPosition && Math.abs(this.currentTransition) < this.scrolledHeight) {
-						index = this.activeIndex+1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-				case "bottom":
-					if (this.scrolledHeight + this.touchTransition > middleYPosition){
-						index = this.activeIndex-1;
-					} else {
-						index = this.activeIndex;
-					};
-					break;
-			};
-
-			this.activeIndex = index;
-
-			this.setActiveSlide(index);
-			this.goToSlide(index);
-			this.setActiveDot(index);
-
-			this.setButtonsState(index);
-
-			this.touchDirection = '';
-			this.touchTransition = 0;
-			this.track.classList.remove('drag-active');
-		};
-
-		start(e){
-			this.isTouchDown = true;
-			this.track.style.transition = `none`;
-
-			switch (this.options.direction) {
-				case "vertical":
-					this.touchStartY = e.pageY || e.touches[0].pageY;
-					break;
-				case "horizontal":
-					this.touchStartX = e.pageX || e.touches[0].pageX;
-					break;
-			};
-
-			this.track.classList.add('drag-active');
-		};
-
-		move(e){
-			if(!this.isTouchDown || this.touchStartX < 500) return;
-			e.preventDefault();
-
-			function between(x, min, max) {
-				return x >= min && x <= max;
+				this._startAutoplay();
 			}
 
-			let dragTranslation = 0;
-
-			switch (this.options.direction) {
-				case "vertical":
-					if (this.isTouchDown == true && e.pageY <= this.touchStartY) {
-						this.touchDirection = "top";
-						dragTranslation = (this.touchStartY - e.pageY)*-1;
-					} else if (this.isTouchDown == true && e.pageY > this.touchStartY) {
-						this.touchDirection = "bottom";
-						dragTranslation = e.pageY - this.touchStartY;
-					};
-					break;
-				case "horizontal":
-					if (this.isTouchDown == true && e.pageX <= this.touchStartX) {
-						this.touchDirection = "left";
-						dragTranslation = (this.touchStartX - e.pageX)*-1;
-					} else if (this.isTouchDown == true && e.pageX > this.touchStartX) {
-						this.touchDirection = "right";
-						dragTranslation = e.pageX - this.touchStartX;
-					};
-					break;
-			};
-
-			let touchTransition = this.currentTransition + dragTranslation;
-
-			if (!between(touchTransition, this.scrolledWidth*-1, 0) || !this.isTouchDown || !dragTranslation) return;
-
-			this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${touchTransition}px)` : `translateX(${touchTransition}px)`;
-			this.touchTransition = touchTransition;
-		};
-
-		play(){
-			if (this.activeIndex >= this.allSlides.length-1) {
-				this.activeIndex = -1;
-			}
-			this.goToNextSlide();
-			setTimeout(()=>{
-				this.play();
-			}, this.options.autoplayTime)
-		};
-
-		loop(){
-			if (this.options.loop && this.activeIndex) {
-				if (this.activeIndex >= this.totalSlides-1) {
-					let slidesList = this.sliderElment.querySelector('.slider-list');
-					let firstSlide = slidesList.querySelectorAll('.slide')[this.activeIndex-1];
-					let firstSlideClone = firstSlide.cloneNode(true);
-					firstSlideClone.classList.add('cloned');
-					slidesList.insertBefore(firstSlideClone, slidesList.querySelectorAll('.slide')[slidesList.querySelectorAll('.slide').length-1].nextSibling);
-
-					this.setActiveDot(slidesList.querySelectorAll('.cloned').length-1)
-					if (slidesList.querySelectorAll('.cloned').length+1 >= this.savedSlidesLength+1) {
-						this.activeIndex = -1;
-					};
-
-					// update settings
-					this.totalSlides = this.sliderElment.querySelectorAll('.slide').length
-					this.allSlides = Array.prototype.slice.call(this.sliderElment.querySelectorAll('.slide'));
-					this.scrolledWidth = this.setScrolledSlidersWidth();
-					this.scrolledHeight = this.setScrolledSlidersHeight();
-				};
-			};
+			this.sliderElment._sliderInstance = this;
+			this.sliderElment.setAttribute('data-slider-initialized', 'true');
 		}
 
-		resizeSlider(){
-			if (!this.currentTransition) return;
-			this.translateSlider(this.activeIndex)
-		};
+		_bindEvents() {
+			if (this.prevButton) {
+				this._handlers.onPrevClick = (e) => { e.preventDefault(); this.prev(); };
+				this.prevButton.addEventListener('click', this._handlers.onPrevClick);
+			}
+			if (this.nextButton) {
+				this._handlers.onNextClick = (e) => { e.preventDefault(); this.next(); };
+				this.nextButton.addEventListener('click', this._handlers.onNextClick);
+			}
 
-		setScrolledSlidersWidth(){
-			let scrolledWidth = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				scrolledWidth += slide.getBoundingClientRect().width;
+			if (this.sliderDots) {
+				this.sliderDots.forEach((dot, index) => {
+					const fn = (e) => { e.preventDefault(); this.goTo(index); };
+					dot._onDotClick = fn;
+					dot.addEventListener('click', fn);
+				});
+			}
+
+			this._handlers.onResize = () => {
+				if (this._resizeRaf) cancelAnimationFrame(this._resizeRaf);
+				this._resizeRaf = requestAnimationFrame(() => this.update());
 			};
-			scrolledWidth = scrolledWidth - this.sliderElment.getBoundingClientRect().width;
-			return scrolledWidth;
-		};
+			window.addEventListener('resize', this._handlers.onResize);
 
-		setScrolledSlidersHeight(){
-			let scrolledHeight = 0;
-			for (const [index, slide] of this.allSlides.entries()) {
-				scrolledHeight += slide.getBoundingClientRect().height;
+			this._handlers.onTouchStart = (e) => this._onTouchStart(e);
+			this._handlers.onTouchMove = (e) => this._onTouchMove(e);
+			this._handlers.onTouchEnd = () => this._onTouchEnd();
+
+			this.sliderElment.addEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
+			this.sliderElment.addEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
+			this.sliderElment.addEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
+
+			let mouseDown = false;
+			let mouseStartX = 0;
+			let mouseStartY = 0;
+
+			this._handlers.onMouseDown = (e) => {
+				mouseDown = true;
+				this.isTouchDown = true;
+				mouseStartX = e.clientX;
+				mouseStartY = e.clientY;
+				this._cancelAutoplay();
+				this._disableTransition();
 			};
-			scrolledHeight = scrolledHeight - this.sliderElment.getBoundingClientRect().height;
-			return scrolledHeight;
-		};
+			this._handlers.onMouseMove = (e) => {
+				if (!mouseDown) return;
+				this._dragByDelta(e.clientX - mouseStartX, e.clientY - mouseStartY);
+			};
+			this._handlers.onMouseUp = (e) => {
+				if (!mouseDown) return;
+				mouseDown = false;
+				this.isTouchDown = false;
+				this._endDrag(e.clientX - mouseStartX, e.clientY - mouseStartY);
+			};
+			this._handlers.onMouseLeave = (e) => {
+				if (!mouseDown) return;
+				mouseDown = false;
+				this.isTouchDown = false;
+				this._endDrag(0, 0);
+			};
 
-		setActiveSlide(activeIndex){
-			for (const [index, slide] of this.allSlides.entries()) {
-				if (index == activeIndex) {
+			this.sliderElment.addEventListener('mousedown', this._handlers.onMouseDown);
+			this.sliderElment.addEventListener('mousemove', this._handlers.onMouseMove);
+			this.sliderElment.addEventListener('mouseup', this._handlers.onMouseUp);
+			this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseLeave);
+
+			if (this.options.pauseOnHover) {
+				this._handlers.onMouseEnter = () => this._cancelAutoplay();
+				this._handlers.onMouseOut = () => this._startAutoplay();
+				this.sliderElment.addEventListener('mouseenter', this._handlers.onMouseEnter);
+				this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseOut);
+			}
+		}
+
+		update() {
+			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
+			this.totalSlides = this.allSlides.length;
+			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
+			this._setActiveSlide(this.activeIndex);
+			this._applyTransform(this._calcTranslation(this.activeIndex), true);
+		}
+
+		prev() {
+			const nextIndex = (this.activeIndex - 1);
+			if (nextIndex < 0) {
+				if (this.options.loop) {
+					this.goTo(this.totalSlides - 1);
+				} else {
+					this.goTo(0);
+				}
+			} else {
+				this.goTo(nextIndex);
+			}
+		}
+
+		next() {
+			const nextIndex = (this.activeIndex + 1);
+			if (nextIndex > this.totalSlides - 1) {
+				if (this.options.loop) {
+					this.goTo(0);
+				} else {
+					this.goTo(this.totalSlides - 1);
+				}
+			} else {
+				this.goTo(nextIndex);
+			}
+		}
+
+		goTo(index) {
+			index = this._clamp(index, 0, this.totalSlides - 1);
+			if (index === this.activeIndex) return;
+
+			this._cancelAutoplay();
+
+			this.activeIndex = index;
+			this._setActiveSlide(index);
+			this._setActiveDot(index);
+
+			this._enableTransition();
+			this._applyTransform(this._calcTranslation(index), false);
+
+			if (typeof this.options.onTranslated === 'function') {
+				this.options.onTranslated(this);
+			}
+
+			if (this.options.autoplay) {
+				this._startAutoplay();
+			}
+
+			this._updateArrowsState();
+		}
+
+		_setActiveSlide(index) {
+			this.allSlides.forEach((slide, i) => {
+				if (i === index) {
 					slide.classList.add('active');
 					this.activeSlideEl = slide;
 				} else {
 					slide.classList.remove('active');
-				};
-			};
-
-			this.activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
-		};
-
-		setActiveDot(activeIndex){
-			if (!this.sliderDots || !this.sliderDots.length) return;
-			for (const [index, dot] of this.sliderDots.entries()) {
-				if (index == activeIndex) {
-					dot.classList.add('active');
-				} else {
-					dot.classList.remove('active')
-				};
-			};
-		};
-
-		setArrows(){
-			this.prevButton = this.sliderArrows.querySelector('.prev');
-			this.nextButton = this.sliderArrows.querySelector('.next');
-
-			this.setDisabledButton(0, this.prevButton);
-
-			this.prevButton.addEventListener("click", function (e) {
-				e.preventDefault();
-				this.goToPrevSlide();
-			}.bind(this), false);
-
-			this.nextButton.addEventListener("click", function (e) {
-				e.preventDefault();
-				this.goToNextSlide();
-			}.bind(this), false);
-		};
-
-		setDisabledButton(index, button){
-			if (!button) return;
-			if (this.activeIndex == index) {
-				button.classList.add('disabled');
-			};
-		};
-
-		removeDisabledButton(button){
-			if (!button) return;
-			button.classList.remove('disabled');
-		};
-
-		goToPrevSlide(){
-			this.removeDisabledButton(this.nextButton);
-			if (this.activeIndex > 0) {
-				this.activeIndex--;
-			};
-			this.setActiveSlide(this.activeIndex);
-			this.goToSlide(this.activeIndex);
-			this.setDisabledButton(0, this.prevButton);
-			this.setActiveDot(this.activeIndex);
-		};
-
-		goToNextSlide(){
-			this.removeDisabledButton(this.prevButton);
-
-			if (this.activeIndex < this.totalSlides) {
-				this.activeIndex++;
-			};
-			this.setActiveSlide(this.activeIndex);
-			this.setActiveDot(this.activeIndex);
-			this.goToSlide(this.activeIndex);
-			this.setDisabledButton(this.totalSlides-1, this.nextButton);
-		};
-
-		translateSlider(index){
-			switch (this.options.direction) {
-				case "vertical":
-					this.currentTransition = this.calculateVericalTransition(index);
-					break;
-				case "horizontal":
-					this.currentTransition = this.calculateHorizontalTransition(index);
-					break;
-			};
-			this.animateTranslation(this.currentTransition, this.options.direction);
-		};
-
-		animateTranslation(translation, direction){
-			requestAnimationFrame(()=>{
-				this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
-				this.track.style.transform = this.options.direction == 'vertical' ? `translateY(${translation}px)` : `translateX(${translation}px)`;
-			});
-			this.isTouchDown = false;
-		};
-
-		calculateVericalTransition(index){
-			let currentTransition = 0;
-			let activeSlideHeight = this.activeSlideEl.getBoundingClientRect().height;
-
-			let slidesArray = Array.prototype.slice.call(this.allSlides);
-			let slidesHeight = 0;
-
-			if (index == 0) {
-				currentTransition = slidesHeight = 0;
-			} else {
-				for (let slide of  this.allSlides.slice(0, index)) {
-					slidesHeight += slide.getBoundingClientRect().height;
 				}
+			});
+		}
 
-				currentTransition = slidesHeight*-1;
-			};
-			return currentTransition;
-		};
+		_setActiveDot(index) {
+			if (!this.sliderDots) return;
+			this.sliderDots.forEach((dot, i) => {
+				dot.classList.toggle('active', i === index);
+			});
+		}
 
-		calculateHorizontalTransition(index){
-			let currentTransition = 0;
-			let activeSlideWidth = this.activeSlideEl.getBoundingClientRect().width;
+		_setupArrows() {
+			if (!this.sliderArrows) return;
+			this.prevButton = this.sliderArrows.querySelector('.prev') || null;
+			this.nextButton = this.sliderArrows.querySelector('.next') || null;
+			this._updateArrowsState();
+		}
 
-			let slidesArray = Array.prototype.slice.call(this.allSlides);
-			let slidesWidth = 0;
+		_updateArrowsState() {
+			if (!this.prevButton || !this.nextButton) return;
+			if (this.options.loop) {
+				this.prevButton.classList.remove('disabled');
+				this.nextButton.classList.remove('disabled');
+				return;
+			}
+			this.prevButton.classList.toggle('disabled', this.activeIndex === 0);
+			this.nextButton.classList.toggle('disabled', this.activeIndex === this.totalSlides - 1);
+		}
 
-			if (index == 0) {
-				currentTransition = slidesWidth = 0;
+		_setupDots() { /* уже знайдені у init */ }
+
+		_calcTranslation(index) {
+			let offset = 0;
+			if (index === 0) return 0;
+
+			if (this.options.direction === 'vertical') {
+				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().height;
+				return -offset;
 			} else {
-				for (let slide of  this.allSlides.slice(0, index)) {
-					slidesWidth += slide.getBoundingClientRect().width;
-				};
-				currentTransition = slidesWidth*-1;
-			};
-
-			return currentTransition;
-		};
-
-		setDots(){
-			for (const [index, dot] of this.sliderDots.entries()) {
-				dot.addEventListener("click", function (e) {
-					e.preventDefault();
-					this.activeIndex = index;
-					this.setActiveSlide(index);
-					this.goToSlide(index);
-					this.setActiveDot(index);
-					this.setButtonsState(index);
-				}.bind(this), false);
-			};
-		};
-
-		setButtonsState(index){
-			if (index !== 0 && index !== this.totalSlides-1){
-				this.removeDisabledButton(this.prevButton);
-				this.removeDisabledButton(this.nextButton);
-			} else if (index == this.totalSlides-1) {
-				this.setDisabledButton(index, this.nextButton);
-				this.removeDisabledButton(this.prevButton);
-			} else if (index == 0) {
-				this.setDisabledButton(0, this.prevButton);
-				this.removeDisabledButton(this.nextButton);
-			};
+				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().width;
+				return -offset;
+			}
 		}
 
-		goToSlide(index){
-			if (index > this.totalSlides) return;
-			this.translateSlider(index);
-
-			if (this.options.onTranslated) {
-				this.options.onTranslated(this)
-			};
+		_applyTransform(value, noAnimation = false) {
+			if (noAnimation) this._disableTransition();
+			const axis = (this.options.direction === 'vertical') ? 'Y' : 'X';
+			this.currentTransition = value;
+			this.track.style.transform = `translate${axis}(${value}px)`;
 		}
-	};
 
-	// initialization
-	Array.prototype.forEach.call(document.querySelectorAll(".slider"), function(sliderEl){
+		_enableTransition() {
+			this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
+		}
+
+		_disableTransition() {
+			this.track.style.transition = 'none';
+		}
+
+		_startAutoplay() {
+			if (!this.options.autoplay) return;
+			this._cancelAutoplay();
+
+			this._autoplayTimer = setInterval(() => {
+				const atLast = this.activeIndex >= this.totalSlides - 1;
+				if (!this.options.loop && atLast) {
+					this._cancelAutoplay();
+					return;
+				}
+				this.next();
+			}, this.options.autoplayTime);
+		}
+
+		_cancelAutoplay() {
+			if (this._autoplayTimer) {
+				clearInterval(this._autoplayTimer);
+				this._autoplayTimer = null;
+			}
+		}
+
+		_onTouchStart(e) {
+			if (e.touches.length !== 1) return;
+			this.isTouchDown = true;
+			this._disableTransition();
+			this._cancelAutoplay();
+
+			this.touchStartX = e.touches[0].clientX;
+			this.touchStartY = e.touches[0].clientY;
+			this.touchMoveX = this.touchStartX;
+			this.touchMoveY = this.touchStartY;
+		}
+
+		_onTouchMove(e) {
+			if (!this.isTouchDown) return;
+
+			this.touchMoveX = e.touches[0].clientX;
+			this.touchMoveY = e.touches[0].clientY;
+
+			const deltaX = this.touchMoveX - this.touchStartX;
+			const deltaY = this.touchMoveY - this.touchStartY;
+
+			const horizontal = (this.options.direction === 'horizontal');
+			const primaryDelta = horizontal ? deltaX : deltaY;
+			const crossDelta = horizontal ? Math.abs(deltaY) : Math.abs(deltaX);
+
+			if (Math.abs(primaryDelta) > crossDelta) e.preventDefault();
+
+			this._dragByDelta(deltaX, deltaY);
+		}
+
+		_onTouchEnd() {
+			if (!this.isTouchDown) return;
+			this.isTouchDown = false;
+
+			const deltaX = this.touchMoveX - this.touchStartX;
+			const deltaY = this.touchMoveY - this.touchStartY;
+			this._endDrag(deltaX, deltaY);
+		}
+
+		_dragByDelta(deltaX, deltaY) {
+			const horizontal = (this.options.direction === 'horizontal');
+			const delta = horizontal ? deltaX : deltaY;
+			const axis = horizontal ? 'X' : 'Y';
+			this.track.style.transform = `translate${axis}(${this.currentTransition + delta}px)`;
+		}
+
+		_endDrag(deltaX, deltaY) {
+			const horizontal = (this.options.direction === 'horizontal');
+			const delta = horizontal ? deltaX : deltaY;
+
+			const activeSize = horizontal
+				? this.activeSlideEl.getBoundingClientRect().width
+				: this.activeSlideEl.getBoundingClientRect().height;
+
+			const threshold = Math.max(30, activeSize * 0.2);
+
+			if (Math.abs(delta) >= threshold) {
+				if (delta > 0) this.prev();
+				else this.next();
+			} else {
+				this._enableTransition();
+				this._applyTransform(this._calcTranslation(this.activeIndex), false);
+			}
+
+			if (this.options.autoplay) this._startAutoplay();
+		}
+
+		destroy() {
+			this._cancelAutoplay();
+			this._disableTransition();
+			if (this.track) this.track.style.transform = '';
+
+			if (this.allSlides && this.allSlides.length) {
+				this.allSlides.forEach(slide => slide.classList.remove('active'));
+			}
+			if (this.sliderDots) {
+				this.sliderDots.forEach(dot => dot.classList.remove('active'));
+			}
+
+			if (this._handlers.onResize) window.removeEventListener('resize', this._handlers.onResize);
+
+			if (this.sliderElment) {
+				if (this._handlers.onTouchStart) this.sliderElment.removeEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
+				if (this._handlers.onTouchMove) this.sliderElment.removeEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
+				if (this._handlers.onTouchEnd) this.sliderElment.removeEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
+
+				if (this._handlers.onMouseDown) this.sliderElment.removeEventListener('mousedown', this._handlers.onMouseDown);
+				if (this._handlers.onMouseMove) this.sliderElment.removeEventListener('mousemove', this._handlers.onMouseMove);
+				if (this._handlers.onMouseUp) this.sliderElment.removeEventListener('mouseup', this._handlers.onMouseUp);
+				if (this._handlers.onMouseLeave) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseLeave);
+
+				if (this.options.pauseOnHover) {
+					if (this._handlers.onMouseEnter) this.sliderElment.removeEventListener('mouseenter', this._handlers.onMouseEnter);
+					if (this._handlers.onMouseOut) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseOut);
+				}
+			}
+
+			if (this.prevButton && this._handlers.onPrevClick) this.prevButton.removeEventListener('click', this._handlers.onPrevClick);
+			if (this.nextButton && this._handlers.onNextClick) this.nextButton.removeEventListener('click', this._handlers.onNextClick);
+
+			if (this.sliderDots) {
+				this.sliderDots.forEach(dot => {
+					if (dot._onDotClick) {
+						dot.removeEventListener('click', dot._onDotClick);
+						delete dot._onDotClick;
+					}
+				});
+			}
+
+			if (this.sliderElment) {
+				delete this.sliderElment._sliderInstance;
+				this.sliderElment.removeAttribute('data-slider-initialized');
+			}
+		}
+
+		_clamp(n, min, max) { return Math.min(Math.max(n, min), max); }
+		_toBool(v) { if (typeof v === 'boolean') return v; if (typeof v === 'number') return v !== 0; return String(v).toLowerCase() === 'true'; }
+		_toInt(v, def = 0) { const x = parseInt(v, 10); return Number.isFinite(x) ? x : def; }
+	}
+
+	// Ініціалізація усіх .slider, окрім тих, що всередині .mobile-slider-section (ними керуємо нижче)
+	Array.prototype.forEach.call(document.querySelectorAll('.slider'), function (sliderEl) {
+		if (sliderEl.closest('.mobile-slider-section')) return;
+
 		const slider = new Slider(sliderEl);
 
-		// for all sliders
 		let options = {
 			direction: 'horizontal',
-			autoplay: sliderEl.dataset && sliderEl.dataset.autoplay ? sliderEl.dataset.autoplay : false,
-			loop: sliderEl.dataset && sliderEl.dataset.loop ? sliderEl.dataset.loop : false,
-			onInit: function(e) {},
-			onTranslated: function(e) {
-				// console.log(e)
-			}
+			autoplay: false,
+			loop: false,
+			onInit: function (api) {},
+			onTranslated: function (api) {}
 		};
 
-		// only for about
 		if (sliderEl.classList.contains('about-slider')) {
+			const setDates = function () {
+				const dots = Array.from(sliderEl.querySelector('.chronology-list')?.querySelectorAll('.dot') || []);
+				const captions = dots.map(d => d.textContent.trim());
+				const prevCaption = slider.prevButton?.querySelector('.caption');
+				const nextCaption = slider.nextButton?.querySelector('.caption');
 
-			let setDates = function(){
-				let slider = this;
+				const prevText = captions[this.activeIndex - 1] || 0;
+				const nextText = captions[this.activeIndex + 1] || 0;
 
-				let allDots = Array.prototype.slice.call(sliderEl.querySelector('.chronology-list').querySelectorAll('.dot'));
-				let dotsCaption = [];
+				if (prevCaption && window.Odometer) {
+					const o = new Odometer({ el: prevCaption, format: '' });
+					o.update(prevText);
+				} else if (prevCaption) {
+					prevCaption.textContent = prevText;
+				}
 
-				for (let dot of allDots) {
-					dotsCaption.push(dot.innerHTML.trim());
-				};
-
-				let prevCaption = slider.prevButton.querySelector('.caption');
-				let nextCaption = slider.nextButton.querySelector('.caption');
-
-				let prevText = dotsCaption[slider.activeIndex-1] || 0;
-				let nextText = dotsCaption[slider.activeIndex+1] || 0;
-
-				// prevCaption.innerHTML = prevText;
-				// nextCaption.innerHTML = nextText;
-
-				// for odoment count
-				let prevOdometr = new Odometer({
-					el: prevCaption,
-					format: '',
-				});
-
-				prevOdometr.update(prevText)
-
-				let nextOdometr = new Odometer({
-					el: nextCaption,
-					format: '',
-				});
-
-				nextOdometr.update(nextText)
+				if (nextCaption && window.Odometer) {
+					const o = new Odometer({ el: nextCaption, format: '' });
+					o.update(nextText);
+				} else if (nextCaption) {
+					nextCaption.textContent = nextText;
+				}
 			};
-
-			// set slider callback
 			options.onInit = setDates.bind(slider);
 			options.onTranslated = setDates.bind(slider);
-		};
+		}
 
 		slider.init(options);
 	});
+
+	/* =============================================================================
+	   МОБІЛЬНІ СЛАЙДЕРИ (кілька на сторінці)
+	   Кожен .mobile-slider-section .slider-cover -> окремий інстанс
+	   < 769px  => init
+	   >= 769px => destroy
+	============================================================================= */
+
+	function setupMobileSectionSliders() {
+		const covers = document.querySelectorAll('.mobile-slider-section .slider-cover');
+		if (!covers.length) return;
+
+		const needInit = window.innerWidth < 769;
+
+		covers.forEach((cover) => {
+			let instance = cover._sliderInstance || null;
+			const isInited = cover.getAttribute('data-slider-initialized') === 'true';
+
+			if (needInit && !isInited) {
+				const slider = new Slider(cover);
+				slider.init({
+					trackSelector: '.mobile-slider-track',
+					slideSelector: '.mobile-slider-track > *',
+					direction: 'horizontal'
+					// loop/autoplay можна задати через data-*, наприклад:
+					// data-loop="true" data-autoplay="true" data-autoplay-time="4000"
+				});
+			} else if (!needInit && isInited && instance) {
+				instance.destroy();
+			}
+		});
+	}
+
+	// перший запуск для всіх мобільних
+	setupMobileSectionSliders();
+
+	// дебаунс resize для всіх мобільних
+	let mobileRaf = null;
+	window.addEventListener('resize', () => {
+		if (mobileRaf) cancelAnimationFrame(mobileRaf);
+		mobileRaf = requestAnimationFrame(setupMobileSectionSliders);
+	});
 });
-
-

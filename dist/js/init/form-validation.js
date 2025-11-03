@@ -32,12 +32,9 @@ window.addEventListener("DOMContentLoaded", function() {
 			this.form.addEventListener('reset', (event) => {
 				this.onFormReset(event);
 			});
-			
 		};
 
 		onFormSubmit(event){
-			let form = this.form;
-
 			let formInputs = this.formInputs;
 			let formTextareas = this.formTextareas;
 			let formSelects = this.formSelects;
@@ -48,41 +45,41 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let i = 0; i < formInputs.length; i++) {
 					let input = formInputs[i];
 					this.validateByTextLength(input);
-				};
-			};
+				}
+			}
 
 			if (formTextareas && formTextareas.length) {
 				for (let t = 0; t < formTextareas.length; t++) {
 					let textArea = formTextareas[t];
 					this.validateByTextLength(textArea);
-				};
-			};
+				}
+			}
 
 			if (formSelects && formSelects.length) {
 				for (let s = 0; s < formSelects.length; s++) {
 					let formSelect = formSelects[s];
 					this.validateBySelectOptions(formSelect);
-				};
-			};
+				}
+			}
 
 			if (formFileInputs && formFileInputs.length) {
 				for (let s = 0; s < formFileInputs.length; s++) {
 					let formFileInput = formFileInputs[s];
 					this.validateByFileUpload(formFileInput);
-				};
-			};
+				}
+			}
 
 			if (formCheckboxes && formCheckboxes.length) {
 				for (let s = 0; s < formCheckboxes.length; s++) {
 					let formCheckbox = formCheckboxes[s];
 					this.validateCheckbox(formCheckbox);
-				};
-			};
+				}
+			}
 
 			// callback
 			if (window.onContactFormSubmit) {
 				window.onContactFormSubmit(this);
-			};
+			}
 		};
 
 		onFormReset(event){
@@ -91,17 +88,17 @@ window.addEventListener("DOMContentLoaded", function() {
 			let allChartCounters = this.form.querySelectorAll('.chart-counter');
 			for (let i = 0; i < allFormGroup.length; i++) {
 				allFormGroup[i].classList.remove(this.classes.success, this.classes.error, this.classes.focused)
-			};
+			}
 			if (allFormUploads && allFormUploads.length) {
-				for (var i = 0; i < allFormUploads.length; i++) {
+				for (let i = 0; i < allFormUploads.length; i++) {
 					allFormUploads[i].remove();
-				};
-			};
+				}
+			}
 			if (allChartCounters && allChartCounters.length) {
-				for (var i = 0; i < allChartCounters.length; i++) {
+				for (let i = 0; i < allChartCounters.length; i++) {
 					allChartCounters[i].innerHTML = '0';
-				};
-			};
+				}
+			}
 		};
 
 		setFocusedClass(inputParent, hasValue){
@@ -112,41 +109,26 @@ window.addEventListener("DOMContentLoaded", function() {
 			}
 		};
 
-		onInputKeyDown(){
-			if (!this.event || !this.form) return;
-			let event = this.event;
-			let form = this.form;
-			let input = event.srcElement.activeElement;
-			let inputType = input.classList.contains('phone') ? 'phone' : input.classList.contains('email') ? 'email' : '';
+		// FIX: нормальний обробник введення для input/textarea/select
+		onFieldInput(e){
+			const el = e.target;
+			const type =
+				el.classList.contains('phone') ? 'phone' :
+				el.classList.contains('email') ? 'email' : '';
 
-			const waitForFinalEvent = (function(){
-				var timers = {};
-				return function (callback, ms, uniqueId) {
-					if (!uniqueId) {
-						uniqueId = "Don't call this twice without a uniqueId";
-					}
-					if (timers[uniqueId]) {
-						clearTimeout (timers[uniqueId]);
-					}
-					timers[uniqueId] = setTimeout(callback, ms);
-				};
-			})();
+			this.setFocusedClass(el.parentElement, el.value.length);
 
-			waitForFinalEvent(function(){
-				form.setFocusedClass(input.parentElement, input.value.length);
-				switch (inputType) {
-					case 'phone':
-						form.setPhoneMask(event, input);
-						break;
-					case 'email':
-						form.validateEmail(event, input);
-						break;
-					default:
-						// for textarea and inputs text
-						form.setChartsCount(input.value.length, input);
-						form.validateByTextLength(input);
-				}
-			}, 5);
+			switch (type) {
+				case 'phone':
+					this.setPhoneMask(e, el);
+					break;
+				case 'email':
+					this.validateEmail(e, el);
+					break;
+				default:
+					this.setChartsCount(el.value.length, el); // лічильник символів
+					this.validateByTextLength(el);
+			}
 		};
 
 		onCheckboxChange(){
@@ -168,17 +150,20 @@ window.addEventListener("DOMContentLoaded", function() {
 			}
 		};
 
+		// FIX: шукаємо .chart-counter у межах .form-group, а не nextElementSibling
 		setChartsCount(valLength, element){
-			if (!element || !element.nextElementSibling) return;
-			let counterEl = element.nextElementSibling.querySelector('.chart-counter');
+			if (!element) return;
+			const group = element.closest('.form-group');
+			if (!group) return;
+			const counterEl = group.querySelector('.chart-counter');
 			if (!counterEl) return;
-			counterEl.innerText = valLength;
+			counterEl.textContent = valLength;
 		};
 
 		setPhoneMask(event, input){
-			let keyCode = event.keyCode;
-			let pos = input.selectionStart;
-			if (pos < 3) event.preventDefault();
+			let keyCode = event.keyCode || 0;
+			let pos = input.selectionStart || 0;
+			if (pos < 3 && event.type === 'keydown') event.preventDefault();
 			let matrix = input.getAttribute('placeholder') ? input.getAttribute('placeholder') : '+380 (___) ___ __ _',
 					i = 0,
 					def = matrix.replace(/\D/g, ""),
@@ -196,7 +181,7 @@ window.addEventListener("DOMContentLoaded", function() {
 							return "\\d{1," + a.length + "}"
 					}).replace(/[+()]/g, "\\$&");
 			reg = new RegExp("^" + reg + "$");
-			if (!reg.test(input.value) || input.value.trim().length < 5 || keyCode > 47 && keyCode < 58) {
+			if (!reg.test(input.value) || input.value.trim().length < 5 || (keyCode > 47 && keyCode < 58)) {
 				input.value = new_value;
 			}
 			if (event.type == "blur" && input.value.trim().length < 5) {
@@ -211,12 +196,12 @@ window.addEventListener("DOMContentLoaded", function() {
 
 		validateByTextLength(field){
 			let minlength = parseInt(field.dataset.minlength) || 2;
-			this.setValidationClass(field.parentElement,field.value.length >= minlength);
+			this.setValidationClass(field.parentElement, field.value.length >= minlength);
 		};
 
 		validateBySelectOptions(select){
 			let defaultOption = select.querySelector('[disabled]');
-			this.setValidationClass(select.parentElement,select.value !== defaultOption.innerHTML);
+			this.setValidationClass(select.parentElement, select.value !== (defaultOption ? defaultOption.innerHTML : ''));
 		};
 
 		validateByFileUpload(fileInput){
@@ -230,9 +215,8 @@ window.addEventListener("DOMContentLoaded", function() {
 		};
 
 		onSelectChange(){
-			let event = this;
-			let select = event.srcElement.activeElement;
-			validateBySelectOptions(select);
+			let select = document.activeElement;
+			this.validateBySelectOptions(select);
 		};
 
 		init() {
@@ -242,46 +226,54 @@ window.addEventListener("DOMContentLoaded", function() {
 			let formFileInputs = this.form.querySelectorAll('.file');
 			let formCheckboxes = this.form.querySelectorAll('.checkbox');
 
+			// INPUTS
 			if (formInputs && formInputs.length) {
 				for (let i = 0; i < formInputs.length; i++) {
 					let input = formInputs[i];
 					this.setFocusedClass(input.parentElement, input.value.length);
-					input.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					this.setChartsCount(input.value.length, input); // FIX: початкове значення
+					input.addEventListener('input', this.onFieldInput.bind(this), {passive: true}); // FIX
+					input.addEventListener('blur', this.onFieldInput.bind(this), {passive: true});
+				}
+			}
 
+			// TEXTAREAS
 			if (formTextareas && formTextareas.length) {
 				for (let t = 0; t < formTextareas.length; t++) {
 					let textArea = formTextareas[t];
 					this.setFocusedClass(textArea.parentElement, textArea.value.length);
-					textArea.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					this.setChartsCount(textArea.value.length, textArea); // FIX: початкове значення для textarea
+					textArea.addEventListener('input', this.onFieldInput.bind(this), {passive: true}); // FIX
+					textArea.addEventListener('blur', this.onFieldInput.bind(this), {passive: true});
+				}
+			}
 
+			// SELECTS
 			if (formSelects && formSelects.length) {
 				for (let s = 0; s < formSelects.length; s++) {
 					let formSelect = formSelects[s];
 					this.setFocusedClass(formSelect.parentElement, formSelect.value.length);
-					formSelect.addEventListener('keydown', this.onInputKeyDown.bind({event: event, form: this}), {passive: true});
-				};
-			};
+					formSelect.addEventListener('change', this.onFieldInput.bind(this), {passive: true}); // FIX
+				}
+			}
 
+			// CHECKBOXES
 			if (formCheckboxes && formCheckboxes.length) {
 				for (let s = 0; s < formCheckboxes.length; s++) {
 					let formCheckbox = formCheckboxes[s];
 					this.setFocusedClass(formCheckbox.parentElement, formCheckbox.checked);
 					formCheckbox.addEventListener('change', this.onCheckboxChange.bind({_this: this, checkbox: formCheckbox}), {passive: true});
-				};
-			};
+				}
+			}
 		};
 	};
 
 	let allValidateForms = document.querySelectorAll('.validate-form');
 
-	for (i = 0; i < allValidateForms.length; i++) {
+	for (let i = 0; i < allValidateForms.length; i++) {
 		const newForm = new ValidationForm(allValidateForms[i]);
 		newForm.init();
-	};
+	}
 
 	let allSearchReset = document.querySelectorAll('.search-reset');
 	if (allSearchReset && allSearchReset.length) {
@@ -289,8 +281,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			let resetButton = allSearchReset[i];
 			resetButton.addEventListener('click', (e) => {
 				let input = e.target.closest('.form-group').querySelector('input');
-				input.focus();
+				if (input) input.focus();
 			});
-		};
-	};
+		}
+	}
 });

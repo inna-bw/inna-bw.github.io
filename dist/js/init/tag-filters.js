@@ -24,12 +24,12 @@ document.addEventListener('DOMContentLoaded', function(){
 			let tagsCover = Array.prototype.slice.call(tagsParent.querySelectorAll('.simple-tags'));
 			tagsCover.forEach((cover) => {
 				if (tag === 'all') {
-					cover.closest('.news-cover').classList.add('visible');
+					cover.closest('.tag-item-cover').classList.add('visible');
 				} else {
 					if (cover.querySelectorAll(`[${attr}=${tag}]`) && cover.querySelectorAll(`[${attr}=${tag}]`).length) {
-						cover.closest('.news-cover').classList.add('visible');
+						cover.closest('.tag-item-cover').classList.add('visible');
 					} else {
-						cover.closest('.news-cover').classList.remove('visible');
+						cover.closest('.tag-item-cover').classList.remove('visible');
 					}
 				}
 			});

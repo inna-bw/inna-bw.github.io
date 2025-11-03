@@ -35,10 +35,12 @@ document.addEventListener('DOMContentLoaded', function(){
 				e.stopPropagation();
 				e.stopImmediatePropagation();
 				this.hideContainer(this.hoveredContainer);
-				if (!document.querySelector('.current_page_item')) {
+				if (!document.querySelector('.current_page_item') && window.newRunningLine) {
 					window.newRunningLine.destroy();
 				} else {
-					window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'));
+					if (window.newRunningLine) {
+						window.newRunningLine.start(document.querySelector('.current_page_item').querySelector('a'));
+					}
 				}
 			}.bind(this));
 
