@@ -570,6 +570,24 @@ document.addEventListener('DOMContentLoaded', function(){
 
 });
 
+document.addEventListener('DOMContentLoaded', function(){
+	document.addEventListener('click', function(e) {
+		const item = e.target.closest('.career-preview');
+		if (!item) return;
+
+		const titleEl = item.querySelector('.title');
+		if (!titleEl) return;
+
+		const titleText = titleEl.textContent.trim();
+		localStorage.setItem('bw-career-title', titleText);
+	});
+})
+document.addEventListener('DOMContentLoaded', function() {
+	setTimeout(function() {
+		document.body.classList.add('loaded');
+	}, 500);
+});
+
 // data-menu-toggle
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -599,7 +617,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			document.addEventListener("click", function (e) {
 				if (e.target.closest('[data-scrollto]')) {
-					console.log('close')
 					this.closeMenu();
 				};
 			}.bind(this));
@@ -643,6 +660,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	class PageModeToggle {
 		darkModeName = 'dark';
 		lightModeName = 'light';
+		loadedName = 'loaded';
 		animationTime = 550;
 
 		modeButton = null;
@@ -731,6 +749,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		setBodyModeClass(mode){
 			document.body.classList = "";
 			document.body.classList.add(mode);
+			document.body.classList.add(this.loadedName);
 		};
 
 		getSavedMode(){
@@ -1141,201 +1160,238 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 window.addEventListener("DOMContentLoaded", function() {
 	const blocks = document.querySelectorAll(".feature-background");
+	const enBlocks = document.querySelectorAll(".engine-background");
 	const width = window.innerWidth;
-
-	console.log(blocks)
 
 	blocks.forEach(function(block) {
 		block.style.width = width + "px";
 	});
+
+	enBlocks.forEach(function(enBlocks) {
+		enBlocks.style.width = width + "px";
+	});
 });
-// fileLoader
 window.addEventListener("DOMContentLoaded", function() {
 
 	class FileLoader {
-		loaderCover = null;
-		acceptedFileTypes = [];
-
-		templateDirectory = '';
-
-		inputLabel = null;
-		inputFile = null;
-		uploadBox = null;
-
-		loadedSrc = {
-			pdf: `${this.templateDirectory}/img/file-load.svg`,
-			error: `${this.templateDirectory}/img/picture-broken.svg`
-		};
-
-		classes = {
-			error: 'error',
-			success: 'success'
-		};
-
 		constructor(loaderCover) {
 			this.loaderCover = loaderCover;
-			if (loaderCover.dataset.loader) {
-				this.acceptedFileTypes = loaderCover.dataset.loader.split(",");
+			this.acceptedFileTypes = [];
+			this.templateDirectory = '';
+			this.inputLabel = null;
+			this.inputFile = null;
+			this.uploadBox = null;
+
+			this.classes = {
+				error: 'error',
+				success: 'success'
+			};
+
+			if (window.themeData && themeData.templateUrl) {
+				this.templateDirectory = String(themeData.templateUrl).replace(/\/$/, '');
+			}
+
+			if (!this.templateDirectory && loaderCover && loaderCover.dataset && loaderCover.dataset.templateDirectory) {
+				this.templateDirectory = loaderCover.dataset.templateDirectory.replace(/\/$/, '');
+			}
+
+			if (!this.templateDirectory && window.FileLoaderData && window.FileLoaderData.templateDirectory) {
+				this.templateDirectory = window.FileLoaderData.templateDirectory.replace(/\/$/, '');
+			}
+			if (!this.templateDirectory && window.templateDirectory) {
+				this.templateDirectory = window.templateDirectory.replace(/\/$/, '');
+			}
+
+			if (!this.templateDirectory) {
+				const themeScript = document.querySelector('script[src*="/wp-content/themes/"]');
+				if (themeScript && themeScript.src) {
+					const parts = themeScript.src.split('/wp-content/themes/');
+					if (parts.length > 1) {
+						const themePart = parts[1].split('/')[0];
+						this.templateDirectory = location.origin + '/wp-content/themes/' + themePart;
+					}
+				}
+			}
+
+			if (!this.templateDirectory) this.templateDirectory = '';
+
+			this.loadedSrc = {
+				pdf: this.templateDirectory ? encodeURI(this.templateDirectory + '/img/file-load.svg') : '/wp-content/themes/bw_theme/img/file-load.svg',
+				error: this.templateDirectory ? encodeURI(this.templateDirectory + '/img/picture-broken.svg') : '/wp-content/themes/bw_theme/img/picture-broken.svg'
+			};
+
+			console.log('FileLoader: templateDirectory ->', this.templateDirectory);
+			console.log('FileLoader: loadedSrc.pdf ->', this.loadedSrc.pdf);
+
+			if (loaderCover && loaderCover.dataset && loaderCover.dataset.loader) {
+				this.acceptedFileTypes = loaderCover.dataset.loader.split(",").map(s => s.trim().toLowerCase());
 				this.inputLabel = loaderCover.querySelector('[data-label]');
 				this.inputFile = loaderCover.querySelector('[data-file]');
 				this.uploadBox = loaderCover.querySelector('[data-upload]');
 			}
 
 			if (this.inputFile) {
-				this.inputFile.addEventListener("change", this.handleFiles.bind(this), false)
+				this.inputFile.addEventListener("change", this.handleFiles.bind(this), false);
 			}
-		};
+		}
 
 		hasClass(element, className) {
-			return (' ' + element.className + ' ').indexOf(' ' + className+ ' ') > -1;
-		};
+			return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+		}
 
-		handleFiles(){
-			let files = this.inputFile.files;
-			let uploadBox = this.uploadBox;
+		handleFiles() {
+			if (!this.inputFile) return;
+			const files = this.inputFile.files;
 
 			if (!this.inputFile.getAttribute('multiple')) {
 				this.removeOldFiles();
-			};
+			}
 
-			for (var i = 0; i < files.length; i++) {
+			for (let i = 0; i < files.length; i++) {
 				this.getBase64(files[i]);
-			};
-		};
+			}
+		}
 
-		removeOldFiles(){
-			let oldFiles = this.uploadBox.children;
-			for (var i = 0; i < oldFiles.length; i++) {
-				oldFiles[i].remove();
-			};
-		};
+		removeOldFiles() {
+			if (!this.uploadBox) return;
+			while (this.uploadBox.firstChild) {
+				this.uploadBox.firstChild.remove();
+			}
+		}
 
-		removeFile(){
-			let fileToRemove = this.file;
-			let _this = this._this;
-			let uploadBox = this._this.uploadBox;
-			let loaderCover = this._this.loaderCover;
+		removeFile() {
+			const fileToRemove = this.file;
+			const _this = this._this;
 
-			let removedFileName = fileToRemove.querySelector('.file-name').innerHTML;
+			if (!fileToRemove || !_this) return;
+
+			const removedFileName = fileToRemove.querySelector('.file-name') ? fileToRemove.querySelector('.file-name').textContent : '';
 			fileToRemove.remove();
-			if (window.tooltipHint) {
+			if (window.tooltipHint && typeof window.tooltipHint.hide === 'function') {
 				window.tooltipHint.hide();
-			};
+			}
 
-			let files = Array.prototype.slice.call(_this.inputFile.files);
-			if (files) {
-				for (let i = 0; i < files.length; i++) {
-					const file = files[i];
-					if (removedFileName == file.name) {
-						files.splice(i, 1);
-					}
+			let filesArr = Array.prototype.slice.call(_this.inputFile.files || []);
+			for (let i = filesArr.length - 1; i >= 0; i--) {
+				if (filesArr[i].name === removedFileName) {
+					filesArr.splice(i, 1);
 				}
-				const newFileList = new DataTransfer();
-				files.forEach(file => newFileList.items.add(file));
-				_this.inputFile.files = newFileList.files;
-			};
+			}
+			const newFileList = new DataTransfer();
+			filesArr.forEach(file => newFileList.items.add(file));
+			_this.inputFile.files = newFileList.files;
 
-			this._this.removeError();
-		};
+			_this.removeError();
+		}
 
 		getBase64(file) {
-			let reader = new FileReader();
-					reader.readAsDataURL(file);
-			let uploadBox = this.uploadBox;
-			let fileType = file.name.split('.').pop();
+			const reader = new FileReader();
+			reader.readAsDataURL(file);
+			const fileType = file.name.split('.').pop().toLowerCase();
 
-			if (this.acceptedFileTypes.indexOf(fileType) >= 0) {
-				this.appendFile(file.name, fileType, reader);
-			} else {
-				this.appendError(file.name, fileType, reader);
+			reader.onload = () => {
+				if (this.acceptedFileTypes.indexOf(fileType) >= 0) {
+					this.appendFile(file.name, fileType, reader.result);
+				} else {
+					this.appendError(file.name, fileType);
+				}
 			};
-		};
 
-		appendFile(name, type, reader){
-			if (!name || !type || !reader) return;
-			let showPreview = type == 'jpg' || type == 'png' || type == 'mp4';
-			reader.onload = function () {
-				this.appendFileToBox(name, type, reader.result, showPreview);
-			}.bind(this);
-			reader.onerror = function (error) {
-				this.loaderCover.classList.add(this.classes.error);
-				console.error('Error: ', error);
-			}.bind(this);
+			reader.onerror = (error) => {
+				if (this.loaderCover) this.loaderCover.classList.add(this.classes.error);
+				console.error('FileReader error: ', error);
+				this.appendError(file.name, fileType);
+			};
+		}
 
+		appendFile(name, type, src) {
+			if (!name || !type) return;
+			const showPreview = type === 'jpg' || type === 'jpeg' || type === 'png' || type === 'mp4';
 			this.removeError();
-		};
+			this.appendFileToBox(name, type, src, showPreview);
+		}
 
-		appendError(name, type, reader){
-			if (!name || !type || !reader) return;
-			this.loaderCover.classList.add(this.classes.error);
-			this.appendFileToBox(name, type, reader.result, false);
-			console.error('Error: ', type + ' type is not correct');
-		};
+		appendError(name, type) {
+			if (!name || !type) return;
+			if (this.loaderCover) this.loaderCover.classList.add(this.classes.error);
+			this.appendFileToBox(name, type, null, false, true);
+			console.error('Error: ', type + ' type is not correct or could not be read');
+		}
 
-		removeError(){
-			if (!this.uploadBox.querySelectorAll(`.${this.classes.error}`).length) {
+		removeError() {
+			if (!this.uploadBox) return;
+			const hasErr = this.uploadBox.querySelectorAll('.' + this.classes.error).length > 0;
+			if (!hasErr && this.loaderCover && this.loaderCover.classList.contains(this.classes.error)) {
 				this.loaderCover.classList.remove(this.classes.error);
-			};
-		};
+			}
+		}
 
-		appendFileToBox(name, type, src, showPreview){
-			let coverEl = document.createElement("div");
-					coverEl.classList.add('files-cover');
-					coverEl.setAttribute('data-tooltip', 'Click to delete')
-			let innerCover = document.createElement("div");
-					innerCover.classList.add('inner');
+		appendFileToBox(name, type, src, showPreview, forceError = false) {
+			const coverEl = document.createElement("div");
+			coverEl.classList.add('files-cover');
+			coverEl.setAttribute('data-tooltip', 'Click to delete');
 
-			if (this.acceptedFileTypes.indexOf(type) >= 0) {
+			const innerCover = document.createElement("div");
+			innerCover.classList.add('inner');
+
+			if (!forceError && this.acceptedFileTypes.indexOf(type) >= 0) {
 				switch (type) {
 					case "png":
 					case "jpg":
-						let imgEl = document.createElement('img');
-								imgEl.src = src;
+					case "jpeg": {
+						const imgEl = document.createElement('img');
+						imgEl.src = src || this.loadedSrc.error;
 						innerCover.appendChild(imgEl);
 						break;
-					case "mp4":
-						let videoEl = document.createElement('video');
-								videoEl.src = src;
-								videoEl.controls = true;
+					}
+					case "mp4": {
+						const videoEl = document.createElement('video');
+						videoEl.src = src || '';
+						videoEl.controls = true;
+						innerCover.appendChild(videoEl);
 						break;
-					case "pdf":
-						let pdfEl = document.createElement('img');
-								pdfEl.src = this.loadedSrc.pdf;
+					}
+					case "pdf": {
+						const pdfEl = document.createElement('img');
+						pdfEl.src = this.loadedSrc.pdf;
 						innerCover.appendChild(pdfEl);
 						break;
-					default:
-						let errorEl = document.createElement('img');
-								errorEl.src = this.loadedSrc.error;
-						innerCover.appendChild(errorEl);
-						coverEl.classList.add('error');
-				};
-			} else {
-				let errorEl = document.createElement('img');
+					}
+					default: {
+						const errorEl = document.createElement('img');
 						errorEl.src = this.loadedSrc.error;
+						innerCover.appendChild(errorEl);
+						coverEl.classList.add(this.classes.error);
+					}
+				}
+			} else {
+				const errorEl = document.createElement('img');
+				errorEl.src = this.loadedSrc.error;
 				innerCover.appendChild(errorEl);
-				coverEl.classList.add('error');
-			};
+				coverEl.classList.add(this.classes.error);
+			}
 
 			coverEl.appendChild(innerCover);
-			let nameEl = document.createElement("div");
-					nameEl.classList.add('file-name');
-					nameEl.appendChild(document.createTextNode(name));
+
+			const nameEl = document.createElement("div");
+			nameEl.classList.add('file-name');
+			nameEl.appendChild(document.createTextNode(name));
 			coverEl.appendChild(nameEl);
-			coverEl.addEventListener("click", this.removeFile.bind({file: coverEl, _this: this}), false);
+
+			coverEl.addEventListener("click", this.removeFile.bind({ file: coverEl, _this: this }), false);
+
 			if (this.uploadBox) {
 				this.uploadBox.appendChild(coverEl);
 			}
-		};
-
-	};
-
-	let fileLoaderCovers = document.querySelectorAll('[data-loader]');
-
-	for (i = 0; i < fileLoaderCovers.length; i++) {
-		const fileLoader = new FileLoader(fileLoaderCovers[i]);
+		}
 	}
 
+	const fileLoaderCovers = document.querySelectorAll('[data-loader]');
+	for (let i = 0; i < fileLoaderCovers.length; i++) {
+		new FileLoader(fileLoaderCovers[i]);
+	}
 });
+
 // validation
 window.addEventListener("DOMContentLoaded", function() {
 
@@ -1345,7 +1401,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			success: 'success',
 			error: 'error',
 			focused: 'focused',
-			ignored: 'ignored'
+			ignored: 'ignored',
+			disabled: 'disabled'
 		}
 
 		form = null;
@@ -1414,6 +1471,22 @@ window.addEventListener("DOMContentLoaded", function() {
 				}
 			}
 
+			// --- ПЕРЕВІРКА НА ПОМИЛКИ ---
+			const hasErrors = this.form.querySelector(`.${this.classes.error}`);
+			const isDisabled = this.form.classList.contains(this.classes.disabled);
+			
+			if (!hasErrors && !isDisabled) {
+				console.log('no errors')
+				this.submitFormData(); // Викликаємо новий метод для відправки
+			} else {
+				const firstError = this.form.querySelector(`.${this.classes.error}`);
+				if (firstError) {
+					firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				}
+				console.log(firstError)
+			}
+			// --- КІНЕЦЬ ПЕРЕВІРКИ ---
+
 			// callback
 			if (window.onContactFormSubmit) {
 				window.onContactFormSubmit(this);
@@ -1436,7 +1509,8 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let i = 0; i < allChartCounters.length; i++) {
 					allChartCounters[i].innerHTML = '0';
 				}
-			}
+			};
+			this.form.classList.remove(this.classes.disabled);
 		};
 
 		setFocusedClass(inputParent, hasValue){
@@ -1446,6 +1520,55 @@ window.addEventListener("DOMContentLoaded", function() {
 				inputParent.classList.remove(this.classes.focused);
 			}
 		};
+
+		submitFormData() {
+			const formData = new FormData(this.form);
+			const recipientEmail = this.form.dataset.mail;
+
+			console.log(formData)
+
+			if (!recipientEmail) {
+				console.error('Recipient email not specified in data-mail attribute.');
+				return;
+			}
+
+			formData.append('action', 'submit_form_data'); 
+			formData.append('recipient_email', recipientEmail); 
+
+			formData.append('_ajax_nonce', ajax_object.nonce);
+
+			this.form.classList.add('loading'); 
+
+			// *** ЗМІНЕНО: Використовуємо глобальну змінну, створену через wp_localize_script ***
+			fetch(ajax_object.ajax_url, { 
+				method: 'POST',
+				body: formData,
+			})
+			.then(response => response.json())
+			.then(data => {
+				this.form.classList.remove('loading');
+				const feedbackEl = this.form.parentElement.querySelector('.form-feedback');
+				console.log(data)
+				if (data.success) {
+					this.form.reset();
+					if (feedbackEl) {
+						feedbackEl.innerHTML = 'Дякуємо! Ваше повідомлення надіслано.';
+					}
+				} else {
+					if (feedbackEl) {
+						feedbackEl.innerHTML = `Помилка: ${data.data || 'Не вдалося надіслати повідомлення.'}`;
+					}
+				}
+			})
+			.catch(error => {
+				this.form.classList.remove('loading');
+				console.error('Error:', error);
+				const feedbackEl = this.form.parentElement.querySelector('.form-feedback');
+				if (feedbackEl) {
+						 feedbackEl.innerHTML = `Виникла помилка з'єднання. Спробуйте пізніше.`;
+				}
+			});
+		}
 
 		// FIX: нормальний обробник введення для input/textarea/select
 		onFieldInput(e){
@@ -1482,13 +1605,14 @@ window.addEventListener("DOMContentLoaded", function() {
 			if (validationSuccess) {
 				element.classList.add(this.classes.success);
 				element.classList.remove(this.classes.error);
+				this.form.classList.remove(this.classes.disabled);
 			} else {
 				element.classList.add(this.classes.error);
 				element.classList.remove(this.classes.success);
+				this.form.classList.add(this.classes.disabled);
 			}
 		};
 
-		// FIX: шукаємо .chart-counter у межах .form-group, а не nextElementSibling
 		setChartsCount(valLength, element){
 			if (!element) return;
 			const group = element.closest('.form-group');
@@ -1624,7 +1748,6 @@ window.addEventListener("DOMContentLoaded", function() {
 		}
 	}
 });
-
 // header scroll animation
 document.addEventListener('DOMContentLoaded', function(){
 	const SCROLLED_CLASS = 'scrolled'
@@ -3968,43 +4091,42 @@ document.addEventListener('DOMContentLoaded', function(){
 		filterSearchInput.addEventListener('keydown', onCaseSearchKeyDown, {passive: true});
 	}
 })
-// section scroll animation
-document.addEventListener('DOMContentLoaded', function(){
-	let ANIMATED_CLASS = 'animated'
+document.addEventListener('DOMContentLoaded', function() {
+	const ANIMATED_CLASS = 'animated';
 
-	let setDetectSectionAnimation = function(section){
-		if (window.pageYOffset + window.innerHeight / 1.3 > section.offsetTop) {
-			if (!section.classList.contains(ANIMATED_CLASS)) {
-				section.classList.add(ANIMATED_CLASS);
-			};
-		};
+	const initialElements = [
+		'#mainHeader',
+		'.banner',
+		'.banner-section',
+		'section:first-of-type'
+	];
+
+	initialElements.forEach((selector, i) => {
+		const el = document.querySelector(selector);
+		if (el) {
+			setTimeout(() => el.classList.add(ANIMATED_CLASS), i * 100);
+		}
+	});
+
+	const sections = document.querySelectorAll('.section');
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px 0px -25% 0px',
+		threshold: 0
 	};
 
-	// on scroll
-	document.addEventListener("scroll", (event) => {
-		Array.prototype.forEach.call(document.querySelectorAll(".section"), function(section){
-			setDetectSectionAnimation(section);
+	const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add(ANIMATED_CLASS);
+				obs.unobserve(entry.target); // спостереження більше не потрібне
+			}
 		});
-	}, {passive: true});
+	}, observerOptions);
 
-	// on load
-	Array.prototype.forEach.call(document.querySelectorAll("section"), function(section){
-		setTimeout(function(){
-			setDetectSectionAnimation(section);
-		}, 10)
-	});
-	setTimeout(function(){
-		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
-		if (document.querySelector('.banner')) {
-			document.querySelector('.banner').classList.add(ANIMATED_CLASS);
-		}
-	}, 10)
-	setTimeout(function(){
-		if (document.querySelectorAll('section') && document.querySelectorAll('section')[0]) {
-			document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
-		}
-	}, 150)
+	sections.forEach(section => observer.observe(section));
 });
+
 document.addEventListener('DOMContentLoaded', function () {
 
 	class Slider {
@@ -4537,8 +4659,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-
 	class TagFilter {
 		filterAttribute = 'data-tag-filter';
 		filteredTagAttribute = 'data-tag';
@@ -4565,7 +4685,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				if (tag === 'all') {
 					cover.closest('.tag-item-cover').classList.add('visible');
 				} else {
-					if (cover.querySelectorAll(`[${attr}=${tag}]`) && cover.querySelectorAll(`[${attr}=${tag}]`).length) {
+					if (cover.querySelectorAll(`[${attr}="${tag}"]`).length > 0) {
 						cover.closest('.tag-item-cover').classList.add('visible');
 					} else {
 						cover.closest('.tag-item-cover').classList.remove('visible');
@@ -4588,5 +4708,3 @@ document.addEventListener('DOMContentLoaded', function(){
 		if (!filterGroup || !filterGroup.dataset.filter) return;
 		const tagFilter = new TagFilter(filterGroup);
 	});
-
-});

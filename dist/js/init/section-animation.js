@@ -1,37 +1,35 @@
-// section scroll animation
-document.addEventListener('DOMContentLoaded', function(){
-	let ANIMATED_CLASS = 'animated'
+document.addEventListener('DOMContentLoaded', function() {
+	const ANIMATED_CLASS = 'animated';
 
-	let setDetectSectionAnimation = function(section){
-		if (window.pageYOffset + window.innerHeight / 1.3 > section.offsetTop) {
-			if (!section.classList.contains(ANIMATED_CLASS)) {
-				section.classList.add(ANIMATED_CLASS);
-			};
-		};
+	const initialElements = [
+		'#mainHeader',
+		'.banner',
+		'.banner-section',
+		'section:first-of-type'
+	];
+
+	initialElements.forEach((selector, i) => {
+		const el = document.querySelector(selector);
+		if (el) {
+			setTimeout(() => el.classList.add(ANIMATED_CLASS), i * 100);
+		}
+	});
+
+	const sections = document.querySelectorAll('.section');
+	const observerOptions = {
+		root: null,
+		rootMargin: '0px 0px -25% 0px',
+		threshold: 0
 	};
 
-	// on scroll
-	document.addEventListener("scroll", (event) => {
-		Array.prototype.forEach.call(document.querySelectorAll(".section"), function(section){
-			setDetectSectionAnimation(section);
+	const observer = new IntersectionObserver((entries, obs) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				entry.target.classList.add(ANIMATED_CLASS);
+				obs.unobserve(entry.target); // спостереження більше не потрібне
+			}
 		});
-	}, {passive: true});
+	}, observerOptions);
 
-	// on load
-	Array.prototype.forEach.call(document.querySelectorAll("section"), function(section){
-		setTimeout(function(){
-			setDetectSectionAnimation(section);
-		}, 10)
-	});
-	setTimeout(function(){
-		document.getElementById('mainHeader').classList.add(ANIMATED_CLASS);
-		if (document.querySelector('.banner')) {
-			document.querySelector('.banner').classList.add(ANIMATED_CLASS);
-		}
-	}, 10)
-	setTimeout(function(){
-		if (document.querySelectorAll('section') && document.querySelectorAll('section')[0]) {
-			document.querySelectorAll('section')[0].classList.add(ANIMATED_CLASS);
-		}
-	}, 150)
+	sections.forEach(section => observer.observe(section));
 });

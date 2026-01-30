@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function(){
 
 			document.addEventListener("click", function (e) {
 				if (e.target.closest('[data-scrollto]')) {
-					console.log('close')
 					this.closeMenu();
 				};
 			}.bind(this));

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	class PageModeToggle {
 		darkModeName = 'dark';
 		lightModeName = 'light';
+		loadedName = 'loaded';
 		animationTime = 550;
 
 		modeButton = null;
@@ -91,6 +92,7 @@ document.addEventListener('DOMContentLoaded', function(){
 		setBodyModeClass(mode){
 			document.body.classList = "";
 			document.body.classList.add(mode);
+			document.body.classList.add(this.loadedName);
 		};
 
 		getSavedMode(){

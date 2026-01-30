@@ -38,21 +38,42 @@
 					</a>
 				</div>
 				<div class="menu-side" id="menuSide">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<nav class="header-navigation running-line">
 						<div class="line"></div>
 						<ul class="clear">
 							<li><a href="about.html" aria-label="detail link" data-text="About us"><span class="text">About us</span></a></li>
 							<li data-tab-hover="0"><a href="news.html" aria-label="detail link" data-text="News"><span class="text">News</span></a></li>
 							<li data-tab-hover="1"><a href="games.html" aria-label="detail link" data-text="Games"><span class="text">Games</span></a></li>
-							<li><a href="engines.html" aria-label="detail link" data-text="Engines"><span class="text">Engines</span></a></li>
+							<li data-tab-hover="2"><a href="engines.html" aria-label="detail link" data-text="Engines"><span class="text">Engines</span></a></li>
 							<li><a href="career.html" aria-label="detail link" data-text="Career"><span class="text">Career</span></a></li>
 							<li><a href="media.html" aria-label="detail link" data-text="Media"><span class="text">Media</span></a></li>
 							<li><a href="contacts.html" aria-label="detail link" data-text="Contact us"><span class="text">Contact us</span></a></li>
-							<li><a href="support.html" aria-label="detail link" data-text="Support"><span class="text">Support</span></a></li>
+							<!-- <li><a href="support.html" aria-label="detail link" data-text="Support"><span class="text">Support</span></a></li> -->
 						</ul>
 					</nav>
+					<div class="language">
+						<div class="dropdown" data-dropdown>
+							<div class="dropdown-header">
+								<i class="icon icon-language"></i>
+								<div class="item" lang="en-GB">
+									<span class="text">English</span>
+								</div>
+							</div>
+							<div class="dropdown-inner">
+								<a href="#" lang="uk" class="item" role="link">
+									<span class="text">Ukraine</span>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="right-side">
+					<a href="support.html" class="search-link"><i class="icon icon-search"></i></a>
 					<div class="mode-toggle">
 						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
 							<span class="mode-icon"></span>
@@ -86,6 +107,7 @@
 	</div>
 
 	<!-- details -->
+	<!-- news -->
 	<div class="menu-tab" data-tab-index="0">
 		<div class="container">
 			<div class="title">News</div>
@@ -98,7 +120,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -112,7 +133,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -126,7 +146,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -140,7 +159,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -154,7 +172,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -167,13 +184,15 @@
 			</a>
 		</div>
 	</div>
+	<!-- games -->
 	<div class="menu-tab" data-tab-index="1">
 		<div class="container">
 			<div class="title">Games</div>
 			<ul class="cards-list">
 				<li class="item">
 					<a href="detail-game.html" class="image-cover">
-						<img src="img/temp/game1.png" alt="mow2">
+						<img src="img/temp/news1.jpg" alt="mow2">
+						<div class="game-logo"><img src="img/temp/GOH-logo.png" alt="mow2" class="logo-image"></div>
 					</a>
 				</li>
 				<li class="item">
@@ -186,7 +205,7 @@
 				</li>
 				<li class="item">
 					<a href="detail-game.html" class="image-cover">
-						<img src="img/temp/game1.png" alt="mow2">
+						<img src="img/temp/news1.jpg" alt="mow2">
 						<div class="game-logo">
 							<img src="img/temp/banner-logo1.png" alt="logo">
 						</div>
@@ -215,50 +234,97 @@
 			</a>
 		</div>
 	</div>
+	<!-- engines -->
+	<div class="menu-tab" data-tab-index="2">
+		<div class="container">
+			<div class="title">Engines</div>
+			<ul class="cards-list">
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem1.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 1</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem2.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 2</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem3.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 3</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gemrts.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem RTS</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<a href="engines.html" class="link">
+				<span class="text">View all</span>
+				<i class="icon icon-right-simple"></i>
+			</a>
+		</div>
+	</div>
 </header>
 <div class="fake-mode"></div>
 
 	<!-- / header -->
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
-		<!-- banner -->
-		<div class="collapsed-top collapsed-bottom section banner-section banner">
-			<div class="game-banner">
-				<div class="logo-side">
-					<div class="container">
-						<div class="banner-info">
-							<div class="left engine-description">
-								<div class="logo-cover image-cover">
-									<img src="img/gemrts.svg" alt="gem">
-								</div>
-								<div class="title">
-									GEM RTS is a new modern engine for strategic games
-								</div>
-								<div class="theme-text">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-								</div>
-								<div class="butons-group">
-									<a class="button button-primary" role="link" href="#">
-										<span class="text">Get  Engine</span>
-									</a>
-									<a href="#aboutEngine" data-scrollto="#aboutEngine" class="button button-primary-transparent">
-										<span class="text">Learn about</span>
-									</a>
-								</div>
-							</div>
-							<div class="video-side">
-								<img src="img/temp/Gem1-Engine-Baner.png" alt="mow" class="main-image">
-							</div>
+		<!-- header -->
+		<div class="engine-header">
+			<div class="engine-background"><img src="img/temp/content-image1.png" alt="engine"></div>
+			<div class="container-small">
+				<div class="logo-cover">
+					<img src="img/gem1.png" alt="gem">
+				</div>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 col-lg-6 last-md spaced-bottom-md">
+						<video src="img/temp/mov_bbb.mp4" autoplay loop muted></video>
+					</div>
+					<div class="col-xs-12 col-md-6">
+						<div class="title">GEM RTS is a new modern engine for strategic games</div>
+						<div class="paragraph">
+							Players control a small group of soldiers where every unit matters—losing even one can be critical.
+						</div>
+						<div class="butons-group">
+							<a class="button button-primary" role="link" href="#">
+								<span class="text">Get  Engine</span>
+							</a>
+							<a href="#aboutEngine" data-scrollto="#aboutEngine" class="button button-primary-transparent">
+								<span class="text">Learn about</span>
+							</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- /banner -->
+		<!-- / header -->
 
 		<!-- breadcrumbs -->
 		<div class="breadcrumbs">
-			<div class="container">
+			<div class="container-small">
 				<ul class="breadcrumbs-list clear">
 					<li><a href="index.html" class="text" aria-label="main page">Main</a></li>
 					<li><a href="engines.html" class="text" aria-label="engines page">Engines</a></li>
@@ -270,111 +336,113 @@
 
 		<section class="section">
 			<div class="container-small">
-				<h2 class="section-title">Key Features</h2>
-				<div class="divider"></div>
-				<!-- feature-card 1 -->
-				<div class="feature-card">
-					<div class="feature-background"><img src="img/temp/content-image1.png" alt="feature2"></div>
-					<div class="row">
-						<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
-							<video src="img/temp/mov_bbb.mp4" autoplay loop muted></video>
-						</div>
-						<div class="col-xs-12 col-md-6">
-							<div class="title">Tactical Gameplay with a Limited Squad</div>
-							<div class="paragraph">
-								Players control a small group of soldiers where every unit matters—losing even one can be critical.
+				<article>
+					<h2 class="section-title">Key Features</h2>
+					<div class="divider"></div>
+					<!-- feature-card 1 -->
+					<div class="feature-card">
+						<div class="feature-background"><img src="img/temp/content-image1.png" alt="feature2"></div>
+						<div class="row">
+							<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
+								<video src="img/temp/mov_bbb.mp4" autoplay loop muted></video>
 							</div>
-							<div class="title">Direct Control System</div>
-							<div class="paragraph">
-								A unique mechanic allowing players to manually aim and control any unit, including vehicles, for precise combat actions.
-							</div>
-							<div class="title">Fully Destructible Environments</div>
-							<div class="paragraph">
-								Every object on the map—from bushes and fences to buildings and vehicles—can serve as cover, and be destroyed to shift the tide of battle.
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- feature-card 2 -->
-				<div class="feature-card">
-					<div class="row">
-						<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
-							<img src="img/temp/content-image1.png" alt="feature3">
-						</div>
-						<div class="col-xs-12 col-md-6 first-md">
-							<div class="title">Targeted Vehicle Damage</div>
-							<div class="paragraph">
-								Players can aim at weak spots, such as a tank’s tracks, to immobilize enemy units.
-							</div>
-							<div class="title">Realistic Ballistics</div>
-							<div class="paragraph">
-								Factors like armor penetration, angle of impact, and ricochets influence combat outcomes.
-							</div>
-							<div class="title">Vehicle Capture and Repair</div>
-							<div class="paragraph">
-								Abandoned or damaged vehicles can be fixed and brought back into action.
+							<div class="col-xs-12 col-md-6">
+								<div class="title">Tactical Gameplay with a Limited Squad</div>
+								<div class="paragraph">
+									Players control a small group of soldiers where every unit matters—losing even one can be critical.
+								</div>
+								<div class="title">Direct Control System</div>
+								<div class="paragraph">
+									A unique mechanic allowing players to manually aim and control any unit, including vehicles, for precise combat actions.
+								</div>
+								<div class="title">Fully Destructible Environments</div>
+								<div class="paragraph">
+									Every object on the map—from bushes and fences to buildings and vehicles—can serve as cover, and be destroyed to shift the tide of battle.
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- feature-card 3 -->
-				<div class="feature-card">
-					<div class="row">
-						<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
-							<img src="img/temp/content-feature2.png" alt="feature2">
-						</div>
-						<div class="col-xs-12 col-md-6">
-							<div class="title">Inventory System</div>
-							<div class="paragraph">
-								Ammunition is limited. Players can scavenge weapons, grenades, and ammo from fallen allies and enemies or looted vehicles.
+					<!-- feature-card 2 -->
+					<div class="feature-card">
+						<div class="row">
+							<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
+								<img src="img/temp/content-image1.png" alt="feature3">
 							</div>
-							<div class="title">Smart Enemy AI</div>
-							<div class="paragraph">
-								Enemies react to sound and movement, use cover, coordinate with each other, and set ambushes.
-							</div>
-							<div class="title">Wide Arsenal</div>
-							<div class="paragraph">
-								Over 25 types of weapons, including rifles, machine guns, grenades, flamethrowers, and anti-tank gear.
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- feature-card 4 -->
-				<div class="feature-card">
-					<div class="row">
-						<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
-							<img src="img/temp/content-feature4.png" alt="feature3">
-						</div>
-						<div class="col-xs-12 col-md-6 first-md">
-							<div class="title">Targeted Vehicle Damage</div>
-							<div class="paragraph">
-								Players can aim at weak spots, such as a tank’s tracks, to immobilize enemy units.
-							</div>
-							<div class="title">Realistic Ballistics</div>
-							<div class="paragraph">
-								Factors like armor penetration, angle of impact, and ricochets influence combat outcomes.
-							</div>
-							<div class="title">Vehicle Capture and Repair</div>
-							<div class="paragraph">
-								Abandoned or damaged vehicles can be fixed and brought back into action.
+							<div class="col-xs-12 col-md-6 first-md">
+								<div class="title">Targeted Vehicle Damage</div>
+								<div class="paragraph">
+									Players can aim at weak spots, such as a tank’s tracks, to immobilize enemy units.
+								</div>
+								<div class="title">Realistic Ballistics</div>
+								<div class="paragraph">
+									Factors like armor penetration, angle of impact, and ricochets influence combat outcomes.
+								</div>
+								<div class="title">Vehicle Capture and Repair</div>
+								<div class="paragraph">
+									Abandoned or damaged vehicles can be fixed and brought back into action.
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- feature-card 5 -->
-				<div class="feature-card">
-					<div class="row">
-						<div class="col-xs-12 col-md-6 col-lg-5 spaced-bottom-md">
-							<img src="img/temp/content-feature5.png" alt="feature2">
-						</div>
-						<div class="col-xs-12 col-md-6 col-lg-offset-1">
-							<div class="title">Open Modding Tools</div>
-							<div class="paragraph">
-								Full access to resources for creating and distributing mods.
+					<!-- feature-card 3 -->
+					<div class="feature-card">
+						<div class="row">
+							<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
+								<img src="img/temp/content-feature2.png" alt="feature2">
+							</div>
+							<div class="col-xs-12 col-md-6">
+								<div class="title">Inventory System</div>
+								<div class="paragraph">
+									Ammunition is limited. Players can scavenge weapons, grenades, and ammo from fallen allies and enemies or looted vehicles.
+								</div>
+								<div class="title">Smart Enemy AI</div>
+								<div class="paragraph">
+									Enemies react to sound and movement, use cover, coordinate with each other, and set ambushes.
+								</div>
+								<div class="title">Wide Arsenal</div>
+								<div class="paragraph">
+									Over 25 types of weapons, including rifles, machine guns, grenades, flamethrowers, and anti-tank gear.
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+					<!-- feature-card 4 -->
+					<div class="feature-card">
+						<div class="row">
+							<div class="col-xs-12 col-md-6 col-lg-6 spaced-bottom-md">
+								<img src="img/temp/content-feature4.png" alt="feature3">
+							</div>
+							<div class="col-xs-12 col-md-6 first-md">
+								<div class="title">Targeted Vehicle Damage</div>
+								<div class="paragraph">
+									Players can aim at weak spots, such as a tank’s tracks, to immobilize enemy units.
+								</div>
+								<div class="title">Realistic Ballistics</div>
+								<div class="paragraph">
+									Factors like armor penetration, angle of impact, and ricochets influence combat outcomes.
+								</div>
+								<div class="title">Vehicle Capture and Repair</div>
+								<div class="paragraph">
+									Abandoned or damaged vehicles can be fixed and brought back into action.
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- feature-card 5 -->
+					<div class="feature-card">
+						<div class="row">
+							<div class="col-xs-12 col-md-6 col-lg-5 spaced-bottom-md">
+								<img src="img/temp/content-feature5.png" alt="feature2">
+							</div>
+							<div class="col-xs-12 col-md-6 col-lg-offset-1">
+								<div class="title">Open Modding Tools</div>
+								<div class="paragraph">
+									Full access to resources for creating and distributing mods.
+								</div>
+							</div>
+						</div>
+					</div>
+				</article>
 			</div>
 		</section>
 
@@ -392,6 +460,307 @@
 		</section>
 		<!-- / video -->
 
+		<section class="section">
+			<div class="container-small">
+				<article>
+					<details class="wp-block-details is-layout-flow wp-block-details-is-layout-flow">
+						<summary>Детальний перелік складових ігрового рушія Gem1</summary>
+						<h3 class="wp-block-heading"><strong>Базові можливості рушія</strong></h3>
+						<p><strong>Інструменти відладки і журналювання подій у грі:</strong></p>
+						<ul class="wp-block-list">
+						<li>вбудована відладочна консоль;</li>
+						<li>відладочні консольні команди;</li>
+						<li>вбудована візуальна відладка всіх основних систем;</li>
+						<li>вбудований профайлер;</li>
+						<li>система журналювання подій;</li>
+						<li>система обміну повідомленнями між компонентами гри;</li>
+						<li>система обміну даними між компонентами гри і скриптами.</li>
+						</ul>
+						<p><strong>Організація і архітектура ресурсів гри:</strong></p>
+						<ul class="wp-block-list">
+						<li>підтримка віртуальної файлової системи;</li>
+						<li>упаковка даних гри у zip архіви;</li>
+						<li>завантаження форматів dds, tga, bmp;</li>
+						<li>текстовий формат даних у зрозумілому для людини вигляді забезпечує швидкі ітерації розробки без участі програмістів (використовується власний формат описів SDL);</li>
+						<li><strong>основна ієрархія об’єктів у грі :</strong>
+						<ul class="wp-block-list">
+						<li>Scene  - сцена;</li>
+						<li>Entity - об’єкти на сцені (активні, пасивні і тільки видимі);</li>
+						<li>Bones - кістки у об’єкта;</li>
+						<li>View - види в кістках (наприклад VFX, сервісні об’єкти логіки гри, об’єкти для SFX);</li>
+						</ul>
+						</li>
+						<li>система розширення функціоналу для кожного з об’єктів через extender.</li>
+						</ul>
+						<p><strong>3D простір і геометрія:</strong></p>
+						<ul class="wp-block-list">
+						<li>повний набір функцій для роботи з матрицями і геометричними примітивами;</li>
+						<li>технологія вирізання дірок у тривимірному ландшафті для окопів і воронок.</li>
+						</ul>
+						<p><strong>Вбудований UI</strong>:</p>
+						<ul class="wp-block-list">
+						<li>власна система UI з повним набором інтерфейсних примітивів (тексти, мітки, комбобокси, списки і т.п.);</li>
+						<li>автоматичне масштабування інтерфейсу;</li>
+						<li>налаштовувана система опцій гри;</li>
+						<li>підтримка перемикання екранів.</li>
+						</ul>
+						<p><strong>Підтримка локалізацій</strong>:</p>
+						<ul class="wp-block-list">
+						<li>можливість зміни локалізації ресурсів через окремі папки;</li>
+						<li>реалізація локалізації за допомогою текстових .lng файлів;</li>
+						<li>підтримка як згладжених так і 1 бітних шрифтів;</li>
+						<li>перемикання шрифтів через стилі і локалізацію;</li>
+						<li>підтримка всіх європейських мов;</li>
+						<li>підтримка китайської через спеціальний розділений шрифт.</li>
+						</ul>
+						<p><strong>Вбудована система частинок (для спецефектів і ефектів)</strong>:</p>
+						<ul class="wp-block-list">
+						<li>трикомпонентна обробка частинок: генерація, модифікація руху і візуалізація;</li>
+						<li>підтримка частинок типів спрайт і точка;</li>
+						<li>підтримка зон генерації типу сфера</li>
+						<li>вбудована підтримка FSM для частинок-спрайтів: initial → collided → dying з автоматичним видаленням часток у стані dying;</li>
+						<li>можливість задати частоту спавна частинок і початкові параметри руху;</li>
+						<li>модифікатори руху (прискорення, гравітація, вплив вітру), підтримка анімації через систему кадрів в текстурі;</li>
+						<li>реакція частинок-спрайтів на зіткнення із землею, але логіка взаємодії частинок-спрайтів між собою відсутня.</li>
+						</ul>
+						<p><strong>Вбудований редактор</strong></p>
+						<ul class="wp-block-list">
+						<li>редактори, вбудовані у гру (редактор є грою, тому місію можна запустити не лише через ігровий інтерфейс окремого лаунчера, а й безпосередньо з редактора);</li>
+						<li>редактор ландшафту і типів територій;</li>
+						<li>редактор об’єктів карти;</li>
+						<li>редактор логіки місій;</li>
+						<li>налаштування оточення;</li>
+						<li>налаштування систем частинок;</li>
+						<li>редактор руху камери для катсцен;</li>
+						<li>редактор зон обмежень;</li>
+						<li>редактор видів солдат (специфічний вигляд, навички, інвентар).</li>
+						</ul>
+						<p><strong>Підтримка створення модингу</strong></p>
+						<ul class="wp-block-list">
+						<li>підтримка модів автономно і через Steam Workshop;</li>
+						<li>можливість підміни файлів у моді через віртуальну файлову систему;</li>
+						<li>зрозумілі людині текстові файли налаштувань гри.</li>
+						</ul>
+						<p><strong>Оптимізація (для продуктивності)</strong> </p>
+						<ul class="wp-block-list">
+						<li>попереднє завантаження об’єктів перед місією.</li>
+						</ul>
+						<p><strong>Управління грою:</strong></p>
+						<ul class="wp-block-list">
+						<li>в одиночній грі доступне регулювання швидкості гри і пауза;</li>
+						<li>підтримка різних рівнів складності;</li>
+						<li>підтримка кількох профілів гравця (гравець може створювати кілька профілів гри наприклад для різних членів сім’ї);</li>
+						<li>підтримка створення збережень в одиночній грі у будь якому місці прогресу місії з повним збереженням всіх даних (місія після завантаження сейва починається з того місця де було зроблено збереження).</li>
+						</ul>
+						<p><strong>Система збережень</strong></p>
+						<ul class="wp-block-list">
+						<li>можливість збереження і завантаження ігрового світу як у бою так і в редакторі.</li>
+						</ul>
+						<p><strong>Система автоматичного очищення ігрового світу</strong></p>
+						<ul class="wp-block-list">
+						<li>видалення трупів, остовів техніки і інших відпрацьованих об’єктів.</li>
+						</ul>
+						<p><strong>Підтримка зовнішніх систем</strong></p>
+						<ul class="wp-block-list">
+						<li>Steam
+						<ul class="wp-block-list">
+						<li>Achievements and Stats</li>
+						<li>Steam Networking</li>
+						<li>Invite to game via Steam</li>
+						<li>Steam Workshop (можливість публікації і оновлення модів та підписуватися/відписуватися на моди через сторінку Майстерні, автоматична установка необхідних для гри модів при підключенні до сесії)</li>
+						<li>Steam Cloud</li>
+						</ul>
+						</li>
+						</ul>
+						<h3 class="wp-block-heading"><strong>Компоненти рушія</strong></h3>
+						<h4 class="wp-block-heading"><strong>Фізика</strong></h4>
+						<ul class="wp-block-list">
+						<li>broad phase;</li>
+						<li>narrow phase;</li>
+						<li>обмеження кількості контактів із землею;</li>
+						<li>стабілізація об’єктів;</li>
+						<li>контакти між об’єктами за допомогою convex shapes;</li>
+						<li>контакти об’єктів із землею і водою;</li>
+						<li>реалізація фізики за допомогою бібліотеки FMBP.</li>
+						</ul>
+						<h4 class="wp-block-heading"><strong>Графіка</strong></h4>
+						<p><strong>Графічний вивід</strong></p>
+						<ul class="wp-block-list">
+						<li>тільки повноекранний режим;</li>
+						<li>підтримка широкоформатних моніторів;</li>
+						<li>підтримка 4К розширень;</li>
+						<li>підтримка VSync;</li>
+						<li>можливість рендерити до 1000 fps.</li>
+						</ul>
+						<p><strong>Рендеринг</strong></p>
+						<ul class="wp-block-list">
+						<li>3d прямий рендеринг;</li>
+						<li>повершинне освітлення землі і об’єктів (ambient + diffuse);</li>
+						<li>тільки diffuse текстури об’єктів;</li>
+						<li>змішування 2 текстур землі;</li>
+						<li>підтримка тіней (вимкнені тіні, тіні спрайтами, окремі тіні під кожен об’єкт, трапецієподібна карта тіней).</li>
+						</ul>
+						<p><strong>Підтримувані типи візуальних об’єктів:</strong></p>
+						<ul class="wp-block-list">
+						<li>декалі;</li>
+						<li>джерела світла;</li>
+						<li>системи частинок;</li>
+						<li>полігональні меші;</li>
+						<li>спрайти;</li>
+						<li>воксельні об’єкти.</li>
+						</ul>
+						<h4 class="wp-block-heading"><strong>Звук і музика</strong></h4>
+						<ul class="wp-block-list">
+						<li>через DirectSound;</li>
+						<li>музика у форматі .wma;</li>
+						<li>звуки у форматі .wav.</li>
+						</ul>
+						<h4 class="wp-block-heading"><strong>Відео</strong></h4>
+						<ul class="wp-block-list">
+						<li>через DirectMedia;</li>
+						<li>у форматі .wmv.</li>
+						</ul>
+						<h4 class="wp-block-heading"><strong>Анімації</strong></h4>
+						<ul class="wp-block-list">
+						<li>інверсна кінематика;</li>
+						<li>скелетна анімація;</li>
+						<li>мешова анімація;</li>
+						<li>скролінг текстури;</li>
+						<li>кінцевий автомат для впорядкування запуску анімацій.</li>
+						</ul>
+						<h3 class="wp-block-heading"><strong>Ігровий світ</strong></h3>
+						<p><em>Розділ що описує вбудовані в рушій ігрові механіки</em></p>
+						<p><strong>Симуляція реальності:</strong></p>
+						<ul class="wp-block-list">
+						<li>симуляція видимості і доступності цілей трасуванням променів по сцені;</li>
+						<li>вибірки об’єктів по двовимірних зонах;</li>
+						<li>підтримка перемикальних кліпів обмежень ігрового світу за які не можна виходити;</li>
+						<li>визначення фізичного контакту об’єктів сцени;</li>
+						<li>параболічні траєкторії куль і снарядів;</li>
+						<li>симуляція мережі залізниць;</li>
+						<li>симуляція води;</li>
+						<li>можливість лінковки об’єктів один з одним (наприклад граната до руки юніта, пасажир до сидіння машини або на броні техніки).</li>
+						</ul>
+						<p><strong>Симуляція можливостей юнітів:</strong></p>
+						<ul class="wp-block-list">
+						<li>переміщення згідно типу шасі юніта з урахуванням перешкод на шляху;</li>
+						<li>використання предметів інвентаря;</li>
+						<li>використання об'єктів ігрового світу в якості укриттів (включно зі складками місцевості);</li>
+						<li>юнит "людина" може використовувати юніти техніки (їздити, заправляти паливом, ремонтувати зламані компоненти, використовувати встановлену зброю, поповнювати боєкомплект);</li>
+						<li>юнит "людина" може використовувати будівлі і інші функціональні об’єкти сцени (можливість зайти у будівлю і стріляти з вікон першого поверху, можливість посадити солдата в укриття біля вікок на інших поверхах);</li>
+						<li>юніти можуть стріляти з різних типів зброї (для юніта "людина є підтримка рукопашного бою, холодної і метальної зброї);</li>
+						<li>підтримка плавання у воді, в болоті юніти грузнуть.</li>
+						</ul>
+						<p><strong>Симуляція військової техніки і машин</strong>:</p>
+						<ul class="wp-block-list">
+						<li>система шасі зі специфічною симуляцією;</li>
+						<li>колісна техніка;</li>
+						<li>гусенична техніка;</li>
+						<li>літаки;</li>
+						<li>кораблі;</li>
+						<li>піхота;</li>
+						<li>поїзди.</li>
+						</ul>
+						<p><strong>Система екіпажу:</strong></p>
+						<ul class="wp-block-list">
+						<li>кожен член екіпажу відповідає за свою функцію;</li>
+						<li>у кожного члена екіпажу є своє посадкове місце (видиме або невидиме);</li>
+						<li>є можливість посадки і висадки екіпажу з відповідною анімацією.</li>
+						</ul>
+						<p><strong>Система пального</strong>:</p>
+						<ul class="wp-block-list">
+						<li>техніку можна заправляти і зливати пальне.</li>
+						</ul>
+						<p><strong>Система інвентаря</strong>:</p>
+						<ul class="wp-block-list">
+						<li>у юнітів може бути інвентар, місткість і склад якого залежить від типу юніта;</li>
+						<li>зброю можна брати у руки, встановлювати на техніку і знімати;</li>
+						<li>зброю можна перезаряджати;</li>
+						<li>речі можна носити у руках і використовувати;</li>
+						<li>у об’єкта може бути внутрішній вміст (набої у зброї або пальне у бочці).</li>
+						</ul>
+						<p><strong>Система зброї</strong>:</p>
+						<ul class="wp-block-list">
+						<li>кожен об’єкт може мати N різних видів зброї;</li>
+						<li>підтримка зброї різних видів.</li>
+						</ul>
+						<p><strong>Система розрахунку укриттів у реальному часі</strong></p>
+						<ul class="wp-block-list">
+						<li>динамічно розраховувані укриття для солдатів.</li>
+						</ul>
+						<p><strong>Пошук шляху</strong></p>
+						<ul class="wp-block-list">
+						<li>пошук шляху для техніки з різною прохідністю;</li>
+						<li>спеціалізований пошук шляху для піхоти;</li>
+						<li>підтримка системи перешкод для пасивних і активних об’єктів.</li>
+						</ul>
+						<p><strong>Система видимості</strong></p>
+						<ul class="wp-block-list">
+						<li>основою системи є конуси видимості і трасування променів через 2D сітку з урахуванням геометрії ландшафту і об’єктів на поверхні включно з динамічними;</li>
+						<li>з урахуванням погоди (ніч, день, блискавка);</li>
+						<li>з урахуванням освітлення (під ліхтарями видно краще);</li>
+						<li>з урахуванням стану гравців.</li>
+						</ul>
+						<p><strong>Система горіння об’єктів</strong></p>
+						<ul class="wp-block-list">
+						<li>об’єкти сцени можуть горіти, займатися від вибухів і сусідніх палаючих об’єктів.</li>
+						</ul>
+						<p><strong>Система пошкоджень</strong></p>
+						<ul class="wp-block-list">
+						<li>компонентна система пошкоджень юнітів техніки;</li>
+						<li>деталізована система пошкоджень будівель по частинах;</li>
+						<li>урон від куль і снарядів;</li>
+						<li>підтримка фізично симульованих гранат;</li>
+						<li>ураження від вибухів з урахуванням фізичних перешкод;</li>
+						<li>ураження вогнем.</li>
+						</ul>
+						<p><strong>Симуляція поведінки і управління</strong></p>
+						<ul class="wp-block-list">
+						<li>багаторівнева система наказів;</li>
+						<li>скриптова система для індивідуального налаштування реакцій об’єктів на впливи.</li>
+						</ul>
+						<p><strong>Відпрацювання логіки місії включає:</strong></p>
+						<ul class="wp-block-list">
+						<li>завдання гравця;</li>
+						<li>тригери з умовами;</li>
+						<li>вибірки об’єктів;</li>
+						<li>команди від системи ІІ і скриптової системи реакцій;</li>
+						<li>зони;</li>
+						<li>точки шляху;</li>
+						<li>поточні межі активної зони карти (кліпи).</li>
+						</ul>
+						<p><strong>Система поведінки юнітів під керуванням комп’ютера (ІІ)</strong></p>
+						<ul class="wp-block-list">
+						<li>індивідуальний сенсор для визначення знань актора про навколишній світ;</li>
+						<li>урахування сигналів від зовнішнього світу;</li>
+						<li>передача інформації сусідам;</li>
+						<li>вибірка цілей для ІІ за пріоритетами;</li>
+						<li>підтримка поведінки для юнітів різних типів солдат, колісної, гусеничної техніки, поїздів, літаків;</li>
+						<li>різні схеми поведінки солдат у укриттях, на відкритій місцевості, пошук ворогів;</li>
+						<li>схеми поведінки тварин.</li>
+						</ul>
+						<p><strong>Туман війни</strong></p>
+						<ul class="wp-block-list">
+						<li>юнити можуть бути приховані туманом війни;</li>
+						<li>доступні опції туман увімкнено або вимкнено;</li>
+						<li>розкриття юнітів у тумані війни для юнітів рахується за картою видимості;</li>
+						<li>розкриття юнітів у тумані війни для гравця;</li>
+						<li>якщо туман вимкнено гравець бачить всіх ворогів на карті;</li>
+						<li>якщо увімкнено гравець бачить тільки тих ворогів яких бачать його юніти.</li>
+						</ul>
+						<p><strong>Управління юнітами гравцем</strong></p>
+						<ul class="wp-block-list">
+						<li>опосередковане RTS керування через виділення юнітів рамкою і віддання команд;</li>
+						<li>пряме керування індивідуальним юнітом з одночасним пересуванням, прицілюванням і атакою;</li>
+						<li>розширювана система команд від гравця;</li>
+						<li>управління через мінікарту;</li>
+						<li>управління інвентарем своїх юнітів і обмін предметами інвентаря.</li>
+						</ul>
+					</details>
+				</article>
+			</div>
+		</section>
+
 		<!-- games -->
 		<section class="section">
 			<div class="container">
@@ -400,8 +769,40 @@
 					<div class="divider"></div>
 				</div>
 				<!-- games list -->
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3 spaced-around">
+				<div class="games-list-preview preview-list-simple">
+					<div class="item">
+						<a href="detail-game.html" class="game-preview large" aria-label>
+							<div class="image-cover">
+								<img src="img/temp/news1.jpg" alt="news item">
+								<div class="game-logo">
+									<img src="img/temp/GOH-logo.png" alt="logo">
+								</div>
+							</div>
+							<div class="inner">
+								<div class="top">
+									<div class="title">Men of War II</div>
+									<div class="category">RTT-action | PC</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a href="detail-game.html" class="game-preview large" aria-label>
+							<div class="image-cover">
+								<img src="img/temp/news1.jpg" alt="news item">
+							</div>
+							<div class="inner">
+								<div class="game-logo">
+									<img src="img/temp/banner-logo1.png" alt="logo">
+								</div>
+								<div class="top">
+									<div class="title">Men of War II</div>
+									<div class="category">RTT-action | PC</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="item">
 						<a href="detail-game.html" class="game-preview large" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/game-preview.png" alt="news item">
@@ -414,33 +815,7 @@
 							</div>
 						</a>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 spaced-around">
-						<a href="detail-game.html" class="game-preview large" aria-label>
-							<div class="image-cover">
-								<img src="img/temp/game-preview.png" alt="news item">
-							</div>
-							<div class="inner">
-								<div class="top">
-									<div class="title">Men of War II</div>
-									<div class="category">RTT-action | PC</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 spaced-around">
-						<a href="detail-game.html" class="game-preview large" aria-label>
-							<div class="image-cover">
-								<img src="img/temp/game-preview.png" alt="news item">
-							</div>
-							<div class="inner">
-								<div class="top">
-									<div class="title">Men of War II</div>
-									<div class="category">RTT-action | PC</div>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 spaced-around">
+					<div class="item">
 						<a href="detail-game.html" class="game-preview large" aria-label>
 							<div class="image-cover">
 								<img src="img/temp/game-preview.png" alt="news item">
@@ -725,18 +1100,20 @@
 				Sign up for our email newsletter to get info on game announcements and updates, details on special events and offers, and more from Best Way and our affiliates.
 			</div>
 			<div class="form-cover">
-				<form action="javascript:void()" class="form validate-form inline-form">
-					<div class="form-group">
-						<div class="alert">Enter the valid email</div>
-						<input type="email" placeholder="Enter Your Email" class="input email">
+				<form id="subscribeForm" class="form validate-form inline-form" novalidate="">
+					<div class="form-group error">
+						<div class="alert">Введіть дійсну електронну адресу</div>
+						<input name="email" type="email" placeholder="Введіть email" class="input email" required="">
+						<i class="icon icon-input-error icon-status"></i>
+						<i class="icon icon-input-success icon-status"></i>
 					</div>
 					<div class="button-group">
 						<button class="button button-grey-transparent" type="submit">
-							<span class="text">Subscribe NOW</span>
+							<span class="text">Підписатись</span>
 						</button>
 					</div>
 				</form>
-				<div class="subscribe-feedback" aria-live="polite">Дякуємо! Ви підписані на новини.</div>
+				<div class="form-feedback error" aria-live="polite">Відправлення форми не вдалося. Перевірте, будь ласка, введені дані.</div>
 			</div>
 		</div>
 	</div>
@@ -744,29 +1121,14 @@
 	<!-- / subscribe-section -->
 
 	<!-- footer -->
-	<!-- scroll button -->
-<div class="scroll-button to-bottom" id="scrollButton">
-	<div class="container">
-		<button class="scroll-link" type="button" role="button">
-			<span class="inner">
-				<span class="bottom-text">
-					<span class="text">Scroll Down</span>
-					<span class="middle-text">to see more info</span>
-					<span class="mouse">
-						<span class="move"></span>
-					</span>
-				</span>
-				<span class="top-text">
-					<span class="text">Back to Top</span>
-					<img src="img/scroll-top.png" alt="icon">
-				</span>
-			</span>
-		</button>
+	<footer class="main-footer" id="mainFooter">
+	<div class="scroll-top" id="scrollButton">
+		<div class="container">
+			<a class="scroll-link" role="link" href="#mainHeader" data-scroll="#mainHeader">
+				<img src="img/scroll-top.png" alt="icon">
+			</a>
+		</div>
 	</div>
-</div>
-<!-- / scroll button -->
-
-<footer class="main-footer" id="mainFooter">
 	<div class="container">
 		<div class="footer-inner">
 			<div class="middle">
@@ -790,12 +1152,7 @@
 						<div class="footer-subtitle">Contact us</div>
 						<div class="flex-inner">
 							<div class="cell">
-								<div class="item"><span class="label">Press: </span><a class="phone footer-link" href="tel:+380939998877">+380939998877</a></div>
-								<div class="item"><span class="label">Support: </span><a class="phone footer-link" href="tel:+380933332211">+380933332211</a></div>
-							</div>
-							<div class="cell">
 								<div class="item"><span class="label">Email for Press: </span><a class="email footer-link" href="mailto:ma&#105;&#108;&#064;mai&#108;&#046;m&#097;i&#108;">ma&#105;&#108;&#064;mai&#108;&#046;m&#097;i&#108;</a></div>
-								<div class="item"><span class="label">Support Email: </span><a class="email footer-link" href="mailto:&#109;a&#105;&#108;&#064;u&#107;r.net">&#109;a&#105;&#108;&#064;u&#107;r.net</a></div>
 							</div>
 						</div>
 					</div>
@@ -811,8 +1168,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="bottom align-center">
+			<div class="bottom">
 				© 2025 Best Way
+				<a href="#">Політика конфіденційності</a>
 			</div>
 		</div>
 	</div>

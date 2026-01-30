@@ -38,21 +38,42 @@
 					</a>
 				</div>
 				<div class="menu-side" id="menuSide">
+					<div class="mode-toggle">
+						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
+							<span class="mode-icon"></span>
+						</button>
+					</div>
 					<nav class="header-navigation running-line">
 						<div class="line"></div>
 						<ul class="clear">
 							<li><a href="about.html" aria-label="detail link" data-text="About us"><span class="text">About us</span></a></li>
 							<li data-tab-hover="0"><a href="news.html" aria-label="detail link" data-text="News"><span class="text">News</span></a></li>
 							<li data-tab-hover="1"><a href="games.html" aria-label="detail link" data-text="Games"><span class="text">Games</span></a></li>
-							<li><a href="engines.html" aria-label="detail link" data-text="Engines"><span class="text">Engines</span></a></li>
+							<li data-tab-hover="2"><a href="engines.html" aria-label="detail link" data-text="Engines"><span class="text">Engines</span></a></li>
 							<li><a href="career.html" aria-label="detail link" data-text="Career"><span class="text">Career</span></a></li>
 							<li><a href="media.html" aria-label="detail link" data-text="Media"><span class="text">Media</span></a></li>
 							<li><a href="contacts.html" aria-label="detail link" data-text="Contact us"><span class="text">Contact us</span></a></li>
-							<li><a href="support.html" aria-label="detail link" data-text="Support"><span class="text">Support</span></a></li>
+							<!-- <li><a href="support.html" aria-label="detail link" data-text="Support"><span class="text">Support</span></a></li> -->
 						</ul>
 					</nav>
+					<div class="language">
+						<div class="dropdown" data-dropdown>
+							<div class="dropdown-header">
+								<i class="icon icon-language"></i>
+								<div class="item" lang="en-GB">
+									<span class="text">English</span>
+								</div>
+							</div>
+							<div class="dropdown-inner">
+								<a href="#" lang="uk" class="item" role="link">
+									<span class="text">Ukraine</span>
+								</a>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="right-side">
+					<a href="support.html" class="search-link"><i class="icon icon-search"></i></a>
 					<div class="mode-toggle">
 						<button type="button" role="button" class="mode-button dark" data-mode-toggle="dark">
 							<span class="mode-icon"></span>
@@ -86,6 +107,7 @@
 	</div>
 
 	<!-- details -->
+	<!-- news -->
 	<div class="menu-tab" data-tab-index="0">
 		<div class="container">
 			<div class="title">News</div>
@@ -98,7 +120,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -112,7 +133,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -126,7 +146,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -140,7 +159,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -154,7 +172,6 @@
 						<div class="inner">
 							<div class="top">
 								<div class="date">March 13, 2025</div>
-								<div class="category">News type</div>
 							</div>
 							<div class="title">AI Improvements</div>
 						</div>
@@ -167,13 +184,15 @@
 			</a>
 		</div>
 	</div>
+	<!-- games -->
 	<div class="menu-tab" data-tab-index="1">
 		<div class="container">
 			<div class="title">Games</div>
 			<ul class="cards-list">
 				<li class="item">
 					<a href="detail-game.html" class="image-cover">
-						<img src="img/temp/game1.png" alt="mow2">
+						<img src="img/temp/news1.jpg" alt="mow2">
+						<div class="game-logo"><img src="img/temp/GOH-logo.png" alt="mow2" class="logo-image"></div>
 					</a>
 				</li>
 				<li class="item">
@@ -186,7 +205,7 @@
 				</li>
 				<li class="item">
 					<a href="detail-game.html" class="image-cover">
-						<img src="img/temp/game1.png" alt="mow2">
+						<img src="img/temp/news1.jpg" alt="mow2">
 						<div class="game-logo">
 							<img src="img/temp/banner-logo1.png" alt="logo">
 						</div>
@@ -215,6 +234,58 @@
 			</a>
 		</div>
 	</div>
+	<!-- engines -->
+	<div class="menu-tab" data-tab-index="2">
+		<div class="container">
+			<div class="title">Engines</div>
+			<ul class="cards-list">
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem1.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 1</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem2.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 2</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gem3.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem 3</div>
+						</div>
+					</a>
+				</li>
+				<li class="item">
+					<a href="detail-engine.html" class="engine-preview small" aria-label>
+						<div class="image-cover">
+							<img src="img/gemrts.png" alt="gem">
+						</div>
+						<div class="inner">
+							<div class="title">Gem RTS</div>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<a href="engines.html" class="link">
+				<span class="text">View all</span>
+				<i class="icon icon-right-simple"></i>
+			</a>
+		</div>
+	</div>
 </header>
 <div class="fake-mode"></div>
 
@@ -222,7 +293,7 @@
 	<!-- class inner-page -->
 	<main class="page-main inner-page" id="pageMain">
 		<!-- banner -->
-		<div class="banner-section banner">
+		<div class="banner-section section">
 			<img src="img/carrer_banner.png" alt="mow" class="main-image banner-image">
 			<div class="banner-text">
 				<div class="container">
@@ -341,208 +412,6 @@
 				</ul>
 			</div>
 		</section>
-
-		<!-- about us -->
-				<section class="section about-section" id="chronologySection">
-			<div class="container">
-				<h2 class="section-title">Chronology</h2>
-				<div class="divider"></div>
-				<!-- slider -->
-				<div class="slider-cover">
-					<div class="slider about-slider" aria-label="about us slider">
-						<div class="slider-track">
-							<ul class="slider-list">
-								<li class="slide">
-									<div class="about-preview" style="background-image: url(img/temp/about1.png);">
-										<div class="bordered-inner">
-											<div class="right corner"></div>
-											<div class="left corner"></div>
-											<div class="inner">
-												<div class="preview-image image-cover">
-													<img src="img/temp/about1.png" alt="about">
-												</div>
-												<div class="caption">
-													<h3 class="title">Our passion</h3>
-													<div class="paragraph">
-														У 2004 році студія Best Way здійснила прорив, випустивши Soldiers: Heroes of World War II. Гру було створено на власному рушії Gem1, що дозволило реалізувати небачений рівень інтерактивності в жанрі RTS. Проєкт здивував журналістів і захопив серця гравців. Попередні огляди супроводжувалися схвальними відгуками, а після релізу гра кілька тижнів утримувалася в топі продажів у країнах СНД і Західної Європи. <br>
-														Успіх Soldiers: Heroes of World War II приніс студії визнання і став початком розширення ігрового всесвіту за ініціативи видавця. Протягом наступних років партнерська студія Dark Fox створила кілька самостійних проєктів на рушії Gem1 під назвою Диверсанти (Outfront: Saboteurs). Це підтримувало інтерес спільноти й дозволило Best Way зосередитися на експериментах із новим рушієм Gem2 та розробці Faces of War.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="slide">
-									<div class="about-preview" style="background-image: url(img/temp/about2.png);">
-										<div class="bordered-inner">
-											<div class="right corner"></div>
-											<div class="left corner"></div>
-											<div class="inner">
-												<div class="preview-image image-cover">
-													<img src="img/temp/about2.png" alt="about">
-												</div>
-												<div class="caption">
-													<h3 class="title">Our passion</h3>
-													<div class="paragraph">
-														At Best Way, we don’t just develop strategy games—we live and breathe them. Since 2000, our passion for deep, immersive gameplay has driven us to create genre-defining titles such as Soldiers: Heroes of World War II, Faces of War, and Men of War. With our proprietary Gem Engine, we push the boundaries of strategy gaming while empowering other creators to bring their visions to life. Every game we make is built on dedication, innovation, and a love for the craft.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="slide">
-									<div class="about-preview" style="background-image: url(img/temp/about3.jpg);">
-										<div class="bordered-inner">
-											<div class="right corner"></div>
-											<div class="left corner"></div>
-											<div class="inner">
-												<div class="preview-image image-cover">
-													<img src="img/temp/about3.jpg" alt="about">
-												</div>
-												<div class="caption">
-													<h3 class="title">At Best Way, we don’t just develop strategy games</h3>
-													<div class="paragraph">
-														We live and breathe them. Since 2000, our passion for deep, immersive gameplay has driven us to create genre-defining titles such as Soldiers: Heroes of World War II
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="slide">
-									<div class="about-preview" style="background-image: url(img/temp/about2.png);">
-										<div class="bordered-inner">
-											<div class="right corner"></div>
-											<div class="left corner"></div>
-											<div class="inner">
-												<div class="preview-image image-cover">
-													<img src="img/temp/about2.png" alt="about">
-												</div>
-												<div class="caption">
-													<h3 class="title">Our passion</h3>
-													<div class="paragraph">
-														At Best Way, we don’t just develop strategy games—we live and breathe them. Since 2000, our passion for deep, immersive gameplay has driven us to create genre-defining titles such as Soldiers: Heroes of World War II, Faces of War, and Men of War. With our proprietary Gem Engine, we push the boundaries of strategy gaming while empowering other creators to bring their visions to life. Every game we make is built on dedication, innovation, and a love for the craft.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-								<li class="slide">
-									<div class="about-preview" style="background-image: url(img/temp/about3.jpg);">
-										<div class="bordered-inner">
-											<div class="right corner"></div>
-											<div class="left corner"></div>
-											<div class="inner">
-												<div class="preview-image image-cover">
-													<img src="img/temp/about3.jpg" alt="about">
-												</div>
-												<div class="caption">
-													<h3 class="title">At Best Way, we don’t just develop strategy games</h3>
-													<div class="paragraph">
-														We live and breathe them. Since 2000, our passion for deep, immersive gameplay has driven us to create genre-defining titles such as Soldiers: Heroes of World War II
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<!-- dots -->
-						<div class="chronology-list" data-dots>
-							<ul class="slider-pagination" role="tablist" aria-label="Select a slide to show">
-								<li role="presentation">
-									<button class="dot active" type="button" role= "tab" aria-controls="splide01-slide01" aria-label="Go to slide 1"
-										aria-selected="true">1991
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide01-slide02" aria-label="Go to slide 2" tabindex="-1">
-										2000
-									</button>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2004
-									</button>
-								</li>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2010
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2014
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot active" type="button" role= "tab" aria-controls="splide01-slide01" aria-label="Go to slide 1"
-										aria-selected="true">1991
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide01-slide02" aria-label="Go to slide 2" tabindex="-1">
-										2000
-									</button>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2004
-									</button>
-								</li>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2010
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2014
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot active" type="button" role= "tab" aria-controls="splide01-slide01" aria-label="Go to slide 1"
-										aria-selected="true">1991
-									</button>
-								</li>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide01-slide02" aria-label="Go to slide 2" tabindex="-1">
-										2000
-									</button>
-								<li role="presentation">
-									<button class="dot" type="button" role="tab" aria-controls="splide02-slide03" aria-label="Go to slide 3" tabindex="-1">
-										2004
-									</button>
-								</li>
-								</li>
-							</ul>
-						</div>
-						<!-- /dots -->
-						<!-- arrows -->
-						<div class="slider-arrows">
-							<button class="button-arrow prev">
-								<span class="arrow">
-									<i class="icon icon-left-simple"></i>
-								</span>
-								<span class="caption odometer">1991</span>
-							</button>
-							<button class="button-arrow next">
-								<span class="caption odometer">2000</span>
-								<span class="arrow">
-									<i class="icon icon-right-simple"></i>
-								</span>
-							</button>
-						</div>
-						<!-- /arrows -->
-					</div>
-				</div>
-				<!-- / slider -->
-			</div>
-		</section>
-		<!-- / about us -->
 	</main>
 
 	<!-- carrer-popup -->
@@ -558,17 +427,10 @@
 				<div class="theme-text">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
 				</div>
-				<div class="tags simple-tags">
-					<div class="tag">C++</div>
-					<div class="tag">Dream Weaver</div>
-					<div class="tag">Unreal Engine</div>
-					<div class="tag">Blender</div>
-					<div class="tag">Scale Form</div>
-				</div>
 			</section>
 			<section>
 				<h4 class="subtitle">Requirements:</h4>
-				<ul class="dotted-list primary">
+				<ul>
 					<li>B.Sc. in Computer Science and/or Mathematics</li>
 					<li>Proficient with c++ and object-oriented programming</li>
 					<li>Development experience in the games industry a plus.</li>
@@ -580,6 +442,13 @@
 					Feel free to contact us: <a href="#" class="simple-link">https://www.linkedin.com</a>
 				</div>
 			</section>
+			<div class="tags simple-tags">
+				<div class="tag">C++</div>
+				<div class="tag">Dream Weaver</div>
+				<div class="tag">Unreal Engine</div>
+				<div class="tag">Blender</div>
+				<div class="tag">Scale Form</div>
+			</div>
 		</div>
 		<div class="bottom">
 			<div class="butons-group">
@@ -608,18 +477,20 @@
 				Sign up for our email newsletter to get info on game announcements and updates, details on special events and offers, and more from Best Way and our affiliates.
 			</div>
 			<div class="form-cover">
-				<form action="javascript:void()" class="form validate-form inline-form">
-					<div class="form-group">
-						<div class="alert">Enter the valid email</div>
-						<input type="email" placeholder="Enter Your Email" class="input email">
+				<form id="subscribeForm" class="form validate-form inline-form" novalidate="">
+					<div class="form-group error">
+						<div class="alert">Введіть дійсну електронну адресу</div>
+						<input name="email" type="email" placeholder="Введіть email" class="input email" required="">
+						<i class="icon icon-input-error icon-status"></i>
+						<i class="icon icon-input-success icon-status"></i>
 					</div>
 					<div class="button-group">
 						<button class="button button-grey-transparent" type="submit">
-							<span class="text">Subscribe NOW</span>
+							<span class="text">Підписатись</span>
 						</button>
 					</div>
 				</form>
-				<div class="subscribe-feedback" aria-live="polite">Дякуємо! Ви підписані на новини.</div>
+				<div class="form-feedback error" aria-live="polite">Відправлення форми не вдалося. Перевірте, будь ласка, введені дані.</div>
 			</div>
 		</div>
 	</div>
@@ -627,29 +498,14 @@
 	<!-- / subscribe-section -->
 
 	<!-- footer -->
-	<!-- scroll button -->
-<div class="scroll-button to-bottom" id="scrollButton">
-	<div class="container">
-		<button class="scroll-link" type="button" role="button">
-			<span class="inner">
-				<span class="bottom-text">
-					<span class="text">Scroll Down</span>
-					<span class="middle-text">to see more info</span>
-					<span class="mouse">
-						<span class="move"></span>
-					</span>
-				</span>
-				<span class="top-text">
-					<span class="text">Back to Top</span>
-					<img src="img/scroll-top.png" alt="icon">
-				</span>
-			</span>
-		</button>
+	<footer class="main-footer" id="mainFooter">
+	<div class="scroll-top" id="scrollButton">
+		<div class="container">
+			<a class="scroll-link" role="link" href="#mainHeader" data-scroll="#mainHeader">
+				<img src="img/scroll-top.png" alt="icon">
+			</a>
+		</div>
 	</div>
-</div>
-<!-- / scroll button -->
-
-<footer class="main-footer" id="mainFooter">
 	<div class="container">
 		<div class="footer-inner">
 			<div class="middle">
@@ -673,12 +529,7 @@
 						<div class="footer-subtitle">Contact us</div>
 						<div class="flex-inner">
 							<div class="cell">
-								<div class="item"><span class="label">Press: </span><a class="phone footer-link" href="tel:+380939998877">+380939998877</a></div>
-								<div class="item"><span class="label">Support: </span><a class="phone footer-link" href="tel:+380933332211">+380933332211</a></div>
-							</div>
-							<div class="cell">
 								<div class="item"><span class="label">Email for Press: </span><a class="email footer-link" href="mailto:ma&#105;&#108;&#064;mai&#108;&#046;m&#097;i&#108;">ma&#105;&#108;&#064;mai&#108;&#046;m&#097;i&#108;</a></div>
-								<div class="item"><span class="label">Support Email: </span><a class="email footer-link" href="mailto:&#109;a&#105;&#108;&#064;u&#107;r.net">&#109;a&#105;&#108;&#064;u&#107;r.net</a></div>
 							</div>
 						</div>
 					</div>
@@ -694,8 +545,9 @@
 					</div>
 				</div>
 			</div>
-			<div class="bottom align-center">
+			<div class="bottom">
 				© 2025 Best Way
+				<a href="#">Політика конфіденційності</a>
 			</div>
 		</div>
 	</div>

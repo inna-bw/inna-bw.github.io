@@ -7,7 +7,8 @@ window.addEventListener("DOMContentLoaded", function() {
 			success: 'success',
 			error: 'error',
 			focused: 'focused',
-			ignored: 'ignored'
+			ignored: 'ignored',
+			disabled: 'disabled'
 		}
 
 		form = null;
@@ -76,6 +77,22 @@ window.addEventListener("DOMContentLoaded", function() {
 				}
 			}
 
+			// --- ПЕРЕВІРКА НА ПОМИЛКИ ---
+			const hasErrors = this.form.querySelector(`.${this.classes.error}`);
+			const isDisabled = this.form.classList.contains(this.classes.disabled);
+			
+			if (!hasErrors && !isDisabled) {
+				console.log('no errors')
+				this.submitFormData(); // Викликаємо новий метод для відправки
+			} else {
+				const firstError = this.form.querySelector(`.${this.classes.error}`);
+				if (firstError) {
+					firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+				}
+				console.log(firstError)
+			}
+			// --- КІНЕЦЬ ПЕРЕВІРКИ ---
+
 			// callback
 			if (window.onContactFormSubmit) {
 				window.onContactFormSubmit(this);
@@ -98,7 +115,8 @@ window.addEventListener("DOMContentLoaded", function() {
 				for (let i = 0; i < allChartCounters.length; i++) {
 					allChartCounters[i].innerHTML = '0';
 				}
-			}
+			};
+			this.form.classList.remove(this.classes.disabled);
 		};
 
 		setFocusedClass(inputParent, hasValue){
@@ -108,6 +126,55 @@ window.addEventListener("DOMContentLoaded", function() {
 				inputParent.classList.remove(this.classes.focused);
 			}
 		};
+
+		submitFormData() {
+			const formData = new FormData(this.form);
+			const recipientEmail = this.form.dataset.mail;
+
+			console.log(formData)
+
+			if (!recipientEmail) {
+				console.error('Recipient email not specified in data-mail attribute.');
+				return;
+			}
+
+			formData.append('action', 'submit_form_data'); 
+			formData.append('recipient_email', recipientEmail); 
+
+			formData.append('_ajax_nonce', ajax_object.nonce);
+
+			this.form.classList.add('loading'); 
+
+			// *** ЗМІНЕНО: Використовуємо глобальну змінну, створену через wp_localize_script ***
+			fetch(ajax_object.ajax_url, { 
+				method: 'POST',
+				body: formData,
+			})
+			.then(response => response.json())
+			.then(data => {
+				this.form.classList.remove('loading');
+				const feedbackEl = this.form.parentElement.querySelector('.form-feedback');
+				console.log(data)
+				if (data.success) {
+					this.form.reset();
+					if (feedbackEl) {
+						feedbackEl.innerHTML = 'Дякуємо! Ваше повідомлення надіслано.';
+					}
+				} else {
+					if (feedbackEl) {
+						feedbackEl.innerHTML = `Помилка: ${data.data || 'Не вдалося надіслати повідомлення.'}`;
+					}
+				}
+			})
+			.catch(error => {
+				this.form.classList.remove('loading');
+				console.error('Error:', error);
+				const feedbackEl = this.form.parentElement.querySelector('.form-feedback');
+				if (feedbackEl) {
+						 feedbackEl.innerHTML = `Виникла помилка з'єднання. Спробуйте пізніше.`;
+				}
+			});
+		}
 
 		// FIX: нормальний обробник введення для input/textarea/select
 		onFieldInput(e){
@@ -144,13 +211,14 @@ window.addEventListener("DOMContentLoaded", function() {
 			if (validationSuccess) {
 				element.classList.add(this.classes.success);
 				element.classList.remove(this.classes.error);
+				this.form.classList.remove(this.classes.disabled);
 			} else {
 				element.classList.add(this.classes.error);
 				element.classList.remove(this.classes.success);
+				this.form.classList.add(this.classes.disabled);
 			}
 		};
 
-		// FIX: шукаємо .chart-counter у межах .form-group, а не nextElementSibling
 		setChartsCount(valLength, element){
 			if (!element) return;
 			const group = element.closest('.form-group');

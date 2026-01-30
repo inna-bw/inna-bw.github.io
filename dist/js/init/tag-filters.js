@@ -1,5 +1,3 @@
-document.addEventListener('DOMContentLoaded', function(){
-
 	class TagFilter {
 		filterAttribute = 'data-tag-filter';
 		filteredTagAttribute = 'data-tag';
@@ -26,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function(){
 				if (tag === 'all') {
 					cover.closest('.tag-item-cover').classList.add('visible');
 				} else {
-					if (cover.querySelectorAll(`[${attr}=${tag}]`) && cover.querySelectorAll(`[${attr}=${tag}]`).length) {
+					if (cover.querySelectorAll(`[${attr}="${tag}"]`).length > 0) {
 						cover.closest('.tag-item-cover').classList.add('visible');
 					} else {
 						cover.closest('.tag-item-cover').classList.remove('visible');
@@ -49,5 +47,3 @@ document.addEventListener('DOMContentLoaded', function(){
 		if (!filterGroup || !filterGroup.dataset.filter) return;
 		const tagFilter = new TagFilter(filterGroup);
 	});
-
-});
