@@ -1161,15 +1161,22 @@ document.addEventListener('DOMContentLoaded', function(){
 window.addEventListener("DOMContentLoaded", function() {
 	const blocks = document.querySelectorAll(".feature-background");
 	const enBlocks = document.querySelectorAll(".engine-background");
-	const width = window.innerWidth;
 
-	blocks.forEach(function(block) {
-		block.style.width = width + "px";
-	});
+	function updateWidths() {
+		const width = window.innerWidth;
 
-	enBlocks.forEach(function(enBlocks) {
-		enBlocks.style.width = width + "px";
-	});
+		blocks.forEach(function(block) {
+			block.style.width = width + "px";
+		});
+
+		enBlocks.forEach(function(block) {
+			block.style.width = width + "px";
+		});
+	}
+
+	updateWidths();
+
+	window.addEventListener("resize", updateWidths);
 });
 window.addEventListener("DOMContentLoaded", function() {
 
@@ -3851,6 +3858,64 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
+class RunningSlider {
+	constructor(root, speed = 0.5) {
+		this.root = root;
+		this.track = root.querySelector('.slider-track');
+		this.cover = root.querySelector('.slider-cover');
+
+		this.speed = speed;
+		this.position = 0;
+		this.isRunning = false;
+
+		this.init();
+	}
+
+	init() {
+		if (!this.track || !this.cover) return;
+
+		this.cloneSlides();
+		this.start();
+	}
+
+	cloneSlides() {
+		const children = Array.from(this.cover.children);
+		children.forEach(el => {
+			const clone = el.cloneNode(true);
+			this.cover.appendChild(clone);
+		});
+
+		this.totalWidth = this.cover.scrollWidth / 2;
+	}
+
+	start() {
+		this.isRunning = true;
+		this.animate();
+	}
+
+	animate() {
+		if (!this.isRunning) return;
+
+		this.position -= this.speed;
+
+		if (Math.abs(this.position) >= this.totalWidth) {
+			this.position = 0;
+		}
+
+		this.track.style.transform = `translateX(${this.position}px)`;
+
+		requestAnimationFrame(() => this.animate());
+	}
+}
+
+
+// init
+document.addEventListener('DOMContentLoaded', () => {
+	const slider = document.querySelector('.running-slider');
+	if (slider) {
+		new RunningSlider(slider, 0.4); // speed можеш міняти
+	}
+});
 // scrollButton
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -4129,6 +4194,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function () {
 
+	const waitForFinalEvent = (function(){
+		var timers = {};
+		return function (callback, ms, uniqueId) {
+			if (!uniqueId) uniqueId = "default";
+			if (timers[uniqueId]) clearTimeout(timers[uniqueId]);
+			timers[uniqueId] = setTimeout(callback, ms);
+		};
+	})();
+
+
 	class Slider {
 		sliderElment = null;
 		track = null;
@@ -4144,6 +4219,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		activeSlideEl = null;
 		activeIndex = 0;
+
+		_yearsVisible = 0;
+		_yearsOffset = 0;
+		_yearsStep = 0;
+		_yearsList = null;
+		_yearsDots = null;
+
 
 		currentTransition = 0;
 		isTouchDown = false;
@@ -4219,6 +4301,10 @@ document.addEventListener('DOMContentLoaded', function () {
 			this._bindEvents();
 
 			this._applyTransform(this._calcTranslation(this.activeIndex), true);
+			// force correct first measurement
+			setTimeout(() => {
+				this._updateChronologyPagination();
+			}, 0);
 
 			if (typeof this.options.onInit === 'function') {
 				this.options.onInit(this);
@@ -4251,9 +4337,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 			this._handlers.onResize = () => {
-				if (this._resizeRaf) cancelAnimationFrame(this._resizeRaf);
-				this._resizeRaf = requestAnimationFrame(() => this.update());
+				waitForFinalEvent(() => {
+					this.update();
+					this._updateChronologyPagination();
+				}, 200, 'chronology-resize');
 			};
+
+
 			window.addEventListener('resize', this._handlers.onResize);
 
 			this._handlers.onTouchStart = (e) => this._onTouchStart(e);
@@ -4362,6 +4452,28 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 			this._updateArrowsState();
+			// синхронізація років із активним слайдом
+
+			if (this._yearsVisible && this._yearsDots) {
+
+				const maxOffset = Math.max(0, this._yearsDots.length - this._yearsVisible);
+
+				// якщо активна точка вилізла праворуч
+				if (this.activeIndex >= this._yearsOffset + this._yearsVisible) {
+					this._yearsOffset = this.activeIndex - this._yearsVisible + 1;
+				}
+
+				// якщо вилізла ліворуч
+				if (this.activeIndex < this._yearsOffset) {
+					this._yearsOffset = this.activeIndex;
+				}
+
+				// clamp
+				this._yearsOffset = Math.max(0, Math.min(this._yearsOffset, maxOffset));
+
+				const translate = -(this._yearsStep * this._yearsOffset);
+				this._yearsList.style.transform = `translateX(${translate}px)`;
+			}
 		}
 
 		_setActiveSlide(index) {
@@ -4392,12 +4504,12 @@ document.addEventListener('DOMContentLoaded', function () {
 		_updateArrowsState() {
 			if (!this.prevButton || !this.nextButton) return;
 			if (this.options.loop) {
-				this.prevButton.classList.remove('disabled');
-				this.nextButton.classList.remove('disabled');
+				this.prevButton.classList.remove('hidden');
+				this.nextButton.classList.remove('hidden');
 				return;
 			}
-			this.prevButton.classList.toggle('disabled', this.activeIndex === 0);
-			this.nextButton.classList.toggle('disabled', this.activeIndex === this.totalSlides - 1);
+			this.prevButton.classList.toggle('hidden', this.activeIndex === 0);
+			this.nextButton.classList.toggle('hidden', this.activeIndex === this.totalSlides - 1);
 		}
 
 		_setupDots() { /* уже знайдені у init */ }
@@ -4566,6 +4678,189 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 
+		_updateChronologyPagination() {
+			const cover = this.sliderElment.querySelector('.dots-slide-cover');
+			const list  = this.sliderElment.querySelector('.slider-pagination');
+			const dotsRoot = this.sliderElment.querySelector('[data-dots]');
+			if (!dotsRoot) return;
+			if (!cover || !list) return;
+			cover.style.maxWidth = '';
+
+			const dots = Array.from(list.querySelectorAll('.dot'));
+			if (!dots.length) return;
+
+			const prevBtn = dotsRoot.querySelector('.button-prev-years');
+			const nextBtn = dotsRoot.querySelector('.button-next-years');
+
+			const containerWidth = cover.clientWidth - 1;
+
+			const dotRect = dots[0].getBoundingClientRect();
+			let step = dotRect.width;
+			if (step <= 0) step = dotRect.width + 22;
+
+			if (dots.length > 1) {
+				const first = dots[0].getBoundingClientRect();
+				const second = dots[1].getBoundingClientRect();
+				const dist = second.left - first.left;
+				if (dist > 0) step = dist;
+			}
+
+			let visibleCount = Math.max(
+				1,
+				Math.floor(containerWidth / step)
+			);
+			while (visibleCount > 1) {
+				const testIndex = visibleCount - 1;
+				if (!dots[testIndex]) break;
+
+				const firstRect = dots[0].getBoundingClientRect();
+				const lastRect = dots[testIndex].getBoundingClientRect();
+
+				const realWidth = lastRect.right - firstRect.left;
+
+				if (realWidth <= containerWidth) break;
+
+				visibleCount--;
+			}
+			console.log({
+				containerWidth,
+				step,
+				dots: dots.length,
+				visibleCount
+			});
+
+
+			if (visibleCount >= dots.length) {
+
+				list.style.transform = '';
+
+				prevBtn?.classList.add('hidden');
+				nextBtn?.classList.add('hidden');
+				dotsRoot.classList.remove('with-buttons');
+				return;
+			}
+
+			// ЗБЕРЕЖЕННЯ СТАНУ
+			this._yearsVisible = visibleCount;
+			this._yearsStep = step;
+			this._yearsList = list;
+			this._yearsDots = dots;
+
+			const maxOffsetSync = dots.length - visibleCount;
+			this._yearsOffset = Math.min(this._yearsOffset, maxOffsetSync);
+
+			dotsRoot.classList.add('with-buttons');
+
+			const lastVisibleIndex = visibleCount - 1;
+			if (!dots[lastVisibleIndex]) return;
+
+			const firstDotRect = dots[0].getBoundingClientRect();
+			const lastDotRect = dots[lastVisibleIndex].getBoundingClientRect();
+
+			// РЕАЛЬНА ширина по DOM
+			const visibleWidth = Math.ceil(lastDotRect.right - firstDotRect.left);
+
+			cover.style.maxWidth = `${visibleWidth}px`;
+
+			console.log({
+				containerWidth,
+				step,
+				fit: Math.floor(containerWidth / step)
+			});
+
+			const apply = () => {
+				const maxOffset = dots.length - visibleCount;
+				this._yearsOffset = Math.max(0, Math.min(this._yearsOffset, maxOffset));
+
+				const translate = -(step * this._yearsOffset);
+				list.style.transform = `translateX(${translate}px)`;
+				list.style.transition = 'transform .4s ease';
+
+				const currentGroupEnd = this._yearsOffset + visibleCount - 1;
+				const nextStartIndex = currentGroupEnd + 1;
+
+
+				if (nextBtn) {
+					const hasNext = this._yearsOffset + visibleCount < dots.length;
+
+					if (hasNext) {
+						const nextStartIndex = this._yearsOffset + visibleCount;
+						const first = dots[nextStartIndex].textContent;
+						const last = dots[dots.length - 1].textContent;
+
+						nextBtn.textContent = `${first}-${last}`;
+						nextBtn.classList.remove('hidden');
+					} else {
+						nextBtn.classList.add('hidden');
+					}
+				}
+
+
+				console.log({
+					offset: this._yearsOffset,
+					visibleCount,
+					nextStart: this._yearsOffset + visibleCount
+				});
+
+				if (prevBtn) {
+					if (this._yearsOffset > 0) {
+						prevBtn.textContent =
+							`${dots[0].textContent}-${dots[this._yearsOffset - 1].textContent}`;
+						prevBtn.classList.remove('hidden');
+					} else {
+						prevBtn.classList.add('hidden');
+					}
+				}
+
+
+				dotsRoot.classList.toggle('no-shadow', this._yearsOffset >= maxOffset);
+			};
+
+			if (prevBtn) {
+				prevBtn.onclick = (e) => {
+					e.preventDefault();
+
+					this._yearsOffset = 0;
+
+					const translate = -(this._yearsStep * this._yearsOffset);
+					this._yearsList.style.transform = `translateX(${translate}px)`;
+
+					apply();
+				};
+			}
+
+
+			if (nextBtn) {
+				nextBtn.onclick = (e) => {
+					e.preventDefault();
+
+					const visible = this._yearsVisible;
+					const maxOffset = this._yearsDots.length - visible;
+
+					this._yearsOffset = Math.min(
+						this._yearsOffset + visible,
+						maxOffset
+					);
+
+					const translate = -(this._yearsStep * this._yearsOffset);
+					this._yearsList.style.transform = `translateX(${translate}px)`;
+
+					apply();
+				};
+			}
+
+
+
+			// показуємо кнопки якщо вони потрібні
+			prevBtn?.classList.remove('hidden');
+			nextBtn?.classList.remove('hidden');
+
+			requestAnimationFrame(() => {
+				apply();
+			});
+
+		}
+
 		_clamp(n, min, max) { return Math.min(Math.max(n, min), max); }
 		_toBool(v) { if (typeof v === 'boolean') return v; if (typeof v === 'number') return v !== 0; return String(v).toLowerCase() === 'true'; }
 		_toInt(v, def = 0) { const x = parseInt(v, 10); return Number.isFinite(x) ? x : def; }
@@ -4581,11 +4876,19 @@ document.addEventListener('DOMContentLoaded', function () {
 			direction: 'horizontal',
 			autoplay: false,
 			loop: false,
-			onInit: function (api) {},
-			onTranslated: function (api) {}
+			onInit: function (api) {
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						api._updateChronologyPagination();
+					});
+				});
+			},
+			onTranslated: function (api) {
+			}
 		};
 
-		if (sliderEl.classList.contains('about-slider')) {
+		if (sliderEl.classList.contains('counter-slider')) {
+
 			const setDates = function () {
 				const dots = Array.from(sliderEl.querySelector('.chronology-list')?.querySelectorAll('.dot') || []);
 				const captions = dots.map(d => d.textContent.trim());
@@ -4609,18 +4912,28 @@ document.addEventListener('DOMContentLoaded', function () {
 					nextCaption.textContent = nextText;
 				}
 			};
-			options.onInit = setDates.bind(slider);
-			options.onTranslated = setDates.bind(slider);
+
+			options.onInit = function(api) {
+				setDates.call(api);
+				requestAnimationFrame(() => {
+					api._updateChronologyPagination();
+				});
+			};
+
+			options.onTranslated = function(api) {
+				setDates.call(api);
+			};
 		}
 
 		slider.init(options);
+		window.dispatchEvent(new Event('resize'));
 	});
 
 	/* =============================================================================
-	   МОБІЛЬНІ СЛАЙДЕРИ (кілька на сторінці)
-	   Кожен .mobile-slider-section .slider-cover -> окремий інстанс
-	   < 769px  => init
-	   >= 769px => destroy
+		 МОБІЛЬНІ СЛАЙДЕРИ (кілька на сторінці)
+		 Кожен .mobile-slider-section .slider-cover -> окремий інстанс
+		 < 769px  => init
+		 >= 769px => destroy
 	============================================================================= */
 
 	function setupMobileSectionSliders() {
