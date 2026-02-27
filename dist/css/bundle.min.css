@@ -4,7 +4,7 @@
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -12,10 +12,10 @@
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -319,7 +319,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -327,10 +327,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -385,7 +385,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -393,10 +393,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -518,13 +518,24 @@ ul > li {
   -ms-transform: translateY(0);
   transform: translateY(0)
 }
+@media (max-width:640px) {
+  .accordeon .accordeon-title:after {
+    top: 0;
+    -webkit-transform: none;
+    -ms-transform: none;
+    transform: none
+  }
+  .accordeon .title {
+    padding-right: 30px
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -532,10 +543,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -643,7 +654,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -651,10 +662,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -788,6 +799,9 @@ ul > li {
 .banner-section .banner-text .cell {
   width: 40%
 }
+.banner-section .banner-text .cell:last-child {
+  text-align: right
+}
 .banner-section .banner-text .cell .butons-group,
 .banner-section .banner-text .cell .logo-cover {
   text-align: center
@@ -801,7 +815,9 @@ ul > li {
   backdrop-filter: blur(25px);
   border: 1px solid rgba(255,255,255,.2);
   background-color: rgba(15,10,10,.2);
-  padding: 16px 24px
+  padding: 16px 24px;
+  display: inline-block;
+  text-align: left
 }
 .banner-section .banner-text .cell .game-detail dt {
   min-width: 140px
@@ -865,7 +881,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -873,10 +889,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -959,7 +975,8 @@ ul > li {
 }
 .breadcrumbs-list li a {
   -webkit-transition: 0s;
-  transition: 0s
+  transition: 0s;
+  text-decoration: none
 }
 .breadcrumbs-list li:after {
   position: absolute;
@@ -1024,7 +1041,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -1032,10 +1049,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -1305,7 +1322,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -1313,10 +1330,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -1513,7 +1530,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -1521,10 +1538,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -1688,7 +1705,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -1696,10 +1713,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -1751,6 +1768,41 @@ ul > li {
 :root {
   --chronology_arrow-size: 40px;
   --chronology_slider_padding: 32px
+}
+.chronology-section .slider-list {
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: -webkit-grab;
+  cursor: grab
+}
+.chronology-section .slider-list:active {
+  cursor: -webkit-grabbing;
+  cursor: grabbing
+}
+.chronology-section .mobile-caption {
+  display: none
+}
+.chronology-section .slider-cover {
+  overflow: visible
+}
+.chronology-section .decades {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  gap: 12px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center
+}
+.chronology-section .decade {
+  background: 0 0;
+  border: none;
+  cursor: pointer;
+  font-weight: 700
 }
 .chronology-slider .slider-arrows {
   position: absolute;
@@ -1884,7 +1936,8 @@ ul > li {
 .chronology-slider .slider-track {
   margin-bottom: var(--chronology_slider_padding)
 }
-.chronology-slider [data-dots] {
+.chronology-slider .dots-slide-cover {
+  gap: 16px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1892,41 +1945,12 @@ ul > li {
   -webkit-box-align: start;
   -ms-flex-align: start;
   align-items: start;
-  gap: 22px;
   -webkit-box-pack: center;
   -ms-flex-pack: center;
-  justify-content: center
+  justify-content: center;
+  position: relative
 }
-.chronology-slider [data-dots] .dots-slide-cover {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  min-width: 0;
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto
-}
-.chronology-slider [data-dots] .dots-slide-cover:before {
-  position: absolute;
-  top: 13px;
-  left: 2px;
-  right: 32px;
-  height: 2px;
-  background-color: #fff;
-  content: "";
-  z-index: 0
-}
-.chronology-slider [data-dots] .button-next-years,
-.chronology-slider [data-dots] .button-prev-years {
-  display: none
-}
-.chronology-slider [data-dots].with-buttons {
-  position: relative;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between
-}
-.chronology-slider [data-dots].with-buttons:before {
+.chronology-slider .dots-slide-cover:before {
   position: absolute;
   top: 13px;
   left: 32px;
@@ -1936,82 +1960,29 @@ ul > li {
   content: "";
   z-index: 0
 }
-.chronology-slider [data-dots].with-buttons .dots-slide-cover:before {
-  opacity: 0
-}
-.chronology-slider [data-dots] .button-next-years,
-.chronology-slider [data-dots] .button-prev-years {
-  display: inline-block;
-  background-color: transparent;
-  border: 1px solid transparent;
-  cursor: pointer;
-  position: relative;
-  -webkit-transition: .2s;
-  transition: .2s;
-  position: relative;
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding-top: 42px;
-  z-index: 4;
-  white-space: nowrap
-}
-.chronology-slider [data-dots] .button-next-years:after,
-.chronology-slider [data-dots] .button-prev-years:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  background-color: #000;
-  border-radius: 50%
-}
-.chronology-slider [data-dots] .button-next-years:before,
-.chronology-slider [data-dots] .button-prev-years:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  background-color: transparent;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  width: 28px;
-  height: 28px;
-  z-index: 1;
-  -webkit-transition: .1s;
-  transition: .1s;
-  background-color: #0f0a0a;
-  -webkit-box-shadow: #0f0a0a 0 1px 5px,#0f0a0a 0 0 0 4px;
-  box-shadow: #0f0a0a 0 1px 5px,#0f0a0a 0 0 0 4px
-}
-.chronology-slider [data-dots] .button-next-years:hover:before,
-.chronology-slider [data-dots] .button-prev-years:hover:before {
-  border-width: 6px
-}
-.chronology-slider [data-dots] .button-next-years.active,
-.chronology-slider [data-dots] .button-prev-years.active {
-  color: #ec1e24
-}
-.chronology-slider [data-dots] .button-next-years.active:before,
-.chronology-slider [data-dots] .button-prev-years.active:before {
-  border-width: 6px;
-  border-color: #ec1e24
+.chronology-slider [data-dots] {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center
 }
 .chronology-slider [data-dots] .slider-pagination {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  gap: 22px
+  gap: 16px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between
 }
-.chronology-slider [data-dots] .dot {
+.chronology-slider .decade,
+.chronology-slider .dot {
   position: relative;
   font-size: 16px;
   font-weight: 700;
@@ -2023,7 +1994,8 @@ ul > li {
   z-index: 4;
   min-width: 40px
 }
-.chronology-slider [data-dots] .dot:after {
+.chronology-slider .decade:after,
+.chronology-slider .dot:after {
   content: "";
   position: absolute;
   top: 0;
@@ -2034,7 +2006,8 @@ ul > li {
   background-color: #000;
   border-radius: 50%
 }
-.chronology-slider [data-dots] .dot:before {
+.chronology-slider .decade:before,
+.chronology-slider .dot:before {
   content: "";
   position: absolute;
   top: 0;
@@ -2054,13 +2027,16 @@ ul > li {
   -webkit-box-shadow: #0f0a0a 0 1px 5px,#0f0a0a 0 0 0 4px;
   box-shadow: #0f0a0a 0 1px 5px,#0f0a0a 0 0 0 4px
 }
-.chronology-slider [data-dots] .dot:hover:before {
+.chronology-slider .decade:hover:before,
+.chronology-slider .dot:hover:before {
   border-width: 6px
 }
-.chronology-slider [data-dots] .dot.active {
+.chronology-slider .decade.active,
+.chronology-slider .dot.active {
   color: #ec1e24
 }
-.chronology-slider [data-dots] .dot.active:before {
+.chronology-slider .decade.active:before,
+.chronology-slider .dot.active:before {
   border-width: 6px;
   border-color: #ec1e24
 }
@@ -2089,8 +2065,17 @@ ul > li {
   :root {
     --chronology_slider_padding: 24px
   }
+  .chronology-section .slider-cover {
+    margin-left: -24px;
+    margin-right: -24px
+  }
+  .chronology-section .mobile-caption {
+    display: block
+  }
   .chronology-slider .slider-arrows {
-    display: none
+    left: 0;
+    right: 0;
+    top: 25%
   }
   .chronology-slider .slide .chronology-preview img {
     display: block;
@@ -2099,10 +2084,24 @@ ul > li {
     max-width: 50%;
     width: auto
   }
+  .chronology-slider .decade,
+  .chronology-slider .dot {
+    font-size: 14px
+  }
+  .chronology-section .decades,
+  .chronology-slider .dots-slide-cover,
+  .chronology-slider [data-dots] .slider-pagination {
+    gap: 8px
+  }
 }
 @media (max-width:480px) {
   .chronology-slider .slide .chronology-preview img {
-    max-width: 100%
+    max-width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: 24px
+  }
+  .chronology-slider .chronology-list {
+    display: none
   }
 }
 :root {
@@ -2111,7 +2110,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -2119,10 +2118,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -2397,6 +2396,10 @@ ul > li {
     --icons-list-gap: 24px;
     --icons-list-columns: 1
   }
+  .contact-box {
+    margin-left: -24px;
+    margin-right: -24px
+  }
   .contact-box dl {
     margin-bottom: 16px
   }
@@ -2423,7 +2426,7 @@ ul > li {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -2431,10 +2434,10 @@ ul > li {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -2535,7 +2538,7 @@ details h3:last-child {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -2543,10 +2546,10 @@ details h3:last-child {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -2831,7 +2834,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -2839,10 +2842,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -2895,13 +2898,10 @@ discord-widget widget-footer widget-button-join:hover {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 24px
+  margin: 24px 0
 }
 .documentation-link + .documentation-link {
   margin-top: 16px
-}
-.documentation-link:last-child {
-  margin-bottom: 0
 }
 .documentation-link .image-link {
   width: 188px;
@@ -3008,7 +3008,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3016,10 +3016,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -3194,7 +3194,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3202,10 +3202,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -3338,7 +3338,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3346,10 +3346,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -3414,10 +3414,10 @@ discord-widget widget-footer widget-button-join:hover {
   -ms-flex-pack: justify;
   justify-content: space-between
 }
-.engine-preview .logo {
+.engine-preview .engine-logo {
   padding: 90px 80px 50px
 }
-.engine-preview .logo img {
+.engine-preview .engine-logo img {
   max-width: 100%
 }
 .engine-preview .caption {
@@ -3473,7 +3473,7 @@ discord-widget widget-footer widget-button-join:hover {
   transform: translateZ(0) scale(1.02)
 }
 @media (max-width:993px) {
-  .engine-preview .logo {
+  .engine-preview .engine-logo {
     padding: 50px 40px 50px
   }
   .engine-preview .caption .title {
@@ -3493,7 +3493,7 @@ discord-widget widget-footer widget-button-join:hover {
   }
 }
 @media (max-width:768px) {
-  .engine-preview .logo {
+  .engine-preview .engine-logo {
     padding: 40px 32px 24px
   }
 }
@@ -3511,7 +3511,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3519,10 +3519,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -3596,7 +3596,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3604,10 +3604,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -3655,6 +3655,9 @@ discord-widget widget-footer widget-button-join:hover {
     --section-margin: 32px;
     --section-title-margin: 32px
   }
+}
+.about-section .feature-card:first-child {
+  margin-top: 0
 }
 .feature-card {
   position: relative;
@@ -3724,7 +3727,7 @@ discord-widget widget-footer widget-button-join:hover {
 }
 .feature-card img,
 .feature-card video {
-  max-width: 100%;
+  max-width: 90%;
   width: 100%
 }
 .feature-card ol,
@@ -3734,12 +3737,27 @@ discord-widget widget-footer widget-button-join:hover {
 .feature-card.background {
   overflow: hidden
 }
+.feature-card.right .col-xs-12:first-child {
+  text-align: right
+}
+.feature-card.left .col-xs-12:first-child {
+  text-align: left
+}
+.feature-card a {
+  color: #ec1e24;
+  text-decoration: underline
+}
+.feature-card a:hover {
+  text-decoration: none
+}
 @media (max-width:1200px) {
   .feature-card {
     padding: 32px 0
   }
-  .feature-card img {
-    width: 100%
+  .feature-card img,
+  .feature-card video {
+    width: 100%;
+    max-width: 100%
   }
   .feature-card .feature-backgroung {
     right: 0
@@ -3774,13 +3792,22 @@ discord-widget widget-footer widget-button-join:hover {
     margin-bottom: 24px
   }
 }
+@media (max-width:640px) {
+  .feature-card img,
+  .feature-card video {
+    margin-left: -24px;
+    margin-right: -24px;
+    width: calc(100% + 48px);
+    max-width: unset
+  }
+}
 :root {
   --large-title-font-size: 48px;
   --h1-font-size: 40px;
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -3788,10 +3815,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -4361,6 +4388,9 @@ discord-widget widget-footer widget-button-join:hover {
     padding-top: 12px;
     padding-bottom: 13px
   }
+  [type=reset] {
+    margin-bottom: 16px
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -4368,7 +4398,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -4376,10 +4406,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -4566,8 +4596,7 @@ discord-widget widget-footer widget-button-join:hover {
     font-size: 24px
   }
   .game-preview .game-logo {
-    width: calc(100% - 48px);
-    height: 120px
+    width: calc(100% - 48px)
   }
 }
 @media (max-width:1199px) {
@@ -4750,7 +4779,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -4758,10 +4787,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -4836,7 +4865,11 @@ discord-widget widget-footer widget-button-join:hover {
   margin: 0 auto;
   padding-right: 24px;
   padding-left: 24px;
-  max-width: 1008px
+  max-width: 876px
+}
+.container-smaller .smaller-inner {
+  margin-right: -24px;
+  margin-left: -24px
 }
 .row {
   -webkit-box-sizing: border-box;
@@ -6067,7 +6100,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -6075,10 +6108,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -6328,7 +6361,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -6336,10 +6369,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -6538,7 +6571,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -6546,10 +6579,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -7115,9 +7148,6 @@ discord-widget widget-footer widget-button-join:hover {
   .main-header .header-container {
     gap: 12px
   }
-  .main-header .logo {
-    width: 96px
-  }
   .main-header .right-side {
     gap: 8px;
     -webkit-box-pack: end;
@@ -7136,6 +7166,10 @@ discord-widget widget-footer widget-button-join:hover {
     font-size: 12px;
     top: 55%
   }
+  .main-header .language .dropdown .dropdown-inner .item {
+    padding-left: 5px;
+    padding-right: 5px
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -7143,7 +7177,7 @@ discord-widget widget-footer widget-button-join:hover {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -7151,10 +7185,10 @@ discord-widget widget-footer widget-button-join:hover {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -7417,6 +7451,9 @@ body.light .main-header .menu-tab .title {
 }
 body.light .main-header .header-navigation ul li a.active {
   color: #ec1e24
+}
+body.light .banner-section .slogan {
+  color: #fff
 }
 body.light .main-header .menu-button:hover {
   background-color: #969696
@@ -7717,7 +7754,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -7725,10 +7762,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -7981,7 +8018,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -7989,10 +8026,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -8192,8 +8229,16 @@ body.light .chronology-slider [data-dots] .dot:before {
     justify-content: flex-start;
     padding-bottom: 16px
   }
+  .general-caption {
+    max-width: 100%;
+    margin-top: 24px;
+    font-size: var(--h3-font-size)
+  }
 }
 @media (max-width:640px) {
+  .title-with-links .social-group {
+    margin-top: 24px
+  }
   .full-width-xs.row {
     margin-right: -36px;
     margin-left: -36px
@@ -8208,7 +8253,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -8216,10 +8261,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -8350,7 +8395,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -8358,10 +8403,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -8618,7 +8663,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -8626,10 +8671,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -8840,6 +8885,11 @@ body.light .chronology-slider [data-dots] .dot:before {
   :root {
     --press-games-list-columns: 2
   }
+  .press-engines-list .press-engine-link .icon {
+    font-size: 24px;
+    top: 16px;
+    right: 16px
+  }
 }
 :root {
   --large-title-font-size: 48px;
@@ -8847,7 +8897,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -8855,10 +8905,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -8939,6 +8989,11 @@ body.light .chronology-slider [data-dots] .dot:before {
   :root {
     --preview-list-columns: 2
   }
+  .preview-list-simple .item {
+    margin-left: -24px;
+    margin-right: -24px;
+    width: calc(100% + 48px)
+  }
 }
 @media (max-width:480px) {
   :root {
@@ -8951,7 +9006,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -8959,10 +9014,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -9277,7 +9332,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -9285,10 +9340,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -9358,7 +9413,9 @@ body.light .chronology-slider [data-dots] .dot:before {
   z-index: 2
 }
 .banner-section .slogan {
-  text-shadow: 1px 1px 2px #000
+  text-shadow: 1px 1px 2px #000;
+  padding-block: 24px;
+  font-size: var(--h2-font-size)
 }
 .running-slider {
   height: 100%
@@ -9376,7 +9433,9 @@ body.light .chronology-slider [data-dots] .dot:before {
 .running-slider .slider-cover .slide {
   height: 100%;
   width: 20%;
-  min-width: 315px
+  width: 315px;
+  min-width: 315px;
+  max-width: 315px
 }
 .running-slider .game-single {
   height: 100%;
@@ -9413,7 +9472,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -9421,10 +9480,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -9700,7 +9759,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -9708,10 +9767,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10214,7 +10273,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10222,10 +10281,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10345,7 +10404,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10353,10 +10412,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10470,6 +10529,9 @@ body.light .chronology-slider [data-dots] .dot:before {
   opacity: .5;
   pointer-events: none
 }
+.slider-cover.mobile-slider-cover {
+  overflow: visible
+}
 .slider-cover .gallery-slider {
   width: 50%;
   margin: 0 auto
@@ -10558,6 +10620,9 @@ body.light .chronology-slider [data-dots] .dot:before {
   .slider-cover .slider.gallery-slider .slider-list li > div {
     height: 250px
   }
+  .slider-cover {
+    margin-bottom: 24px
+  }
   .slider-cover .slider-dots {
     margin-top: 24px
   }
@@ -10568,7 +10633,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10576,10 +10641,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10682,7 +10747,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10690,10 +10755,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10759,7 +10824,8 @@ body.light .chronology-slider [data-dots] .dot:before {
   z-index: 2
 }
 .subscribe-section .logo {
-  margin-bottom: 20px
+  margin-bottom: 20px;
+  max-width: 200px
 }
 .subscribe-section .title {
   font-size: var(--h2-font-size);
@@ -10769,7 +10835,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   color: #fff
 }
 .subscribe-section .caption {
-  font-size: 20px;
+  font-size: 18px;
   color: #d7d6d6;
   max-width: 50%;
   margin: 0 auto
@@ -10811,7 +10877,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10819,10 +10885,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -10943,7 +11009,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -10951,10 +11017,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -11107,7 +11173,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -11115,10 +11181,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -11195,7 +11261,7 @@ body.light .chronology-slider [data-dots] .dot:before {
   --h2-font-size: 32px;
   --h3-font-size: 20px;
   --largest-text-font-size: 24px;
-  --large-text-font-size: 20px;
+  --large-text-font-size: 18px;
   --medium-text-font-size: 18px;
   --normal-text-font-size: 16px;
   --small-text-font-size: 14px;
@@ -11203,10 +11269,10 @@ body.light .chronology-slider [data-dots] .dot:before {
   --font-size-large: 18px;
   --section-title-font-size: 48px;
   --subtitle-font-size: 32px;
-  --article-title-font-size: 20px;
+  --article-title-font-size: 18px;
   --buttons-font-size: 32px;
   --buttons-font-size-small: 20px;
-  --header-links-font-size: 20px;
+  --header-links-font-size: 18px;
   --border-radius: 4px;
   --margin: 15px;
   --section-title-margin: 50px;
@@ -11327,6 +11393,34 @@ mark {
   color: #000;
   background-color: #8c0000
 }
+.container-small h1 {
+  line-height: 1.2;
+  font-size: var(--section-title-font-size);
+  font-weight: 900;
+  margin: 0 0 32px
+}
+.container-small h2 {
+  line-height: 1.2;
+  font-size: var(--h2-font-size);
+  font-weight: 900;
+  margin: 0 0 32px
+}
+.container-small h3 {
+  font-size: var(--largest-text-font-size);
+  font-weight: 900;
+  margin: 0 0 32px
+}
+.container-small h4 {
+  font-size: calc(var(--largest-text-font-size) * .9);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 32px
+}
+.container-small h5 {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0 0 32px
+}
 .popup .wp-block-image img,
 .section article .wp-block-image img,
 article .wp-block-image img {
@@ -11395,23 +11489,23 @@ article .date {
   font-size: var(--article-title-font-size);
   margin: 32px 0
 }
-.popup ul,
-.section article ul,
-article ul {
+.popup ul:not(.breadcrumbs-list),
+.section article ul:not(.breadcrumbs-list),
+article ul:not(.breadcrumbs-list) {
   margin-bottom: 32px
 }
-.popup ul li,
-.section article ul li,
-article ul li {
+.popup ul:not(.breadcrumbs-list) li,
+.section article ul:not(.breadcrumbs-list) li,
+article ul:not(.breadcrumbs-list) li {
   position: relative;
   padding-left: 15px;
   line-height: 1.6;
   font-size: var(--large-text-font-size);
   margin-bottom: 0
 }
-.popup ul li:before,
-.section article ul li:before,
-article ul li:before {
+.popup ul:not(.breadcrumbs-list) li:before,
+.section article ul:not(.breadcrumbs-list) li:before,
+article ul:not(.breadcrumbs-list) li:before {
   position: absolute;
   content: "";
   height: 4px;
@@ -11421,14 +11515,14 @@ article ul li:before {
   left: 0;
   background-color: #ec1e24
 }
-.popup ul li > ul,
-.section article ul li > ul,
-article ul li > ul {
+.popup ul:not(.breadcrumbs-list) li > ul,
+.section article ul:not(.breadcrumbs-list) li > ul,
+article ul:not(.breadcrumbs-list) li > ul {
   margin-top: 24px
 }
-.popup ul li > ul li:before,
-.section article ul li > ul li:before,
-article ul li > ul li:before {
+.popup ul:not(.breadcrumbs-list) li > ul li:before,
+.section article ul:not(.breadcrumbs-list) li > ul li:before,
+article ul:not(.breadcrumbs-list) li > ul li:before {
   background-color: transparent;
   height: 6px;
   width: 6px;
@@ -11470,11 +11564,6 @@ article p {
   margin: 0 0 32px;
   line-height: 1.66
 }
-.popup p:last-child,
-.section article p:last-child,
-article p:last-child {
-  margin-bottom: 0
-}
 .popup a,
 .section article a,
 article a {
@@ -11485,6 +11574,11 @@ article a {
 .section article a:visited,
 article a:visited {
   color: #8c0000
+}
+.popup a:hover,
+.section article a:hover,
+article a:hover {
+  text-decoration: none
 }
 .popup a.button:visited,
 .section article a.button:visited,
@@ -11571,17 +11665,71 @@ p a:hover {
 .simple-link:hover {
   color: #ec1e24
 }
+ul.wp-block-list {
+  margin-bottom: 32px
+}
+ul.wp-block-list li {
+  position: relative;
+  padding-left: 15px;
+  line-height: 1.6;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 0
+}
+ul.wp-block-list li:before {
+  position: absolute;
+  content: "";
+  height: 4px;
+  width: 4px;
+  border-radius: 50%;
+  top: 13px;
+  left: 0;
+  background-color: #ec1e24
+}
+ul.wp-block-list li > ul {
+  margin-top: 24px
+}
+ul.wp-block-list li > ul li:before {
+  background-color: transparent;
+  height: 6px;
+  width: 6px;
+  border: 1px solid #ec1e24
+}
+ol.wp-block-list {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 32px;
+  list-style-type: none;
+  counter-reset: counter
+}
+ol.wp-block-list li {
+  position: relative;
+  padding-left: 24px;
+  line-height: 1.6;
+  font-size: var(--large-text-font-size);
+  margin-bottom: 0;
+  counter-increment: counter
+}
+ol.wp-block-list li:before {
+  position: absolute;
+  content: counter(counter) ". ";
+  top: 1px;
+  left: 0;
+  color: #ec1e24
+}
 @media (max-width:1200px) {
   .dotted-list {
     max-width: 100%
   }
 }
 @media (max-width:768px) {
+  .container-small h1,
+  .container-small h2,
   article h1,
   article h2 {
     line-height: 1;
     margin-bottom: 24px
   }
+  .container-small .date,
   article .date {
     margin: 24px 0
   }

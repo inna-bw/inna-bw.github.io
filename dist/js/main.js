@@ -582,6 +582,417 @@ document.addEventListener('DOMContentLoaded', function(){
 		localStorage.setItem('bw-career-title', titleText);
 	});
 })
+class ChronologySlider {
+	constructor(root) {
+		this.root = root;
+
+		this.track = root.querySelector('.slider-list');
+		this.slides = Array.from(root.querySelectorAll('.slide'));
+		this.dots = Array.from(root.querySelectorAll('.dot'));
+
+		this.dotsCover = root.querySelector('.dots-slide-cover');
+		this.pagination = root.querySelector('.slider-pagination');
+
+		this.prevBtn = root.querySelector('.button-arrow.prev');
+		this.nextBtn = root.querySelector('.button-arrow.next');
+		this.prevCaption = this.prevBtn?.querySelector('.odometer');
+		this.nextCaption = this.nextBtn?.querySelector('.odometer');
+		this.prevOdo = null;
+		this.nextOdo = null;
+
+		this.current = 0;
+		this.groups = [];
+		this.groupMap = new Map();
+
+		// групуємо тільки якщо точок більше 10
+		this.isGroupingEnabled = this.dots.length > 10;
+		this.groupSize = this.getGroupSize();
+
+		this.resizeTimer = null;
+
+		// pointer state
+		this.isPointerDown = false;
+		this.startX = 0;
+		this.currentX = 0;
+		this.deltaX = 0;
+		this.pointerId = null;
+
+		this.onResize = this.onResize.bind(this);
+		this.onDotClick = this.onDotClick.bind(this);
+		this.onPrev = this.onPrev.bind(this);
+		this.onNext = this.onNext.bind(this);
+
+		this.onPointerDown = this.onPointerDown.bind(this);
+		this.onPointerMove = this.onPointerMove.bind(this);
+		this.onPointerUp = this.onPointerUp.bind(this);
+		this.onPointerCancel = this.onPointerCancel.bind(this);
+
+		this.init();
+	}
+
+	// ---------- INIT ----------
+
+	init() {
+		if (!this.track || !this.slides.length) return;
+
+		this.buildGroups();
+		this.buildDecadesNav();
+		this.bindEvents();
+		this.initOdometers();
+		this.update();
+
+		window.addEventListener('resize', this.onResize);
+
+		this.track.addEventListener('pointerdown', this.onPointerDown);
+		window.addEventListener('pointermove', this.onPointerMove);
+		window.addEventListener('pointerup', this.onPointerUp);
+		window.addEventListener('pointercancel', this.onPointerCancel);
+	}
+
+	// ---------- GROUPS ----------
+
+	buildGroups() {
+		this.groups = [];
+		this.groupMap.clear();
+
+		// якщо групування вимкнене — одна група
+		if (!this.isGroupingEnabled) {
+			const key = 'all';
+
+			this.groups.push(key);
+			this.groupMap.set(key, this.dots);
+
+			this.dots.forEach((dot, index) => {
+				dot.dataset.group = key;
+				dot.dataset.index = index;
+			});
+
+			return;
+		}
+
+		// --- первинне групування по bucket ---
+		this.dots.forEach((dot, index) => {
+			const year = parseInt(dot.textContent.trim(), 10);
+			const size = this.groupSize;
+
+			const bucket = Math.floor(year / size) * size;
+			const key = `bucket-${bucket}`;
+
+			if (!this.groupMap.has(key)) {
+				this.groupMap.set(key, []);
+				this.groups.push(key);
+			}
+
+			this.groupMap.get(key).push(dot);
+			dot.dataset.group = key;
+			dot.dataset.index = index;
+		});
+
+		// --- нормалізація підписів по реальних роках ---
+		const normalizedGroups = [];
+		const normalizedMap = new Map();
+
+		this.groups.forEach(oldKey => {
+			const dots = this.groupMap.get(oldKey);
+			if (!dots?.length) return;
+
+			const years = dots.map(d =>
+				parseInt(d.textContent.trim(), 10)
+			);
+
+			const min = Math.min(...years);
+			const max = Math.max(...years);
+
+			const label = min === max ? `${min}` : `${min}-${max}`;
+
+			normalizedGroups.push(label);
+			normalizedMap.set(label, dots);
+
+			dots.forEach(dot => {
+				dot.dataset.group = label;
+			});
+		});
+
+		this.groups = normalizedGroups;
+		this.groupMap = normalizedMap;
+	}
+
+	getGroupSize() {
+		const w = window.innerWidth;
+
+		if (!this.isGroupingEnabled) {
+			return this.dots.length;
+		}
+
+		if (w < 640) return 2;
+		if (w < 768) return 5;
+
+		return 10;
+	}
+
+	// ---------- DECADES NAV ----------
+
+	buildDecadesNav() {
+		if (!this.dotsCover || !this.pagination) return;
+
+		this.prevDecades = document.createElement('div');
+		this.prevDecades.className = 'decades decades-prev';
+
+		this.nextDecades = document.createElement('div');
+		this.nextDecades.className = 'decades decades-next';
+
+		this.dotsCover.insertBefore(this.prevDecades, this.pagination);
+		this.dotsCover.appendChild(this.nextDecades);
+	}
+
+	updateDecadesNav() {
+		if (!this.isGroupingEnabled || this.groups.length <= 1) {
+			if (this.prevDecades) this.prevDecades.innerHTML = '';
+			if (this.nextDecades) this.nextDecades.innerHTML = '';
+
+			this.dots.forEach(dot => {
+				dot.parentElement.style.display = '';
+			});
+
+			return;
+		}
+
+		const activeDot = this.dots[this.current];
+		if (!activeDot) return;
+
+		const activeGroup = activeDot.dataset.group;
+		const groupIndex = this.groups.indexOf(activeGroup);
+
+		this.prevDecades.innerHTML = '';
+		this.nextDecades.innerHTML = '';
+
+		for (let i = 0; i < groupIndex; i++) {
+			this.prevDecades.appendChild(
+				this.createDecadeButton(this.groups[i])
+			);
+		}
+
+		for (let i = groupIndex + 1; i < this.groups.length; i++) {
+			this.nextDecades.appendChild(
+				this.createDecadeButton(this.groups[i])
+			);
+		}
+
+		this.updateVisibleGroup(activeGroup);
+	}
+
+	createDecadeButton(groupKey) {
+		const btn = document.createElement('button');
+		btn.className = 'decade';
+		btn.type = 'button';
+		btn.textContent = groupKey;
+
+		btn.addEventListener('click', () => {
+			const dots = this.groupMap.get(groupKey);
+			if (!dots?.length) return;
+
+			const index = parseInt(dots[0].dataset.index, 10);
+			this.goTo(index);
+		});
+
+		return btn;
+	}
+
+	updateVisibleGroup(activeGroup) {
+		this.dots.forEach(dot => {
+			dot.parentElement.style.display =
+				dot.dataset.group === activeGroup ? '' : 'none';
+		});
+	}
+
+	// ---------- Odometer ----------
+
+	initOdometers() {
+		if (window.Odometer) {
+			if (this.prevCaption) {
+				this.prevOdo = new Odometer({
+					el: this.prevCaption,
+					format: '',
+				});
+			}
+
+			if (this.nextCaption) {
+				this.nextOdo = new Odometer({
+					el: this.nextCaption,
+					format: '',
+				});
+			}
+		}
+
+		if (this.prevCaption)
+			this.prevCaption.textContent = this.prevCaption.textContent.trim();
+		if (this.nextCaption)
+			this.nextCaption.textContent = this.nextCaption.textContent.trim();
+	}
+
+	// ---------- EVENTS ----------
+
+	bindEvents() {
+		this.dots.forEach(dot => {
+			dot.addEventListener('click', this.onDotClick);
+		});
+
+		this.prevBtn?.addEventListener('click', this.onPrev);
+		this.nextBtn?.addEventListener('click', this.onNext);
+	}
+
+	onDotClick(e) {
+		const index = parseInt(e.currentTarget.dataset.index, 10);
+		this.goTo(index);
+	}
+
+	onPrev() {
+		this.goTo(this.current - 1);
+	}
+
+	onNext() {
+		this.goTo(this.current + 1);
+	}
+
+	onResize() {
+		clearTimeout(this.resizeTimer);
+
+		this.resizeTimer = setTimeout(() => {
+			this.isGroupingEnabled = this.dots.length > 10;
+
+			const newSize = this.getGroupSize();
+			if (newSize === this.groupSize) return;
+
+			this.groupSize = newSize;
+
+			this.buildGroups();
+			this.updateDecadesNav();
+			this.update();
+		}, 120);
+	}
+
+	// ---------- POINTER DRAG ----------
+
+	onPointerDown(e) {
+		if (e.pointerType === 'mouse' && e.button !== 0) return;
+
+		this.isPointerDown = true;
+		this.pointerId = e.pointerId;
+
+		this.startX = e.clientX;
+		this.currentX = this.startX;
+		this.deltaX = 0;
+
+		this.track.style.transition = 'none';
+		this.track.setPointerCapture?.(this.pointerId);
+	}
+
+	onPointerMove(e) {
+		if (!this.isPointerDown) return;
+		if (this.pointerId !== e.pointerId) return;
+
+		this.currentX = e.clientX;
+		this.deltaX = this.currentX - this.startX;
+
+		const percentOffset =
+			(-this.current * 100) +
+			(this.deltaX / this.root.offsetWidth) * 100;
+
+		this.track.style.transform = `translateX(${percentOffset}%)`;
+	}
+
+	onPointerUp(e) {
+		if (!this.isPointerDown) return;
+		if (this.pointerId !== e.pointerId) return;
+
+		this.finishPointer();
+	}
+
+	onPointerCancel() {
+		if (!this.isPointerDown) return;
+		this.finishPointer();
+	}
+
+	finishPointer() {
+		this.isPointerDown = false;
+
+		const threshold = this.root.offsetWidth * 0.15;
+
+		if (this.deltaX > threshold) {
+			this.goTo(this.current - 1);
+		} else if (this.deltaX < -threshold) {
+			this.goTo(this.current + 1);
+		} else {
+			this.update();
+		}
+
+		this.track.releasePointerCapture?.(this.pointerId);
+		this.pointerId = null;
+	}
+
+	// ---------- CORE ----------
+
+	goTo(index) {
+		const total = this.slides.length;
+
+		if (index < 0) index = total - 1;
+		if (index >= total) index = 0;
+
+		this.current = index;
+		this.update();
+	}
+
+	update() {
+		const offset = -this.current * 100;
+		this.track.style.transform = `translateX(${offset}%)`;
+		this.track.style.transition = 'transform .5s ease';
+
+		this.updateDots();
+		this.updateDecadesNav();
+		this.updateArrows();
+	}
+
+	updateDots() {
+		this.dots.forEach((dot, i) => {
+			dot.classList.toggle('active', i === this.current);
+		});
+	}
+
+	updateArrows() {
+		if (!this.prevCaption || !this.nextCaption) return;
+
+		const total = this.dots.length;
+		const prevIndex = (this.current - 1 + total) % total;
+		const nextIndex = (this.current + 1) % total;
+
+		const prevText = this.dots[prevIndex].textContent.trim();
+		const nextText = this.dots[nextIndex].textContent.trim();
+
+		if (this.prevOdo) {
+			if (this.prevCaption.textContent !== prevText) {
+				this.prevOdo.update(prevText);
+			}
+		} else {
+			this.prevCaption.textContent = prevText;
+		}
+
+		if (this.nextOdo) {
+			if (this.nextCaption.textContent !== nextText) {
+				this.nextOdo.update(nextText);
+			}
+		} else {
+			this.nextCaption.textContent = nextText;
+		}
+	}
+}
+
+// ---------- AUTO INIT ----------
+
+document.addEventListener('DOMContentLoaded', () => {
+	document
+		.querySelectorAll('.chronology-slider-cover')
+		.forEach(el => new ChronologySlider(el));
+});
 document.addEventListener('DOMContentLoaded', function() {
 	setTimeout(function() {
 		document.body.classList.add('loaded');
@@ -3032,6 +3443,196 @@ document.addEventListener('DOMContentLoaded', function(){
 		};
 	});
 });
+class MobileSlider {
+	constructor(root) {
+		this.root = root;
+		this.track = root.querySelector('.mobile-slider-track');
+		this.dots = Array.from(root.querySelectorAll('.dot'));
+		this.isActive = false;
+
+		this.current = 0;
+		this.startX = 0;
+		this.currentX = 0;
+		this.isDragging = false;
+		this.slideWidth = 0;
+		this.gap = 0;
+		this.step = 0;
+
+		this.onResize = this.onResize.bind(this);
+		this.onDotClick = this.onDotClick.bind(this);
+		this.onTouchStart = this.onTouchStart.bind(this);
+		this.onTouchMove = this.onTouchMove.bind(this);
+		this.onTouchEnd = this.onTouchEnd.bind(this);
+		this.onTransitionEnd = this.onTransitionEnd.bind(this);
+
+		this.checkMode();
+		window.addEventListener('resize', this.onResize);
+	}
+
+	checkMode() {
+		if (window.innerWidth < 769) {
+			if (!this.isActive) this.init();
+		} else {
+			if (this.isActive) this.destroy();
+		}
+	}
+
+	init() {
+		this.isActive = true;
+
+		this.slides = Array.from(this.track.children);
+		this.originalCount = this.slides.length;
+
+		// clone first & last
+		this.firstClone = this.slides[0].cloneNode(true);
+		this.lastClone = this.slides[this.slides.length - 1].cloneNode(true);
+
+		this.firstClone.classList.add('is-clone');
+		this.lastClone.classList.add('is-clone');
+
+		this.track.appendChild(this.firstClone);
+		this.track.insertBefore(this.lastClone, this.track.firstChild);
+
+		this.slides = Array.from(this.track.children);
+
+		this.current = 1;
+		this.updateSizes();
+		this.jumpTo(this.current, false);
+
+		// dots
+		this.dots.forEach((dot, i) => {
+			dot.addEventListener('click', this.onDotClick);
+		});
+
+		// touch
+		this.track.addEventListener('touchstart', this.onTouchStart, { passive: true });
+		this.track.addEventListener('touchmove', this.onTouchMove, { passive: false });
+		this.track.addEventListener('touchend', this.onTouchEnd);
+
+		this.track.addEventListener('transitionend', this.onTransitionEnd);
+	}
+
+	destroy() {
+		this.isActive = false;
+
+		this.track.style.transform = '';
+		this.track.style.transition = '';
+
+		// remove clones
+		this.track.querySelectorAll('.is-clone').forEach(el => el.remove());
+
+		// reset dots
+		this.dots.forEach(dot => {
+			dot.classList.remove('active');
+			dot.removeEventListener('click', this.onDotClick);
+		});
+
+		// remove touch
+		this.track.removeEventListener('touchstart', this.onTouchStart);
+		this.track.removeEventListener('touchmove', this.onTouchMove);
+		this.track.removeEventListener('touchend', this.onTouchEnd);
+		this.track.removeEventListener('transitionend', this.onTransitionEnd);
+
+		this.current = 0;
+	}
+
+	updateSizes() {
+		const firstSlide = this.track.children[0];
+		const styles = window.getComputedStyle(this.track);
+
+		this.slideWidth = Math.round(firstSlide.getBoundingClientRect().width);
+		this.gap = parseFloat(styles.columnGap || styles.gap || 0);
+		this.step = this.slideWidth + this.gap;
+	}
+
+	onResize() {
+		this.checkMode();
+		if (this.isActive) {
+			this.updateSizes();
+			this.jumpTo(this.current, false);
+		}
+	}
+
+	onDotClick(e) {
+		const index = this.dots.indexOf(e.currentTarget);
+		this.goTo(index + 1);
+	}
+
+	goTo(index) {
+		this.current = index;
+		this.track.style.transition = 'transform .35s ease';
+		this.track.style.transform = `translateX(-${this.step * this.current}px)`;
+		this.updateDots();
+	}
+
+	jumpTo(index, animate = false) {
+		this.current = index;
+		this.track.style.transition = animate ? 'transform .35s ease' : 'none';
+		this.track.style.transform = `translateX(-${this.step * this.current}px)`;
+		this.updateDots();
+	}
+
+	updateDots() {
+		const realIndex = (this.current - 1 + this.originalCount) % this.originalCount;
+
+		this.dots.forEach((dot, i) => {
+			dot.classList.toggle('active', i === realIndex);
+		});
+	}
+
+	onTransitionEnd() {
+		// loop fix
+		if (this.current === 0) {
+			this.jumpTo(this.originalCount, false);
+		}
+		if (this.current === this.originalCount + 1) {
+			this.jumpTo(1, false);
+		}
+	}
+
+	onTouchStart(e) {
+		this.isDragging = true;
+		this.startX = e.touches[0].clientX;
+		this.currentX = this.startX;
+		this.track.style.transition = 'none';
+	}
+
+	onTouchMove(e) {
+		if (!this.isDragging) return;
+
+		this.currentX = e.touches[0].clientX;
+		const diff = this.currentX - this.startX;
+		const offset = -this.current * this.step + diff;
+
+		this.track.style.transform = `translateX(${offset}px)`;
+		e.preventDefault();
+	}
+
+	onTouchEnd() {
+		if (!this.isDragging) return;
+		this.isDragging = false;
+
+		const diff = this.currentX - this.startX;
+		const threshold = this.step * 0.2;
+
+		if (diff > threshold) {
+			this.current--;
+		} else if (diff < -threshold) {
+			this.current++;
+		}
+
+		this.track.style.transition = 'transform .35s ease';
+		this.track.style.transform = `translateX(-${this.current * this.step}px)`;
+
+		this.updateDots();
+	}
+}
+
+// auto init
+document.addEventListener('DOMContentLoaded', () => {
+	const sliders = document.querySelectorAll('.mobile-slider-section .slider-cover');
+	sliders.forEach(el => new MobileSlider(el));
+});
 document.addEventListener( 'DOMContentLoaded', function() {
 
 	(function() {
@@ -4190,786 +4791,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	}, observerOptions);
 
 	sections.forEach(section => observer.observe(section));
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-
-	const waitForFinalEvent = (function(){
-		var timers = {};
-		return function (callback, ms, uniqueId) {
-			if (!uniqueId) uniqueId = "default";
-			if (timers[uniqueId]) clearTimeout(timers[uniqueId]);
-			timers[uniqueId] = setTimeout(callback, ms);
-		};
-	})();
-
-
-	class Slider {
-		sliderElment = null;
-		track = null;
-
-		sliderDots = null;
-		sliderArrows = null;
-
-		allSlides = [];
-		prevButton = null;
-		nextButton = null;
-
-		totalSlides = 0;
-
-		activeSlideEl = null;
-		activeIndex = 0;
-
-		_yearsVisible = 0;
-		_yearsOffset = 0;
-		_yearsStep = 0;
-		_yearsList = null;
-		_yearsDots = null;
-
-
-		currentTransition = 0;
-		isTouchDown = false;
-
-		touchStartX = 0;
-		touchStartY = 0;
-		touchMoveX = 0;
-		touchMoveY = 0;
-
-		options = {
-			transitionDuration: '0.6s',
-			timing: 'ease-in-out',
-			delay: '0s',
-			direction: 'horizontal', // 'horizontal' | 'vertical'
-			autoplay: false,
-			autoplayTime: 5000,
-			loop: false,
-			pauseOnHover: true,
-			onInit: null,
-			onTranslated: null,
-			// селектори під різні розмітки
-			trackSelector: '.slider-list',
-			slideSelector: '.slide'
-		};
-
-		_autoplayTimer = null;
-		_resizeRaf = null;
-
-		_handlers = {
-			onResize: null,
-			onTouchStart: null,
-			onTouchMove: null,
-			onTouchEnd: null,
-			onMouseDown: null,
-			onMouseMove: null,
-			onMouseUp: null,
-			onMouseLeave: null,
-			onMouseEnter: null,
-			onMouseOut: null,
-			onPrevClick: null,
-			onNextClick: null
-		};
-
-		constructor(sliderElment) {
-			this.sliderElment = sliderElment;
-		}
-
-		init(options) {
-			if (!this.sliderElment) return;
-
-			if (options) Object.assign(this.options, options);
-
-			const ds = this.sliderElment.dataset || {};
-			if (typeof ds.autoplay !== 'undefined') this.options.autoplay = this._toBool(ds.autoplay);
-			if (typeof ds.loop !== 'undefined') this.options.loop = this._toBool(ds.loop);
-			if (typeof ds.autoplayTime !== 'undefined') this.options.autoplayTime = this._toInt(ds.autoplayTime, this.options.autoplayTime);
-			if (typeof ds.direction !== 'undefined') this.options.direction = (ds.direction === 'vertical') ? 'vertical' : 'horizontal';
-
-			this.track = this.sliderElment.querySelector(this.options.trackSelector);
-			this.sliderDots = this.sliderElment.querySelector('[data-dots]')?.querySelectorAll('.dot') || null;
-			this.sliderArrows = this.sliderElment.querySelector('.slider-arrows') || null;
-			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
-			this.totalSlides = this.allSlides.length;
-
-			if (!this.track || !this.totalSlides) return;
-
-			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
-			this._setActiveSlide(this.activeIndex);
-			this._setActiveDot(this.activeIndex);
-
-			this._setupArrows();
-			this._setupDots();
-			this._bindEvents();
-
-			this._applyTransform(this._calcTranslation(this.activeIndex), true);
-			// force correct first measurement
-			setTimeout(() => {
-				this._updateChronologyPagination();
-			}, 0);
-
-			if (typeof this.options.onInit === 'function') {
-				this.options.onInit(this);
-			}
-
-			if (this.options.autoplay) {
-				this._startAutoplay();
-			}
-
-			this.sliderElment._sliderInstance = this;
-			this.sliderElment.setAttribute('data-slider-initialized', 'true');
-		}
-
-		_bindEvents() {
-			if (this.prevButton) {
-				this._handlers.onPrevClick = (e) => { e.preventDefault(); this.prev(); };
-				this.prevButton.addEventListener('click', this._handlers.onPrevClick);
-			}
-			if (this.nextButton) {
-				this._handlers.onNextClick = (e) => { e.preventDefault(); this.next(); };
-				this.nextButton.addEventListener('click', this._handlers.onNextClick);
-			}
-
-			if (this.sliderDots) {
-				this.sliderDots.forEach((dot, index) => {
-					const fn = (e) => { e.preventDefault(); this.goTo(index); };
-					dot._onDotClick = fn;
-					dot.addEventListener('click', fn);
-				});
-			}
-
-			this._handlers.onResize = () => {
-				waitForFinalEvent(() => {
-					this.update();
-					this._updateChronologyPagination();
-				}, 200, 'chronology-resize');
-			};
-
-
-			window.addEventListener('resize', this._handlers.onResize);
-
-			this._handlers.onTouchStart = (e) => this._onTouchStart(e);
-			this._handlers.onTouchMove = (e) => this._onTouchMove(e);
-			this._handlers.onTouchEnd = () => this._onTouchEnd();
-
-			this.sliderElment.addEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
-			this.sliderElment.addEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
-			this.sliderElment.addEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
-
-			let mouseDown = false;
-			let mouseStartX = 0;
-			let mouseStartY = 0;
-
-			this._handlers.onMouseDown = (e) => {
-				mouseDown = true;
-				this.isTouchDown = true;
-				mouseStartX = e.clientX;
-				mouseStartY = e.clientY;
-				this._cancelAutoplay();
-				this._disableTransition();
-			};
-			this._handlers.onMouseMove = (e) => {
-				if (!mouseDown) return;
-				this._dragByDelta(e.clientX - mouseStartX, e.clientY - mouseStartY);
-			};
-			this._handlers.onMouseUp = (e) => {
-				if (!mouseDown) return;
-				mouseDown = false;
-				this.isTouchDown = false;
-				this._endDrag(e.clientX - mouseStartX, e.clientY - mouseStartY);
-			};
-			this._handlers.onMouseLeave = (e) => {
-				if (!mouseDown) return;
-				mouseDown = false;
-				this.isTouchDown = false;
-				this._endDrag(0, 0);
-			};
-
-			this.sliderElment.addEventListener('mousedown', this._handlers.onMouseDown);
-			this.sliderElment.addEventListener('mousemove', this._handlers.onMouseMove);
-			this.sliderElment.addEventListener('mouseup', this._handlers.onMouseUp);
-			this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseLeave);
-
-			if (this.options.pauseOnHover) {
-				this._handlers.onMouseEnter = () => this._cancelAutoplay();
-				this._handlers.onMouseOut = () => this._startAutoplay();
-				this.sliderElment.addEventListener('mouseenter', this._handlers.onMouseEnter);
-				this.sliderElment.addEventListener('mouseleave', this._handlers.onMouseOut);
-			}
-		}
-
-		update() {
-			this.allSlides = Array.from(this.sliderElment.querySelectorAll(this.options.slideSelector));
-			this.totalSlides = this.allSlides.length;
-			this.activeIndex = this._clamp(this.activeIndex, 0, this.totalSlides - 1);
-			this._setActiveSlide(this.activeIndex);
-			this._applyTransform(this._calcTranslation(this.activeIndex), true);
-		}
-
-		prev() {
-			const nextIndex = (this.activeIndex - 1);
-			if (nextIndex < 0) {
-				if (this.options.loop) {
-					this.goTo(this.totalSlides - 1);
-				} else {
-					this.goTo(0);
-				}
-			} else {
-				this.goTo(nextIndex);
-			}
-		}
-
-		next() {
-			const nextIndex = (this.activeIndex + 1);
-			if (nextIndex > this.totalSlides - 1) {
-				if (this.options.loop) {
-					this.goTo(0);
-				} else {
-					this.goTo(this.totalSlides - 1);
-				}
-			} else {
-				this.goTo(nextIndex);
-			}
-		}
-
-		goTo(index) {
-			index = this._clamp(index, 0, this.totalSlides - 1);
-			if (index === this.activeIndex) return;
-
-			this._cancelAutoplay();
-
-			this.activeIndex = index;
-			this._setActiveSlide(index);
-			this._setActiveDot(index);
-
-			this._enableTransition();
-			this._applyTransform(this._calcTranslation(index), false);
-
-			if (typeof this.options.onTranslated === 'function') {
-				this.options.onTranslated(this);
-			}
-
-			if (this.options.autoplay) {
-				this._startAutoplay();
-			}
-
-			this._updateArrowsState();
-			// синхронізація років із активним слайдом
-
-			if (this._yearsVisible && this._yearsDots) {
-
-				const maxOffset = Math.max(0, this._yearsDots.length - this._yearsVisible);
-
-				// якщо активна точка вилізла праворуч
-				if (this.activeIndex >= this._yearsOffset + this._yearsVisible) {
-					this._yearsOffset = this.activeIndex - this._yearsVisible + 1;
-				}
-
-				// якщо вилізла ліворуч
-				if (this.activeIndex < this._yearsOffset) {
-					this._yearsOffset = this.activeIndex;
-				}
-
-				// clamp
-				this._yearsOffset = Math.max(0, Math.min(this._yearsOffset, maxOffset));
-
-				const translate = -(this._yearsStep * this._yearsOffset);
-				this._yearsList.style.transform = `translateX(${translate}px)`;
-			}
-		}
-
-		_setActiveSlide(index) {
-			this.allSlides.forEach((slide, i) => {
-				if (i === index) {
-					slide.classList.add('active');
-					this.activeSlideEl = slide;
-				} else {
-					slide.classList.remove('active');
-				}
-			});
-		}
-
-		_setActiveDot(index) {
-			if (!this.sliderDots) return;
-			this.sliderDots.forEach((dot, i) => {
-				dot.classList.toggle('active', i === index);
-			});
-		}
-
-		_setupArrows() {
-			if (!this.sliderArrows) return;
-			this.prevButton = this.sliderArrows.querySelector('.prev') || null;
-			this.nextButton = this.sliderArrows.querySelector('.next') || null;
-			this._updateArrowsState();
-		}
-
-		_updateArrowsState() {
-			if (!this.prevButton || !this.nextButton) return;
-			if (this.options.loop) {
-				this.prevButton.classList.remove('hidden');
-				this.nextButton.classList.remove('hidden');
-				return;
-			}
-			this.prevButton.classList.toggle('hidden', this.activeIndex === 0);
-			this.nextButton.classList.toggle('hidden', this.activeIndex === this.totalSlides - 1);
-		}
-
-		_setupDots() { /* уже знайдені у init */ }
-
-		_calcTranslation(index) {
-			let offset = 0;
-			if (index === 0) return 0;
-
-			if (this.options.direction === 'vertical') {
-				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().height;
-				return -offset;
-			} else {
-				for (let i = 0; i < index; i++) offset += this.allSlides[i].getBoundingClientRect().width;
-				return -offset;
-			}
-		}
-
-		_applyTransform(value, noAnimation = false) {
-			if (noAnimation) this._disableTransition();
-			const axis = (this.options.direction === 'vertical') ? 'Y' : 'X';
-			this.currentTransition = value;
-			this.track.style.transform = `translate${axis}(${value}px)`;
-		}
-
-		_enableTransition() {
-			this.track.style.transition = `transform ${this.options.transitionDuration} ${this.options.timing} ${this.options.delay}`;
-		}
-
-		_disableTransition() {
-			this.track.style.transition = 'none';
-		}
-
-		_startAutoplay() {
-			if (!this.options.autoplay) return;
-			this._cancelAutoplay();
-
-			this._autoplayTimer = setInterval(() => {
-				const atLast = this.activeIndex >= this.totalSlides - 1;
-				if (!this.options.loop && atLast) {
-					this._cancelAutoplay();
-					return;
-				}
-				this.next();
-			}, this.options.autoplayTime);
-		}
-
-		_cancelAutoplay() {
-			if (this._autoplayTimer) {
-				clearInterval(this._autoplayTimer);
-				this._autoplayTimer = null;
-			}
-		}
-
-		_onTouchStart(e) {
-			if (e.touches.length !== 1) return;
-			this.isTouchDown = true;
-			this._disableTransition();
-			this._cancelAutoplay();
-
-			this.touchStartX = e.touches[0].clientX;
-			this.touchStartY = e.touches[0].clientY;
-			this.touchMoveX = this.touchStartX;
-			this.touchMoveY = this.touchStartY;
-		}
-
-		_onTouchMove(e) {
-			if (!this.isTouchDown) return;
-
-			this.touchMoveX = e.touches[0].clientX;
-			this.touchMoveY = e.touches[0].clientY;
-
-			const deltaX = this.touchMoveX - this.touchStartX;
-			const deltaY = this.touchMoveY - this.touchStartY;
-
-			const horizontal = (this.options.direction === 'horizontal');
-			const primaryDelta = horizontal ? deltaX : deltaY;
-			const crossDelta = horizontal ? Math.abs(deltaY) : Math.abs(deltaX);
-
-			if (Math.abs(primaryDelta) > crossDelta) e.preventDefault();
-
-			this._dragByDelta(deltaX, deltaY);
-		}
-
-		_onTouchEnd() {
-			if (!this.isTouchDown) return;
-			this.isTouchDown = false;
-
-			const deltaX = this.touchMoveX - this.touchStartX;
-			const deltaY = this.touchMoveY - this.touchStartY;
-			this._endDrag(deltaX, deltaY);
-		}
-
-		_dragByDelta(deltaX, deltaY) {
-			const horizontal = (this.options.direction === 'horizontal');
-			const delta = horizontal ? deltaX : deltaY;
-			const axis = horizontal ? 'X' : 'Y';
-			this.track.style.transform = `translate${axis}(${this.currentTransition + delta}px)`;
-		}
-
-		_endDrag(deltaX, deltaY) {
-			const horizontal = (this.options.direction === 'horizontal');
-			const delta = horizontal ? deltaX : deltaY;
-
-			const activeSize = horizontal
-				? this.activeSlideEl.getBoundingClientRect().width
-				: this.activeSlideEl.getBoundingClientRect().height;
-
-			const threshold = Math.max(30, activeSize * 0.2);
-
-			if (Math.abs(delta) >= threshold) {
-				if (delta > 0) this.prev();
-				else this.next();
-			} else {
-				this._enableTransition();
-				this._applyTransform(this._calcTranslation(this.activeIndex), false);
-			}
-
-			if (this.options.autoplay) this._startAutoplay();
-		}
-
-		destroy() {
-			this._cancelAutoplay();
-			this._disableTransition();
-			if (this.track) this.track.style.transform = '';
-
-			if (this.allSlides && this.allSlides.length) {
-				this.allSlides.forEach(slide => slide.classList.remove('active'));
-			}
-			if (this.sliderDots) {
-				this.sliderDots.forEach(dot => dot.classList.remove('active'));
-			}
-
-			if (this._handlers.onResize) window.removeEventListener('resize', this._handlers.onResize);
-
-			if (this.sliderElment) {
-				if (this._handlers.onTouchStart) this.sliderElment.removeEventListener('touchstart', this._handlers.onTouchStart, { passive: true });
-				if (this._handlers.onTouchMove) this.sliderElment.removeEventListener('touchmove', this._handlers.onTouchMove, { passive: false });
-				if (this._handlers.onTouchEnd) this.sliderElment.removeEventListener('touchend', this._handlers.onTouchEnd, { passive: true });
-
-				if (this._handlers.onMouseDown) this.sliderElment.removeEventListener('mousedown', this._handlers.onMouseDown);
-				if (this._handlers.onMouseMove) this.sliderElment.removeEventListener('mousemove', this._handlers.onMouseMove);
-				if (this._handlers.onMouseUp) this.sliderElment.removeEventListener('mouseup', this._handlers.onMouseUp);
-				if (this._handlers.onMouseLeave) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseLeave);
-
-				if (this.options.pauseOnHover) {
-					if (this._handlers.onMouseEnter) this.sliderElment.removeEventListener('mouseenter', this._handlers.onMouseEnter);
-					if (this._handlers.onMouseOut) this.sliderElment.removeEventListener('mouseleave', this._handlers.onMouseOut);
-				}
-			}
-
-			if (this.prevButton && this._handlers.onPrevClick) this.prevButton.removeEventListener('click', this._handlers.onPrevClick);
-			if (this.nextButton && this._handlers.onNextClick) this.nextButton.removeEventListener('click', this._handlers.onNextClick);
-
-			if (this.sliderDots) {
-				this.sliderDots.forEach(dot => {
-					if (dot._onDotClick) {
-						dot.removeEventListener('click', dot._onDotClick);
-						delete dot._onDotClick;
-					}
-				});
-			}
-
-			if (this.sliderElment) {
-				delete this.sliderElment._sliderInstance;
-				this.sliderElment.removeAttribute('data-slider-initialized');
-			}
-		}
-
-		_updateChronologyPagination() {
-			const cover = this.sliderElment.querySelector('.dots-slide-cover');
-			const list  = this.sliderElment.querySelector('.slider-pagination');
-			const dotsRoot = this.sliderElment.querySelector('[data-dots]');
-			if (!dotsRoot) return;
-			if (!cover || !list) return;
-			cover.style.maxWidth = '';
-
-			const dots = Array.from(list.querySelectorAll('.dot'));
-			if (!dots.length) return;
-
-			const prevBtn = dotsRoot.querySelector('.button-prev-years');
-			const nextBtn = dotsRoot.querySelector('.button-next-years');
-
-			const containerWidth = cover.clientWidth - 1;
-
-			const dotRect = dots[0].getBoundingClientRect();
-			let step = dotRect.width;
-			if (step <= 0) step = dotRect.width + 22;
-
-			if (dots.length > 1) {
-				const first = dots[0].getBoundingClientRect();
-				const second = dots[1].getBoundingClientRect();
-				const dist = second.left - first.left;
-				if (dist > 0) step = dist;
-			}
-
-			let visibleCount = Math.max(
-				1,
-				Math.floor(containerWidth / step)
-			);
-			while (visibleCount > 1) {
-				const testIndex = visibleCount - 1;
-				if (!dots[testIndex]) break;
-
-				const firstRect = dots[0].getBoundingClientRect();
-				const lastRect = dots[testIndex].getBoundingClientRect();
-
-				const realWidth = lastRect.right - firstRect.left;
-
-				if (realWidth <= containerWidth) break;
-
-				visibleCount--;
-			}
-			console.log({
-				containerWidth,
-				step,
-				dots: dots.length,
-				visibleCount
-			});
-
-
-			if (visibleCount >= dots.length) {
-
-				list.style.transform = '';
-
-				prevBtn?.classList.add('hidden');
-				nextBtn?.classList.add('hidden');
-				dotsRoot.classList.remove('with-buttons');
-				return;
-			}
-
-			// ЗБЕРЕЖЕННЯ СТАНУ
-			this._yearsVisible = visibleCount;
-			this._yearsStep = step;
-			this._yearsList = list;
-			this._yearsDots = dots;
-
-			const maxOffsetSync = dots.length - visibleCount;
-			this._yearsOffset = Math.min(this._yearsOffset, maxOffsetSync);
-
-			dotsRoot.classList.add('with-buttons');
-
-			const lastVisibleIndex = visibleCount - 1;
-			if (!dots[lastVisibleIndex]) return;
-
-			const firstDotRect = dots[0].getBoundingClientRect();
-			const lastDotRect = dots[lastVisibleIndex].getBoundingClientRect();
-
-			// РЕАЛЬНА ширина по DOM
-			const visibleWidth = Math.ceil(lastDotRect.right - firstDotRect.left);
-
-			cover.style.maxWidth = `${visibleWidth}px`;
-
-			console.log({
-				containerWidth,
-				step,
-				fit: Math.floor(containerWidth / step)
-			});
-
-			const apply = () => {
-				const maxOffset = dots.length - visibleCount;
-				this._yearsOffset = Math.max(0, Math.min(this._yearsOffset, maxOffset));
-
-				const translate = -(step * this._yearsOffset);
-				list.style.transform = `translateX(${translate}px)`;
-				list.style.transition = 'transform .4s ease';
-
-				const currentGroupEnd = this._yearsOffset + visibleCount - 1;
-				const nextStartIndex = currentGroupEnd + 1;
-
-
-				if (nextBtn) {
-					const hasNext = this._yearsOffset + visibleCount < dots.length;
-
-					if (hasNext) {
-						const nextStartIndex = this._yearsOffset + visibleCount;
-						const first = dots[nextStartIndex].textContent;
-						const last = dots[dots.length - 1].textContent;
-
-						nextBtn.textContent = `${first}-${last}`;
-						nextBtn.classList.remove('hidden');
-					} else {
-						nextBtn.classList.add('hidden');
-					}
-				}
-
-
-				console.log({
-					offset: this._yearsOffset,
-					visibleCount,
-					nextStart: this._yearsOffset + visibleCount
-				});
-
-				if (prevBtn) {
-					if (this._yearsOffset > 0) {
-						prevBtn.textContent =
-							`${dots[0].textContent}-${dots[this._yearsOffset - 1].textContent}`;
-						prevBtn.classList.remove('hidden');
-					} else {
-						prevBtn.classList.add('hidden');
-					}
-				}
-
-
-				dotsRoot.classList.toggle('no-shadow', this._yearsOffset >= maxOffset);
-			};
-
-			if (prevBtn) {
-				prevBtn.onclick = (e) => {
-					e.preventDefault();
-
-					this._yearsOffset = 0;
-
-					const translate = -(this._yearsStep * this._yearsOffset);
-					this._yearsList.style.transform = `translateX(${translate}px)`;
-
-					apply();
-				};
-			}
-
-
-			if (nextBtn) {
-				nextBtn.onclick = (e) => {
-					e.preventDefault();
-
-					const visible = this._yearsVisible;
-					const maxOffset = this._yearsDots.length - visible;
-
-					this._yearsOffset = Math.min(
-						this._yearsOffset + visible,
-						maxOffset
-					);
-
-					const translate = -(this._yearsStep * this._yearsOffset);
-					this._yearsList.style.transform = `translateX(${translate}px)`;
-
-					apply();
-				};
-			}
-
-
-
-			// показуємо кнопки якщо вони потрібні
-			prevBtn?.classList.remove('hidden');
-			nextBtn?.classList.remove('hidden');
-
-			requestAnimationFrame(() => {
-				apply();
-			});
-
-		}
-
-		_clamp(n, min, max) { return Math.min(Math.max(n, min), max); }
-		_toBool(v) { if (typeof v === 'boolean') return v; if (typeof v === 'number') return v !== 0; return String(v).toLowerCase() === 'true'; }
-		_toInt(v, def = 0) { const x = parseInt(v, 10); return Number.isFinite(x) ? x : def; }
-	}
-
-	// Ініціалізація усіх .slider, окрім тих, що всередині .mobile-slider-section (ними керуємо нижче)
-	Array.prototype.forEach.call(document.querySelectorAll('.slider'), function (sliderEl) {
-		if (sliderEl.closest('.mobile-slider-section')) return;
-
-		const slider = new Slider(sliderEl);
-
-		let options = {
-			direction: 'horizontal',
-			autoplay: false,
-			loop: false,
-			onInit: function (api) {
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						api._updateChronologyPagination();
-					});
-				});
-			},
-			onTranslated: function (api) {
-			}
-		};
-
-		if (sliderEl.classList.contains('counter-slider')) {
-
-			const setDates = function () {
-				const dots = Array.from(sliderEl.querySelector('.chronology-list')?.querySelectorAll('.dot') || []);
-				const captions = dots.map(d => d.textContent.trim());
-				const prevCaption = slider.prevButton?.querySelector('.caption');
-				const nextCaption = slider.nextButton?.querySelector('.caption');
-
-				const prevText = captions[this.activeIndex - 1] || 0;
-				const nextText = captions[this.activeIndex + 1] || 0;
-
-				if (prevCaption && window.Odometer) {
-					const o = new Odometer({ el: prevCaption, format: '' });
-					o.update(prevText);
-				} else if (prevCaption) {
-					prevCaption.textContent = prevText;
-				}
-
-				if (nextCaption && window.Odometer) {
-					const o = new Odometer({ el: nextCaption, format: '' });
-					o.update(nextText);
-				} else if (nextCaption) {
-					nextCaption.textContent = nextText;
-				}
-			};
-
-			options.onInit = function(api) {
-				setDates.call(api);
-				requestAnimationFrame(() => {
-					api._updateChronologyPagination();
-				});
-			};
-
-			options.onTranslated = function(api) {
-				setDates.call(api);
-			};
-		}
-
-		slider.init(options);
-		window.dispatchEvent(new Event('resize'));
-	});
-
-	/* =============================================================================
-		 МОБІЛЬНІ СЛАЙДЕРИ (кілька на сторінці)
-		 Кожен .mobile-slider-section .slider-cover -> окремий інстанс
-		 < 769px  => init
-		 >= 769px => destroy
-	============================================================================= */
-
-	function setupMobileSectionSliders() {
-		const covers = document.querySelectorAll('.mobile-slider-section .slider-cover');
-		if (!covers.length) return;
-
-		const needInit = window.innerWidth < 769;
-
-		covers.forEach((cover) => {
-			let instance = cover._sliderInstance || null;
-			const isInited = cover.getAttribute('data-slider-initialized') === 'true';
-
-			if (needInit && !isInited) {
-				const slider = new Slider(cover);
-				slider.init({
-					trackSelector: '.mobile-slider-track',
-					slideSelector: '.mobile-slider-track > *',
-					direction: 'horizontal'
-					// loop/autoplay можна задати через data-*, наприклад:
-					// data-loop="true" data-autoplay="true" data-autoplay-time="4000"
-				});
-			} else if (!needInit && isInited && instance) {
-				instance.destroy();
-			}
-		});
-	}
-
-	// перший запуск для всіх мобільних
-	setupMobileSectionSliders();
-
-	// дебаунс resize для всіх мобільних
-	let mobileRaf = null;
-	window.addEventListener('resize', () => {
-		if (mobileRaf) cancelAnimationFrame(mobileRaf);
-		mobileRaf = requestAnimationFrame(setupMobileSectionSliders);
-	});
 });
 
 	class TagFilter {
