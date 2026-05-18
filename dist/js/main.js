@@ -599,6 +599,7 @@ class ChronologySlider {
 		this.nextCaption = this.nextBtn?.querySelector('.odometer');
 		this.prevOdo = null;
 		this.nextOdo = null;
+		this.isDragging = false;
 
 		this.current = 0;
 		this.groups = [];
@@ -839,6 +840,13 @@ class ChronologySlider {
 
 		this.prevBtn?.addEventListener('click', this.onPrev);
 		this.nextBtn?.addEventListener('click', this.onNext);
+
+		this.track.addEventListener('click', (e) => {
+			if (this.isDragging) {
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		});
 	}
 
 	onDotClick(e) {
@@ -874,9 +882,12 @@ class ChronologySlider {
 	// ---------- POINTER DRAG ----------
 
 	onPointerDown(e) {
+		if (e.target.closest('a')) return;
+
 		if (e.pointerType === 'mouse' && e.button !== 0) return;
 
 		this.isPointerDown = true;
+		this.isDragging = false;
 		this.pointerId = e.pointerId;
 
 		this.startX = e.clientX;
@@ -893,6 +904,10 @@ class ChronologySlider {
 
 		this.currentX = e.clientX;
 		this.deltaX = this.currentX - this.startX;
+
+		if (Math.abs(this.deltaX) > 5) {
+			this.isDragging = true;
+		}
 
 		const percentOffset =
 			(-this.current * 100) +
